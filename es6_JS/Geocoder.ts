@@ -145,7 +145,7 @@ class BingGeocoder implements Geocoder{
     }
 
     static _buildUrl(address : Address) : string{
-        return `http://dev.virtualearth.net/REST/v1/Locations?countryRegion=${BingGeocoder._checkMember(address.countryRegion)}&adminDistrict=${BingGeocoder._checkMember(address.adminDistrict)}&locality=${BingGeocoder._checkMember(address.locality)}&postalCode=${BingGeocoder._checkMember(address.postalCode)}&addressLine=${BingGeocoder._checkMember(address.addressLine)}&includeNeighborhood=true&maxResults=1&key=${BING_API_KEY}`;
+        return `https://dev.virtualearth.net/REST/v1/Locations?countryRegion=${BingGeocoder._checkMember(address.countryRegion)}&adminDistrict=${BingGeocoder._checkMember(address.adminDistrict)}&locality=${BingGeocoder._checkMember(address.locality)}&postalCode=${BingGeocoder._checkMember(address.postalCode)}&addressLine=${BingGeocoder._checkMember(address.addressLine)}&includeNeighborhood=true&maxResults=1&key=${BING_API_KEY}`;
     }
 
     /**
