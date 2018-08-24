@@ -1,2 +1,0 @@
-# NetworkVisualization
-Network Visualization
