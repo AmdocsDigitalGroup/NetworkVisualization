@@ -116,7 +116,7 @@ class BingGeocoder {
         return address;
     }
     static _buildUrl(address) {
-        return `http://dev.virtualearth.net/REST/v1/Locations?countryRegion=${BingGeocoder._checkMember(address.countryRegion)}&adminDistrict=${BingGeocoder._checkMember(address.adminDistrict)}&locality=${BingGeocoder._checkMember(address.locality)}&postalCode=${BingGeocoder._checkMember(address.postalCode)}&addressLine=${BingGeocoder._checkMember(address.addressLine)}&includeNeighborhood=true&maxResults=1&key=${BING_API_KEY}`;
+        return `https://dev.virtualearth.net/REST/v1/Locations?countryRegion=${BingGeocoder._checkMember(address.countryRegion)}&adminDistrict=${BingGeocoder._checkMember(address.adminDistrict)}&locality=${BingGeocoder._checkMember(address.locality)}&postalCode=${BingGeocoder._checkMember(address.postalCode)}&addressLine=${BingGeocoder._checkMember(address.addressLine)}&includeNeighborhood=true&maxResults=1&key=${BING_API_KEY}`;
     }
     /**
      * Used to check parameters for Bing. If they are not present, a - is inserted as a nil value. Otherwise, we encode it for a URL.
