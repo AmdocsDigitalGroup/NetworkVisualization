@@ -1,0 +1,3 @@
+for(var i =0; i <inputData.length; i++){
+    sink(getSimpleFormatFrom(inputData[i]));
+}

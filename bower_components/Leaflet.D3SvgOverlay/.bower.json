@@ -1,0 +1,13 @@
+{
+  "name": "Leaflet.D3SvgOverlay",
+  "homepage": "https://github.com/manubb/Leaflet.D3SvgOverlay",
+  "_release": "56e75a7eda",
+  "_resolution": {
+    "type": "branch",
+    "branch": "patch",
+    "commit": "56e75a7eda49a8b3b66f7786340a95e29b09893b"
+  },
+  "_source": "https://github.com/manubb/Leaflet.D3SvgOverlay.git",
+  "_target": "patch",
+  "_originalSource": "https://github.com/manubb/Leaflet.D3SvgOverlay.git"
+}

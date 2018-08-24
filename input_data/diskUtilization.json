@@ -1,0 +1,18 @@
+[
+    {
+        "id":"PSWYNJ17",
+        "cpu": ".72",
+        "memory":{
+            "size":"6GB",
+            "used":"1.3GB",
+            "available":"4.7GB",
+            "percentage": ".45"
+        },
+        "disk":{
+            "size":"2TB",
+            "used":"0.3TB",
+            "available":"1.7TB",
+            "percentage": ".25"
+        }
+    }
+]

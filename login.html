@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="topologyApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <!-- Style Sheets -->
+  <!-- injector:css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link href="css/loginCss/loginCss.css" rel="stylesheet">
+  <!-- endinjector -->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Login Page</title>
+</head>
+
+<body ng-controller="loginController as vm">
+  <div class="container">
+    <div class="loginContainer" style="display:flex">
+      <div class="loginView">
+        <div class="attLogo">
+          <img src="resources/images/login/ATT_logo.jpg" style="width: 90px;margin-left:30%;margin-top:6%">
+          <span class="attLogoSpan"><b style="font-size: 20px;">AT&T Business Center</b><br><i>That's the power of &</i></span>
+        </div>
+        <div id="spinner2" class="bigSpinner" style="margin-left: 33%;margin-top: 7%;display: none;">
+          <i class="fa fa-spin"><span class="sr-only">Loading...</span><img src="resources/images/login/gears.jpg" style="width:80px;height: 80px;" background-color="black"></i>
+        </div>
+        <form id="loginForm" name="loginForm" class="form-horizontal" ng-submit="vm.submitForm()">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input name="emailInput" type="email" class="form-control" id="emailTab" placeholder="Email" style="width: 60%;" ng-model="vm.username"
+                autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input name="passwordInput" type="password" class="form-control" id="passwordTab" placeholder="Password" style="width: 60%;"
+                ng-model="vm.password" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset col-sm-10">
+              <div class="checkbox">
+                <label style="font: bold 10px/20px 'Open Sans';">
+                <input type="checkbox"> Remember me
+              </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset col-sm-10">
+              <button type="submit" class="login-btn">Login</button><a href="#" style="margin:2%">Forgot password?</a>
+            </div>
+          </div>
+        </form>
+        <div class="login-footer"><span>Have a question? <a >Chat with a rep now!</a></span></div>
+      </div>
+      <div class="staticView MultiAnimation" style="padding-top: 6%">
+        <img src="resources/images/login/johan-circle.jpg" style="display: none;width:100px;">
+        <h3 style="color:white;margin-left:23%">Welcome Back</h3><br><span class="profileSpan">Today will be great.</span>
+        <div class="information">
+          <div style="margin-left:22.3%;display:flex;margin-top: 5%">
+            <div class="profileDesc">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="profileDetails">Did you know AT&T eBiz<br>users get access to unlimited<br>data usage during peak<br>holidays? Find out how by<br>logging
+              in and clicking on the <br>
+              <div style="display:inline-block;margin-top:2px"><i class="material-icons" style="font-size:20px;color:white;">place</i></div> icon on the homepage</div>
+          </div>
+        </div>
+        <div class="location" style="display:block;margin-top:5%;margin-left:25.5%"><i class="material-icons" style="font-size:60px;color:white;">place</i>
+          <div class="location-name"><span><b style="font-size: 16px;">San Francisco</b><br>California</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- injector:js -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="js/graphapp.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/routes.js"></script>
+  <script type="text/javascript" src="js/controllers/loginController.js"></script>
+  <script type="text/javascript" src="js/services/loginService.js"></script>
+  <!-- endinjector -->
+
+</body>
+
+</html>

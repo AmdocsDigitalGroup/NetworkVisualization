@@ -1,0 +1,44 @@
+{
+  "name": "kubernetes-topology-graph",
+  "version": "0.9.2",
+  "description": "Provides a simple force directed topology graph of kubernetes items.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "kubernetes"
+  ],
+  "authors": [
+    "Stef Walter <stefw@redhat.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "Gruntfile.js",
+    "*.html",
+    "package.json",
+    "/topology-graph.*",
+    "node_modules",
+    "bower_components",
+    "scratch"
+  ],
+  "main": [
+    "dist/topology-graph.js",
+    "dist/topology-graph.css"
+  ],
+  "dependencies": {
+    "jQuery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "d3": "~4.10.0",
+    "leaflet": "^1.2.0",
+    "leaflet-bing-layer": "^3.2.0",
+    "Leaflet.D3SvgOverlay": "https://github.com/manubb/Leaflet.D3SvgOverlay.git#patch",
+    "fetch-jsonp": "^1.1.1",
+    "jquery-ui": "^1.12.1"
+  },
+  "devDependencies": {
+    "font-awesome": "*"
+  },
+  "resolutions": {
+    "d3": "~4.10.0"
+  }
+}

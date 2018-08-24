@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+$templateBlue: #618acc;
+$background: #d3d3d3;
+#modal-1 {
+font-family: 'Open Sans'; }
+
+#modal-fw {
+font-family: 'Open Sans'; }
+
+.charge {
+color: $templateBlue;
+font-weight: normal; }
+
+label {
+position: relative; }
+
+.moreMac {
+margin-left: 1em;
+font-weight: bold;
+display: inline; }
+
+.macSelect {
+display: inline;
+font-style: italic; }
+
+.serviceSelection {
+position: relative;
+margin: 1em;
+text-align: left; }
+
+.serviceSelectionfw {
+position: relative;
+margin: 1em;
+text-align: right; }
+
+.serviceSelection h3 {
+color: $templateBlue; }
+
+.macIcon {
+position: relative; }
+
+.modal-header {
+background: $background; }
+
+.modal-footer {
+background: $background; }
+
+.nav li {
+font-weight: bold; }
+
+.confirmButton {
+position: relative;
+-ms-flex-item-align: end;
+align-self: flex-end; }
+
+.bandwidthSelector {
+size: 30; }
+
+.bandwidthSelector span {
+display: inline-block; }
+
+.siteName {
+font-weight: bold; }
+
+img {
+width: 40%;
+outline: none; }
+
+.modal-header i {
+color: $templateBlue;
+font-size: 30px; }
+
+.speed {
+color: $templateBlue; }
+
+.software img {
+/*background: $templateBlue;*/
+width: 14%;
+margin: 2em;
+padding: 0.5em; }
+
+.software span {
+margin: 2em; }
+
+.software i {
+padding-left: 0em;
+padding-top: 0.2em; }
+
+.software label {
+padding-left: 1em;
+color: $templateBlue;
+font-size: 20px; }
+
+.software button {
+border: none;
+background: #f3f0f0; }
+
+.billing {
+position: relative;
+border: 0px solid $background;
+background: white; }
+
+.billing i {
+color: $templateBlue;
+font-size: 20px; }
+
+.billing p {
+border: 6px solid;
+margin: 0;
+padding: 5px;
+width: 20px;
+height: 20px; }
+
+.billing p:nth-child(1) {
+position: absolute;
+border-color: $templateBlue;
+top: 0px;
+left: 0px;
+margin: -4px;
+border-right: none;
+border-bottom: none; }
+
+.billing p:nth-child(2) {
+position: absolute;
+border-color: $templateBlue;
+bottom: 0px;
+right: 0px;
+margin: -5px;
+border-left: none;
+border-top: none; }
+
+.billingInfoIcon i {
+color: $templateBlue;
+font-size: 30px; }
+
+.confirmButton img {
+width: 25px;
+height: 25px;
+margin-left: 0.5em; }
+#modal-1 .modal-dialog {
+    width: 100%;
+    margin: auto;
+}
+
+li a img {
+    height: 80%;
+    width: 20%;
+    min-width: 50px;
+}
+
+@media screen and (min-width: 320px) {
+    #modal-1 .modal-dialog {
+        max-width: 600px;
+    }
+    li a img {
+        height: 100%;
+        max-width: 600px;
+    }
+}
+
+#modal-fw .modal-dialog {
+    width: 100%;
+    margin: auto
+}
+
+@media screen and (min-width: 320px) {
+    #modal-fw .modal-dialog {
+        max-width: 600px;
+    }
+}

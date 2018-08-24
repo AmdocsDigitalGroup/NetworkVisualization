@@ -1,0 +1,37 @@
+[
+   {
+        "id": 16,
+        "gcpOrgId": "5443301900",
+        "locationId": "HOUSTON",
+        "assetType": "PORT",
+        "assetId": "AS/KRGN/003732/SB2",
+        "timeStamp": 1511526600000,
+        "ingressTraffic": 14521602747,
+        "egressTraffic": 0,
+        "utilization": 90,
+        "bandwidth": "1GBPS",
+        "recommendAction": "INCREASE",
+        "recommendSeverity": "H",
+        "recommendMessage": "Increase your port bandwidth now to avoid any interruption in service",
+        "recommendReason": "Port utilization has exceeded 85%",
+        "status": null
+  },
+    {
+        "id": 21,
+        "gcpOrgId": "5443301900",
+        "locationId": "DALLAS",
+        "assetType": "EVC",
+        "assetId": "AS/VLXM/016422/SW",
+        "timeStamp": 1511526600000,
+        "ingressTraffic": 14521602747,
+        "egressTraffic": 0,
+        "utilization": 79,
+        "packetLoss": 10,
+        "bandwidth": "1GBPS",
+        "recommendAction": "Create Ticket",
+        "recommendSeverity": "H",
+        "recommendMessage": "We recommend creating a ticket for Support Team to investigate Packet Loss.",
+        "recommendReason": "EVC with circuit ID AS/VLXM/016422/SW has a packet loss of more than 10% for 30 minutes.",
+        "status": null
+    }
+]

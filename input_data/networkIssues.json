@@ -1,0 +1,14 @@
+[
+    {
+        "id":"1009580381",
+        "latency": "900",
+        "pktloss":"9",
+        "throughput":"2"
+    },
+    {
+        "id":"100982500",
+        "latency": "1,500",
+        "pktloss":"20",
+        "throughput":"1.2"
+    }
+]

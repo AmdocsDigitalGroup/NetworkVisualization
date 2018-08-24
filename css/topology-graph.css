@@ -1,0 +1,850 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+/**********************************************
+ ************* Table of Contents **************
+ * Section 1: Global style settings
+ * Section 2: Backgrounds and Panels
+ *      2.0: Graph Window
+ *      2.1: Background Map
+ *      2.2: Control Panel
+ *      2.3: Graph Legend
+ *      2.4: Header Banner
+ * Section 3: Popups
+ * Section 4: Graph Settings
+ *      4.0: General
+ *      4.1: Nodes
+ *      4.2: Edges
+ *      4.3: Info Display
+ *      4.4: Graph Controls
+ *      4.5: Keyframes
+ **********************************************/
+/****** Section 1: global style settings ******/
+* {
+  box-sizing: border-box; }
+
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0px;
+  font-family: 'Open Sans'; }
+
+svg:not(:root) {
+  overflow: visible; }
+
+/*might be causing issues with accessiblity, look into later*/
+:focus {
+  outline: none; }
+
+.clickable {
+  cursor: pointer; }
+
+/********* Section 2: Background and Panels *********/
+/****** Section 2.0: Graph Window ******/
+topology-graph {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url(../resources/images/backgrounds/NOD-Portal-Bkgrnd-without-map-01.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 40px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  overflow: hidden; }
+
+#topology-graph {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url(../resources/images/backgrounds/NOD-Portal-Bkgrnd-without-map-01.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 40px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  overflow: hidden; }
+
+.topology {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+#topology {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+/****** Section 2.1: Background Map ******/
+/****** Section 2.2: Control Panel ******/
+.controls-active {
+  z-index: 11;
+  display: inline-block;
+  position: absolute;
+  background-color: rgba(60, 65, 85, 0.8);
+  left: 0px;
+  top: 40px;
+  bottom: 0px;
+  padding: 0px 10px;
+  width: 200px;
+  text-align: center;
+  color: white; }
+
+.controls-inactive {
+  display: none; }
+
+/** Control Elements **/
+topology-icon {
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+button.control-input-btn {
+  color: black; }
+
+svg.topology-ctrl-btn {
+  margin-top: 20px;
+  width: 48px;
+  height: 48px; }
+
+/****** Section 2.3: Graph legend ******/
+#legend {
+  overflow-y: auto;
+  position: absolute;
+  background-color: rgba(200, 200, 200, 0.7);
+  right: 0px;
+  top: 40px;
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  text-align: center;
+  padding: 15px 10px 15px 10px;
+  color: black;
+  display: none;
+  z-index: 10; }
+
+#legend.active {
+  display: block; }
+
+/** Legend elements **/
+legend-icon {
+  stroke-width: 0;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+svg.legend-icon {
+  width: 48px;
+  height: 48px;
+  display: block; }
+
+#legend-toggle {
+  position: absolute;
+  right: 15px;
+  top: 55px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  fill: rgba(250, 250, 250, 0.6);
+  z-index: 10; }
+
+#legend-toggle.active {
+  fill: black; }
+
+/*#graph-buttons {
+  position: absolute;*/
+  /*set to red because it should always be invisible(width and height are 0) */
+  /*background: red;
+  left: 0px;
+  top: 80px;
+  width: 0px;
+  height: 0px;
+  z-index: 10; }*/
+
+#graph-buttons {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  border: 2px solid #ccc;
+  width: 280px;
+  border-radius: 6px;
+  left: 10px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+
+#graph-buttons.free-view {
+  top: 0px; }
+
+/****** Section 2.4: Header Banner ******/
+#head-banner {
+  display: inline;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: Black;
+  height: 40px;
+  padding: 5px 5px 5px 5px; }
+
+/** Header elements **/
+#ATTLogo {
+  display: inline;
+  position: absolute;
+  cursor: pointer;
+  width: auto;
+  fill: none;
+  height: 30px;
+  left: 16px; }
+
+svg.att-logo-box {
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; }
+
+image.att-logo {
+  width: 34px;
+  height: 34px; }
+
+text.att-biz-center {
+  position: relative;
+  color: #ffffff;
+  bottom: 10px; }
+
+#profile-image {
+  overflow: hidden;
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  right: 90px;
+  border-radius: 50%; }
+
+#settings-icon {
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  right: 50px; }
+
+#shopping-cart {
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  right: 10px; }
+
+/********* Section 3: Popups *********/
+/****** Section 4: Graph Settings ******/
+/** All node types have specfic classes
+ ** that can be used to style only them
+ ** The use.class-node are for dynamic settings
+ ** and the circle.class are for settings that
+ ** shouldn't be overwritten **/
+/** Section 4.0: General settings **/
+use.use-node {
+  position: fixed;
+  stroke: #ff9966;
+  stroke-width: 0;
+  stroke-linecap: round; }
+
+g.vertices {
+  position: fixed; }
+
+.fade-out {
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+
+.fade-out-full {
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+
+.fade-in {
+  -webkit-transition: 500ms;
+  transition: 500ms; }
+
+use.use-node:hover {
+  stroke-width: 2px; }
+
+use.portOnEVC {
+  stroke-width: 3; }
+
+use.selected-connection-point {
+  stroke: green;
+  stroke-width: 3; }
+
+use.portOnEVCAlert {
+  stroke-width: 3;
+  stroke: red; }
+
+use.PointToPointCenter-node:hover, use.Multilinkhub-node:hover {
+  position: fixed;
+  will-change: transform;
+  -webkit-animation: rotateImage 3s steps(90) infinite;
+  animation: rotateImage 3s steps(90) infinite; }
+
+use.Site-node:hover {
+  position: fixed;
+  will-change: transform;
+  -webkit-animation: rotateImage 6s steps(90) infinite;
+  animation: rotateImage 6s steps(90) infinite; }
+
+/** Section 4.1 Graph Nodes **/
+/* Reminder: settings set to inherit will be 
+ * inherited from the use element, and may not
+ * be constant throughout various events */
+/* Site node */
+circle.Site {
+  stroke-width: 0;
+  fill: #4f59e5; }
+
+circle.SiteInnerAnimation {
+  position: fixed;
+  stroke-width: 0;
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  fill: #ffffff;
+  will-change: transform;
+  -webkit-animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
+  animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate; }
+
+circle.SiteInner {
+  position: fixed;
+  stroke-width: 0;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  fill: #ffffff; }
+
+circle.SiteRing {
+  position: fixed;
+  fill: inherit;
+  stroke-width: inherit;
+  stroke-linecap: round;
+  stroke-dasharray: 3.14159, 3.14159;
+  stroke-dashoffset: 0px;
+  /* -webkit-animation: ringRotate 1s steps(60) infinite;
+            animation: ringRotate 1s steps(60) infinite; */ }
+
+text.cluster-text {
+  stroke: #2f4f4f;
+  text-anchor: middle;
+  stroke-width: .8px; }
+
+/* Port node */
+circle.Port {
+  fill: #a0b4b4; }
+
+circle.PortCluster {
+  fill: #141414; }
+
+/* EVC nodes (MTP and PTP) */
+circle.EVCAnimation {
+  position: fixed;
+  fill: #00dddd;
+  stroke-width: 0;
+  will-change: fill;
+  -webkit-animation: PTPGlow 2.5s steps(30) 2s infinite alternate;
+  animation: PTPGlow 2.5s steps(30) 2s infinite alternate; }
+
+circle.EVC {
+  position: fixed;
+  fill: #00dddd;
+  stroke-width: 0; }
+
+circle.EVCouter {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1.571, 3.14159; }
+
+circle.MultiAnimation {
+  position: fixed;
+  stroke-width: 0;
+  fill: #ff8855;
+  will-change: fill;
+  -webkit-animation: MTPGlow 2.5s steps(30) 2s infinite alternate;
+  animation: MTPGlow 2.5s steps(30) 2s infinite alternate; }
+
+circle.MultiHub {
+  position: fixed;
+  stroke-width: 0;
+  fill: #ff8855; }
+
+/* Flexware and service nodes */
+circle.Flexware {
+  fill: #9bb83c; }
+
+circle.Service {
+  fill: #609fff; }
+
+/** Section 4.2: Graph Edges **/
+line.edges {
+  stroke: cyan;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-dasharray: 0; }
+
+line.standard {
+  position: fixed;
+  stroke: cyan;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-dasharray: 0;
+  will-change: stroke;
+  -webkit-animation: lineGlow 2.5s steps(30) 0s infinite alternate;
+  animation: lineGlow 2.5s steps(30) 0s infinite alternate; }
+
+  line.newEvc {
+    position: fixed;
+    stroke: orange;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 0;
+    will-change: stroke;
+    animation: none;
+    -webkit-animation: none;
+  }
+
+line.dashin {
+  position: fixed;
+  stroke-dasharray: 5,5;
+  stroke: cyan;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  -webkit-animation: dash 2s steps(60) forwards;
+  animation: dash 2s steps(60) forwards; }
+
+line.stop-animation {
+  animation: none; }
+
+line.connection-line {
+  stroke: #ff9966;
+  stroke-width: 2.5px; }
+
+line.alert-line {
+  stroke: red;
+  stroke-width: 2.5px; }
+
+/*
+.topology line.ReplicationControllerPod {
+    stroke-linecap: round;
+    stroke-dasharray: 5, 2;
+}
+*/
+/*
+.popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 200px;
+    border: 1px #ccc solid;
+    border-radius: 6px;
+    box-shadow: #333 2px 2px 4px;
+    padding: 8px;
+    font-family: 'Open-Sans';
+}
+*/
+/*
+.nodelabel {
+	text-align: left;	
+}
+*/
+/****** Section 4.3: Info Display on hover ******/
+.inFocus {
+  z-index: 1; }
+
+path.infoLine {
+  stroke: #cccccc;
+  stroke-width: 2px;
+  fill: none;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+
+path.infoField {
+  stroke: #efefef;
+  stroke-width: 1px;
+  fill: none;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+
+path.SiteLabel {
+  stroke: #cccccc;
+  stroke-width: 2px;
+  fill: none;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  z-index: 1; }
+
+text.SiteName {
+  font-size: 14px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  fill: #ffffff;
+  stroke-width: 0;
+  stroke: #ffffff; }
+
+text.titleBox {
+  font-size: 15px;
+  fill: #ffffff;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+
+text.infoBox {
+  text-anchor: start;
+  font-size: 12px;
+  fill: rgba(255, 255, 255, 0.8);
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+
+text.text-heading {
+  font-size: 18px; }
+
+/*Health Progress bar styles*/
+progress {
+  display: block;
+  -webkit-appearance: none;
+  border: none;
+  width: 210px;
+  height: 8px; }
+
+text.network-metric {
+  stroke: none;
+  fill: red;
+  font-size: 14px;
+  text-anchor: middle; }
+
+text.network-unit {
+  stroke: none;
+  fill: #000000;
+  font-size: 8px;
+  text-anchor: middle;
+  font-style: italic; }
+
+text.network-title {
+  stroke: #000000;
+  stroke-width: .5px;
+  fill: #000000;
+  font-size: 14px;
+  text-anchor: middle; }
+
+text.network-label {
+  stroke: none;
+  fill: #000000;
+  font-size: 12px; }
+
+rect.network-box {
+  stroke: #cccccc;
+  stroke-width: 1px;
+  fill: #efefef;
+  opacity: .8; }
+
+circle.percentage-inner-circle {
+  fill: #ffffff;
+  stroke-width: 0; }
+
+circle.percentage-outer-circle {
+  fill: gray;
+  stroke-width: 0; }
+
+path.percentage-circle-bar {
+  fill: none;
+  stroke-width: 4px;
+  stroke-dasharray: inherit;
+  stroke: inherit; }
+
+text.percentage-circle-text {
+  font-size: 12px;
+  fill: #000000; }
+
+text.percentage-circle-title {
+  font-size: 14px;
+  text-anchor: middle;
+  fill: #000000; }
+
+rect.flexware-health-box {
+  fill: #efefef;
+  opacity: .8;
+  stroke: #cccccc;
+  /**may need to be migrated to js for browser compatiblity */ }
+
+/****** Section 4.4: Graph Controls ******/
+.staticButton {
+  cursor: pointer; }
+
+#button-loading {
+  position: fixed;
+  transform-origin: center;
+  animation: rotateImage 3s steps(60) forwards infinite; }
+
+#zoom-panel {
+  z-index: 11;
+  position: fixed;
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  top: 50%;
+  margin-top: 180px;
+  transform-origin: 0 0;
+  transform: rotate(-90deg);
+  margin-left: 3px; }
+
+#zoom-panel.controls-open {
+  top: 30%px; }
+
+#zoom-panel.inactive {
+  display: none; }
+
+#zoom-slider-bar {
+  position: inline;
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  background: transparent;
+  width: 200px;
+  margin-top: -2px; }
+
+@-moz-document url-prefix() {
+  #zoom-slider-bar {
+    margin-top: 10px; } }
+
+#zoom-slider-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #cccccc;
+  height: 32px;
+  width: 20px;
+  border-radius: 5px;
+  margin-top: 1px;
+  background: #efefef;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #2f2f2f, 0px 0px 1px #2f2f2f; }
+
+#zoom-slider-bar::-webkit-slider-runnable-track {
+  width: auto;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #2f2f2f, 0px 0px 1px #2f2f2f;
+  background: rgba(200, 200, 200, 0.7);
+  border-radius: 5px;
+  border: 0.5px solid #cccccc; }
+
+#zoom-slider-bar::-moz-range-thumb {
+  -moz-appearance: none;
+  border: 1px solid #cccccc;
+  height: 32px;
+  width: 20px;
+  border-radius: 5px;
+  background: #efefef;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #2f2f2f, 0px 0px 1px #2f2f2f; }
+
+#zoom-slider-bar::-moz-range-track {
+  width: 100%;
+  cursor: pointer;
+  height: 34px;
+  /* Hides the slider so custom styles can be added */
+  background: rgba(200, 200, 200, 0.7);
+  border-color: transparent;
+  border-radius: 5px;
+  color: transparent; }
+
+#zoom-slider-bar::-ms-thumb {
+  border: 1px solid #cccccc;
+  height: 32px;
+  width: 20px;
+  border-radius: 5px;
+  margin-top: -1px;
+  background: #efefef;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #2f2f2f, 0px 0px 1px #2f2f2f; }
+
+#zoom-slider-bar::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  height: 34px;
+  margin-top: -4px;
+  background: rgba(200, 200, 200, 0.7);
+  border-color: transparent;
+  border-radius: 5px;
+  color: transparent; }
+
+#plus-button {
+  width: 40px;
+  height: 40px;
+  position: inline;
+  cursor: pointer;
+  margin-top: 1px; }
+
+#minus-button {
+  width: 40px;
+  height: 40px;
+  position: inline;
+  cursor: pointer;
+  transform: rotate(90deg);
+  margin-top: 1px; }
+
+svg.zoom-button {
+  fill: rgba(200, 200, 200, 0.7);
+  stroke: #ffffff; }
+
+svg.zoom-button:hover {
+  fill: rgba(120, 150, 255, 0.75);
+  /**optional ablity to change symbol on hover*/
+  stroke: #ffffff; }
+
+rect.icon-box {
+  stroke: .5px;
+  stroke: #2f2f2f;
+  fill: inherit;
+  /* rx: 5px; can't be used because firefox is annoying
+    ry: 5px;
+    width: 38px;
+    height: 38px; */ }
+
+line.icon-line {
+  stroke: inherit;
+  stroke-width: 4px;
+  stroke-linecap: round; }
+
+/****** Section 4.5: Graph Animations ******/
+@-webkit-keyframes lineGlow {
+  0% {
+    stroke: cyan; }
+  100% {
+    stroke: rgba(23, 207, 207, 0.7); } }
+
+@keyframes lineGlow {
+  0% {
+    stroke: cyan; }
+  100% {
+    stroke: rgba(23, 207, 207, 0.7); } }
+
+@-webkit-keyframes PTPGlow {
+  0% {
+    fill: #00dddd; }
+  100% {
+    fill: rgba(20, 179, 179, 0.7); } }
+
+@keyframes PTPGlow {
+  0% {
+    fill: #00dddd; }
+  100% {
+    fill: rgba(20, 179, 179, 0.7); } }
+
+@-webkit-keyframes MTPGlow {
+  0% {
+    fill: #ff8855; }
+  100% {
+    fill: rgba(235, 120, 71, 0.7); } }
+
+@keyframes MTPGlow {
+  0% {
+    fill: #ff8855; }
+  100% {
+    fill: rgba(235, 120, 71, 0.7); } }
+
+@-webkit-keyframes siteInnerGlow {
+  0% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    fill: #ffffff; }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    fill: #efefef; } }
+
+@keyframes siteInnerGlow {
+  0% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    fill: #ffffff; }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    fill: #efefef; } }
+
+@-webkit-keyframes rotateImage {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes rotateImage {
+  100% {
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes ringRotate {
+  0% {
+    stroke-dashoffset: 0px; }
+  100% {
+    stroke-dashoffset: -18.85px; } }
+
+@keyframes ringRotate {
+  0% {
+    stroke-dashoffset: 0px; }
+  100% {
+    stroke-dashoffset: -18.85px; } }
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1,9; }
+  10% {
+    stroke-dasharray: 2,8; }
+  20% {
+    stroke-dasharray: 3,7; }
+  30% {
+    stroke-dasharray: 4,6; }
+  40% {
+    stroke-dasharray: 5,5; }
+  50% {
+    stroke-dasharray: 6,4; }
+  60% {
+    stroke-dasharray: 7,3; }
+  70% {
+    stroke-dasharray: 8,2; }
+  80% {
+    stroke-dasharray: 9,1; }
+  90% {
+    stroke-dasharray: 10,1; }
+  100% {
+    stroke-dasharray: 11,0; } }
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,9; }
+  10% {
+    stroke-dasharray: 2,8; }
+  20% {
+    stroke-dasharray: 3,7; }
+  30% {
+    stroke-dasharray: 4,6; }
+  40% {
+    stroke-dasharray: 5,5; }
+  50% {
+    stroke-dasharray: 6,4; }
+  60% {
+    stroke-dasharray: 7,3; }
+  70% {
+    stroke-dasharray: 8,2px; }
+  80% {
+    stroke-dasharray: 9,1; }
+  90% {
+    stroke-dasharray: 10,1; }
+  100% {
+    stroke-dasharray: 11,0; } }

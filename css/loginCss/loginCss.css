@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+    body {
+      background-image: url("../../resources/images/login/blurred-background.jpg");
+      background-size: cover;
+      background-position: 100%;
+      font-family: 'Open Sans';
+    }
+    .container{
+     width: auto;
+     height: 900px;
+    }
+    .loginContainer{
+        height: 900px;
+            padding-top: 10em;
+    }
+    .loginView{
+        position: relative;
+        background:#ffffff;
+        padding-top: 2em;
+      margin:2em;
+        margin-right: 0;
+      width:60%;
+    }
+    .staticView {
+      background-image: url("../../resources/images/login/side-city.jpg");
+        background-size: cover;
+            background-position: 100%;
+      margin:2em;
+        margin-left: 0;
+        padding-right: 10em;
+      width:40%;
+    }
+      form{
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 20%;
+      }
+      .attLogoSpan{
+              display: block;
+        margin-left: 30%;
+        margin-top: 2%;
+          font-size:16px;
+          text-align: left;
+      }
+      .profileSpan{
+          color:white;
+          margin-left: 23%;
+          display: block;
+        margin-top: -2em;
+      }
+      .profileDesc{
+          border-left:2px solid white;
+          height:240px;
+          margin-left:10%;
+          display: block;
+          width:0px;
+          
+      }
+      .profileDetails{
+          color:white;
+          margin-top: 5%;
+          margin-left: 2%;
+          padding: 2em;
+          word-spacing: 8px;
+         
+             
+      }
+      .designBox{
+          border: 1px solid white;
+          width:10px;
+          height:10px;
+          display:block;
+          margin-left: 12.5em;
+          margin-top: 2%;
+      }
+      .profileDesc p {
+          position: relative;
+          border: 2px solid;
+          width: 10px;
+          height: 10px;
+        }
+
+        .profileDesc p:nth-child(1) {
+          border-color: white;
+          top: 244px;
+          left: -2px;
+          margin: -4px;
+        }
+
+        .profileDesc p:nth-child(2) {
+          border-color: white;
+          bottom: 11px;
+          right: 1px;
+          margin: -5px;
+        }
+      input[type=email], input[type=password]{
+          border-radius: 1em;
+          border: 1.5px solid lightgray;
+      }
+      .login-btn{
+         border-radius: .5em;
+          width: 100px;
+          height: 30px;
+          background-color: #009fdb;
+          color: white;
+          font-size: 16px;
+      }
+      .login-footer{
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          height: 75px;
+          background-color: lightgray;
+          text-align: left;
+          padding-top: 30px;
+      }
+      .login-footer span{
+          position: relative;
+          margin-left: 30%;
+      }
+      .login-footer span a {
+          color: #35b729;
+          font: bold 12px 'Open Sans';
+      }
+      .location-name{
+          color:white;
+          position:relative; 
+          display:inline-block;
+          bottom: 16px;
+      }

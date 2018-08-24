@@ -1,0 +1,375 @@
+<!-- injector:css -->
+<!-- inject:js -->
+<link rel="stylesheet" href="css/popupStyle.css">
+<!-- endinject -->
+<!-- endinjector -->
+
+<!-- Connection Popup panel, added 6-28-17 -->
+<div class="modal fade" id="modal-1">
+    <div class="modal-dialog" style="margin: 0px auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h2 class="modal-title" style="font-weight:bold">POINT-TO-POINT</h2>
+                <div style="display:flex">
+                    <h4><span class="siteName" id="siteOneName"></span><br>
+                        <span id="siteOneAddress"></span><br>
+                        <span id="siteOneCity"></span><br>
+                        <span id="siteOneZip"></span>
+                    </h4>
+                    <i class="material-icons" style="flex:1;align-self:center;margin-left:0.5em;margin-right:0.5em;">add_circle_outline</i>
+                    <h4><span class="siteName" id="siteTwoName"></span><br>
+                        <span id="siteTwoAddress"></span><br>
+                        <span id="siteTwoCity"></span><br>
+                        <span id="siteTwoZip"></span>
+                    </h4>
+                    <i class="material-icons" style="flex:1;align-self:center;margin-left:0.5em;margin-right:0.5em;">remove_circle_outline</i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="first">
+                        <div>
+                            <h3 style="font-weight:bolder;">BANDWIDTH</h3>
+                        </div>
+                        <div style="font-weight:bold;">
+                            <span>The bandwidth/CIR limit of the port determines your available bandwidth/CIR. To increase the bandwidth of one or more endpoints above the current port limit, submit the multi-gigabit EVC design change request.</span>
+                            <input id="bandwidthValue" class="bandwidthSelector" value="1" type="range" min="1" max="50" step="1" /><span>Available Bandwidth/CIR</span>
+                            <div class="speed"><span id=range>1</span> Mbps</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="second" style="margin:1em;">
+                        <div>
+                            <h3 style="font-weight:bolder;margin-bottom:1em">CLASS OF SERVICE</h3>
+                        </div>
+                        <div class="serviceSelection">
+                            <input type="radio" id="bMedium" value="1" name="serviceClass" aria-required="true" checked><span style="margin-left:2em;font-weight: bold;
+        ">business critical medium</span>
+                            <br>
+                            <input type="radio" id="bHigh" value="2" name="serviceClass"><span style="margin-left:2em;font-weight: bold;
+        ">business critical high</span>
+                            <br>
+                            <input type="radio" id="bUrgent" value="3" name="serviceClass"><span style="margin-left:2em;font-weight: bold;
+        ">business critical urgent</span>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="third" style="margin:1em">
+                        <div>
+                            <h3 style="font-weight:bolder;"># OF MAC ADDRESSES</h3>
+                            <div class="macIcon">
+                                <input type="radio" value="1" name="macService" aria-required="true">
+                                <div class="moreMac">Yes<span class="macSelect" style="padding-left:1.6em">Increase to 500 MAC address for each multipoint EVC on the port</span></div>
+                                <br>
+                                <input id="defaultMac" type="radio" value="2" name="macService" checked>
+                                <div class="moreMac">No<span class="macSelect" style="padding-left:2em">Each multipoint EVC on the port has a default limit of 250 MAC addresses</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="fourth">
+                        <div style="display:flex;margin-left: 0em;margin-right: 4em;">
+                            <div style="flex:1;text-align: right;">
+                                <h3 style="font-weight:bolder;">ORDER ID</h3>
+                                <br/><span class="charge" id="tempEVCOrderID"> </span></div>
+                            <div style="flex:2;text-align: right;">
+                                <h3 style="font-weight:bolder;">TOTAL CHARGES</h3>
+                                <br/><span class="charge">One-time fee $<span id="oneTimeEvc"></span> </span>
+                                <br/><span class="charge">Monthly charge $<span id="monthlyEvc"></span> </span>
+                                <br/><span class="charge" style="font-weight:bold">Total $<span id="totalBill"></span></span>
+                            </div>
+                        </div>
+                        <div class="confirmButton" style="margin-left:35%;margin-top:25px">
+                            <button id="confirmEVC" class="btn btn-primary" data-dismiss="modal" tabindex="0">CONFIRM ORDER<img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="pulsateIcon" style="display:none;width: 50%;margin-left: 38%;"><img src="resources/images/login/gears.png"><br>
+                    <span style="margin-left:5%;font-weight:bold;">Processing...</span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div id="evcTabOptions" class="nav nav-pills nav-justified navCon">
+                    <li id="openConnectionTab" class="active"><a href="#first" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-06.png"></a></li>
+                    <li><a href="#second" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-09.png"></a></li>
+                    <li><a href="#third" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-07.png"></a></li>
+                    <li id="evcCheckout"><a href="#fourth" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Flexware Popup panel, added 6-28-17 -->
+<div class="modal fade" id="modal-fw">
+    <div class="modal-dialog" style="margin: 0px auto;">
+        <div class="modal-content">
+            <div class="modal-header" style="padding:1.5em">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h2 class="modal-title" style="font-weight:bold">FLEXWARE</h2>
+                <div style="display:flex">
+                    <h4><span class="siteName" id="FWSiteName"></span><br>
+                        <span id="FWSiteAddress"></span> <br>
+                        <span id="FWSiteCity"></span> <br>
+                        <span id="FWSiteZip"></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="modal-body" style="padding:1.5em;background:#f3f0f0;">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="firstFW">
+                        <div>
+                            <h3 style="font-weight:bolder;">CONFIGURE SOFTWARE</h3>
+                        </div>
+                        <div class="software" style="font-weight:bold;">
+                            <div>
+                                <img src="resources/images/pop-ups/NOD-Portal-firewall-blue-30.png"> <span>Add firewall</span>
+                                <button id="firewallBtn"><i id="firewallDecision" class="material-icons">add_circle_outline</i></button>
+                                <label id="labelFirewall"></label>
+                            </div>
+                            <div>
+                                <img src="resources/images/pop-ups/NOD-Portal-wanx-blue-31.png"> <span style="margin-right: 2.5em;">Add WANX   </span>
+                                <button id="wanxBtn"><i id="wanxDecision" class="material-icons">add_circle_outline</i></button>
+                                <label id="labelWanx"></label>
+                            </div>
+                            <div>
+                                <img src="resources/images/pop-ups/NOD-Portal-router-blue-32.png"> <span>Add Router</span>
+                                <button id="addRouter"><i id="routerAddDecision" class="material-icons">add_circle_outline</i></button>
+                                <button id="removeRouter"><i id="routerRemoveDecision" class="material-icons">remove_circle_outline</i></button>
+                                <label id="labelRouter"></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="secondFW" style="margin:1em;height:60%">
+                        <div>
+                            <h3 style="font-weight:bolder;margin-bottom:1em;flex:1">BILLING</h3>
+                        </div>
+                        <div style="display:flex">
+                            <div class="serviceSelectionfw">
+                                <h3 style="font-weight: bold;">$<span id="tempFWSingle"></span></h3>
+                                <div style="margin-top:.5em">One-time charge</div>
+                                <br>
+                                <h3 style="font-weight: bold;">$<span id="tempFWMonthly"></span></h3>
+                                <div>Recurring payment</div>
+                            </div>
+                            <div style="border-left:1px solid white;height:250px;flex:1;margin-left:2em;display:table">
+                            </div>
+                            <div>
+                                <div class="billing" style="display: table;padding:20px;margin-top: 45px;margin-left:67px;">
+                                    <p></p>
+                                    <p></p>
+                                    <div style="position:absolute"><i class="material-icons" style="font-size:20px">done</i></div>
+                                    <span style="margin-left:3em;font-weight: bold;">Ship to Site Address</span>
+                                    <br>
+                                    <div style="position:absolute"><i class="material-icons accept" style="font-size:20px">done</i></div>
+                                    <span style="margin-left:3em;font-weight: bold;">Accept Terms & Conditions</span>
+                                    <br>
+                                    <div style="position:absolute"> <i class="material-icons" style="font-size:20px">done</i></div>
+                                    <span style="margin-left:3em;font-weight: bold;">Send Notification</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="thirdFW">
+                        <div>
+                            <h3 style="font-weight:bolder;margin-bottom:1em;flex:1">STATUS</h3>
+                        </div>
+                        <div style="display:flex;margin-left:0em;margin-right:4em;text-align:right">
+                            <div style="flex:1;margin-left:2em">
+                                <h3 style="font-weight:bolder;">ORDER ID</h3>
+                                <br/><span class="charge" id="tempFWOrderID"></span></div>
+                            <div style="flex:2;margin-left:5em;">
+                                <h3 style="font-weight:bolder;">TOTAL CHARGES</h3>
+                                <br/><span class="charge">One-time fee $<span id="singleFWbilling"></span></span>
+                                <br/><span class="charge">Recurring $<span id="monthlyFWbilling"></span></span>
+                                <br/><span class="charge" style="font-weight:bold">Total $<span id="totalFWbilling"></span></span>
+                            </div>
+                        </div>
+                        <div class="confirmButton" style="margin-left:35%;margin-top:25px">
+                            <button id="confirmFW" class="btn btn-primary" data-dismiss="modal" tabindex="0">CONFIRM ORDER<img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="pulsateFWIcon" style="display:none;width: 50%;margin-left: 38%;"><img src="resources/images/login/gears.png"><br>
+                    <span style="margin-left:5%;font-weight:bold;">Processing...</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="FWTabOptions" class="nav nav-pills nav-justified navFWli">
+                    <li id="openFWTab" class="active"><a href="#firstFW" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-06.png"></a></li>
+                    <li id="FWCart"><a href="#secondFW" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-24.png"></a></li>
+                    <li id="FWCheckout"><a href="#thirdFW" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Recommendation Popup panel -->
+<div class="modal fade" id="modal-re">
+    <div class="modal-dialog" style="margin: 0px auto;">
+        <div class="modal-content">
+            <div class="modal-header" style="padding:1.5em">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+				<svg style="width:32px; height:32px; display:inline-block;" viewBox="10 8 18 18">
+				   <use xlink:href="#recommendation-icon-large" x="15" y="15"></use>
+				</svg>
+                <h2 class="modal-title" style="font-weight:bold; display:inline-block">ACTION NEEDED</h2>
+            </div>
+            <div class="modal-body" style="padding:1.5em;background:#f3f0f0;">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="firstRe">
+                        <div style="display:flex; margin-top: 0px;">
+                            <h4>
+                                <span id="recReason" style="line-height: 36px; font-size: 26px; font-weight: bold; color: red"></span>
+                            </h4>
+                        </div>
+<!--
+                        <div>
+                            <h4 style="font-weight:bold">RECOMMENDATION</h4>
+                        </div>
+-->
+                        <div >
+                            <h4>
+                                <span id="recMsg" style="line-height: 36px; font-size: 26px;"></span>
+                            </h4>
+                        </div><br>
+                        <div id="recBandwithSection">
+                            <!--div>
+                                <h4 style="font-weight:bold">BANDWIDTH</h4>
+                            </div-->
+<!--
+                            <div>
+                                <div>Please select the port bandwidth.</div><br>
+                                <input id="reBandwidthValue" class="bandwidthSelector" value="2000" type="range" min="1" max="5000" step="1" /><span>Selected Bandwidth</span><br>
+                                <div class="speed"><span id="reBwRange">2000</span> Mbps</div>
+                            </div>
+-->
+                            <div id="reBandwidthValueRadio" style="margin-left: 30px; font-size: 20px;">
+                                <div class="radio">
+                                    <label><input type="radio" name="bandwidth" value="3000">  3000 Mbps (best)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="bandwidth" value="2500"> 2500 Mbps (<span style="color:#27aa27;font-weight:bold;">recommended</span>)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="bandwidth" value="2000"> 2000 Mbps (minimum required)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="secondRe" style="margin:1em;height:60%">
+                        <div>
+                            <h3 style="font-weight:bolder;margin-bottom:1em;flex:1">BILLING</h3>
+                        </div>
+                        <div style="display:flex">
+                            <div class="serviceSelectionfw">
+                                <h3 style="font-weight: bold;">$<span id="tempReSingle"></span></h3>
+                                <div style="margin-top:.5em">One-time charge</div>
+                                <br>
+                                <h3 style="font-weight: bold;">$<span id="tempReMonthly"></span></h3>
+                                <div>Recurring payment</div>
+                            </div>
+                            <div style="border-left:1px solid white;height:200px;flex:1;margin-left:2em;display:table">
+                            </div>
+                            <div>
+                                <div class="billing" style="display: table;padding:20px;margin-top: 45px;margin-left:67px;">
+                                    <p></p>
+                                    <p></p>
+                                    <div style="position:absolute"><i class="material-icons accept" style="font-size:20px">done</i></div>
+                                    <span style="margin-left:3em;font-weight: bold;">Accept Terms & Conditions</span>
+                                    <br>
+                                    <div style="position:absolute"> <i class="material-icons" style="font-size:20px">done</i></div>
+                                    <span style="margin-left:3em;font-weight: bold;">Send Notification</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="thirdRe">
+                       <div id="reOderStatus">
+                           <div>
+                            <h3 style="font-weight:bolder;margin-bottom:1em;flex:1">STATUS</h3>
+                        </div>
+                        <div style="display:flex;margin-left:0em;margin-right:4em;text-align:right">
+                            <div style="flex:1;margin-left:2em">
+                                <h3 style="font-weight:bolder;">ORDER ID</h3>
+                                <br/><span class="charge" id="tempReOrderID"></span></div>
+                            <div style="flex:2;margin-left:5em;">
+                                <h3 style="font-weight:bolder;">TOTAL CHARGES</h3>
+                                <br/><span class="charge">One-time fee $<span id="singleReBilling"></span></span>
+                                <br/><span class="charge">Recurring $<span id="monthlyReBilling"></span></span>
+                                <br/><span class="charge" style="font-weight:bold">Total $<span id="totalReBilling"></span></span>
+                            </div>
+                        </div>
+                        <div class="confirmButton" style="margin-left:22%;margin-top:25px">
+                            <button id="confirmRe" class="btn btn-primary" data-dismiss="modal" tabindex="0">SEND TO PROCUREMENT FOR APPROVAL<img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></button>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+                <div id="pulsateReIcon" style="display:none;width: 50%;margin-left: 38%;"><img src="resources/images/login/gears.png"><br>
+                    <span style="margin-left:5%;font-weight:bold;">Processing...</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="reTabOptions" class="nav nav-pills nav-justified navFWli">
+                    <li id="openReTab" class="active"><a href="#firstRe" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-06.png"></a></li>
+                    <li id="reCart"><a href="#secondRe" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-24.png"></a></li>
+                    <li id="reCheckout"><a href="#thirdRe" data-toggle="tab"><img src="resources/images/pop-ups/NOD-Portal-Prompt-Box-08.png"></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-reCt">
+    <div class="modal-dialog" style="margin: 0px auto;">
+        <div class="modal-content">
+            <div class="modal-header" style="padding:1.5em">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h2 class="modal-title" style="font-weight:bold">RECOMMENDATION</h2>
+            </div>
+            <div class="modal-body" style="padding:1.5em;background:#f3f0f0;">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="firstReCt">
+                       <div style="display:flex">
+                            <h4>
+                                <span id="recReasonCt" style="line-height: 36px; font-weight: bold; color: red"></span>
+                            </h4>
+                        </div>
+<!--
+                        <div>
+                            <h4 style="font-weight:bold">RECOMMENDATION</h4>
+                        </div>
+-->
+                        <div>
+                            <h4>
+                                <span id="recMsgCt" style="line-height: 36px;"></span>
+                            </h4>
+                        </div><br>
+                    </div>
+                    <div class="tab-pane fade in" id="secondReCt" style="margin:1em;height:60%;text-align: center">
+                        <div>
+                            <h3>Ticket Successfully Created</h3>
+                        </div><br>
+                        <h3>
+                            TICKET NUMBER
+                        </h3><br>
+                        <h4 style="font-weight:bold">0124AS058931232</h4><br>
+                    </div>
+                </div>
+                <div id="pulsateReCtIcon" style="display:none;width: 50%;margin-left: 38%;"><img src="resources/images/login/gears.png"><br>
+                    <span style="margin-left:5%;font-weight:bold;">Processing...</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="reButtonOptions">
+                    <button id="recActionCt" class="btn btn-primary" tabindex="0" style="height: 50px; width: 200px">OKAY</button>
+                    <button id="cancelReBtn" class="btn btn-secondary" data-dismiss="modal" tabindex="0" style="height: 50px; width: 200px">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- injector:js -->
+<!-- inject:js -->
+<script src="js/popupJS.js"></script>
+<!-- endinject -->
+<!-- endinjector -->

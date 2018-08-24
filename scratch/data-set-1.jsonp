@@ -1,0 +1,166 @@
+sink({
+    "items": {
+        "0001G18O65": {
+            
+            "kind": "Site",
+          "uniqueId": "0001G18O65"
+        },"00000D7D6S": {
+            
+            "kind": "Site",
+          "uniqueId": "00000D7D6S"
+        },
+        "00000AZT1E": {
+            
+            "kind": "Site",
+          "uniqueId": "00000AZT1E"
+        },"000009M2BH": {
+            
+            "kind": "Site",
+          "uniqueId": "000009M2BH"
+        },
+        "0001FYPA38": {
+            
+            "kind": "Site",
+          "uniqueId": "0001FYPA38"
+        },
+        "AS/KSGN/000089/SB": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000089/SB"
+        },
+        "AS/KSGN/000090/SB": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000090/SB"
+        },
+        "AS/KSGN/000121/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000121/SW"
+        },
+        "AS/KSGN/000120/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000120/SW"
+        },
+        "AS/KSGN/000119/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000119/SW"
+        },
+        "AS/KSGN/000114/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000114/SW"
+        },
+        "AS/KRGN/004793/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KRGN/004793/SW"
+        },
+        "AS/KSGN/000088/SB": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000088/SB"
+        },
+        "AS/KSGN/000095/SB": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000095/SB"
+        },
+        "AS/KSGN/000115/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSGN/000115/SW"
+        },
+        "AS/KSFN/000229/SW": {
+            
+            "kind": "Portss",
+          "uniqueId": "AS/KSFN/000229/SW"
+        },
+        "101041043": {
+            
+            "kind": "Multilinkhub",
+          "uniqueId": "101041043"
+        }
+    },
+    "relations": [
+        {
+            "source": "0001G18O65",
+            "target": "AS/KSGN/000089/SB"
+        },
+        {
+            "source": "0001G18O65",
+            "target": "AS/KSGN/000090/SB"
+        },
+        {
+            "source": "00000D7D6S",
+            "target": "AS/KSGN/000121/SW"
+        },
+        {
+            "source": "00000D7D6S",
+            "target": "AS/KSGN/000120/SW"
+        },
+        {
+            "source": "00000D7D6S",
+            "target": "AS/KSGN/000119/SW"
+        },
+        {
+            "source": "00000AZT1E",
+            "target": "AS/KSGN/000114/SW"
+        },
+        {
+            "source": "00000AZT1E",
+            "target": "AS/KRGN/004793/SW"
+        },
+         {
+            "source": "000009M2BH",
+            "target": "AS/KSGN/000088/SB"
+        },
+         {
+            "source": "000009M2BH",
+            "target": "AS/KSGN/000095/SB"
+        },
+       {
+            "source": "0001FYPA38",
+            "target": "AS/KSGN/000115/SW"
+        },
+       {
+            "source": "0001FYPA38",
+            "target": "AS/KSFN/000229/SW"
+        },
+       {
+            "source": "AS/KSGN/000089/SB",
+            "target": "AS/KSGN/000088/SB"
+        },
+       {
+            "source": "AS/KSGN/000114/SW",
+            "target": "AS/KRGN/004793/SW"
+        },
+        {
+            "source": "AS/KSGN/000114/SW",
+            "target": "AS/KSGN/000115/SW"
+        },
+        {
+            "source": "AS/KSGN/000119/SW",
+            "target": "AS/KSGN/000115/SW"
+        },
+        {
+            "source": "AS/KSGN/000114/SW",
+            "target": "101041043"
+        },
+        {
+            "source": "AS/KSGN/000120/SW",
+            "target": "101041043"
+        },
+        {
+            "source": "AS/KSGN/000115/SW",
+            "target": "101041043"
+        },
+        {
+            "source": "AS/KSGN/000120/SW",
+            "target": "AS/KSGN/000095/SB"
+        }
+        
+    ]
+});
