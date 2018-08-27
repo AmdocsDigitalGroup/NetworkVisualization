@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b737d7c5-77bb-40b9-b563-b77bd5193f2f" name="Default" comment="Commit Aug 24th, 2018">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/topology-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/topology-graph.scss" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/es6_JS/DisplayAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/es6_JS/DisplayAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_data/1inputTestDataFull.js" beforeDir="false" afterPath="$PROJECT_DIR$/input_data/1inputTestDataFull.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/htmlUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/htmlUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/topology-graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/topology-graph.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,14 +56,14 @@
           <entry key="js" value="1" />
           <entry key="json" value="8" />
           <entry key="ts" value="1" />
-          <entry key="txt" value="48" />
+          <entry key="txt" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="8" />
           <entry key="JavaScript" value="1" />
-          <entry key="PLAIN_TEXT" value="50" />
+          <entry key="PLAIN_TEXT" value="61" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
@@ -325,30 +318,6 @@
             <path>
               <item name="topology-poc" type="b2602c69:ProjectViewProjectNode" />
               <item name="topology-poc" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topology-poc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topology-poc" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="fetch-jsonp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topology-poc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topology-poc" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="fetch-jsonp" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topology-poc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topology-poc" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="jquery" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="topology-poc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topology-poc" type="462c0819:PsiDirectoryNode" />
               <item name="es6_JS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,7 +337,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535400003631" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535402044551" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -442,7 +411,7 @@
       <updated>1533148412965</updated>
       <workItem from="1533148418661" duration="4498000" />
       <workItem from="1534778100311" duration="556000" />
-      <workItem from="1534952017604" duration="10224000" />
+      <workItem from="1534952017604" duration="11501000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/AmdocsDigitalGroup/NetworkVisualization&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1535131205745</created>
@@ -521,16 +490,23 @@
       <option name="project" value="LOCAL" />
       <updated>1535149420564</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit Aug 24th, 2018">
+      <created>1535400826138</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1535400826138</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15278000" />
+    <option name="totallyTimeSpent" value="16555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="38" y="23" width="1381" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25690815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25690815" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -546,9 +522,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32866243" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32866243" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3299363" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
