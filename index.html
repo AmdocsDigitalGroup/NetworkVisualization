@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+
     <title>Network Visualizer</title>
     <!-- Style Sheets -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -75,8 +76,8 @@
                 <text x="40" y="20" fill="white" id="mv"> Map View </text>
             </g>
             <g class="staticButton" id="free-button">
-                <image xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="32px" height="32px"></image>
-                <text x="40" y="20" fill="white" id="fv"> Free View </text>
+                <!--<image xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="32px" height="32px" ></image>-->
+                <text x="40" y="20" fill="black" id="fv"> Free View </text>
             </g>
             <g id="button-loading" width="32px" height="32px">
                 <image xlink:href="resources/images/icons/gear.svg" width="32px" height="32px"></image>
@@ -100,30 +101,37 @@
                          a 18 18 0 0 1 0 -36" fill="none" />
             </g>
             <g id="vertex-SiteIcon" style="stroke-width: 0;">
-                <circle r="22" cx="8" cy="8" class="Site"></circle>
-                <circle r="9" cx="8" cy="8" fill="white"></circle>
+                <!--<circle r="22" cx="8" cy="8" class="Site"></circle>-->
+                <!--<circle r="9" cx="8" cy="8" fill="white"></circle>-->
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+                    <path d="M30.792 15.644v15.457c0 .792-.648 1.44-1.44 1.44h-9.488v-5.483a.306.306 0 0 0-.304-.304h-3.122a.304.304 0 0 0-.303.304v5.483H6.648c-.792 0-1.44-.648-1.44-1.44V15.644c0-.792.648-1.44 1.44-1.44h4.18V4.898c0-.792.648-1.44 1.44-1.44h11.466c.792 0 1.44.648 1.44 1.44v9.306h4.18c.791 0 1.438.648 1.438 1.44zm-8.274-3.733a.305.305 0 0 0-.303-.304h-2.818a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.818a.305.305 0 0 0 .303-.304v-2.405zM11.288 22.01a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.136.303.304.303h2.817a.306.306 0 0 0 .304-.303V22.01zm5.619-5.05a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V16.96zm-5.619 0a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.817a.306.306 0 0 0 .304-.304V16.96zm5.619-5.049a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304v-2.405zm0-5.049a.303.303 0 0 0-.303-.303h-2.819a.305.305 0 0 0-.303.303v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V6.862zm5.611 0a.303.303 0 0 0-.303-.303h-2.818a.305.305 0 0 0-.304.303v2.405c0 .167.137.304.304.304h2.818a.304.304 0 0 0 .303-.304V6.862z" fill="#0568ae"></path>
+                </svg>
+
             </g>
             <g id="vertex-SiteIcon-Prequalified" style="stroke-width: 0;">
                 <circle cx="8" cy="8" r="22" fill="#888888"></circle>
                 <circle r="9" cx="8" cy="8" fill="#d0d0d0"></circle>
             </g>
             <g id="vertex-PortIcon" fill="#f0d0ff" style="stroke-width: 0;">
-                <g>
-                    <circle cx="8" cy="8" r="22" class="Port"></circle>
-                </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="32" height="32" x="-8" y="-8"></image>
+                <!--<g>-->
+                    <!--<circle cx="8" cy="8" r="22" class="Port"></circle>-->
+                <!--</g>-->
+                <!--<image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="32" height="32" x="-8" y="-8"></image>-->
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/newport.svg" width="28" height="28" x="-8" y="-8"></image>
+
             </g>
             <g id="vertex-PointToPointCenterIcon" style="stroke-width: 0;">
                 <g>
-                    <circle cx="8" cy="8" r="22" class="EVCAnimation"></circle>
+                    <circle cx="8" cy="8" r="15" class="EVCAnimation"></circle>
                 </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/NOD-point-to-point-06.png" width="32" height="32" x="-8" y="-8"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/NOD-point-to-point-06.png" width="26" height="26" x="-5" y="-5"></image>
             </g>
             <g id="vertex-MultilinkhubIcon" style="stroke-width: 0;">
                 <g>
-                    <circle cx="8" cy="8" r="22" class="MultiAnimation"></circle>
+                    <circle cx="8" cy="8" r="15" class="MultiAnimation"></circle>
                 </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="36" height="36" x="-10" y="-10"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="26" height="26" x="-5" y="-5"></image>
             </g>
             <g id="vertex-firewallIcon">
                 <g>
@@ -149,19 +157,36 @@
                 </g>
                 <image alt="&#xf1ad;" xlink:href="resources/images/icons/FWbox.png" width="32" height="32" x="-8" y="-8"></image>
             </g>
+            <g id="vertex-adiodIcon">
+                <g>
+                    <circle cx="8" cy="8" r="22" class="Flexware"></circle>
+                </g>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.png" width="32" height="32" x="-8" y="-8"></image>
+            </g>
 
 
             <g id="vertex-Cluster">
                 <circle r="40" style="stroke:white;stroke-width:1px;fill:rgba(255,255,255, 0.3);"></circle>
                 <circle r="15" style="stroke-width:0;fill:#5599ff"></circle>
             </g>
-            <g id="vertex-Site" style="fill:none">
-                <g>
-                    <circle r="30" class="SiteRing"></circle>
-                </g>
-                <circle r="20" class="Site"></circle>
-                <circle r="9" class="SiteInnerAnimation"></circle>
+            <g id="vertex-Site" >
+                <!--<g>-->
+                    <!--<circle r="30" class="SiteRing"></circle>-->
+                <!--</g>-->
+                <!--<circle r="20" class="Site"></circle>-->
+                <!--<circle r="9" class="SiteInnerAnimation"></circle>-->
                 <!-- <path d="M -40 -34.6 L -20 -34.6 L -10 -17.3" class="SiteLabel"></path> -->
+
+                    <!--<path d="M30.792 15.644v15.457c0 .792-.648 1.44-1.44 1.44h-9.488v-5.483a.306.306 0 0 0-.304-.304h-3.122a.304.304 0 0 0-.303.304v5.483H6.648c-.792 0-1.44-.648-1.44-1.44V15.644c0-.792.648-1.44 1.44-1.44h4.18V4.898c0-.792.648-1.44 1.44-1.44h11.466c.792 0 1.44.648 1.44 1.44v9.306h4.18c.791 0 1.438.648 1.438 1.44zm-8.274-3.733a.305.305 0 0 0-.303-.304h-2.818a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.818a.305.305 0 0 0 .303-.304v-2.405zM11.288 22.01a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.136.303.304.303h2.817a.306.306 0 0 0 .304-.303V22.01zm5.619-5.05a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V16.96zm-5.619 0a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.817a.306.306 0 0 0 .304-.304V16.96zm5.619-5.049a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304v-2.405zm0-5.049a.303.303 0 0 0-.303-.303h-2.819a.305.305 0 0 0-.303.303v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V6.862zm5.611 0a.303.303 0 0 0-.303-.303h-2.818a.305.305 0 0 0-.304.303v2.405c0 .167.137.304.304.304h2.818a.304.304 0 0 0 .303-.304V6.862z" fill="#0568ae"></path>-->
+
+
+                <g id="recommendation-icon-large" style="transform: rotateY(180deg)">
+                    <image alt="&#xf1ad;" xlink:href="resources/images/icons/location.svg" width="50" height="50" x="-23" y='-35' fill="#17f3fb" style="-webkit-animation:none;"></image>
+                </g>
+
+
+
+
             </g>
             <g id="vertex-Site-Prequalified">
                 <!--Quick and dirty method, may need too implment classes once activate site logic is confirmed-->
@@ -171,10 +196,11 @@
                 <line x1="-30" y1="30" y2="-30" x2="30" stroke="#777777" stroke-width="6" stroke-linecap="round"></line> -->
             </g>
             <g id="vertex-Port">
-                <g>
-                    <circle r="12" class="Port"></circle>
-                </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="18" height="18" x="-8.5" y="-8"></image>
+                <!--<g>-->
+                    <!--<circle r="12" class="Port"></circle>-->
+                <!--</g>-->
+                <!--<image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="18" height="18" x="-8.5" y="-8"></image>-->
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/newport.svg" width="28" height="28" x="-8" y="-8"></image>
             </g>
             <g id="vertex-PointToPointCenter">
                 <g>
@@ -240,10 +266,11 @@
                 <line x1="-30" y1="30" y2="-30" x2="30" stroke="#777777" stroke-width="6" stroke-linecap="round"></line> -->
             </g>
             <g id="vertex-Port-static">
-                <g>
-                    <circle r="12" class="Port"></circle>
-                </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="18" height="18" x="-8.5" y="-8"></image>
+                <!--<g>-->
+                    <!--<circle r="12" class="Port"></circle>-->
+                <!--</g>-->
+                <!--<image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="18" height="18" x="-8.5" y="-8"></image>-->
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/newport.svg" width="28" height="28" x="-8" y="-8"></image>
             </g>
             <g id="vertex-PointToPointCenter-static">
                 <g>
@@ -295,73 +322,284 @@
             </g>
         </defs>
     </svg>
-    <div id="legend" class="active">
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-SiteIcon" x="15" y="15"></use>
+    <!--<div id="legend" class="active">-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-SiteIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Sites</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-SiteIcon-Prequalified" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--&lt;!&ndash;<label>Prequalified Site</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-PortIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>&ndash;&gt;-->
+        <!--<label>Port</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-PointToPointCenterIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>point-to-point connection</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-MultilinkhubIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Multi-point connection</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-FlexwareIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Flexware Box</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-routerIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Router Service</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-firewallIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Firewall Service</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon">-->
+                <!--<use xlink:href="#vertex-wanXIcon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>WanX Service</label><br/>-->
+        <!--<legend-icon>-->
+            <!--<svg class="legend-icon" viewBox="0 0 32 32">-->
+               <!--<use xlink:href="#recommendation-icon" x="15" y="15"></use>-->
+            <!--</svg>-->
+        <!--</legend-icon><br/>-->
+        <!--<label>Recommendation</label><br/>-->
+    <!--</div>-->
+    <!--<svg id="legend-toggle" class="active" onclick="toggleLegend()">-->
+        <!--<circle r=9 cx="9" cy="9" fill="inherit"></circle>-->
+        <!--<text x="7" y="16" style="font-size:18px; fill: white; cursor: pointer;">i</text>-->
+    <!--</svg>-->
+
+
+    <!--<label class="toggler toggler&#45;&#45;is-active" id="filt-css">CSS</label>-->
+    <!--<div class="toggle">-->
+        <!--<input type="checkbox" id="switcher" class="check" onclick="toggleclick()">-->
+        <!--<b class="b switch"></b>-->
+    <!--</div>-->
+    <!--<label class="toggler" id="filt-javascript">Javascript</label>-->
+    <!--<div id="include-popup"></div>-->
+
+    <!--<label  class="switch">-->
+        <!--<input id="PTPToggleView" type="checkbox">-->
+        <!--<span class="slider round" onclick="toggleclick()"></span>-->
+    <!--</label>-->
+
+
+
+    <div id="sidenav" class="sidenav" style="width: 250px">
+
+        <!--<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>-->
+        <div id="slidebtn" class="slideBtn" style="padding-right: 250px" onclick="togglesidenav()">&#9776;</div>
+        <a href="#">Services</a>
+
+        <button class="dropdown-btn">ASEoD
+        <i class="fa fa-caret-down"></i>
+        </button>
+
+        <div class="dropdown-container">
+        <a href="#">Port</a>
+            <label for="PortToggleView" class="btn-switch-label">
+                <div class="btn-switch">
+                    <input id="PortToggleView" type="checkbox" onclick="toggleport()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                    <div class="switch-overlay" aria-hidden="true">
+                        <span class="btn-slider-on">On</span>
+                        <span class="switch-handle"></span>
+                        <span class="btn-slider-off">Off</span>
+                    </div>
+                </div>
+            </label>
+            <svg class="newlegend-icon">
+            <use xlink:href="#vertex-PortIcon" x="200" y="-42" width="2" height="2"></use>
             </svg>
-        </legend-icon><br/>
-        <label>Sites</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-SiteIcon-Prequalified" x="15" y="15"></use>
+
+        <a href="#">PTP</a>
+            <label for="PTPOnlyToggleView" class="btn-switch-label">
+                <div class="btn-switch">
+                    <input id="PTPOnlyToggleView" type="checkbox" onclick="togglePTP()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                    <div class="switch-overlay" aria-hidden="true">
+                        <span class="btn-slider-on">On</span>
+                        <span class="switch-handle"></span>
+                        <span class="btn-slider-off">Off</span>
+                    </div>
+                </div>
+            </label>
+            <svg class="newlegend-icon">
+                <use xlink:href="#vertex-PointToPointCenterIcon" x="200" y="-42" width="2" height="2"></use>
             </svg>
-        </legend-icon><br/>
-        <!--<label>Prequalified Site</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-PortIcon" x="15" y="15"></use>
+
+            <!--<input id="MTPToggleView" onclick="toggleMTP()" type="checkbox">-->
+        <a href="#">MTP</a>
+            <label for="MTPToggleView" class="btn-switch-label">
+                <div class="btn-switch">
+                    <input id="MTPToggleView" type="checkbox" onclick="toggleMTP()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                    <div class="switch-overlay" aria-hidden="true">
+                        <span class="btn-slider-on">On</span>
+                        <span class="switch-handle"></span>
+                        <span class="btn-slider-off">Off</span>
+                    </div>
+                </div>
+            </label>
+            <svg class="newlegend-icon">
+                <use xlink:href="#vertex-MultilinkhubIcon" x="200" y="-42" width="20" height="20"></use>
             </svg>
-        </legend-icon><br/>-->
-        <label>Port</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-PointToPointCenterIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>point-to-point connection</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-MultilinkhubIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>Multi-point connection</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-FlexwareIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>Flexware Box</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-routerIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>Router Service</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-firewallIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>Firewall Service</label><br/>
-        <legend-icon>
-            <svg class="legend-icon">
-                <use xlink:href="#vertex-wanXIcon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>WanX Service</label><br/>
-        <legend-icon>
-            <svg class="legend-icon" viewBox="0 0 32 32">
-               <use xlink:href="#recommendation-icon" x="15" y="15"></use>
-            </svg>
-        </legend-icon><br/>
-        <label>Recommendation</label><br/>
+        </div>
+
+        <button class="dropdown-btn">Flexware
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">Box</a>
+            <a href="#">Router</a>
+            <a href="#">Wanx</a>
+            <a href="#">Firewall</a>
+        </div>
+
+        <button class="dropdown-btn">ADI
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">ADI</a>
+        </div>
+
+        <button class="dropdown-btn">ADIoD
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">EVCI</a>
+            <a href="#">Port</a>
+        </div>
+
+        <button class="dropdown-btn">AVPN
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">AVPN</a>
+        </div>
+
+        <button class="dropdown-btn">Specific
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+
+            <a href="#">Elements</a>
+            <label for="PTPToggleView" class="btn-switch-label">
+                <!--<span aria-hidden="true">Voicemail is</span>-->
+                <div class="btn-switch">
+                    <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" role="switch" checked="true" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                    <div class="switch-overlay" aria-hidden="true">
+                        <span class="btn-slider-on">All</span>
+                        <span class="switch-handle"></span>
+                        <span class="btn-slider-off">Alert</span>
+                    </div>
+                </div>
+            </label>
+            <!--<a href="#" class="alertstest">Alertstest</a>-->
+
+            <!--<a href="#">Alerts</a>-->
+            <!--<label for="alertToggleView" class="btn-switch-label">-->
+                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="alertToggleView" type="checkbox" onclick="togglealerts()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+
+            <!--<a href="#">Alerts</a>-->
+            <!--<label for="alertdefaultToggleView" class="btn-switch-label">-->
+                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="alertdefaultToggleView" type="checkbox" checked =true onclick="togglealertsdefault()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+
+            <a href="#" id="mapToggleView">Free View</a>
+            <a href="#" id="mapFreeToggleView"style="display: none">Map View</a>
+            <!--<label for="mapToggleView" class="btn-switch-label">-->
+                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="mapToggleView" type="checkbox" onclick="togglemapView()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+            <!--<a href="#" class="staticButton" id="free-button">Free View</a>-->
+            <!--<g>-->
+                <!--&lt;!&ndash;<image xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="32px" height="32px" ></image>&ndash;&gt;-->
+                <!--<text  fill="black" id="fv"> Free View </text>-->
+            <!--</g>-->
+
+
+
+
+
+
+
+        </div>
     </div>
-    <svg id="legend-toggle" class="active" onclick="toggleLegend()">
-        <circle r=9 cx="9" cy="9" fill="inherit"></circle>
-        <text x="7" y="16" style="font-size:18px; fill: white; cursor: pointer;">i</text>
-    </svg>
-    <div id="include-popup"></div>
+
+
+    <!--<form id="searchForm">-->
+
+        <!--<p class="expandSearch">-->
+            <!--<input type="text" placeholder="Search" />-->
+            <!--<a href="#">-->
+                <!--<svg onclick="togglesearchnav()" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="375.045 607.885 30.959 30.33" enable-background="new 375.045 607.885 30.959 30.33" xml:space="preserve" >-->
+					<!--<path fill="#494949" d="M405.047,633.805l-7.007-6.542c-0.129-0.121-0.267-0.226-0.408-0.319c1.277-1.939,2.025-4.258,2.025-6.753 c0-6.796-5.51-12.306-12.307-12.306s-12.306,5.51-12.306,12.306s5.509,12.306,12.306,12.306c2.565,0,4.945-0.786,6.916-2.128 c0.122,0.172,0.257,0.337,0.418,0.488l7.006,6.542c1.122,1.048,2.783,1.093,3.709,0.101 C406.327,636.507,406.169,634.853,405.047,633.805z M387.351,629.051c-4.893,0-8.86-3.967-8.86-8.86s3.967-8.86,8.86-8.86 s8.86,3.967,8.86,8.86S392.244,629.051,387.351,629.051z"/>-->
+				<!--</svg>-->
+            <!--</a>-->
+        <!--</p>-->
+
+        <!--<div class="clearfix"></div>-->
+
+    <!--</form>-->
+
+    <form id="searchForm">
+        <input type="search" placeholder="Search" id="searchText" onkeyup="search()">
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Remote Scripts -->
     <script type="text/javascript">

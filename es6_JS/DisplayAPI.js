@@ -492,6 +492,45 @@ class DisplayAPI {
      * @param {Array[function]} popup - the functions to open the popup menus (passed to topology-graph from the buildGraph directive)
      * @param {Array[Link]} links - array of links in the graph. Only need to be passed to other function calls.
      */
+
+    // alertdisplayon(){
+    //
+    //  {
+    //      d3.selectAll(".PointToPointCenter").text(function(d){
+    //         /** handles extra events for an EVC */
+    //
+    //             /** adds highlight to ports connected to a EVC */
+    //             var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
+    //             for (var i = 1; i < neighbors.length; i++) {
+    //                 d3.select(neighbors[i]).classed("portOnEVC", true);
+    //                 console.log("portonEVC on mouseover in displayalert in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
+    //             }
+    //             displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
+    //
+    //     }
+    //     )
+    //
+    // }
+
+    alertdisplayoff(){
+
+        if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
+            var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
+            for (var i = 0; i < neighbors.length; i++) {
+                d3.select(neighbors[i]).classed("portOnEVC portOnEVCAlert", false);
+            }
+        }
+        /**removes the infomation lines and frees node for movement*/
+        displayAPI.releaseNodeInfo(d, d3.event.target);
+
+    }
+
+
+
+
+
+
+
     setGraphListeners(added, state, popup, links, itemsArray, relationsArray) {
         var closure = this;
         this.links = links;
@@ -505,7 +544,11 @@ class DisplayAPI {
                     var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
                     for (var i = 1; i < neighbors.length; i++) {
                         d3.select(neighbors[i]).classed("portOnEVC", true);
+                        console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
+
                     }
+
+
                     displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
                 } else { /** EVC no longer display info, only highlight ports connected*/
                     if (d3.event.target.localName != "text")

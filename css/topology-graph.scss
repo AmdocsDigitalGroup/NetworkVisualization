@@ -293,7 +293,8 @@ $selected: rgba(0, 128, 0, 1);
 $alert: rgba(255, 0, 0, 1);
 $siteColor: rgba(79, 89, 229, 1);
 $portColor: rgba(160, 180, 180, 1);
-$p2pColor: rgba(0, 221, 221, 1);
+// $p2pColor: rgba(0, 221, 221, 1);
+$p2pColor: rgba(65, 63, 123, 1);
 $multiColor: rgba(255,136, 85, 1);
 $flexwareColor: rgba(155, 184, 60, 1);
 $serviceColor: rgba(96, 159, 255, 1);
@@ -347,10 +348,10 @@ use.portOnEVC{
 }
 use.selected-connection-point{
     stroke: $selected;
-    stroke-width: 3;
+    stroke-width: 3px;
 }
 use.portOnEVCAlert{
-    stroke-width: 3;
+    stroke-width: 3px;
     stroke: $alert;
 }
 use.PointToPointCenter-node:hover, use.Multilinkhub-node:hover{
@@ -362,8 +363,9 @@ use.PointToPointCenter-node:hover, use.Multilinkhub-node:hover{
 use.Site-node:hover{
     position: fixed;
     will-change: transform;
-    -webkit-animation: rotateImage 6s steps(90) infinite;
-            animation: rotateImage 6s steps(90) infinite;
+    -webkit-animation-play-state: paused;
+    //-webkit-animation: rotateImage 6s steps(90) infinite;
+    //        animation: rotateImage 6s steps(90) infinite;
 }
 
 /** Section 4.1 Graph Nodes **/
@@ -384,7 +386,7 @@ circle.SiteInnerAnimation{
     fill:$hardWhite;
     will-change: transform;
     -webkit-animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
-            animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate; 
+            animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
 }circle.SiteInner{
     position: fixed;
     stroke-width: 0;
@@ -394,14 +396,14 @@ circle.SiteInnerAnimation{
 }
 circle.SiteRing{
     position: fixed;
-    fill: inherit;
-    stroke-width: inherit;
+    //fill: inherit;
+    //stroke-width: inherit;
     stroke-linecap: round;
     stroke-dasharray: 3.14159, 3.14159;
     stroke-dashoffset: 0px;
     /* -webkit-animation: ringRotate 1s steps(60) infinite;
             animation: ringRotate 1s steps(60) infinite; */
-    
+
 }
 text.cluster-text{
     stroke:$lightText;
@@ -559,11 +561,13 @@ path.SiteLabel{
     z-index: 1;
 }
 text.SiteName{
-    font-size: 14px;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    fill:$hardWhite;
+    font-size: 44px;
+    //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    //fill:$hardWhite;
+    fill: #00a707;
     stroke-width: 0;
-    stroke:$hardWhite;
+    //stroke:$hardWhite;
+    stroke: $p2pColor;
 }
 text.titleBox{
     font-size: 15px;
@@ -664,8 +668,8 @@ circle.percentage-outer-circle{
 path.percentage-circle-bar{
     fill: none;
     stroke-width: 4px;
-    stroke-dasharray: inherit;
-    stroke: inherit;
+    //stroke-dasharray: inherit;
+    //stroke: inherit;
 }
 text.percentage-circle-text{
     font-size: 12px;
@@ -705,13 +709,13 @@ rect.flexware-health-box{
     margin-left: 3px;
 }
 #zoom-panel.controls-open{
-    top: 30%px;
+    top: 30%;
 }
 #zoom-panel.inactive{
     display: none;
 }
 #zoom-slider-bar{
-  position: inline;
+  //position: inline;
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   background: transparent; 
   width:200px;
@@ -793,14 +797,14 @@ rect.flexware-health-box{
 #plus-button{
     width: 40px;
     height: 40px;
-    position: inline;
+    // position: inline;
     cursor: pointer;
     margin-top: 1px;
 }
 #minus-button{
     width: 40px;
     height: 40px;
-    position: inline;
+    // position: inline;
     cursor: pointer;
     transform: rotate(90deg);
     margin-top: 1px;
@@ -815,9 +819,9 @@ svg.zoom-button:hover{
     stroke:$hardWhite;
 }
 rect.icon-box{
-    stroke: .5px;
+    // stroke: 0.5px;
     stroke: $shadow;
-    fill: inherit;
+   // fill: inherit;
 
 
     /* rx: 5px; can't be used because firefox is annoying
@@ -826,7 +830,7 @@ rect.icon-box{
     height: 38px; */
 }
 line.icon-line{
-    stroke: inherit;
+    // stroke: inherit;
     stroke-width: 4px;
     stroke-linecap: round;
 }

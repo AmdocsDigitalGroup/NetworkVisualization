@@ -154,7 +154,13 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     //svg2 is assigned a selection depending on free (freeGraph) or map (sel) view in the setTick function
     var svg2;
 
-    var graphButtons = outer.append("div").attr("id", "graph-buttons").append("svg").attr("width", 1);
+
+
+     // var graphButtons = outer.append("div").attr("id", "graph-buttons").append("svg").attr("width", 1); //original
+     var graphButtons = d3.select("#mapToggleView"); //added by Shreya
+    var graphButtons2 = d3.select("#mapFreeToggleView"); //added by Shreya
+
+
     /** Defining the view control buttons */
     var viewButton = graphButtons.append("use").attr("xlink:href", "#button-loading").attr("id", "view-button")
         .attr("x",16).attr("y",16).on("geo-data-loaded", geoDataLoadDone);
@@ -192,6 +198,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             var _layer = this; //because this is a callback, 'this' is the overlay layer
             mapGraph = sel.classed("graph-area", true);
             if(state.staticView){
+
                 if(state.zoomScale != _layer._scale){
                     //if zoom level changes, update simulation forces
                     state.zoomScale = _layer._scale;
@@ -205,6 +212,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                             var compare = Object.keys(items).length;
                             var depth = Math.ceil(Math.log(_layer._scale*Math.pow(2, 19-startingZoom))/Math.log(2));
                             applyCluster(depth);
+
                             if(compare != Object.keys(items).length){
                                 render(data(items, relations));
                             }
@@ -304,12 +312,15 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         });
         dZoomScale = Math.round(Math.log(state.zoomScale)/baseChange);
         linkZoom(dZoomScale);
+
     }
     function zoomTo(scale){
         if(scale != dZoomScale){
             state.zoomScale = Math.pow(increment, scale);
             zoom.scaleTo(outer, state.zoomScale);
+
         }
+
     }
 
     /*Drag control functions*/
@@ -404,7 +415,9 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     function geoDataLoadDone(){
         state.geoDataLoaded = true;
         viewButton.on("geo-data-loaded", null);
-        viewButton.attr("xlink:href", "#free-button").on("click", toggleStaticView);
+       // viewButton.attr("xlink:href", "#free-button").on("click", toggleStaticView); //original
+        graphButtons.attr("a:href", "#mapToggleView").on("click", toggleStaticView); //added by Shreya
+        graphButtons2.attr("a:href", "#mapFreeToggleView").on("click", toggleStaticView); //added by Shreya
         if(links.length < 1){
             render(data(items, relations));
         }
@@ -413,6 +426,8 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     /** moves the sites to their determined positions on the Map.  Currently only
     **  set up for TestDataFull, since it is the only data with accurate geocoords*/
     function toggleStaticView(){
+
+        d3.select("#mapToggleView").style('display', 'block'); //added by Shreya
         //toggle staticView boolean
         state.staticView = !(state.staticView);
         state.viewToggled = true;
@@ -421,13 +436,18 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         vertices.remove();
 
         if(!state.staticView){//free view
+
+            d3.select("#mapToggleView").style('display', 'none'); //added by Shreya
+            d3.select('#mapFreeToggleView').style('display', 'block'); //added by Shreya
             //no fixed nodes, all are allowed to move
             clearTimeout(clusterTime);
             releaseFixedNodes();
             //set toggle button apperance
             //d3.select("#graph-buttons").classed("free-view", true);
             if(state.geoDataLoaded){
+                console.log("inside if if statement");
                 viewButton.attr("xlink:href", "#static-button");
+
             }
             //hide map
             d3.select("#bing-map").style("display", "none");
@@ -443,6 +463,11 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             setTick();
 
         }else{
+
+            d3.select('#mapFreeToggleView').style('display', 'none'); //added by Shreya
+            d3.select("#mapToggleView").style('display', 'block'); //added by Shreya
+
+            graphButtons.attr("a:href", "#mapToggleView").style("color", "white");
             //sites become fixed, nodes placed by user are freed
             releasePlacedNodes();
             //set toggle button apperance
@@ -486,6 +511,10 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         }
         state.firstRender = false;
     }
+
+
+
+
 
     /**Allows hiding of any ports that don't have a EVC connected to them. */
     function togglePortView(){
@@ -943,6 +972,40 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         });
 
         added.classed("vertices", true);
+
+        //
+        // if(document.getElementById("alertdefaultToggleView").checked == true){
+        //     togglealertsdefault();
+        // }
+        // else{
+        //     if(document.getElementById("PTPToggleView").checked == true){
+        //         checkTogglePTP();
+        //     }
+        //     else{
+        //
+        //         checkTogglePort();
+        //         checkTogglePTPAndLines();
+        //         checkToggleMTP();
+        //     }
+        // }
+
+        if(document.getElementById("PTPToggleView").checked == true){
+
+            togglealertsdefault();
+        }
+        else{
+
+            checkTogglePTP();
+
+        }
+
+
+
+
+
+
+
+
     }
     function icon(d) {
         var text;
@@ -998,6 +1061,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         numIncrements: numIncrements,
         digest: digest,
         render: function(new_items, new_relations){
+            console.log("page rendered first time")
             render(data(new_items, new_relations));
         },
         close : function() {
