@@ -31,7 +31,10 @@ class DisplayAPI {
      * @param {Array[Node]}evcs - array of evcs to be checked for corresponding data in networkData.
      */
     issueAlerts(evcs) {
+
+        console.log("printing evcs" + evcs);
         if (this.networkData) {
+            console.log("inside issueAlerts function");
             var len1 = this.networkData.length;
             var len2 = evcs.length - 1;
             for (var i = 0; i < len1; i++) {
@@ -48,7 +51,8 @@ class DisplayAPI {
                                     .attr("height", 10)
                                     .attr("x", 10)
                                     .attr("y", -15);
-                                evcs[j].hasAlert = true;
+                                evcs[j].hasAlert = true
+
                             }
                         }
                     }
@@ -56,6 +60,8 @@ class DisplayAPI {
             }
         }
     }
+
+
     /** applied on EVCs to display network data if we have any for it
      * functions simiarlly to all other information popups
      * @param {use} useTarget - the use object at the center of the node being clicked.
@@ -141,6 +147,7 @@ class DisplayAPI {
      * @param {use} useTarget - the use object at the center of the node being clicked.
      */
     drawEVCLines(useTarget, className, alert) {
+        console.log("inside drawEVCLines function");
         var evc = useTarget.__data__;
         var svg = d3.select(useTarget.ownerSVGElement);
         var lines = svg.selectAll("line");
@@ -158,6 +165,7 @@ class DisplayAPI {
             return false;
         });
         svg.selectAll(".portOnEVC").classed("portOnEVCAlert", alert);
+        console.log("printing portonEVC" + svg.selectAll(".portOnEVC"));
     }
     /**
      * Opens the display for the flexware statistics
@@ -492,43 +500,6 @@ class DisplayAPI {
      * @param {Array[function]} popup - the functions to open the popup menus (passed to topology-graph from the buildGraph directive)
      * @param {Array[Link]} links - array of links in the graph. Only need to be passed to other function calls.
      */
-
-    // alertdisplayon(){
-    //
-    //  {
-    //      d3.selectAll(".PointToPointCenter").text(function(d){
-    //         /** handles extra events for an EVC */
-    //
-    //             /** adds highlight to ports connected to a EVC */
-    //             var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
-    //             for (var i = 1; i < neighbors.length; i++) {
-    //                 d3.select(neighbors[i]).classed("portOnEVC", true);
-    //                 console.log("portonEVC on mouseover in displayalert in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
-    //             }
-    //             displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
-    //
-    //     }
-    //     )
-    //
-    // }
-
-    alertdisplayoff(){
-
-        if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
-            var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
-            for (var i = 0; i < neighbors.length; i++) {
-                d3.select(neighbors[i]).classed("portOnEVC portOnEVCAlert", false);
-            }
-        }
-        /**removes the infomation lines and frees node for movement*/
-        displayAPI.releaseNodeInfo(d, d3.event.target);
-
-    }
-
-
-
-
-
 
 
     setGraphListeners(added, state, popup, links, itemsArray, relationsArray) {

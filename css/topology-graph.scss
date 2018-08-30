@@ -19,15 +19,15 @@
  **********************************************/
 
 /****** Section 1: global style settings ******/
- * {
+* {
     box-sizing: border-box;
- }
- body {
-     overflow: hidden; 
-     height: 100%;
-     margin: 0px;
-     font-family: 'Open Sans';   
- }
+}
+body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0px;
+    font-family: 'Open Sans';
+}
 svg:not(:root){
     overflow: visible;
 }
@@ -43,22 +43,22 @@ svg:not(:root){
 /****** Section 2.0: Graph Window ******/
 $backgroundColor: rgba(0, 0, 0, .2);
 
- topology-graph {
-     background-color: $backgroundColor;
-     background-image: url(../resources/images/backgrounds/NOD-Portal-Bkgrnd-without-map-01.jpg);
-     background-size: 100% 100%;
-     background-repeat: no-repeat;
-     display: block;
-     -webkit-user-select: none;
-        -moz-user-select: none;
-         -ms-user-select: none;
-             user-select: none;
-     position: absolute;
-     top: 40px;
-     bottom:0px;
-     right:0px;
-     left: 0px;
-     overflow: hidden;
+topology-graph {
+    background-color: $backgroundColor;
+    background-image: url(../resources/images/backgrounds/NOD-Portal-Bkgrnd-without-map-01.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 40px;
+    bottom:0px;
+    right:0px;
+    left: 0px;
+    overflow: hidden;
 }
 #topology-graph {
     background-color: $backgroundColor;
@@ -67,9 +67,9 @@ $backgroundColor: rgba(0, 0, 0, .2);
     background-repeat: no-repeat;
     display: block;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: absolute;
     top: 40px;
     bottom:0px;
@@ -105,21 +105,21 @@ $backgroundColor: rgba(0, 0, 0, .2);
 
 /****** Section 2.2: Control Panel ******/
 
- .controls-active {
-     z-index: 11;
-     display:inline-block;
-     position: absolute;
-     background-color: rgba(60,65, 85,.8);
-     left: 0px;
-     top: 40px;
-     bottom: 0px;
-     padding: 0px 10px;
-     width: 200px;
-     text-align: center;
-     color: white;
+.controls-active {
+    z-index: 11;
+    display:inline-block;
+    position: absolute;
+    background-color: rgba(60,65, 85,.8);
+    left: 0px;
+    top: 40px;
+    bottom: 0px;
+    padding: 0px 10px;
+    width: 200px;
+    text-align: center;
+    color: white;
 }
 .controls-inactive{
-   display: none;   
+    display: none;
 }
 /** Control Elements **/
 topology-icon {
@@ -127,9 +127,9 @@ topology-icon {
     cursor: pointer;
     padding: 10px;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 button.control-input-btn{
     color: black;
@@ -165,9 +165,9 @@ legend-icon {
     display: inline-block;
     vertical-align: middle;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 svg.legend-icon {
     width: 48px;
@@ -189,13 +189,13 @@ svg.legend-icon {
 }
 /*#graph-buttons {
   position: absolute;*/
-  /*set to red because it should always be invisible(width and height are 0) */
-  /*background: red;
-  left: 0px;
-  top: 80px;
-  width: 0px;
-  height: 0px;
-  z-index: 10; }*/
+/*set to red because it should always be invisible(width and height are 0) */
+/*background: red;
+left: 0px;
+top: 80px;
+width: 0px;
+height: 0px;
+z-index: 10; }*/
 
 #graph-buttons{
     position: fixed;
@@ -208,7 +208,7 @@ svg.legend-icon {
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow: 1px 1px 1px 2px #ccc;
-  }
+}
 #graph-buttons.free-view{
     top: 0px;
 }
@@ -239,11 +239,11 @@ svg.att-logo-box{
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    
+
 }
 image.att-logo{
     width: 34px;
-    height: 34px;  
+    height: 34px;
 }
 text.att-biz-center{
     position: relative;
@@ -256,15 +256,15 @@ text.att-biz-center{
     cursor: pointer;
     width: 30px;
     height: 30px;
-    right: 90px; 
-    border-radius: 50%;   
+    right: 90px;
+    border-radius: 50%;
 }
 #settings-icon{
     position:absolute;
     cursor: pointer;
     width: 30px;
     height: 30px;
-    right: 50px;    
+    right: 50px;
 }
 #shopping-cart{
     position: absolute;
@@ -293,8 +293,7 @@ $selected: rgba(0, 128, 0, 1);
 $alert: rgba(255, 0, 0, 1);
 $siteColor: rgba(79, 89, 229, 1);
 $portColor: rgba(160, 180, 180, 1);
-// $p2pColor: rgba(0, 221, 221, 1);
-$p2pColor: rgba(65, 63, 123, 1);
+$p2pColor: rgba(0, 221, 221, 1);
 $multiColor: rgba(255,136, 85, 1);
 $flexwareColor: rgba(155, 184, 60, 1);
 $serviceColor: rgba(96, 159, 255, 1);
@@ -326,9 +325,9 @@ g.vertices{
     -webkit-transition: 500ms;
     transition: 500ms;
     opacity: .5;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 }
-  
+
 .fade-out-full {
     -webkit-transition: 500ms;
     transition: 500ms;
@@ -339,37 +338,36 @@ g.vertices{
     -webkit-transition: 500ms;
     transition: 500ms;
 }
-  
+
 use.use-node:hover{
     stroke-width: 2px;
 }
 use.portOnEVC{
-    stroke-width: 3px;
+    stroke-width: 3;
 }
 use.selected-connection-point{
     stroke: $selected;
-    stroke-width: 3px;
+    stroke-width: 3;
 }
 use.portOnEVCAlert{
-    stroke-width: 3px;
+    stroke-width: 3;
     stroke: $alert;
 }
 use.PointToPointCenter-node:hover, use.Multilinkhub-node:hover{
     position: fixed;
     will-change: transform;
     -webkit-animation: rotateImage 3s steps(90) infinite;
-            animation: rotateImage 3s steps(90) infinite;
+    animation: rotateImage 3s steps(90) infinite;
 }
 use.Site-node:hover{
     position: fixed;
     will-change: transform;
-    -webkit-animation-play-state: paused;
-    //-webkit-animation: rotateImage 6s steps(90) infinite;
-    //        animation: rotateImage 6s steps(90) infinite;
+    -webkit-animation: rotateImage 6s steps(90) infinite;
+    animation: rotateImage 6s steps(90) infinite;
 }
 
 /** Section 4.1 Graph Nodes **/
-/* Reminder: settings set to inherit will be 
+/* Reminder: settings set to inherit will be
  * inherited from the use element, and may not
  * be constant throughout various events */
 
@@ -382,22 +380,22 @@ circle.SiteInnerAnimation{
     position: fixed;
     stroke-width: 0;
     -webkit-transform: scale(1.4);
-            transform: scale(1.4);
+    transform: scale(1.4);
     fill:$hardWhite;
     will-change: transform;
     -webkit-animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
-            animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
+    animation: siteInnerGlow 2.5s steps(60) 2s infinite alternate;
 }circle.SiteInner{
-    position: fixed;
-    stroke-width: 0;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-    fill:$hardWhite;
-}
+     position: fixed;
+     stroke-width: 0;
+     -webkit-transform: scale(1.2);
+     transform: scale(1.2);
+     fill:$hardWhite;
+ }
 circle.SiteRing{
     position: fixed;
-    //fill: inherit;
-    //stroke-width: inherit;
+    fill: inherit;
+    stroke-width: inherit;
     stroke-linecap: round;
     stroke-dasharray: 3.14159, 3.14159;
     stroke-dashoffset: 0px;
@@ -425,12 +423,12 @@ circle.EVCAnimation{
     stroke-width: 0;
     will-change: fill;
     -webkit-animation: PTPGlow 2.5s steps(30) 2s infinite alternate;
-            animation: PTPGlow 2.5s steps(30) 2s infinite alternate;
+    animation: PTPGlow 2.5s steps(30) 2s infinite alternate;
 }circle.EVC{
-    position: fixed;
-    fill: $p2pColor;
-    stroke-width: 0;
-}
+     position: fixed;
+     fill: $p2pColor;
+     stroke-width: 0;
+ }
 circle.EVCouter{
     fill: none;
     stroke-linecap: round;
@@ -440,9 +438,9 @@ circle.MultiAnimation{
     position: fixed;
     stroke-width: 0;
     fill: $multiColor;
-    will-change: fill; 
+    will-change: fill;
     -webkit-animation: MTPGlow 2.5s steps(30) 2s infinite alternate;
-            animation: MTPGlow 2.5s steps(30) 2s infinite alternate; 
+    animation: MTPGlow 2.5s steps(30) 2s infinite alternate;
 }
 circle.MultiHub{
     position: fixed;
@@ -460,20 +458,20 @@ circle.Service{
 
 /** Section 4.2: Graph Edges **/
 line.edges{
-  stroke: $lineBaseColor;
-  stroke-width: 2px;
-  stroke-linecap: round;
-  stroke-dasharray: 0;
+    stroke: $lineBaseColor;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 0;
 }
 line.standard {
-  position: fixed;
-  stroke: $lineBaseColor;
-  stroke-width: 2px;
-  stroke-linecap: round;
-  stroke-dasharray: 0;
-  will-change: stroke;
-  -webkit-animation: lineGlow 2.5s steps(30) 0s infinite alternate;
-          animation: lineGlow 2.5s steps(30) 0s infinite alternate; 
+    position: fixed;
+    stroke: $lineBaseColor;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 0;
+    will-change: stroke;
+    -webkit-animation: lineGlow 2.5s steps(30) 0s infinite alternate;
+    animation: lineGlow 2.5s steps(30) 0s infinite alternate;
 }
 line.newEvc {
     position: fixed;
@@ -484,16 +482,16 @@ line.newEvc {
     will-change: stroke;
     animation: none;
     -webkit-animation: none;
-  }
+}
 
 line.dashin{
     position: fixed;
-  stroke-dasharray: 5,5;
-  stroke: $lineBaseColor;
-  stroke-width: 2px;
-  stroke-linecap: round;
-  -webkit-animation: dash 2s steps(60) forwards;
-          animation: dash 2s steps(60) forwards;
+    stroke-dasharray: 5,5;
+    stroke: $lineBaseColor;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    -webkit-animation: dash 2s steps(60) forwards;
+    animation: dash 2s steps(60) forwards;
 }
 line.stop-animation{
     animation: none;
@@ -530,7 +528,7 @@ line.alert-line{
 
 /*
 .nodelabel {
-	text-align: left;	
+	text-align: left;
 }
 */
 
@@ -561,13 +559,11 @@ path.SiteLabel{
     z-index: 1;
 }
 text.SiteName{
-    font-size: 44px;
-    //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    //fill:$hardWhite;
-    fill: #00a707;
+    font-size: 14px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    fill:$hardWhite;
     stroke-width: 0;
-    //stroke:$hardWhite;
-    stroke: $p2pColor;
+    stroke:$hardWhite;
 }
 text.titleBox{
     font-size: 15px;
@@ -587,8 +583,8 @@ text.text-heading{
 }
 /*Health Progress bar styles*/
 progress {
-	display: block;
-	-webkit-appearance: none;
+    display: block;
+    -webkit-appearance: none;
     border: none;
     width: 210px;
     height: 8px;
@@ -625,7 +621,7 @@ progress {
 // 		linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
 // 		linear-gradient(left, #701207, #ef1e07);
 // 	background-size: 25px 14px, 100% 100%, 100% 100%;
-// } 
+// }
 text.network-metric{
     stroke: none;
     fill: $alert;
@@ -668,8 +664,8 @@ circle.percentage-outer-circle{
 path.percentage-circle-bar{
     fill: none;
     stroke-width: 4px;
-    //stroke-dasharray: inherit;
-    //stroke: inherit;
+    stroke-dasharray: inherit;
+    stroke: inherit;
 }
 text.percentage-circle-text{
     font-size: 12px;
@@ -709,70 +705,70 @@ rect.flexware-health-box{
     margin-left: 3px;
 }
 #zoom-panel.controls-open{
-    top: 30%;
+    top: 30%px;
 }
 #zoom-panel.inactive{
     display: none;
 }
 #zoom-slider-bar{
-  //position: inline;
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  background: transparent; 
-  width:200px;
-  margin-top: -2px;
+    position: inline;
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    background: transparent;
+    width:200px;
+    margin-top: -2px;
 }
 
 @-moz-document url-prefix(){
     #zoom-slider-bar{
-      margin-top: 10px;
+        margin-top: 10px;
     }
 }
-    
+
 #zoom-slider-bar::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  border: 1px solid $softWhite;
-  height: 32px;
-  width: 20px;
-  border-radius: 5px;
-  margin-top: 1px;
-  background: $offWhite;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
+    -webkit-appearance: none;
+    border: 1px solid $softWhite;
+    height: 32px;
+    width: 20px;
+    border-radius: 5px;
+    margin-top: 1px;
+    background: $offWhite;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
 }
 #zoom-slider-bar::-webkit-slider-runnable-track {
-  width: auto;
-  height: 36px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
-  background: $lightBackground;
-  border-radius: 5px;
-  border: 0.5px solid $softWhite;
+    width: auto;
+    height: 36px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
+    background: $lightBackground;
+    border-radius: 5px;
+    border: 0.5px solid $softWhite;
 }
 #zoom-slider-bar::-moz-range-thumb{
-  -moz-appearance: none;
-  border: 1px solid $softWhite;
-  height: 32px;
-  width: 20px;
-  border-radius: 5px;
-  
-  background: $offWhite;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
+    -moz-appearance: none;
+    border: 1px solid $softWhite;
+    height: 32px;
+    width: 20px;
+    border-radius: 5px;
+
+    background: $offWhite;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px $shadow, 0px 0px 1px $shadow;
 }
 #zoom-slider-bar::-moz-range-track {
-  width: 100%;
-  cursor: pointer;
-  height: 34px;
+    width: 100%;
+    cursor: pointer;
+    height: 34px;
 
-  /* Hides the slider so custom styles can be added */
-  background: $lightBackground;
-  border-color: transparent;
-  border-radius: 5px;
-  color: transparent;
+    /* Hides the slider so custom styles can be added */
+    background: $lightBackground;
+    border-color: transparent;
+    border-radius: 5px;
+    color: transparent;
 }
 
 #zoom-slider-bar::-ms-thumb{
-    
+
     border: 1px solid $softWhite;
     height: 32px;
     width: 20px;
@@ -797,14 +793,14 @@ rect.flexware-health-box{
 #plus-button{
     width: 40px;
     height: 40px;
-    // position: inline;
+    position: inline;
     cursor: pointer;
     margin-top: 1px;
 }
 #minus-button{
     width: 40px;
     height: 40px;
-    // position: inline;
+    position: inline;
     cursor: pointer;
     transform: rotate(90deg);
     margin-top: 1px;
@@ -819,9 +815,9 @@ svg.zoom-button:hover{
     stroke:$hardWhite;
 }
 rect.icon-box{
-    // stroke: 0.5px;
+    stroke: .5px;
     stroke: $shadow;
-   // fill: inherit;
+    fill: inherit;
 
 
     /* rx: 5px; can't be used because firefox is annoying
@@ -830,7 +826,7 @@ rect.icon-box{
     height: 38px; */
 }
 line.icon-line{
-    // stroke: inherit;
+    stroke: inherit;
     stroke-width: 4px;
     stroke-linecap: round;
 }
@@ -897,7 +893,7 @@ line.icon-line{
     70% {stroke-dasharray: 8,2;}
     80% {stroke-dasharray: 9,1;}
     90% {stroke-dasharray:10,1;}
-   100% {stroke-dasharray:11,0;}
+    100% {stroke-dasharray:11,0;}
 }
 
 @keyframes dash {
@@ -911,5 +907,5 @@ line.icon-line{
     70% {stroke-dasharray: 8,2px;}
     80% {stroke-dasharray: 9,1;}
     90% {stroke-dasharray:10,1;}
-   100% {stroke-dasharray:11,0;}
+    100% {stroke-dasharray:11,0;}
 }

@@ -56,6 +56,13 @@ class OutputTree {
         this.addLink(node.id, site.id, 'portToSite');
     }
 
+    // addAdiod(jsonAdiod, site) {
+    //     var adiodnode = new adiod(jsonAdiod, site.id);
+    //     this.items[adiodnode.id] = adiodnode;
+    //    // this.recommendation = new Recommendation(node.id);
+    //     this.addLink(adiodnode.id, site.id, 'adiodToSite');
+    // }
+
     addFlexware(site, services) {
         var fwnode = new Flexware(site, services);
         this.items[fwnode.id] = fwnode;
@@ -74,11 +81,39 @@ class OutputTree {
         }
     }
 
+    addAdiod(site, services){
+        var adiodnode =new Adiod(site, services);
+        this.items[adiodnode.id] = adiodnode;
+        this.addLink(adiodnode.id, site.id, 'adiodToSite');
+
+        var keys = Object.keys(services);
+        for (let key of keys) {
+            if (services[key] === true) {
+
+                var serviceId = "" + site.locationId + "-" + key;
+                this._addService2(adiodnode, {
+                    type: key,
+                    id: serviceId
+                });
+            }
+
+        }
+    }
+
+    _addService2(adiodnode, service){
+        var node = new Service2(service.id, service.type);
+        this.items[node.id] = node;
+        this.addLink(node.id, adiodnode.id, 'adiodInternet');
+    }
+
+
     _addService(fwnode, service) {
         var node = new Service(service.id, service.type);
         this.items[node.id] = node;
         this.addLink(node.id, fwnode.id, 'serviceToFlexware');
     }
+
+
 
     addPortToPortLink(endpointList, linkName) {
         //used to add a PointToPointCenter between two endpoints, and add them
@@ -107,11 +142,16 @@ function getSimpleFormatFrom(input) {
     for (let site of input.customerSiteList) {
         groupNum++;
         var siteNode = output.addSite(site);
+
         for (let port of site.portList) {
             output.addPort(port, siteNode);
         }
         if (site.flexwareEnabled) {
             output.addFlexware(siteNode, site.services);
+        }
+        if(site.adiodEnabled){
+            output.addAdiod(siteNode, site.services2);
+            console.log("site.service2 " + JSON.stringify(site.services2));
         }
     }
 

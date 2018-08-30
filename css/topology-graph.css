@@ -431,6 +431,9 @@ circle.MultiHub {
 circle.Flexware {
   fill: #9bb83c; }
 
+circle.Adiod {
+  fill: #0568ae; }
+
 circle.Service {
   fill: #609fff; }
 
@@ -438,7 +441,7 @@ circle.Service {
 line.edges {
    //stroke: cyan;
   stroke: #9FA6AD;
-
+ 
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-dasharray: 0; }
@@ -447,7 +450,7 @@ line.standard {
   position: fixed;
    stroke: cyan;
  // stroke: #9FA6AD;
-
+ 
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-dasharray: 0;
@@ -552,7 +555,7 @@ text.SiteName {
   stroke: #3C4957;
 
 
-
+  
 }
 
 text.titleBox {

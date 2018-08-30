@@ -41,6 +41,17 @@ class Flexware{
     }
 }
 
+class Adiod{
+    constructor(siteObj, services2) {
+
+        this.id = siteObj.id + "adiod";
+        this.kind = 'Adiod';
+        this.services2 = services2;
+    }
+}
+
+
+
 class Relation{
     constructor(source, target, kind){
         this.source = source;
@@ -76,6 +87,8 @@ class Site{
         this.sdnCapable = jsonSite.sdnCapable;
         this.id = jsonSite.locationId;
         this.flexwareEnabled = jsonSite.flexwareEnabled;
+        this.adiodEnabled=jsonSite.adiodEnabled;
+        this.services2=jsonSite.services2;
         this.services = jsonSite.services;
         if(jsonSite.siteAlias) {
             this.siteAlias = jsonSite.siteAlias;
@@ -87,6 +100,8 @@ class Site{
         if(jsonSite.coordinates){
             this.coordinates =  new GeoCoordinates(jsonSite.coordinates[0], jsonSite.coordinates[1]);
         }
+
+        console.log("Services2" + JSON.stringify(this.services2));
     }
 }
 
@@ -101,6 +116,9 @@ class Port{
         this.attachedTo = siteId;
     }
 }
+
+
+
 
 class MultilinkHub{
     constructor(jsonEndpointList, linkName){

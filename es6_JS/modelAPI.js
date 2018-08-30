@@ -109,6 +109,13 @@ class ModelAPI {
         this.addLink(serviceItem, flexwareItem, 5, 'serviceToFlexware', relations);
     }
 
+    addServiceToAdiod(type, adiodItem, items, relations){
+        var serviceItem = new Service2(adiodItem.id + "-" + type ,type);
+        adiodItem.services2[type] = true;
+        this.addNode(serviceItem, items);
+        this.addLink(serviceItem, adiodItem, 5, 'serviceToAdiod', relations);
+	}
+
 
 	addPTPLinkToNodes(targets, vertices, lookup, relations, items, nodes){
         if(!this._hasOnlyTwoPorts(targets, vertices, lookup, relations)){return "Invalid targets list."}

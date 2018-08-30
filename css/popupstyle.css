@@ -93,7 +93,8 @@ img {
 .software label {
   padding-left: 1em;
   color: #618acc;
-  font-size: 20px; }
+  font-size: 20px;
+  display: inline;}
 
 .software button {
   border: none;

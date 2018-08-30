@@ -42,9 +42,34 @@ class Service{
                 softwareVersion : "15.1X49-D40.6"
             };
         }
+
+        // else if(type == "Adiod"){
+        //     this.metdata={
+        //         name: "adiod",
+        //         partNumber: "1234567",
+        //         model: "abc"
+        //     };
+        // }
         else {
             console.log("Error: Service type mismatch");
         }
+    }
+}
 
+class Service2{
+    constructor(id, type){
+        this.kind = 'Service2';
+        this.uniqueId = id;
+        this.id = id;
+        this.type = type;
+        if(type == "adiodInternet"){
+            this.metadata = {
+                internetEVCSpeed : "150",
+                ipAddressVersion : "v4v6"
+            };
+        }
+        else {
+            console.log("Error: Service2 type mismatch");
+        }
     }
 }

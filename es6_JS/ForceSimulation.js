@@ -91,7 +91,7 @@ class ForceSimulation{
         var i, len = links.length;
         for(i = 0; i < len; i++) {
             if (links[i].relationValue === "portToSite" || links[i].relationValue === "flexwareToSite" ||
-                links[i].relationValue === "serviceToFlexware") {
+                links[i].relationValue === "serviceToFlexware" || links[i].relationValue === "serviceToAdiod" || links[i].relationValue === "adiodToSite") {
                 this.shortLinks.push(links[i]);
             }
             else{

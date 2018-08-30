@@ -161,7 +161,7 @@
                 <g>
                     <circle cx="8" cy="8" r="22" class="Flexware"></circle>
                 </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.png" width="32" height="32" x="-8" y="-8"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.svg" width="32" height="32" x="-8" y="-8"></image>
             </g>
 
 
@@ -178,15 +178,9 @@
                 <!-- <path d="M -40 -34.6 L -20 -34.6 L -10 -17.3" class="SiteLabel"></path> -->
 
                     <!--<path d="M30.792 15.644v15.457c0 .792-.648 1.44-1.44 1.44h-9.488v-5.483a.306.306 0 0 0-.304-.304h-3.122a.304.304 0 0 0-.303.304v5.483H6.648c-.792 0-1.44-.648-1.44-1.44V15.644c0-.792.648-1.44 1.44-1.44h4.18V4.898c0-.792.648-1.44 1.44-1.44h11.466c.792 0 1.44.648 1.44 1.44v9.306h4.18c.791 0 1.438.648 1.438 1.44zm-8.274-3.733a.305.305 0 0 0-.303-.304h-2.818a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.818a.305.305 0 0 0 .303-.304v-2.405zM11.288 22.01a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.136.303.304.303h2.817a.306.306 0 0 0 .304-.303V22.01zm5.619-5.05a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V16.96zm-5.619 0a.306.306 0 0 0-.304-.304H8.167a.305.305 0 0 0-.304.304v2.405c0 .167.137.304.304.304h2.817a.306.306 0 0 0 .304-.304V16.96zm5.619-5.049a.304.304 0 0 0-.303-.304h-2.819a.305.305 0 0 0-.303.304v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304v-2.405zm0-5.049a.303.303 0 0 0-.303-.303h-2.819a.305.305 0 0 0-.303.303v2.405c0 .167.137.304.303.304h2.819a.304.304 0 0 0 .303-.304V6.862zm5.611 0a.303.303 0 0 0-.303-.303h-2.818a.305.305 0 0 0-.304.303v2.405c0 .167.137.304.304.304h2.818a.304.304 0 0 0 .303-.304V6.862z" fill="#0568ae"></path>-->
-
-
                 <g id="recommendation-icon-large" style="transform: rotateY(180deg)">
                     <image alt="&#xf1ad;" xlink:href="resources/images/icons/location.svg" width="50" height="50" x="-23" y='-35' fill="#17f3fb" style="-webkit-animation:none;"></image>
                 </g>
-
-
-
-
             </g>
             <g id="vertex-Site-Prequalified">
                 <!--Quick and dirty method, may need too implment classes once activate site logic is confirmed-->
@@ -216,6 +210,32 @@
                 </g>
                 <image alt="&#xf1ad;" xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="22" height="22" x="-11" y="-11"></image>
             </g>
+            <g id="vertex-adiod">
+                <g>
+                    <circle  r="20" class="Adiod"></circle>
+                </g>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.svg"  width="92" height="92" x="-33" y="-12"></image>
+            </g>
+
+
+
+            <g id="vertex-internet">
+                <g>
+                    <circle  r="20" class="Adiod"></circle>
+                </g>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/internet.svg"  width="92" height="92" x="-33" y="-12"></image>
+            </g>
+
+            <g id="vertex-cloud">
+                <!--<g>-->
+                    <!--<circle  r="20" class="Adiod"></circle>-->
+                <!--</g>-->
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/adiod-seperate.svg"  width="92" height="92" x="-25" y="-14"></image>
+            </g>
+
+
+
+
             <g id="vertex-firewall">
                 <g>
                     <circle r="12" class="Service"></circle>
@@ -322,6 +342,9 @@
             </g>
         </defs>
     </svg>
+
+
+
     <!--<div id="legend" class="active">-->
         <!--<legend-icon>-->
             <!--<svg class="legend-icon">-->
@@ -391,12 +414,15 @@
 
 
     <!--<label class="toggler toggler&#45;&#45;is-active" id="filt-css">CSS</label>-->
+    <!---->
     <!--<div class="toggle">-->
         <!--<input type="checkbox" id="switcher" class="check" onclick="toggleclick()">-->
         <!--<b class="b switch"></b>-->
     <!--</div>-->
+    <!---->
+    <!---->
     <!--<label class="toggler" id="filt-javascript">Javascript</label>-->
-    <!--<div id="include-popup"></div>-->
+    <div id="include-popup"></div>
 
     <!--<label  class="switch">-->
         <!--<input id="PTPToggleView" type="checkbox">-->
@@ -404,7 +430,7 @@
     <!--</label>-->
 
 
-
+<!--WORKING NAV AND SEARCH BAR-->
     <div id="sidenav" class="sidenav" style="width: 250px">
 
         <!--<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>-->
@@ -504,7 +530,7 @@
             <label for="PTPToggleView" class="btn-switch-label">
                 <!--<span aria-hidden="true">Voicemail is</span>-->
                 <div class="btn-switch">
-                    <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" role="switch" checked="true" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                    <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
                     <div class="switch-overlay" aria-hidden="true">
                         <span class="btn-slider-on">All</span>
                         <span class="switch-handle"></span>
@@ -512,81 +538,21 @@
                     </div>
                 </div>
             </label>
-            <!--<a href="#" class="alertstest">Alertstest</a>-->
 
-            <!--<a href="#">Alerts</a>-->
-            <!--<label for="alertToggleView" class="btn-switch-label">-->
-                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
-                <!--<div class="btn-switch">-->
-                    <!--<input id="alertToggleView" type="checkbox" onclick="togglealerts()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
-                    <!--<div class="switch-overlay" aria-hidden="true">-->
-                        <!--<span class="btn-slider-on">On</span>-->
-                        <!--<span class="switch-handle"></span>-->
-                        <!--<span class="btn-slider-off">Off</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</label>-->
-
-            <!--<a href="#">Alerts</a>-->
-            <!--<label for="alertdefaultToggleView" class="btn-switch-label">-->
-                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
-                <!--<div class="btn-switch">-->
-                    <!--<input id="alertdefaultToggleView" type="checkbox" checked =true onclick="togglealertsdefault()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
-                    <!--<div class="switch-overlay" aria-hidden="true">-->
-                        <!--<span class="btn-slider-on">On</span>-->
-                        <!--<span class="switch-handle"></span>-->
-                        <!--<span class="btn-slider-off">Off</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</label>-->
 
             <a href="#" id="mapToggleView">Free View</a>
             <a href="#" id="mapFreeToggleView"style="display: none">Map View</a>
-            <!--<label for="mapToggleView" class="btn-switch-label">-->
-                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
-                <!--<div class="btn-switch">-->
-                    <!--<input id="mapToggleView" type="checkbox" onclick="togglemapView()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
-                    <!--<div class="switch-overlay" aria-hidden="true">-->
-                        <!--<span class="btn-slider-on">On</span>-->
-                        <!--<span class="switch-handle"></span>-->
-                        <!--<span class="btn-slider-off">Off</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</label>-->
-            <!--<a href="#" class="staticButton" id="free-button">Free View</a>-->
-            <!--<g>-->
-                <!--&lt;!&ndash;<image xlink:href="resources/images/icons/NOD-EVC-connection-08.png" width="32px" height="32px" ></image>&ndash;&gt;-->
-                <!--<text  fill="black" id="fv"> Free View </text>-->
-            <!--</g>-->
-
-
-
-
-
-
 
         </div>
     </div>
 
 
-    <!--<form id="searchForm">-->
 
-        <!--<p class="expandSearch">-->
-            <!--<input type="text" placeholder="Search" />-->
-            <!--<a href="#">-->
-                <!--<svg onclick="togglesearchnav()" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="375.045 607.885 30.959 30.33" enable-background="new 375.045 607.885 30.959 30.33" xml:space="preserve" >-->
-					<!--<path fill="#494949" d="M405.047,633.805l-7.007-6.542c-0.129-0.121-0.267-0.226-0.408-0.319c1.277-1.939,2.025-4.258,2.025-6.753 c0-6.796-5.51-12.306-12.307-12.306s-12.306,5.51-12.306,12.306s5.509,12.306,12.306,12.306c2.565,0,4.945-0.786,6.916-2.128 c0.122,0.172,0.257,0.337,0.418,0.488l7.006,6.542c1.122,1.048,2.783,1.093,3.709,0.101 C406.327,636.507,406.169,634.853,405.047,633.805z M387.351,629.051c-4.893,0-8.86-3.967-8.86-8.86s3.967-8.86,8.86-8.86 s8.86,3.967,8.86,8.86S392.244,629.051,387.351,629.051z"/>-->
-				<!--</svg>-->
-            <!--</a>-->
-        <!--</p>-->
-
-        <!--<div class="clearfix"></div>-->
-
-    <!--</form>-->
 
     <form id="searchForm">
         <input type="search" placeholder="Search" id="searchText" onkeyup="search()">
     </form>
+
 
 
 
