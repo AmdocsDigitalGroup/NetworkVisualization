@@ -361,6 +361,7 @@
         console.log(order.id);
 
         graph.addFWService(null, order);
+       // graph.addAdiodService(null, order);
 
     });
     function generateOrder(type, confirmed) {

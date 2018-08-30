@@ -92,7 +92,11 @@ function onLoad() {
         FWwanX: '#vertex-wanX',
         Flexware: '#vertex-Flexware',
         Cluster: '#vertex-Cluster',
-        PortCluster: '#vertex-PortCluster'
+        PortCluster: '#vertex-PortCluster',
+      //  Adiod: '#vertex-adiod',
+        adiodInternet: '#vertex-internet',
+        Adiod: '#vertex-cloud'
+
     };
     var listSet = false;
     /**function to open the connection popup */
@@ -105,6 +109,7 @@ function onLoad() {
     }
     /**function to open the flexware popup */
     function openFW(b, s) {
+        console.log("inside open fw function");
         box = b;
         site = s;
         $("#modal-fw").modal();
@@ -112,6 +117,7 @@ function onLoad() {
         if (!listSet)
             setListeners();
     }
+
     /**function to open the recommendation popup */
     function openRec(eleData) {
         recData = eleData;
@@ -143,6 +149,8 @@ function onLoad() {
         "flexware": openFW,
         "recommendation": openRec
     };
+    console.log("after pop up");
+
     graph = topology_graph(document.getElementById('topology-graph'), undefined, [], kinds, clickable, popup, linkZoom);
 
     data = datasets[index];
@@ -154,12 +162,16 @@ function onLoad() {
     });
 
     $('#zoom-slider-bar').change(function () {
-        //console.log("slider changed: "+typeof(parseInt(this.value)));
+        console.log("slider changed: "+typeof(parseInt(this.value)));
 
         // checkTogglePTP();
         // checkTogglePort();
         // checkTogglePTPAndLines();
         // checkToggleMTP();
+
+
+
+
         if(document.getElementById("PTPToggleView").checked == true){
 
             togglealertsdefault();
@@ -169,6 +181,7 @@ function onLoad() {
             checkTogglePTP();
 
         }
+
 
 
 //         togglealertsdefault();
@@ -181,7 +194,9 @@ function onLoad() {
         linkZoom(parseInt(this.value));
     });
     $('#zoom-slider-bar').on("mousemove", function () {
-        //console.log("slider changed: "+typeof(parseInt(this.value)));
+        console.log("slider changed: "+typeof(parseInt(this.value)));
+
+
 
         if(document.getElementById("PTPToggleView").checked == true){
 
@@ -192,6 +207,10 @@ function onLoad() {
             checkTogglePTP();
 
         }
+
+
+
+
 
         // togglealertsdefault();
         // toggleclick();
@@ -672,9 +691,9 @@ function togglealertsdefault(){
                             }
                         }
                 }
-                    else{
-                        console.log("not printing the sites1");
-                    }
+                    // else{
+                    //     console.log("not printing the sites1");
+                    // }
 
                     if(port1 == line[k].__data__.source.id && line[k].__data__.kinds == "PortSite") {
                         console.log("printing all the sites " + line[k].__data__.target.id);
@@ -686,9 +705,9 @@ function togglealertsdefault(){
                             }
                         }
                     }
-                    else{
-                        console.log("not printing the sites2");
-                    }
+                    // else{
+                    //     console.log("not printing the sites2");
+                    // }
                 }
                 else{
                     console.log("it is icon-line");
@@ -706,8 +725,8 @@ function search(){
     var searchInput = document.getElementById('searchText');
 
     console.log(searchInput.value);
-    console.log("json file from htmlutils" + jsonData);
-    console.log("json obj from htmlutils" + jsonDataObj);
+    // console.log("json file from htmlutils" + jsonData);
+    // console.log("json obj from htmlutils" + jsonDataObj);
 
 }
 

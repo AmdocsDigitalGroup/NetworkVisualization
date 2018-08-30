@@ -93,11 +93,12 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         shortItt: 1,
         longDistance: 0,
         longStrength: .3,
-        gravity: 0.05,
-        collide: 13,
+        gravity: 5.95,
+        collide: 22,
         width: 960,
         height: 594,
         staticChargeDis: 200,
+        forceLink: 40,
         //need to find a level appropriate for keeping EVCs apart
         staticChargeStr: 0,
         staticShortItt: 3,
@@ -244,15 +245,19 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                 }
                 edges.attr("x1", function(d) {
                             return d.source.x;
+                            console.log("d.source.x " + d.source.x);
                         })
                     .attr("y1", function(d) {
                             return d.source.y;
+                        console.log("d.source.y " + d.source.y);
                         })
                     .attr("x2", function(d) {
                             return d.target.x;
+                        console.log("d.target.x " + d.target.x);
                         })
                     .attr("y2", function(d) {
                             return d.target.y;
+                        console.log("d.target.x " + d.target.y);
                         });
 
                 vertices.attr("transform", function(d) {
@@ -262,6 +267,10 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                             d.fx = proj.latLngToLayerPoint(d.latlong).x;
                             d.fy = proj.latLngToLayerPoint(d.latlong).y;
                         }
+                        // else{
+                        //    d.fy = d.item.ownerSite.y;
+                        //
+                        // }
                         return "translate(" + d.x + "," + d.y + ")scale("+1/_layer._scale+")";
                     }//impliceit else: free view
                     if(d.x > graphViewbox[2]+50)
@@ -653,6 +662,22 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             zoom.scaleTo(outer, state.zoomScale);
     }
 
+    //function to add a Adiod Service
+    function addAdiodService(e,order){
+        console.log("addAdiod called");
+        if(order.services2.adiodInternet && !state.selectedBox.services2.adiodInternet){
+            modelAPI.addServiceToAdiod("adiodInternet", state.selectedBox, items, relations);
+            state.selectedBox.services2.Internet = true;
+        }
+
+        clusterTree = Quadtree.buildTree(sites, items, relations, clusterTree, null, null);
+        render(data(items, relations));
+        state.selectedBox = null;
+        if(!state.staticView)
+            zoom.scaleTo(outer, state.zoomScale);
+
+    }
+
     //TODO this is just a test
     function addCluster(e, type){
         console.log("Clustering test");
@@ -813,6 +838,8 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             kind = item.kind;
             if(kind == "Service")
                 kind = item.type;
+            if(kind == "Service2")
+                kind = item.type;
 
             //checking kind isn't hidden.
             if (kinds && !kinds[kind]) {
@@ -881,6 +908,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                 var as = clusterTree.resolve(relation.source, clusterTree.lastDepthChecked);
                 var at = clusterTree.resolve(relation.target, clusterTree.lastDepthChecked);
                 s = lookup[as];
+
                 t = lookup[at];
             }else{
                 s = lookup[relation.source];
@@ -906,13 +934,15 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                     nodes[t].item.hasEVC = true;
             }
 
-            //add link to links array
+          //  add link to links array
             links.push({
                 source : s,
                 target : t,
                 kinds : nodes[s].item.kind + nodes[t].item.kind,
                 relationValue : relationVal
             });
+
+
 
         }
 
@@ -937,6 +967,8 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
     //handles tieing graphics to nodes through svg use tags
     function render(args) {
+        console.log("Testing render");
+
         var vertices = args[0];
         var added = args[1];
         added.attr("class", function (d) {
@@ -963,7 +995,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         var sites = added.filter("g.Site");
         sites.append("text").classed("SiteName", true).text(function (d) {
             return d.item.siteAlias;
-        }).attr("x", -80).attr("y", -44.6);
+        }).attr("x", 15).attr("y", -10);
         sites.append("path").classed("SiteLabel", true).attr("d", "M -40 -34.6 L -20 -34.6 L -10 -17.3");
 
         //acessiblity title?
@@ -1050,6 +1082,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     return {
         addEVC : addEVC,
         addFWService : addFWService,
+        addAdiodService: addAdiodService,
         stateChange: updateState,
         switchDataset: switchDataset,
         addCluster: addCluster,

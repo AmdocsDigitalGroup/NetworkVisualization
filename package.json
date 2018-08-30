@@ -2,18 +2,11 @@
   "name": "Network_Visualizer",
   "version": "0.9.2",
   "description": "Topology Production ready code",
-  "scripts": {
-    "ng": "ng",
-    "client": "ng serve --port 3333 --proxy-config proxy.conf.json",
-    "server": "node ./bin/www --watch server",
-    "start": "node ./bin/www"
-  },
+  "main": "login.html",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "d3": "^4.9.1",
-    "express": "^4.16.3",
-    "grunt-sass": "^2.0.0",
-    "morgan": "^1.9.0"
+    "grunt-sass": "^2.0.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
