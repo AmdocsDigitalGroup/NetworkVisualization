@@ -14,37 +14,37 @@
     {
         "id":"101013184",
         "latency": "19",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     },
     {
         "id":"10095803813",
         "latency": "15",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     },
     {
         "id":"101017057",
         "latency": "25",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     },
     {
         "id":"101041019",
         "latency": "40",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     },
     {
         "id":"101041055",
         "latency": "33",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     },
     {
         "id":"10095803812",
         "latency": "28",
-        "pktloss":"5",
+        "pktloss":"0",
         "throughput":"1.2"
     }
 
