@@ -31,8 +31,6 @@ class DisplayAPI {
      * @param {Array[Node]}evcs - array of evcs to be checked for corresponding data in networkData.
      */
     issueAlerts(evcs) {
-
-        console.log("printing evcs" + evcs);
         if (this.networkData) {
             console.log("inside issueAlerts function");
             var len1 = this.networkData.length;
@@ -512,15 +510,21 @@ class DisplayAPI {
                 /** handles extra events for an EVC */
                 if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
                     /** adds highlight to ports connected to a EVC */
+
                     var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
+
                     for (var i = 1; i < neighbors.length; i++) {
                         d3.select(neighbors[i]).classed("portOnEVC", true);
                         console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
-
                     }
-
-
                     displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
+
+
+                   // displayAPI.displayNetworkHealth(d3.event.target);
+
+
+
+
                 } else { /** EVC no longer display info, only highlight ports connected*/
                     if (d3.event.target.localName != "text")
                         displayAPI.displayNodeInfo(d, d3.event.target);
