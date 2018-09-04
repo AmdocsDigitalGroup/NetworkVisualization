@@ -438,6 +438,21 @@
         <div id="slidebtn" class="slideBtn" style="padding-right: 250px" onclick="togglesidenav()">&#9776;</div>
         <a href="#">Services</a>
 
+        <a href="#">All</a>
+        <label for="PTPToggleView" class="btn-switch-label">
+            <!--<span aria-hidden="true">Voicemail is</span>-->
+            <div class="btn-switch">
+                <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                <div class="switch-overlay" aria-hidden="true">
+                    <span class="btn-slider-on"></span>
+                    <span class="switch-handle"></span>
+                    <span class="btn-slider-off"></span>
+                </div>
+            </div>
+        </label>
+        <a class="alerts" href="#">Alerts</a>
+
+
         <button class="dropdown-btn">ASEoD
         <i class="fa fa-caret-down"></i>
         </button>
@@ -527,19 +542,18 @@
         </button>
         <div class="dropdown-container">
 
-            <a href="#">Elements</a>
-            <label for="PTPToggleView" class="btn-switch-label">
-                <!--<span aria-hidden="true">Voicemail is</span>-->
-                <div class="btn-switch">
-                    <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
-                    <div class="switch-overlay" aria-hidden="true">
-                        <span class="btn-slider-on">All</span>
-                        <span class="switch-handle"></span>
-                        <span class="btn-slider-off">Alert</span>
-                    </div>
-                </div>
-            </label>
-
+            <!--<a href="#">Elements</a>-->
+            <!--<label for="PTPToggleView" class="btn-switch-label">-->
+                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">All</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Alert</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
 
             <a href="#" id="mapToggleView">Free View</a>
             <a href="#" id="mapFreeToggleView"style="display: none">Map View</a>
@@ -548,23 +562,29 @@
     </div>
 
 
-
-
     <form id="searchForm">
-        <input type="search" placeholder="Search" id="searchText" onkeyup="search()">
+        <!-- <input type="search" placeholder="Search" id="searchText" onkeyup="search()"> -->
+        <input type="search" placeholder="Search" id="searchText">
     </form>
 
 
-
-
-
-
-
-
-
-
-
-
+    <!--<div class="Cluster vertices"  style="overflow-y: scroll; height :130px; width :240px">-->
+        <!--<use class="Cluster-node use-node" ></use>-->
+        <!--<text class="cluster-text" y="5" style="otextacity: 1;">2</text>-->
+        <!--<title></title>-->
+        <!--<rect class="removable network-box clusterContainer" x="-120" y="-150" width="240" height="130"></rect>-->
+        <!--<text class="removable network-title" x="5" y="-135">CLUSTER INFORMATION</text>-->
+        <!--<text class="removable network-metric">Richardson</text>-->
+        <!--<text class="removable network-metric">AS/KRGN/003732/SB1R</text>-->
+        <!--<text class="removable network-metric">AS/KQGN/026866/SB1R</text>-->
+        <!--<text class="removable network-metric">AS/KRGN/003733/SB1R</text>-->
+        <!--<text class="removable network-metric">AS/KRFN/001549/SB1R</text>-->
+        <!--<text class="removable network-metric">Dallas</text>-->
+        <!--<text class="removable network-metric">AS/KRGN/003732/SB</text>-->
+        <!--<text class="removable network-metric">AS/KQGN/026866/SB</text>-->
+        <!--<text class="removable network-metric">AS/KRGN/003733/SB</text>-->
+        <!--<text class="removable network-metric">AS/KRFN/001549/SB</text>-->
+    <!--</div>-->
 
 
 

@@ -178,8 +178,11 @@ svg.newlegend-icon{
   width: 5px;
   height: 5px;
   right:0;
+}
 
-
+.alerts{
+  padding-left: 186px !important;
+  margin-top: -40px;
 }
 
 #legend-toggle {
@@ -588,7 +591,9 @@ text.network-metric {
   stroke: none;
   fill: red;
   font-size: 14px;
-  text-anchor: middle; }
+  text-anchor: middle;
+  overflow-y: scroll;
+}
 
 text.network-unit {
   stroke: none;
@@ -614,7 +619,7 @@ rect.network-box {
   stroke: #cccccc;
   stroke-width: 1px;
   fill: #efefef;
-  opacity: .8; }
+  opacity: .8;}
 
 circle.percentage-inner-circle {
   fill: #ffffff;
@@ -991,21 +996,23 @@ input[type="radio" i], input[type="checkbox" i] {
   padding-right: 11px;
 }
 
+/*CusterInfo Scrollbar*/
 
+/*.ScrollStyle*/
+/*{*/
+  /*max-height: 150px;*/
+  /*overflow-y: scroll;*/
+/*}*/
 
+.clusterContainer{
+  overflow-y: scroll;
+  overflow-x: hidden;
 
+}
+.Cluster.vertices{
+  z-index: 14;
 
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -1273,6 +1280,18 @@ input:-moz-placeholder {
 input::-webkit-input-placeholder {
   color: #999;
 }
+
+.ui-menu {
+  /* Your CSS here */
+  width: 130px;
+  border: solid 1px #ccc;
+  padding: 2px 2px 2px 4px;
+  border-radius: 1em;
+}
+.ui-menu-item{
+  border-bottom: 1px solid #f2f2f2;
+}
+
 
 
 

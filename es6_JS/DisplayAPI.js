@@ -140,6 +140,126 @@ class DisplayAPI {
             g.selectAll(".removable").attr("transform", use.attr("transform"));
         });
     }
+
+
+
+
+
+
+
+
+    //displayClusterInfo(clusterInfo,useTarget) {
+    displayClusterInfo(useTarget) {
+        //g element containing the vertice
+       // var g = d3.select(useTarget.parentElement)
+        var g=d3.select("Cluster vertices");
+        var x = -120;
+        var y = -150;
+
+      //  g.append("div").attr("style","overflow-y: scroll").attr("width", 240).attr("height", 130);
+       // var container = d3.select("body").append("div").attr("id", "container");
+
+        window.requestAnimationFrame(function () {
+
+
+
+           // g.attr("style","overflow-y: scroll").attr("width", 240).attr("height", 130);
+
+
+            g.append("rect").classed("removable network-box clusterContainer", true)
+                .attr("x", x).attr("y", y).attr("width", 240).attr("height", 130);
+           //  g.append("text").classed("removable network-title", true)
+           //      .attr("x", x + 125).attr("y", y + 15).text("CLUSTER INFORMATION");
+           //
+           //  g.attr("style","overflow-y: scroll").attr("viewBox","0 0 240 130");
+
+
+           var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
+            for (var i = 0; i < clusterInfo.length; i++) {
+                var clusterData = clusterInfo[i].__data__.item.items;
+                // if(clusterData!=null) {
+                    for (item in clusterData) {
+                        var data = {};
+                        data['type'] = clusterData[item].kind;
+                        switch (clusterData[item].kind) {
+                            case 'Site':
+
+                                g.append("text").classed("removable network-metric", true)
+                                    .attr("x", x + 40).attr("y", y + 38).text(clusterData[item].siteAlias);
+
+                                break;
+
+                            case 'Port':
+                                // console.log("cluster ports" + clusterData[item].id);
+
+                                g.append("text").classed("removable network-metric", true)
+                                    .attr("x", x + 40).attr("y", y+48).text(clusterData[item].id);
+                                break;
+
+                            case 'Adiod':
+                                console.log("Adiod" + clusterData[item].id);
+                                break;
+
+                            case 'Flexware':
+                                console.log("Flexware" + clusterData[item].id);
+
+                                break;
+                            default:
+                                break;
+                        }
+                        y = y + 20;
+                    }
+                }
+           // }
+        });
+    }
+
+
+       //  window.requestAnimationFrame(function () {
+       //      g.append("rect").classed("removable network-box", true)
+       //          .attr("x", x).attr("y", y).attr("width", 240).attr("height", 130);
+       //      g.append("text").classed("removable network-title", true)
+       //          .attr("x", x + 125).attr("y", y + 15).text("CLUSTER INFORMATION");
+       //
+       //      g.append("text").classed("removable network-label", true)
+       //          .attr("x", x + 125).attr("y", y + 38).text("Network Latency");
+       //      g.append("text").classed("removable network-metric", true)
+       //          .attr("x", x + 40).attr("y", y + 38).text(elementInfo);
+       //
+       //
+       //      g.append("text").classed("removable network-label", true)
+       //          .attr("x", x + 125).attr("y", y + 75).text("Packet Loss");
+       //      g.append("text").classed("removable network-metric", true)
+       //          .attr("x", x + 40).attr("y", y + 78).text(netData.pktloss + "%");
+       //
+       //      g.append("text").classed("removable network-label", true)
+       //          .attr("x", x + 125).attr("y", y + 110).text("Throughput");
+       //      g.append("text").classed("removable network-metric", true)
+       //          .attr("x", x + 40).attr("y", y + 110).text(netData.throughput);
+       //      g.append("text").classed("removable network-unit", true)
+       //          .attr("x", x + 40).attr("y", y + 123).text("Mbps");
+       //
+       //
+       //      var use = d3.select(useTarget).classed("portOnEVCAlert", true);
+       //      g.selectAll(".removable").attr("transform", use.attr("transform"));
+       // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**halts animation so the redlines can be kept in sync with the ongoing 
      * animation on mouseout
      * @param {use} useTarget - the use object at the center of the node being clicked.
@@ -506,9 +626,18 @@ class DisplayAPI {
         var items = itemsArray;
         var relations = relationsArray;
         added
+
             .on("mouseover", function (d) {
+                console.log(d.item.kind);
+                /** handles extra events for a cluster */
+                if(d.item.kind=='Cluster'){
+                    displayAPI.displayClusterInfo(d3.event.target);
+
+
+                }
+
                 /** handles extra events for an EVC */
-                if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
+                else if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
                     /** adds highlight to ports connected to a EVC */
 
                     var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);

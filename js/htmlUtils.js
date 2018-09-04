@@ -131,6 +131,9 @@ function onLoad() {
         if (!listSet)
             setListeners();
     }
+
+
+
     //clears state on popup close, listeners set only once
     function setListeners() {
         listSet = true;
@@ -147,7 +150,8 @@ function onLoad() {
     var popup = {
         "connection": openPopup,
         "flexware": openFW,
-        "recommendation": openRec
+        "recommendation": openRec,
+
     };
     console.log("after pop up");
 
@@ -249,6 +253,11 @@ function zoomButton(shift) {
     linkZoom(scale);
 }
 
+
+
+
+
+
 function toggleLegend() {
     $("#legend").toggleClass("active");
     $("#legend-toggle").toggleClass("active");
@@ -267,6 +276,10 @@ function toggleclick(){
     if(document.getElementById("PTPToggleView").checked == true){
 
         togglealertsdefault();
+
+        document.getElementById("PortToggleView").checked =false;
+        document.getElementById("PTPOnlyToggleView").checked =false;
+        document.getElementById("MTPToggleView").checked =false;
     }
     else{
 
@@ -718,17 +731,178 @@ function togglealertsdefault(){
 }
 
 
-function search(){
+function displayUIEffect(event, ui){
+    if((ui.item.data!=null && ui.item.useTarget!=null)||(ui.item.itemInfo!=null&& ui.item.useTarget!=null)){
 
-    var jsonData = JSON.stringify(inputData);
-    var jsonDataObj = JSON.parse(jsonData);
-    var searchInput = document.getElementById('searchText');
-
-    console.log(searchInput.value);
-    // console.log("json file from htmlutils" + jsonData);
-    // console.log("json obj from htmlutils" + jsonDataObj);
-
+        if(ui.item.type=="Multilinkhub"||ui.item.type=="PointToPointCenter"){
+            var neighbors = findNodeGraphics(ui.item.itemInfo, ui.item.useTarget, displayAPI.links);
+            for (var i = 1; i < neighbors.length; i++) {
+                d3.select(neighbors[i]).classed("portOnEVC", true);
+                console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
+            }
+            displayAPI.drawEVCLines(ui.item.useTarget, "connection-line", false);
+        }
+        else if(ui.item.type=='Flexware'){
+            displayAPI.displayNodeInfo(ui.item.data,ui.item.useTarget);
+            displayAPI.displayFlexwareHealth(ui.item.useTarget);
+        }else{
+            cleanPortSiteAnimation();
+            displayAPI.displayNodeInfo(ui.item.data,ui.item.useTarget);
+        }
+    }
 }
+function cleanPortSiteAnimation(){
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    for(var i=0;i<portsInfo.length;i++){
+        displayAPI.releaseNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+    }
+    var sitesInfo = document.querySelectorAll(".Site.vertices");
+    for(var i=0;i<sitesInfo.length;i++){
+        displayAPI.releaseNodeInfo(sitesInfo[i].__data__, sitesInfo[i].childNodes[0]);
+    }
+}
+
+$( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
+    var searchTags=getSearchTags();
+    $( "#searchText" ).autocomplete({
+        minLength:1,
+        source: searchTags,
+        open: function(event, ui){
+            cleanPortSiteAnimation();
+            return false;
+        },
+        focus: function(event, ui){
+            displayUIEffect(event, ui);
+            return false;
+        },
+        select: function(event, ui){
+            displayUIEffect(event, ui);
+        }
+    });
+});
+
+function getSearchTags(){
+    var searchTags=[];
+    var sitesInfo = document.querySelectorAll(".Site.vertices");
+    var clusterInfo = document.querySelectorAll(".Cluster.vertices");
+    var evcssInfo = document.getElementsByClassName("PointToPointCenter");
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    var EVCouterInfo = document.querySelectorAll(".Multilinkhub.vertices");
+    var fwfirewallInfo =  document.querySelectorAll(".FWfirewall.vertices");
+    var flexwareInfo = document.querySelectorAll(".Flexware.vertices");
+    /*
+     *   Retreiving Site Information to autocomplete
+     */
+    for(var i=0;i<sitesInfo.length;i++){
+        var data={};
+        data['type']='Site';
+        if(sitesInfo[i].__data__.item.siteId!=null)
+            data['value']=sitesInfo[i].__data__.item.siteAlias+ " ("+sitesInfo[i].__data__.item.siteId+")";
+        else
+            data['value']=sitesInfo[i].__data__.item.siteAlias;
+        data['id']=sitesInfo[i].__data__.item.id;
+        data['data']=sitesInfo[i].__data__;
+        data['useTarget']=sitesInfo[i].childNodes[0];
+        //console.log(data);
+        searchTags.push(data);
+    }
+    /*
+     *   Retreiving EVC's Information to autocomplete
+     */
+    for(var i=0;i<evcssInfo.length;i++){
+        var data={}
+        data['type']=evcssInfo[i].__data__.item.kind;
+        data['value']=evcssInfo[i].__data__.item.kind+" ("+evcssInfo[i].__data__.item.linkName+")";
+        data['ports']=evcssInfo[i].__data__.item.ports;
+        data['itemInfo']=evcssInfo[i].__data__.item;
+        data['useTarget']=evcssInfo[i].childNodes[0];
+        searchTags.push(data);
+    }
+
+    /*
+     *   Retreiving Ports Information to autocomplete
+     */
+    for(var i=0;i<portsInfo.length;i++){
+        var data={}
+        data['type']=portsInfo[i].__data__.item.kind;
+        data['value']=portsInfo[i].__data__.item.kind+" ("+portsInfo[i].__data__.item.id+")";
+        data['data']=portsInfo[i].__data__;
+        data['useTarget']=portsInfo[i];
+        searchTags.push(data);
+    }
+    /*
+     *   Retreiving Multi-link hub Information to autocomplete
+     */
+    for(var i=0;i<EVCouterInfo.length;i++){
+        var data={}
+        data['type']=EVCouterInfo[i].__data__.item.kind;
+        data['value']=EVCouterInfo[i].__data__.item.kind+" ("+EVCouterInfo[i].__data__.item.id+")";
+        data['itemInfo']=EVCouterInfo[i].__data__.item;
+        data['useTarget']=EVCouterInfo[i].childNodes[0];
+        searchTags.push(data);
+    }
+    /*
+     *   Retreiving Flexware Firewall Information to autocomplete
+     */
+    for(var i=0;i<fwfirewallInfo.length;i++){
+        var data={}
+        data['type']='FWfirewall Service';
+        data['value']="FwFirewall Service ("+fwfirewallInfo[i].__data__.id+")";
+        data['data']=fwfirewallInfo[i].__data__;
+        data['useTarget']=fwfirewallInfo[i].childNodes[0];
+        searchTags.push(data);
+    }
+    /*
+     *   Retreiving Flexware Information to autocomplete
+     */
+    for(var i=0;i<flexwareInfo.length;i++){
+        var data={}
+        data['type']='Flexware';
+        data['value']="Flexware ("+flexwareInfo[i].__data__.id+")";
+        data['Flexware']=flexwareInfo[i].__data__.Flexware;
+        data['data']=flexwareInfo[i].__data__;
+        data['useTarget']=flexwareInfo[i].childNodes[0];
+        searchTags.push(data);
+    }
+    /*
+     *   Retreiving Cluster Information to autocomplete
+     */
+    for(var i=0;i<clusterInfo.length;i++){
+        var clusterData = clusterInfo[i].__data__.item.items;
+        for(item in clusterData){
+            var data={};
+            data['type']=clusterData[item].kind;
+            switch(clusterData[item].kind){
+                case 'Site':
+                    if(clusterData[item].siteId!=null)
+                        data['value']=clusterData[item].siteAlias+ " ("+clusterData[item].siteId+")";
+                    else
+                        data['value']=clusterData[item].siteAlias;
+                    break;
+                case 'Port':
+                    data['value']=clusterData[item].id;
+                    data['ownerSite']=clusterData[item].ownerSite;
+                    break;
+                case 'Adiod':
+                    data['value']="Adiod ("+clusterData[item].id+")";
+                    data['id']=clusterData[item].id;
+                    break;
+                case 'Flexware':
+                    data['value']="Flexware ("+clusterData[item].id+")";
+                    data['id']=clusterData[item].id;
+                    break;
+                default:
+                    break;
+            }
+            //console.log(data);
+            searchTags.push(data);
+        }
+
+
+    }
+    return searchTags;
+}
+
 
 
 
