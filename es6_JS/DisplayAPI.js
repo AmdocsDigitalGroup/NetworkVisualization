@@ -150,28 +150,74 @@ class DisplayAPI {
 
     //displayClusterInfo(clusterInfo,useTarget) {
     displayClusterInfo(useTarget) {
+
+
         //g element containing the vertice
-       // var g = d3.select(useTarget.parentElement)
-        var g=d3.select("Cluster vertices");
+       // var g = d3.select(useTarget.parentElement).append("svg")
+
+       // var clustCont= d3.select(useTarget.parentElement).append("div").attr("id","clustCont");
+       // var clustCont= d3.select(useTarget.parentElement)
+
+
         var x = -120;
         var y = -150;
+
+
 
       //  g.append("div").attr("style","overflow-y: scroll").attr("width", 240).attr("height", 130);
        // var container = d3.select("body").append("div").attr("id", "container");
 
         window.requestAnimationFrame(function () {
+            console.log("Inside reqanimationframe");
 
+            var container = d3.select("body")
+
+            var rectangle = container.append("svg")
+                .attr("viewBox", "0,0,150,420")
+                .append("rect")
+                .attr("width", 150)
+                .attr("height", 420)
+                .attr("fill", "steelblue")
+                .attr("x", 0)
+                .attr("y", 0);
+
+
+
+
+            // var rectangle = clustCont.append("svg")
+            //     .attr("viewbox","0,0,150,420")
+            //     .append("rect")
+            //     .classed("removable network-box", true)
+            //     .attr("x", x)
+            //     .attr("y", y)
+            //     .attr("width", 240)
+            //     .attr("height", 130);
 
 
            // g.attr("style","overflow-y: scroll").attr("width", 240).attr("height", 130);
 
+            // container.append("rect").classed("removable network-box clusterContainer", true)
+            //     .attr("x", x).attr("y", y).attr("width", 240).attr("height", 130);
 
-            g.append("rect").classed("removable network-box clusterContainer", true)
-                .attr("x", x).attr("y", y).attr("width", 240).attr("height", 130);
-           //  g.append("text").classed("removable network-title", true)
-           //      .attr("x", x + 125).attr("y", y + 15).text("CLUSTER INFORMATION");
-           //
+           // var divcCluster = clustCont.append("div").classed("clustCont", true);
+
+
+            // var rectangle = clustCont.append("svg")
+            //     .attr("viewbox","0,0,150,420")
+            //     .append("rect")
+            //     .classed("removable network-box", true)
+            //     .attr("x", x)
+            //     .attr("y", y)
+            //     .attr("width", 240)
+            //     .attr("height", 130);
+            // clustCont.append("text").classed("removable network-title", true)
+            //       .attr("x", x + 125).attr("y", y + 15).text("CLUSTER INFORMATION");
+
+
+
            //  g.attr("style","overflow-y: scroll").attr("viewBox","0 0 240 130");
+
+
 
 
            var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
@@ -183,17 +229,15 @@ class DisplayAPI {
                         data['type'] = clusterData[item].kind;
                         switch (clusterData[item].kind) {
                             case 'Site':
-
-                                g.append("text").classed("removable network-metric", true)
-                                    .attr("x", x + 40).attr("y", y + 38).text(clusterData[item].siteAlias);
-
+                                // clustCont.append("text").classed("removable network-metric", true)
+                                //     .attr("x", x + 40).attr("y", y + 38).text(clusterData[item].siteAlias);
                                 break;
 
                             case 'Port':
                                 // console.log("cluster ports" + clusterData[item].id);
 
-                                g.append("text").classed("removable network-metric", true)
-                                    .attr("x", x + 40).attr("y", y+48).text(clusterData[item].id);
+                                // container.append("text").classed("removable network-metric", true)
+                                //     .attr("x", x + 40).attr("y", y+48).text(clusterData[item].id);
                                 break;
 
                             case 'Adiod':
