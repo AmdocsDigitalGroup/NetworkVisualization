@@ -777,6 +777,8 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
         },
         select: function(event, ui){
             displayUIEffect(event, ui);
+            if(ui.item.latlong!=null)
+                graph.fitBoundedMap(ui.item.latlong);
         }
     });
 });
@@ -804,6 +806,7 @@ function getSearchTags(){
         data['data']=sitesInfo[i].__data__;
         data['useTarget']=sitesInfo[i].childNodes[0];
         //console.log(data);
+        data['latlong']=sitesInfo[i].__data__.latlong;
         searchTags.push(data);
     }
     /*
@@ -878,6 +881,9 @@ function getSearchTags(){
                         data['value']=clusterData[item].siteAlias+ " ("+clusterData[item].siteId+")";
                     else
                         data['value']=clusterData[item].siteAlias;
+                    if(clusterData[item].coordinates!=null){
+                        data["latlong"]=clusterData[item].coordinates;
+                    }
                     break;
                 case 'Port':
                     data['value']=clusterData[item].id;

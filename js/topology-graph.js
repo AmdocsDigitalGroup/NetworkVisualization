@@ -313,6 +313,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     /*Function controling the zoom and panning*/
     var dZoomScale;
     function zoomed() {
+        console.log("inside zoomed function");
         state.zoomScale = d3.event.transform.k;
         var transform = d3.event.transform;
         window.requestAnimationFrame(function(){
@@ -1075,6 +1076,11 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         render(data(items, relations));
     }
 
+    function fitBoundedMap(latlong){
+        map.flyToBounds([L.latLng(latlong.lat, latlong.lng)],[10,10]);
+    }
+
+
     /** The return acts an interface for the caller; in this
      *  case it allows the buildGraph directive the ablity to
      *  interact with the graph
@@ -1091,6 +1097,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         select : select,
         kinds : kindsFoo,
         data: data,
+        fitBoundedMap: fitBoundedMap,
         numIncrements: numIncrements,
         digest: digest,
         render: function(new_items, new_relations){

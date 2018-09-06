@@ -13204,6 +13204,7 @@ var ScrollWheelZoom = Handler.extend({
 	},
 
 	_onWheelScroll: function (e) {
+
 		var delta = getWheelDelta(e);
 
 		var debounce = this._map.options.wheelDebounceTime;
