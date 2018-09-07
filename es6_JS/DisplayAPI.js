@@ -104,7 +104,7 @@ class DisplayAPI {
             return 0;
         });
         /** recolors the connecting lines red */
-        displayAPI.drawEVCLines(useTarget, "alert-line", true);
+        //displayAPI.drawEVCLines(useTarget, "alert-line", true);
 
         //location window opens relative to EVC node center
         //x, y represent the top left corner of the display
@@ -722,6 +722,7 @@ class DisplayAPI {
             .on("focusin focusout", function () {})
 
             .on("click", function (ev) { // case for new selection
+                    togglesidenavleft(ev);
                 if (ev.item.kind == 'Flexware') {
                     state.fwView = true;
                     state.selectedBox = ev.item;

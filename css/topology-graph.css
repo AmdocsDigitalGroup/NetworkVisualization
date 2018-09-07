@@ -391,8 +391,6 @@ circle.Port {
   //fill: #a0b4b4;
     /*fill: #c1b501; mustard yellow*/
   fill: #ffc000;
-
-
 }
 
 circle.PortCluster {
@@ -415,12 +413,14 @@ circle.EVC {
 circle.EVCouter {
   fill: none;
   stroke-linecap: round;
-  stroke-dasharray: 1.571, 3.14159; }
+  stroke-dasharray: 1.571, 3.14159;
+stroke:#0568ae;}
 
 circle.MultiAnimation {
   position: fixed;
   stroke-width: 0;
-  fill: #ff8855;
+  /*fill: #ff8855;*/
+  fill: #0568ae;
   will-change: fill;
   -webkit-animation: MTPGlow 2.5s steps(30) 2s infinite alternate;
   animation: MTPGlow 2.5s steps(30) 2s infinite alternate; }
@@ -428,7 +428,8 @@ circle.MultiAnimation {
 circle.MultiHub {
   position: fixed;
   stroke-width: 0;
-  fill: #ff8855; }
+  /*fill: #ff8855; */
+  fill: #0568ae;}
 
 /* Flexware and service nodes */
 circle.Flexware {
@@ -443,7 +444,8 @@ circle.Service {
 /** Section 4.2: Graph Edges **/
 line.edges {
    //stroke: cyan;
-  stroke: #9FA6AD;
+  //stroke: #9FA6AD;
+  stroke:mediumseagreen;
  
   stroke-width: 2px;
   stroke-linecap: round;
@@ -451,8 +453,9 @@ line.edges {
 
 line.standard {
   position: fixed;
-   stroke: cyan;
+  // stroke: cyan;
  // stroke: #9FA6AD;
+  stroke:mediumseagreen;
  
   stroke-width: 2px;
   stroke-linecap: round;
@@ -475,8 +478,9 @@ line.standard {
 line.dashin {
   position: fixed;
   stroke-dasharray: 5,5;
-   // stroke: cyan;
-  stroke: #9FA6AD;
+    /*stroke: cyan;*/
+  /*stroke: #9FA6AD;*/
+  stroke:mediumseagreen;
   stroke-width: 2px;
   stroke-linecap: round;
   -webkit-animation: dash 2s steps(60) forwards;
@@ -486,13 +490,19 @@ line.stop-animation {
   animation: none; }
 
 line.connection-line {
-  stroke: #ff9966;
-  //stroke: #2A79B3;
-  stroke-width: 2.5px; }
+ // stroke: #ff9966;
+  stroke: darkgreen;
+  stroke-width: 3.5px; }
 
 line.alert-line {
   stroke: red;
   stroke-width: 2.5px; }
+
+line.alertline{
+  stroke:#E59400 !important;
+  -webkit-animation: alertLineGlow 2.5s steps(30) 0s infinite alternate;
+  animation: alertLineGlow 2.5s steps(30) 0s infinite alternate;
+}
 
 /*
 .topology line.ReplicationControllerPod {
@@ -1321,12 +1331,27 @@ input::-webkit-search-cancel-button {
   background: #fefee5;
 }
 
+/*Left Side Nav*/
+.sidenavLeft  {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 12;
+  top: 40px;
+  left: 0;
+  background-color: rgb(17,17,17,0.8);
+  overflow-x: hidden;
+  transition: 0.5s;
+  color: #fefee5;
 
+}
+.sidenavLeft table{
+  font-size: 10px;
 
-
-
-
-
+}
+.sidenavLeft table tbody tr td{
+  padding-left: 5px;
+}
 
 /*.clearfix{*/
   /*clear: both;*/
@@ -1400,61 +1425,103 @@ input::-webkit-search-cancel-button {
 
 
 
-
-
 /****** Section 4.5: Graph Animations ******/
 @-webkit-keyframes lineGlow {
   0% {
-   //  stroke: #ffffff;
-  stroke: #9FA6AD; }
+     stroke: mediumseagreen;
+  //stroke: #9FA6AD; }
   100% {
     // stroke: rgba(23, 207, 207, 0.7);
-    stroke: #9FA6AD;} }
+    //stroke: #9FA6AD;
+    stroke: mediumseagreen} }
 
 @keyframes lineGlow {
   0% {
    // stroke: #ffffff;
-  stroke: #9FA6AD;}
+ // stroke: #9FA6AD;
+    stroke: mediumseagreen}
   100% {
     //stroke: rgba(23, 207, 207, 0.7);
-  stroke: #9FA6AD;} }
+  //stroke: #9FA6AD;
+    stroke: mediumseagreen} }
+
+
+
+
+
+@-webkit-keyframes alertlineGlow {
+  0% {
+    stroke: #E59400 !important;
+  //stroke: #9FA6AD; }
+  100% {
+  // stroke: rgba(23, 207, 207, 0.7);
+  //stroke: #9FA6AD;
+    stroke: #E59400 !important;} }
+
+@keyframes alertlineGlow {
+  0% {
+  // stroke: #ffffff;
+  // stroke: #9FA6AD;
+    stroke: #E59400 !important;}
+  100% {
+  //stroke: rgba(23, 207, 207, 0.7);
+  //stroke: #9FA6AD;
+    stroke: #E59400 !important;} }
+
+
+
+
+
+
+
+
+
+
 
 @-webkit-keyframes PTPGlow {
   0% {
 
      //fill: #00dddd;
    // fill: #A6A616;
-      fill:#a7a7a5;
+     // fill:#a7a7a5;
+    fill:#0568ae;
   }
   100% {
     // fill: rgba(20, 179, 179, 0.7);
     //fill: #A6A616;
-      fill:#a7a7a5;
+     // fill:#a7a7a5;
+    fill:#0568ae;
   } }
 
 @keyframes PTPGlow {
   0% {
     // fill: #00dddd;
     //fill: #A6A616;
-      fill:#a7a7a5;
+     // fill:#a7a7a5;
+    fill:#0568ae;
   }
   100% {
     // fill: rgba(20, 179, 179, 0.7);
     //fill: #A6A616;
-      fill:#a7a7a5;
+     // fill:#a7a7a5;
+    fill:#0568ae;
   } }
 
 @-webkit-keyframes MTPGlow {
   0% {
-    fill: #ff8855; }
+   // fill: #ff8855;
+  fill: #0568ae}
   100% {
-    fill: rgba(235, 120, 71, 0.7); } }
+    /*fill: rgba(235, 120, 71, 0.7);*/
+  fill:#0568ae;} }
 
 @keyframes MTPGlow {
   0% {
-    fill: #ff8855; }
+    /*fill: #ff8855;*/
+  fill:#0568ae;}
   100% {
-    fill: rgba(235, 120, 71, 0.7); } }
+    /*fill: rgba(235, 120, 71, 0.7);*/
+  fill:#0568ae;} }
 
 @-webkit-keyframes siteInnerGlow {
   0% {

@@ -1006,29 +1006,15 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         added.classed("vertices", true);
 
-        //
-        // if(document.getElementById("alertdefaultToggleView").checked == true){
-        //     togglealertsdefault();
-        // }
-        // else{
-        //     if(document.getElementById("PTPToggleView").checked == true){
-        //         checkTogglePTP();
-        //     }
-        //     else{
-        //
-        //         checkTogglePort();
-        //         checkTogglePTPAndLines();
-        //         checkToggleMTP();
-        //     }
-        // }
+
 
         if(document.getElementById("PTPToggleView").checked == true){
-
             togglealertsdefault();
         }
         else{
 
             checkTogglePTP();
+           // checkalertlines();
 
         }
 

@@ -168,14 +168,6 @@ function onLoad() {
     $('#zoom-slider-bar').change(function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
 
-        // checkTogglePTP();
-        // checkTogglePort();
-        // checkTogglePTPAndLines();
-        // checkToggleMTP();
-
-
-
-
         if(document.getElementById("PTPToggleView").checked == true){
 
             togglealertsdefault();
@@ -183,49 +175,25 @@ function onLoad() {
         else{
 
             checkTogglePTP();
+            //checkalertlines();
 
         }
-
-
-
-//         togglealertsdefault();
-//         toggleclick();
-//         toggleport();
-//         togglePTP();
-//         toggleMTP();
-
 
         linkZoom(parseInt(this.value));
     });
     $('#zoom-slider-bar').on("mousemove", function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
 
-
-
         if(document.getElementById("PTPToggleView").checked == true){
-
+           // alertlines();
             togglealertsdefault();
         }
         else{
 
             checkTogglePTP();
+            //checkalertlines();
 
         }
-
-
-
-
-
-        // togglealertsdefault();
-        // toggleclick();
-        // toggleport();
-        // togglePTP();
-        // toggleMTP();
-
-        // checkTogglePTP();
-        // checkTogglePort();
-        // checkTogglePTPAndLines();
-        // checkToggleMTP();
 
         linkZoom(parseInt(this.value));
     });
@@ -263,7 +231,9 @@ function toggleLegend() {
     $("#legend-toggle").toggleClass("active");
 }
 
-function toggleclick(){
+
+
+function toggleclick() {
 
     // if(document.getElementById("PTPToggleView").checked == true){
     //     toggleON()
@@ -273,60 +243,84 @@ function toggleclick(){
     //
     // }
 
-    if(document.getElementById("PTPToggleView").checked == true){
+    if (document.getElementById("PTPToggleView").checked == true) {
 
         togglealertsdefault();
 
-        document.getElementById("PortToggleView").checked =false;
-        document.getElementById("PTPOnlyToggleView").checked =false;
-        document.getElementById("MTPToggleView").checked =false;
+        document.getElementById("PortToggleView").checked = false;
+        document.getElementById("PTPOnlyToggleView").checked = false;
+        document.getElementById("MTPToggleView").checked = false;
     }
-    else{
+    else {
 
         var evcss = document.getElementsByClassName("PointToPointCenter");
         var line = document.getElementsByTagName("line");
-        var EVCouterCircle =document.querySelectorAll("#vertex-Multilinkhub .EVCouter");
+        var EVCouterCircle = document.querySelectorAll("#vertex-Multilinkhub .EVCouter");
         var EVCouter = document.querySelectorAll("#vertex-Multilinkhub");
-        var recIcon =  document.querySelectorAll("#recommendation-icon");
-        var alertIcon =  document.querySelectorAll("#alert-icon");
+        var recIcon = document.querySelectorAll("#recommendation-icon");
+        var alertIcon = document.querySelectorAll("#alert-icon");
         var ports = document.querySelectorAll(".Port-node.use-node.clickable");
         var sites = document.querySelectorAll(".Site.vertices");
-        var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
+        var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
         var flexware = document.querySelectorAll(".Flexware.vertices");
 
-        document.getElementById("PortToggleView").checked =true;
-        document.getElementById("PTPOnlyToggleView").checked =true;
-        document.getElementById("MTPToggleView").checked =true;
+        document.getElementById("PortToggleView").checked = true;
+        document.getElementById("PTPOnlyToggleView").checked = true;
+        document.getElementById("MTPToggleView").checked = true;
 
 
-        for(var i=0;i<evcss.length;i++)
-            evcss[i].style.display="";
-        for(var i=0;i<line.length;i++)
-            line[i].style.display="";
-        for(var i=0;i<EVCouterCircle.length;i++)
-            EVCouterCircle[i].style.display="";
-        for(var i=0;i<EVCouter.length;i++)
-            EVCouter[i].style.display="";
-        for(var i=0;i<recIcon.length;i++)
-            recIcon[i].style.display="";
-        for(var i=0;i<alertIcon.length;i++)
-            alertIcon[i].style.display="";
-        for(var i=0;i<ports.length;i++)
-            ports[i].style.display="";
-        for(var i=0;i<sites.length;i++)
-            sites[i].style.display="";
-        for(var i=0;i<fwfirewall.length;i++)
-            fwfirewall[i].style.display="";
-        for(var i=0;i<flexware.length;i++)
-            flexware[i].style.display="";
+        for (var i = 0; i < evcss.length; i++)
+            evcss[i].style.display = "";
+        for (var i = 0; i < line.length; i++)
+            line[i].style.display = "";
+        for (var i = 0; i < EVCouterCircle.length; i++)
+            EVCouterCircle[i].style.display = "";
+        for (var i = 0; i < EVCouter.length; i++)
+            EVCouter[i].style.display = "";
+        for (var i = 0; i < recIcon.length; i++)
+            recIcon[i].style.display = "";
+        for (var i = 0; i < alertIcon.length; i++)
+            alertIcon[i].style.display = "";
+        for (var i = 0; i < ports.length; i++)
+            ports[i].style.display = "";
+        for (var i = 0; i < sites.length; i++)
+            sites[i].style.display = "";
+        for (var i = 0; i < fwfirewall.length; i++)
+            fwfirewall[i].style.display = "";
+        for (var i = 0; i < flexware.length; i++)
+            flexware[i].style.display = "";
 
+
+        for (var i = 0; i < evcss.length; i++) {
+            if (evcss[i].hasAlert == true) {
+                var ptpWithAlertId = evcss[i].__data__.id;
+                port0=evcss[i].__data__.item.ports[0];
+                port1=evcss[i].__data__.item.ports[1];
+
+                for (var i = 0; i < line.length; i++) { //Appearing the connection lines(ptp to port lines) &&  port to site lines
+
+                    if (line[i].classList != "icon-line") {
+                        if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
+                            var d3line = d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
+                        }
+                        else{
+                            line[i].style.display="";
+                            d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+
+
+                        }
+                    }
+                    else{
+                        line[i].style.display="";
+                        d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                    }
+                }
+            }
+
+
+        }
     }
-
-
-
-
 }
-
 function checkTogglePTP(){
 
     if(document.getElementById("PTPToggleView").checked == false){
@@ -375,6 +369,7 @@ function toggleON(){
     var sites = document.querySelectorAll(".Site.vertices");
     var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
     var flexware = document.querySelectorAll(".Flexware.vertices");
+    var evcss = document.getElementsByClassName("PointToPointCenter");
 
     for(var i=0;i<ptp.length;i++)
         ptp[i].style.display="";
@@ -398,10 +393,33 @@ function toggleON(){
     for(var i=0;i<flexware.length;i++)
         flexware[i].style.display="";
 
+
+
+    for (var i = 0; i < evcss.length; i++) {
+        if (evcss[i].hasAlert == true) {
+            var ptpWithAlertId = evcss[i].__data__.id;
+            port0=evcss[i].__data__.item.ports[0];
+            port1=evcss[i].__data__.item.ports[1];
+
+            for (var i = 0; i < line.length; i++) { //Appearing the connection lines(ptp to port lines) &&  port to site lines
+
+                if (line[i].classList != "icon-line") {
+                    if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
+                        var d3line = d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
+                    }
+                    else{
+                        line[i].style.display="";
+                        d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                    }
+                }
+                else{
+                    line[i].style.display="";
+                    d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                }
+            }
+        }
+    }
 }
-// function togglefooter(elem){
-//     elem.classList.toggle('active');
-// }
 
 function togglesidenav(){
     console.log("sidenav toggled");
@@ -617,7 +635,6 @@ function togglealertsdefault(){
     var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
     var flexware = document.querySelectorAll(".Flexware.vertices");
 
-
     for(var i=0;i<evcss.length;i++) {
         evcss[i].style.display="none";
     }
@@ -630,9 +647,6 @@ function togglealertsdefault(){
         ports[i].style.display="none";
     }
 
-    // for(var i=0;i<sites.length;i++) {
-    //     sites[i].style.display="none";
-    // }
     for(var i=0;i<EVCouterCircle.length;i++) {
         EVCouterCircle[i].style.display="none";
     }
@@ -680,13 +694,13 @@ function togglealertsdefault(){
                 if(line[i].classList != "icon-line"){
                     if(line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id ){
                         line[i].style.display="";
+                        d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
+                        //d3.select(line[i]).style("color","blue")
+                        //console.log("d3line"+d3line);
                     }
                     else{
                         line[i].style.display="none";
                     }
-                }
-                else{
-                    console.log("there" + i);
                 }
            }
 
@@ -729,6 +743,105 @@ function togglealertsdefault(){
         }
     }
 }
+
+
+function labelToggle(){
+    if(document.getElementById("labelToggleView").checked == false){
+        console.log("Legen toggle turned off");
+    }
+    else{
+        console.log("Legen toggle turned on");
+    }
+}
+
+// Left Side Nav
+function togglesidenavleft(data){
+    var checkHead = document.getElementById("chosenHead");
+    var sideNavLeft = document.getElementById("sidenavLeft");
+    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML==data.item.siteAlias||checkHead.innerHTML==data.item.id)){
+        sideNavLeft.style.width = "0";
+        sideNavLeft.style.paddingLeft = "0";
+    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML==data.item.siteAlias||checkHead.innerHTML==data.item.id)){
+        sideNavLeft.style.width = "15vw";
+        sideNavLeft.style.paddingLeft = "10px";
+    }else {
+
+        while (sideNavLeft.firstChild) {
+            sideNavLeft.removeChild(sideNavLeft.firstChild);
+        }
+        sideNavLeft.style.width = "15vw";
+        sideNavLeft.style.paddingLeft = "10px";
+        switch(data.item.kind){
+            case "Site":
+                var head = document.createElement("h3");
+                head.setAttribute("id", "chosenHead");
+                head.innerHTML=data.item.siteAlias;
+                var subHead = document.createElement("h5");
+                subHead.innerHTML="Site ID : "+data.item.siteId;
+                var subContent = document.createElement("div");
+                subContent.style.backgroundColor = "rgb(38, 38, 38)";
+                var br = document.createElement("br");
+                var table = document.createElement("table");
+                var divTable = document.createElement("div");
+                var tableData = "<tr><td style='width: 30%'>Address</td><td>"+data.item.siteAddress+"</td></tr>";
+                tableData+="<tr><td style='width: 30%'>Location ID</td><td>"+data.item.locationId+"</td></tr>";
+                tableData+="<tr><td style='width: 30%'>SDN Capable</td><td>"+data.item.sdnCapable+"</td></tr>";
+                table.innerHTML = tableData;
+                sideNavLeft.appendChild(head);
+                sideNavLeft.appendChild(subHead);
+                sideNavLeft.appendChild(br);
+                divTable.appendChild(table);
+                sideNavLeft.appendChild(divTable);
+                sideNavLeft.appendChild(br.cloneNode());
+
+
+                var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+                var resultPorts=[];
+                for(var i=0;i<portsInfo.length;i++){
+                    if(portsInfo[i].__data__.item.attachedTo==data.id){
+                        resultPorts.push(portsInfo[i].__data__);
+                    }
+                }
+                for(var i=0; i<resultPorts.length;i++){
+                    console.log(resultPorts[i]);
+                }
+
+                var portDiv = document.createElement("div");
+                var portHead = document.createElement("h5");
+                portHead.innerHTML="Ports";
+                table = document.createElement("table");
+                tableData="";
+                for(var i=0; i<resultPorts.length;i++){
+                    tableData += "<tr><td style='width: 30%'>"+resultPorts[i].id+"</td>";
+                    if(resultPorts[i].item.hasEVC){
+                        tableData+="<td> Has EVC Connection</td></tr>";
+                    }else{
+                        tableData+="</tr>"
+                    }
+
+                }
+                table.innerHTML = tableData;
+                portDiv.appendChild(portHead);
+                portDiv.appendChild(table);
+                sideNavLeft.appendChild(portDiv);
+                break;
+            case 'Port':
+                var head = document.createElement("h4");
+                head.setAttribute("id", "chosenHead");
+                head.innerHTML=data.item.id;
+                var subHead = document.createElement("h6");
+                subHead.innerHTML=data.item.ownerSite.item.siteName+" | "+data.item.ownerSite.item.siteAlias;
+                sideNavLeft.appendChild(head);
+                sideNavLeft.appendChild(subHead);
+                break;
+            default:
+                break;
+        }
+    }
+
+    console.log(data);
+}
+
 
 
 function displayUIEffect(event, ui){

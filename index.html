@@ -453,6 +453,25 @@
         <a class="alerts" href="#">Alerts</a>
 
 
+        <a href="#">Legend</a>
+        <label for="labelToggleView" class="btn-switch-label">
+            <!--<span aria-hidden="true">Voicemail is</span>-->
+            <div class="btn-switch">
+                <input id="labelToggleView" type="checkbox" onclick="labelToggle()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
+                <div class="switch-overlay" aria-hidden="true">
+                    <span class="btn-slider-on"></span>
+                    <span class="switch-handle"></span>
+                    <span class="btn-slider-off"></span>
+                </div>
+            </div>
+        </label>
+
+
+
+
+
+
+
         <button class="dropdown-btn">ASEoD
         <i class="fa fa-caret-down"></i>
         </button>
@@ -542,19 +561,6 @@
         </button>
         <div class="dropdown-container">
 
-            <!--<a href="#">Elements</a>-->
-            <!--<label for="PTPToggleView" class="btn-switch-label">-->
-                <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
-                <!--<div class="btn-switch">-->
-                    <!--<input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
-                    <!--<div class="switch-overlay" aria-hidden="true">-->
-                        <!--<span class="btn-slider-on">All</span>-->
-                        <!--<span class="switch-handle"></span>-->
-                        <!--<span class="btn-slider-off">Alert</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</label>-->
-
             <a href="#" id="mapToggleView">Free View</a>
             <a href="#" id="mapFreeToggleView"style="display: none">Map View</a>
 
@@ -566,6 +572,9 @@
     <form id="searchForm">
         <input type="search" placeholder="Search" id="searchText" onkeyup="search()">
     </form>
+
+   <div id="sidenavLeft" class="sidenavLeft" ></div>
+
 
 
     <!-- Remote Scripts -->
