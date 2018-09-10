@@ -235,13 +235,6 @@ function toggleLegend() {
 
 function toggleclick() {
 
-    // if(document.getElementById("PTPToggleView").checked == true){
-    //     toggleON()
-    //
-    // }else{
-    //     toggleOFF();
-    //
-    // }
 
     if (document.getElementById("PTPToggleView").checked == true) {
 
@@ -250,8 +243,14 @@ function toggleclick() {
         document.getElementById("PortToggleView").checked = false;
         document.getElementById("PTPOnlyToggleView").checked = false;
         document.getElementById("MTPToggleView").checked = false;
+
+
+
+
     }
     else {
+
+
 
         var evcss = document.getElementsByClassName("PointToPointCenter");
         var line = document.getElementsByTagName("line");
@@ -263,11 +262,13 @@ function toggleclick() {
         var sites = document.querySelectorAll(".Site.vertices");
         var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
         var flexware = document.querySelectorAll(".Flexware.vertices");
+        var portLabel = document.getElementsByClassName("PortName");
 
         document.getElementById("PortToggleView").checked = true;
         document.getElementById("PTPOnlyToggleView").checked = true;
         document.getElementById("MTPToggleView").checked = true;
 
+        labelToggle();
 
         for (var i = 0; i < evcss.length; i++)
             evcss[i].style.display = "";
@@ -291,6 +292,8 @@ function toggleclick() {
             flexware[i].style.display = "";
 
 
+
+
         for (var i = 0; i < evcss.length; i++) {
             if (evcss[i].hasAlert == true) {
                 var ptpWithAlertId = evcss[i].__data__.id;
@@ -301,24 +304,21 @@ function toggleclick() {
 
                     if (line[i].classList != "icon-line") {
                         if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
-                            var d3line = d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
+                            var d3line = d3.select(line[i]).classed("alertline", true).attr("dashin", false).attr("standard", false).attr("edges", false).attr("standard", false).attr("line", false);
                         }
                         else{
                             line[i].style.display="";
-                            d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
-
-
+                            d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
                         }
                     }
                     else{
                         line[i].style.display="";
-                        d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
                     }
                 }
             }
-
-
         }
+
     }
 }
 function checkTogglePTP(){
@@ -405,16 +405,16 @@ function toggleON(){
 
                 if (line[i].classList != "icon-line") {
                     if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
-                        var d3line = d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
+                        var d3line = d3.select(line[i]).classed("alertline", true).attr("dashin", false).attr("standard", false).attr("edges", false).attr("standard", false).attr("line", false);
                     }
                     else{
                         line[i].style.display="";
-                        d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
                     }
                 }
                 else{
                     line[i].style.display="";
-                    d3.select(line[i]).classed("alertline", false).classed("dashin", true).classed("standard", true).classed("edges", true).classed("standard", true).classed("line", true);
+                    d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
                 }
             }
         }
@@ -634,6 +634,7 @@ function togglealertsdefault(){
     var recIcon =  document.querySelectorAll("#recommendation-icon");
     var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
     var flexware = document.querySelectorAll(".Flexware.vertices");
+    var portLabel = document.getElementsByClassName("PortName");
 
     for(var i=0;i<evcss.length;i++) {
         evcss[i].style.display="none";
@@ -662,6 +663,9 @@ function togglealertsdefault(){
     for(var i=0;i<flexware.length;i++) {
         flexware[i].style.display="none";
     }
+    for(var i=0;i<portLabel.length;i++) {
+        portLabel[i].style.display="none";
+    }
 
 
     for(var i=0;i<evcss.length;i++) {
@@ -681,10 +685,22 @@ function togglealertsdefault(){
                 if (evcss[i].__data__.item.ports[0] == ports[j].__data__.id) {
                     console.log("index of port" + j);
                     ports[j].style.display = "";
+
+                    for(var k=0;k<portLabel.length;k++){ //Appearing of the Port Labels
+                        if(portLabel[k].__data__.id == ports[j].__data__.id){
+                            portLabel[k].style.display = "";
+                        }
+                    }
                 }
                 if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
                     console.log("index of port" + j);
                     ports[j].style.display = "";
+
+                    for(var k=0;k<portLabel.length;k++){ //Appearing of the Port Labels
+                        if(portLabel[k].__data__.id == ports[j].__data__.id){
+                            portLabel[k].style.display = "";
+                        }
+                    }
                 }
             }
 
@@ -694,11 +710,11 @@ function togglealertsdefault(){
                 if(line[i].classList != "icon-line"){
                     if(line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id ){
                         line[i].style.display="";
-                        d3.select(line[i]).classed("alertline", true).classed("dashin", false).classed("standard", false).classed("edges", false).classed("standard", false).classed("line", false);
-                        //d3.select(line[i]).style("color","blue")
-                        //console.log("d3line"+d3line);
+                        d3.select(line[i]).classed("alertline", true).attr("dashin", false).attr("standard", false).attr("edges", false).attr("standard", false).attr("line", false);
+
                     }
                     else{
+
                         line[i].style.display="none";
                     }
                 }
@@ -746,11 +762,31 @@ function togglealertsdefault(){
 
 
 function labelToggle(){
-    if(document.getElementById("labelToggleView").checked == false){
-        console.log("Legen toggle turned off");
+    var portLabel = document.getElementsByClassName("PortName");
+
+    if(document.getElementById("PTPToggleView".checked ==true)){ //Alerts View
+        if (document.getElementById("labelToggleView").checked == false){
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+        }
+        else{
+
+        }
+
     }
-    else{
-        console.log("Legen toggle turned on");
+
+    else {
+        if (document.getElementById("labelToggleView").checked == false) { //All View
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+        }
+        else {
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+        }
     }
 }
 
@@ -758,29 +794,30 @@ function labelToggle(){
 function togglesidenavleft(data){
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
-    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML==data.item.siteAlias||checkHead.innerHTML==data.item.id)){
+    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTMLincludes(data.item.id))){
         sideNavLeft.style.width = "0";
         sideNavLeft.style.paddingLeft = "0";
-    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML==data.item.siteAlias||checkHead.innerHTML==data.item.id)){
-        sideNavLeft.style.width = "15vw";
+        sideNavLeft.style.paddingRight = "0";
+    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTMLincludes(data.item.id))){
+        sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
     }else {
 
         while (sideNavLeft.firstChild) {
             sideNavLeft.removeChild(sideNavLeft.firstChild);
         }
-        sideNavLeft.style.width = "15vw";
+        sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         switch(data.item.kind){
             case "Site":
-                var head = document.createElement("h3");
+                var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML=data.item.siteAlias;
+                head.innerHTML="<img src='resources/images/icons/location.svg' ></img>"+data.item.siteAlias;
                 var subHead = document.createElement("h5");
                 subHead.innerHTML="Site ID : "+data.item.siteId;
                 var subContent = document.createElement("div");
                 subContent.style.backgroundColor = "rgb(38, 38, 38)";
-                var br = document.createElement("br");
+                var hr = document.createElement("hr");
                 var table = document.createElement("table");
                 var divTable = document.createElement("div");
                 var tableData = "<tr><td style='width: 30%'>Address</td><td>"+data.item.siteAddress+"</td></tr>";
@@ -789,10 +826,10 @@ function togglesidenavleft(data){
                 table.innerHTML = tableData;
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
-                sideNavLeft.appendChild(br);
+                sideNavLeft.appendChild(hr);
                 divTable.appendChild(table);
                 sideNavLeft.appendChild(divTable);
-                sideNavLeft.appendChild(br.cloneNode());
+                sideNavLeft.appendChild(hr.cloneNode());
 
 
                 var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
@@ -810,11 +847,54 @@ function togglesidenavleft(data){
                 var portHead = document.createElement("h5");
                 portHead.innerHTML="Ports";
                 table = document.createElement("table");
+                table.setAttribute("id","tableDisplay");
                 tableData="";
                 for(var i=0; i<resultPorts.length;i++){
                     tableData += "<tr><td style='width: 30%'>"+resultPorts[i].id+"</td>";
                     if(resultPorts[i].item.hasEVC){
-                        tableData+="<td> Has EVC Connection</td></tr>";
+                        //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
+                        tableData+="<td>";
+                        var lines = document.getElementsByTagName("line");
+                        var connections = [];
+                        for(var j=0;j<lines.length;j++){
+                            if(lines[j].classList != "icon-line"){
+                                if(lines[j].__data__.source.id ==resultPorts[i].id||lines[j].__data__.target.id ==resultPorts[i].id){
+                                    if(lines[j].__data__.source.id ==resultPorts[i].id){
+                                        if(lines[j].__data__.target.id ==data.id){
+                                            continue;
+                                        }else{
+                                            connections.push(lines[j].__data__.target);
+                                        }
+                                    }else {
+                                        if(lines[j].__data__.source.id ==data.id){
+                                            continue;
+                                        }else{
+                                            connections.push(lines[j].__data__.source);
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                        for(var k=0;k<connections.length;k++){
+                            if(connections[k].item.kind == 'PointToPointCenter'){
+
+                                for(var p=0;p<connections[k].item.ports.length;p++){
+                                    if(connections[k].item.ports[p]!=resultPorts[i].id){
+                                        tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+                                    }
+                                }
+
+                            }else if(connections[k].item.kind == 'Multilinkhub'){
+                                tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
+                                for(var p=0;p<connections[k].item.ports.length;p++){
+                                    if(connections[k].item.ports[p]!=resultPorts[i].id){
+                                        tableData+="<span onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+                                    }
+                                }
+                            }
+                        }
+                        tableData+="</td></tr>";
                     }else{
                         tableData+="</tr>"
                     }
@@ -828,7 +908,7 @@ function togglesidenavleft(data){
             case 'Port':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML=data.item.id;
+                head.innerHTML="<img src='resources/images/icons/newport.svg'></img>"+"Port "+data.item.id;
                 var subHead = document.createElement("h6");
                 subHead.innerHTML=data.item.ownerSite.item.siteName+" | "+data.item.ownerSite.item.siteAlias;
                 sideNavLeft.appendChild(head);
@@ -839,8 +919,20 @@ function togglesidenavleft(data){
         }
     }
 
+
+
     console.log(data);
 }
+
+function sideNavClick(data){
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    for(var i=0;i<portsInfo.length;i++){
+        if(portsInfo[i].__data__.id==data){
+            togglesidenavleft(portsInfo[i].__data__);
+        }
+    }
+}
+
 
 
 

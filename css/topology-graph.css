@@ -433,13 +433,15 @@ circle.MultiHub {
 
 /* Flexware and service nodes */
 circle.Flexware {
-  fill: #9bb83c; }
+ // fill: #9bb83c;
+    fill:#0568ae;}
 
 circle.Adiod {
   fill: #0568ae; }
 
 circle.Service {
-  fill: #609fff; }
+ // fill: #609fff;
+    fill:#0568ae;}
 
 /** Section 4.2: Graph Edges **/
 line.edges {
@@ -566,9 +568,16 @@ text.SiteName {
   fill: #3C4957;
   stroke-width: 0;
   stroke: #3C4957;
+}
 
-
-  
+text.PortName{
+    font-family: "Century Gothic";
+    font-size: 10px;
+    font-weight: 600;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    fill: #3C4957;
+    stroke-width: 0;
+    stroke: #3C4957;
 }
 
 text.titleBox {
@@ -1155,28 +1164,27 @@ body{
   transition: 0.5s;
   padding-top: 60px;
   opacity: 0.8;
-
 }
 
-.sidenav a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
-  /*padding: 8px 8px 8px 32px;*/
-  text-decoration: none;
-  font-size: 18px;
-  font-family: omnes_att_regular;
- // font-family: "Omnes-ATT-W02-Medium";
-  // font-family: "font-regular", "Omnes-ATT-W02";
-  //color: #818181;
-  color: #fefee5;
-  display: block;
-  transition: 0.3s;
-  z-index: 12;
-  cursor: pointer;
-  text-align: left;
-  outline: none;
-  border: none;
-  background: none;
-  width:100%;
+.sidenav a,.sidenavLeft a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    /*padding: 8px 8px 8px 32px;*/
+    text-decoration: none;
+    font-size: 18px;
+    font-family: omnes_att_regular;
+    /* font-family: "Omnes-ATT-W02-Medium";
+    font-family: "font-regular", "Omnes-ATT-W02";
+  color: #818181; */
+    color: #fefee5;
+    display: block;
+    transition: 0.3s;
+    z-index: 12;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    border: none;
+    background: none;
+    width:100%;
 
 }
 
@@ -1188,6 +1196,84 @@ body{
   cursor:pointer;
   margin-right:10px;
 }
+
+.sidenavLeft img{
+    width: 3vw !important;
+    height: 5vh;
+}
+.ptpTableIcon{
+
+    width: 1.5vw !important;
+    height: 3vh;
+    will-change: transform;
+    -webkit-animation: rotateImage 3s steps(90) infinite;
+    animation: rotateImage 3s steps(90) infinite;
+    /* border-radius: 50%;
+    background-color: #3C4957; */
+}
+.ptpTableIcon2{
+
+    width: 2vw !important;
+    height: 2vh;
+    will-change: transform;
+    -webkit-animation: rotateImage 3s steps(90) infinite;
+    animation: rotateImage 3s steps(90) infinite;
+    /* border-radius: 50%;
+    background-color: #3C4957; */
+}
+#tableDisplay{
+    width: 90%;
+}
+#tableDisplay table,#tableDisplay td,#tableDisplay th{
+
+    border: 1px solid #3C4957;
+}
+
+.sidenavLeft table img{
+    width: 1.5vw !important;
+    height: 3vh;
+}
+
+.sidenavLeft hr{
+    width: 13vw !important;
+    border-top: 1px solid #eeeeee38;
+}
+
+
+.slideBtnLeft{
+    transition: .5s;
+    position: fixed;
+    left: 0;
+    font-size:30px;
+    cursor:pointer;
+    margin-left:10px;
+}
+
+.sidenavLeft  {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 12;
+    top: 40px;
+    left: 0;
+    background-color: rgb(17,17,17,0.8);
+    overflow-x: hidden;
+    transition: 0.5s;
+    color: #fefee5;
+    padding-right: 10px;
+}
+.sidenavLeft table{
+    font-size: 10px;
+
+}
+.sidenavLeft table tbody tr td{
+    padding-right: 5px;
+}
+
+
+
+
+
 
 #main {
   transition: .5s;
@@ -1245,7 +1331,7 @@ article{
   position: fixed;
   z-index: 12;
   top: 0;
-  left: 12%;
+  left: 18%;
   padding-top: 45px;
   text-decoration: none;
   font-size: 16px;
@@ -1284,7 +1370,7 @@ input::-webkit-search-cancel-button {
   /* Your CSS here */
   /*width: 55% !important;*/
   /*left: 14% !important;*/
-  left: 14% !important;
+  left: 20% !important;
   width: 58vw !important;
   border: solid 1px #111;
   padding: 2px 2px 2px 4px;
@@ -1332,87 +1418,7 @@ input::-webkit-search-cancel-button {
 }
 
 /*Left Side Nav*/
-.sidenavLeft  {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 12;
-  top: 40px;
-  left: 0;
-  background-color: rgb(17,17,17,0.8);
-  overflow-x: hidden;
-  transition: 0.5s;
-  color: #fefee5;
 
-}
-.sidenavLeft table{
-  font-size: 10px;
-
-}
-.sidenavLeft table tbody tr td{
-  padding-left: 5px;
-}
-
-/*.clearfix{*/
-  /*clear: both;*/
-/*}*/
-
-/*input{*/
-  /*background-color: #ffffff;*/
-  /*border: none;*/
-  /*font-size: 16px;*/
-  /*padding: 10px 0px 10px 0px;*/
-
-/*}*/
-
-
-/*.expandSearch,*/
-/*.expandSearch input,*/
-/*.expandSearch a{*/
-  /*float: left;*/
-  /*-webkit-transition: all 0.4s ease-in-out;*/
-  /*-moz-transition: all 0.4s ease-in-out;*/
-  /*transition: all 0.4s ease-in-out;*/
-
-/*}*/
-
-/*.expandSearch{*/
-  /*border: solid 1px #eeeeee;*/
-
-/*}*/
-
-/*.expandSearch input{*/
-  /*height: 22px;*/
-  /*overflow: hidden;*/
-  /*width: 0px;*/
-  /*opacity: 0;*/
-
-/*}*/
-
-/*.expandSearch a{*/
-  /*display: block;*/
-  /*padding: 12px 15px 8px 15px;*/
-  /*background-color: #eeeeee;*/
-
-/*}*/
-
-/*.showSearch input{*/
-  /*margin-left: 10px;*/
-  /*margin-right: 10px;*/
-  /*width: 200px;*/
-  /*opacity: 1;*/
-
-/*}*/
-
-/*.showSearch a{*/
-  /*background-color: #b3d2f2;*/
-
-/*}*/
-
-/*.showSearch{*/
-  /*border-color: #b3d2f2;*/
-
-/*}*/
 
 
 

@@ -995,9 +995,16 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         var sites = added.filter("g.Site");
         sites.append("text").classed("SiteName", true).text(function (d) {
+            console.log("printing d.item1" + d.item);
             return d.item.siteAlias;
         }).attr("x", 15).attr("y", -10);
         sites.append("path").classed("SiteLabel", true).attr("d", "M -40 -34.6 L -20 -34.6 L -10 -17.3");
+
+        var ports = added.filter("g.Port");
+        ports.append("text").classed("PortName",true).text(function (d){
+           // console.log("printing d.item" + JSON.stringify(d.item.id));
+            return d.item.id;
+        }).attr("x", 15).attr("y", -10);
 
         //acessiblity title?
         added.append("title").text(function (d) {
