@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b737d7c5-77bb-40b9-b563-b77bd5193f2f" name="Default" comment="Commit Aug 24th, 2018">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/topology-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/htmlUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/htmlUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/topology-graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/topology-graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -97,8 +92,8 @@
       <file leaf-file-name="htmlUtils.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="691" column="25" lean-forward="true" selection-start-line="691" selection-start-column="25" selection-end-line="691" selection-end-column="25" />
+            <state relative-caret-position="401">
+              <caret line="803" column="11" lean-forward="true" selection-start-line="803" selection-start-column="11" selection-end-line="803" selection-end-column="11" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
@@ -401,7 +396,7 @@
       <workItem from="1536070407369" duration="37658000" />
       <workItem from="1536244217612" duration="13207000" />
       <workItem from="1536329536231" duration="16835000" />
-      <workItem from="1536590424421" duration="20355000" />
+      <workItem from="1536590424421" duration="20866000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/AmdocsDigitalGroup/NetworkVisualization&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1535131205745</created>
@@ -498,7 +493,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125965000" />
+    <option name="totallyTimeSpent" value="126476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -893,8 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="691" column="25" lean-forward="true" selection-start-line="691" selection-start-column="25" selection-end-line="691" selection-end-column="25" />
+        <state relative-caret-position="401">
+          <caret line="803" column="11" lean-forward="true" selection-start-line="803" selection-start-column="11" selection-end-line="803" selection-end-column="11" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />

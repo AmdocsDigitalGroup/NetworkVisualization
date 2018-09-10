@@ -794,11 +794,11 @@ function labelToggle(){
 function togglesidenavleft(data){
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
-    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTMLincludes(data.item.id))){
+    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id))){
         sideNavLeft.style.width = "0";
-        sideNavLeft.style.paddingLeft = "0";
+        sideNavLeft.style.paddingLeft = "0"
         sideNavLeft.style.paddingRight = "0";
-    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTMLincludes(data.item.id))){
+    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id))){
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
     }else {
