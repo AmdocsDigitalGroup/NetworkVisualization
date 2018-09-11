@@ -167,6 +167,7 @@ function onLoad() {
 
     $('#zoom-slider-bar').change(function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
+        labelToggle();
 
         if(document.getElementById("PTPToggleView").checked == true){
 
@@ -183,6 +184,7 @@ function onLoad() {
     });
     $('#zoom-slider-bar').on("mousemove", function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
+        labelToggle();
 
         if(document.getElementById("PTPToggleView").checked == true){
            // alertlines();
