@@ -1324,7 +1324,6 @@ article{
 
 /********Search Bar********/
 
-
 #searchForm{
   /*padding: 40px;*/
 
@@ -1352,7 +1351,6 @@ input[type=search] {
   background: #111 url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
   border: solid 1px #111;
   padding: 9px 10px 9px 32px;
-  /*width: 840px;*/
   width: 60vw;
   opacity: 0.8;
   /* border: solid 1px #111; */
@@ -1368,10 +1366,8 @@ input::-webkit-search-cancel-button {
 .ui-menu {
 
   /* Your CSS here */
-  /*width: 55% !important;*/
-  /*left: 14% !important;*/
-  left: 20% !important;
   width: 58vw !important;
+  left: 20% !important;
   border: solid 1px #111;
   padding: 2px 2px 2px 4px;
   /* border-radius: 1em; */
@@ -1388,6 +1384,18 @@ input::-webkit-search-cancel-button {
   font-size: 14px;
   font-family: omnes_att_regular;
   color: #fefee5;
+}
+
+.ui-menu-item .ui-menu-item-wrapper:hover,.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover
+{
+  border: solid 1px #262626;
+  color: #fefee5;
+  background-color: #262626;
 }
 
 .ui-widget.ui-widget-content{
@@ -1416,20 +1424,15 @@ input::-webkit-search-cancel-button {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #fefee5;
 }
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
 
 /*Left Side Nav*/
-
-
-
-
-
-
-
-
-
-
-
-
 
 /****** Section 4.5: Graph Animations ******/
 @-webkit-keyframes lineGlow {

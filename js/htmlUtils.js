@@ -24,7 +24,7 @@ function onLoad() {
     }).done(function (data) {
         displayAPI.parseFlexwareJson(data);
     });
-        
+
 //    $.ajax({
 //        url: "http://localhost:8080/advisor/recommend?gcpOrgId=5443301900"
 //    }).done(function(res) {
@@ -34,7 +34,7 @@ function onLoad() {
 //            displayAPI.parseTargetRecommendations(data);
 //        });
 //    });
-    
+
     $.ajax({
         url: "input_data/targetRecommendation.json"
     }).done(function (data) {
@@ -93,7 +93,7 @@ function onLoad() {
         Flexware: '#vertex-Flexware',
         Cluster: '#vertex-Cluster',
         PortCluster: '#vertex-PortCluster',
-      //  Adiod: '#vertex-adiod',
+        //  Adiod: '#vertex-adiod',
        // adiodInternet: '#vertex-internet',
         Adiod: '#vertex-cloud'
 
@@ -127,7 +127,7 @@ function onLoad() {
         } else {
             $("#modal-reCt").modal();
         }
-        
+
         if (!listSet)
             setListeners();
     }
@@ -150,7 +150,7 @@ function onLoad() {
     var popup = {
         "connection": openPopup,
         "flexware": openFW,
-        "recommendation": openRec,
+        "recommendation": openRec
 
     };
     console.log("after pop up");
@@ -187,7 +187,7 @@ function onLoad() {
         labelToggle();
 
         if(document.getElementById("PTPToggleView").checked == true){
-           // alertlines();
+            // alertlines();
             togglealertsdefault();
         }
         else{
@@ -275,7 +275,7 @@ function toggleclick() {
         document.getElementById("PTPOnlyToggleView").checked = true;
         document.getElementById("MTPToggleView").checked = true;
 
-       // labelToggle();
+        // labelToggle();
 
         if(document.getElementById("labelToggleView").checked == true){
             for (var i = 0; i < portLabel.length; i++) {
@@ -483,7 +483,6 @@ function checkTogglePort(){
         for(var i=0;i<ports.length;i++)
             ports[i].style.display="none";
     }
-
 }
 
 function togglePTP(){
@@ -530,7 +529,11 @@ function toggleMTP(){
     var recIcon =  document.querySelectorAll("#recommendation-icon");
     var alertIcon =  document.querySelectorAll("#alert-icon");
 
+
+
     if(document.getElementById("MTPToggleView").checked == false){
+       // document.getElementById("PTPOnlyToggleView").disabled = true;
+
         for(var i=0;i<EVCouterCircle.length;i++)
             EVCouterCircle[i].style.display="none";
         for(var i=0;i<EVCouter.length;i++)
@@ -541,6 +544,7 @@ function toggleMTP(){
             alertIcon[i].style.display="none";
 
     }else{
+        //document.getElementById("PTPOnlyToggleView").disabled =true;
         for(var i=0;i<EVCouterCircle.length;i++)
             EVCouterCircle[i].style.display="";
         for(var i=0;i<EVCouter.length;i++)
@@ -738,7 +742,7 @@ function togglealertsdefault(){
                         line[i].style.display="none";
                     }
                 }
-           }
+            }
 
 
             for(var k=0;k<line.length;k++){ //appearing the sites
@@ -753,7 +757,7 @@ function togglealertsdefault(){
                                 sites[m].style.display="";
                             }
                         }
-                }
+                    }
                     // else{
                     //     console.log("not printing the sites1");
                     // }
@@ -788,21 +792,21 @@ function labelToggle() {
 
     if (document.getElementById("PTPToggleView").checked == false) { // All view
 
-    if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
 
 
-        for (var i = 0; i < portLabel.length; i++) {
-            portLabel[i].style.display = "none";
-        }
-    }
-
-    else { //Label is turned on
-        for (var i = 0; i < portLabel.length; i++) {
-            portLabel[i].style.display = "";
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
         }
 
+        else { //Label is turned on
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+
+        }
     }
-}
 
     else {  // Alerts view
         if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
@@ -832,19 +836,19 @@ function labelToggle() {
                                 }
                             }
                         }
-            if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
+                        if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
 
-                for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
-                    if (portLabel[k].__data__.id == ports[j].__data__.id) {
-                        portLabel[k].style.display = "";
+                            for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
+                                if (portLabel[k].__data__.id == ports[j].__data__.id) {
+                                    portLabel[k].style.display = "";
+                                }
+                                else{
+                                    portLabel[k].style.display = "none";
+                                }
+                            }
+                        }
                     }
-                    else{
-                        portLabel[k].style.display = "none";
-                    }
-                }
-            }
-                }
-            }}
+                }}
 
         }
     }
@@ -1013,6 +1017,7 @@ function displayUIEffect(event, ui){
         }else{
             cleanPortSiteAnimation();
             displayAPI.displayNodeInfo(ui.item.data,ui.item.useTarget);
+
         }
     }
 }
@@ -1028,6 +1033,7 @@ function cleanPortSiteAnimation(){
 }
 
 $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
+
     var searchTags=getSearchTags();
     $( "#searchText" ).autocomplete({
         minLength:1,
@@ -1038,6 +1044,8 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
         },
         focus: function(event, ui){
             displayUIEffect(event, ui);
+            // if(ui.item.latlong!=null)
+            //     graph.fitBoundedMap(ui.item.latlong);
             return false;
         },
         select: function(event, ui){
@@ -1070,8 +1078,8 @@ function getSearchTags(){
         data['id']=sitesInfo[i].__data__.item.id;
         data['data']=sitesInfo[i].__data__;
         data['useTarget']=sitesInfo[i].childNodes[0];
-        //console.log(data);
         data['latlong']=sitesInfo[i].__data__.latlong;
+        //console.log(data);
         searchTags.push(data);
     }
     /*
@@ -1166,6 +1174,7 @@ function getSearchTags(){
                     break;
             }
             //console.log(data);
+
             searchTags.push(data);
         }
 
@@ -1173,6 +1182,7 @@ function getSearchTags(){
     }
     return searchTags;
 }
+
 
 
 

@@ -1017,10 +1017,14 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         if(document.getElementById("PTPToggleView").checked == true){
             togglealertsdefault();
+            labelToggle();
+
         }
         else{
 
             checkTogglePTP();
+            labelToggle();
+
            // checkalertlines();
 
         }
