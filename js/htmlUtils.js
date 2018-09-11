@@ -238,14 +238,19 @@ function toggleclick() {
 
     if (document.getElementById("PTPToggleView").checked == true) {
 
+        var portLabel = document.getElementsByClassName("PortName");
+
         togglealertsdefault();
 
         document.getElementById("PortToggleView").checked = false;
         document.getElementById("PTPOnlyToggleView").checked = false;
         document.getElementById("MTPToggleView").checked = false;
 
-
-
+        if(document.getElementById("labelToggleView").checked == false){
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+        }
 
     }
     else {
@@ -268,7 +273,20 @@ function toggleclick() {
         document.getElementById("PTPOnlyToggleView").checked = true;
         document.getElementById("MTPToggleView").checked = true;
 
-        labelToggle();
+       // labelToggle();
+
+        if(document.getElementById("labelToggleView").checked == true){
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+
+        }
+        else{
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+
+        }
 
         for (var i = 0; i < evcss.length; i++)
             evcss[i].style.display = "";
@@ -761,31 +779,71 @@ function togglealertsdefault(){
 }
 
 
-function labelToggle(){
+function labelToggle() {
     var portLabel = document.getElementsByClassName("PortName");
+    var evcss = document.getElementsByClassName("PointToPointCenter");
+    var ports = document.querySelectorAll(".Port-node.use-node.clickable");
 
-    if(document.getElementById("PTPToggleView".checked ==true)){ //Alerts View
-        if (document.getElementById("labelToggleView").checked == false){
-            for (var i = 0; i < portLabel.length; i++) {
-                portLabel[i].style.display = "none";
-            }
+    if (document.getElementById("PTPToggleView").checked == false) { // All view
+
+    if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+
+
+        for (var i = 0; i < portLabel.length; i++) {
+            portLabel[i].style.display = "none";
         }
-        else{
+    }
 
+    else { //Label is turned on
+        for (var i = 0; i < portLabel.length; i++) {
+            portLabel[i].style.display = "";
         }
 
     }
+}
 
-    else {
-        if (document.getElementById("labelToggleView").checked == false) { //All View
+    else {  // Alerts view
+        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
             for (var i = 0; i < portLabel.length; i++) {
                 portLabel[i].style.display = "none";
             }
+
         }
-        else {
-            for (var i = 0; i < portLabel.length; i++) {
-                portLabel[i].style.display = "";
+        else { //Label is turned on
+
+            for(var i=0;i<evcss.length;i++) {
+                if (evcss[i].hasAlert == true) {
+
+                    var ptpWithAlertId = evcss[i].__data__.id;
+                    port0 = evcss[i].__data__.item.ports[0];
+                    port1 = evcss[i].__data__.item.ports[1];
+
+                    for (var j = 0; j < ports.length; j++) { //Appearing the ports
+                        if (evcss[i].__data__.item.ports[0] == ports[j].__data__.id) {
+
+                            for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
+                                if (portLabel[k].__data__.id == ports[j].__data__.id) {
+                                    portLabel[k].style.display = "";
+                                }
+                                else{
+                                    portLabel[k].style.display = "none";
+                                }
+                            }
+                        }
+            if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
+
+                for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
+                    if (portLabel[k].__data__.id == ports[j].__data__.id) {
+                        portLabel[k].style.display = "";
+                    }
+                    else{
+                        portLabel[k].style.display = "none";
+                    }
+                }
             }
+                }
+            }}
+
         }
     }
 }
