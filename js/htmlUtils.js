@@ -94,7 +94,7 @@ function onLoad() {
         Cluster: '#vertex-Cluster',
         PortCluster: '#vertex-PortCluster',
       //  Adiod: '#vertex-adiod',
-        adiodInternet: '#vertex-internet',
+       // adiodInternet: '#vertex-internet',
         Adiod: '#vertex-cloud'
 
     };
