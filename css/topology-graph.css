@@ -1157,12 +1157,13 @@ body{
   width: 0;
   position: fixed;
   z-index: 12;
-  top: 0;
+  /*top: 0;*/
+  top:40px;
   right: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 14px;
   opacity: 0.8;
 }
 
@@ -1195,6 +1196,14 @@ body{
   font-size:30px;
   cursor:pointer;
   margin-right:10px;
+  /*top:49px;*/
+}
+
+.rightarrow{
+
+  padding-right: 0px !important;
+  padding-top: 8px !important;
+  padding-left: 200px !important;
 }
 
 .sidenavLeft img{

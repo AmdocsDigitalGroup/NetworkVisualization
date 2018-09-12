@@ -435,8 +435,9 @@
     <div id="sidenav" class="sidenav" style="width: 250px">
 
         <!--<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>-->
-        <div id="slidebtn" class="slideBtn" style="padding-right: 250px" onclick="togglesidenav()">&#9776;</div>
-        <a href="#">Services</a>
+        <div id="slidebtn" class="slideBtn" style="opacity: 0" onclick="togglesidenav()">&#9776;</div>
+
+        <a class="rightarrow" onclick="togglesidenav()" href="#" > &gt; &gt; &gt;</a>
 
         <a href="#">All</a>
         <label for="PTPToggleView" class="btn-switch-label">
@@ -470,7 +471,7 @@
         <i class="fa fa-caret-down"></i>
         </button>
 
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
         <a href="#">Port</a>
             <label for="PortToggleView" class="btn-switch-label">
                 <div class="btn-switch">
@@ -521,7 +522,7 @@
         <button class="dropdown-btn">Flexware
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
             <a href="#">Box</a>
             <a href="#">Router</a>
             <a href="#">Wanx</a>
@@ -531,14 +532,14 @@
         <button class="dropdown-btn">ADI
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
             <a href="#">ADI</a>
         </div>
 
         <button class="dropdown-btn">ADIoD
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
             <a href="#">EVCI</a>
             <a href="#">Port</a>
         </div>
@@ -546,14 +547,14 @@
         <button class="dropdown-btn">AVPN
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
             <a href="#">AVPN</a>
         </div>
 
         <button class="dropdown-btn">Specific
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" style="display: block">
 
             <a href="#" id="mapToggleView">Free View</a>
             <a href="#" id="mapFreeToggleView"style="display: none">Map View</a>

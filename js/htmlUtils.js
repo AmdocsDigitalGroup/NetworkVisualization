@@ -454,13 +454,16 @@ function togglesidenav(){
     if($('#sidenav').width()== 0) {
         console.log("sidenav toggled open");
         document.getElementById("sidenav").style.width = "250px";
-        document.getElementById("slidebtn").style.paddingRight = "250px";
+       // document.getElementById("slidebtn").style.paddingRight = "250px";
+        document.getElementById("slidebtn").style.display="none";
     }
 
     else{
         console.log("sidenav toggled close");
         document.getElementById("sidenav").style.width = "0";
+        document.getElementById("slidebtn").style.display="";
         document.getElementById("slidebtn").style.paddingRight = "0";
+        document.getElementById("slidebtn").style.opacity = "45";
     }
 }
 
