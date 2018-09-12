@@ -1018,12 +1018,18 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         if(document.getElementById("PTPToggleView").checked == true){
             togglealertsdefault();
             labelToggle();
+            checkTogglePTPAndLines();
+            checkTogglePort();
+           // checkToggleMTP();
 
         }
         else{
 
             checkTogglePTP();
             labelToggle();
+            checkTogglePTPAndLines();
+            checkTogglePort();
+            //checkToggleMTP();
 
            // checkalertlines();
 
