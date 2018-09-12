@@ -480,10 +480,12 @@ function toggleport(){
                 ports[i].style.display = "";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="";
-            for(var i=0;i<line.length;i++){
-                if(line[i].__data__.kinds == "PortSite"){
-                    line[i].style.display="";
-                    d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+            for(var i=0;i<line.length;i++) {
+                if (line[i].classList != "icon-line") {
+                    if (line[i].__data__.kinds == "PortSite") {
+                        line[i].style.display = "";
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                    }
                 }
             }
 
@@ -501,9 +503,11 @@ function toggleport(){
                 ports[i].style.display = "";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="";
-            for(var i=0;i<line.length;i++){
-                if(line[i].__data__.kinds == "PortSite"){
-                    line[i].style.display="";
+            for(var i=0;i<line.length;i++) {
+                if (line[i].classList != "icon-line") {
+                    if (line[i].__data__.kinds == "PortSite") {
+                        line[i].style.display = "";
+                    }
                 }
             }
         }
@@ -535,10 +539,12 @@ function checkTogglePort(){
                 ports[i].style.display = "";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="";
-            for(var i=0;i<line.length;i++){
-                if(line[i].__data__.kinds == "PortSite"){
-                    line[i].style.display="";
-                    d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+            for(var i=0;i<line.length;i++) {
+                if (line[i].classList != "icon-line") {
+                    if (line[i].__data__.kinds == "PortSite") {
+                        line[i].style.display = "";
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                    }
                 }
             }
 
@@ -561,10 +567,12 @@ function checkTogglePort(){
                 ports[i].style.display = "";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="";
-            for(var i=0;i<line.length;i++){
-                if(line[i].__data__.kinds == "PortSite"){
-                    line[i].style.display="";
-                    d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+            for(var i=0;i<line.length;i++) {
+                if (line[i].classList != "icon-line") {
+                    if (line[i].__data__.kinds == "PortSite") {
+                        line[i].style.display = "";
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                    }
                 }
             }
 
