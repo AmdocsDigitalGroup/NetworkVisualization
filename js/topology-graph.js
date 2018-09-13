@@ -212,7 +212,9 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                         clusterTime = window.setTimeout(function(){
                             var compare = Object.keys(items).length;
                             var depth = Math.ceil(Math.log(_layer._scale*Math.pow(2, 19-startingZoom))/Math.log(2));
+
                             applyCluster(depth);
+
 
                             if(compare != Object.keys(items).length){
                                 render(data(items, relations));
@@ -806,6 +808,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                         var temp2 = clusterTree.resolve(ports[j], clusterTree.lastDepthChecked);
                         if(temp1 !== temp2){
                             add = true;
+
                         }
                     }
                 }
@@ -816,7 +819,57 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                 }
             }
         }
+
     }
+
+    function applyClusterElements(){
+
+        console.log("inside applyClusterElements function ");
+
+        var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
+
+            for (var i = 0; i < clusterInfo.length; i++) {
+                var clusterData = clusterInfo[i].__data__.item.items;
+
+                var totalSites=0;
+                var totalPorts=0;
+                var totalAdiod=0;
+                var totalFlexware=0;
+                for (item in clusterData) {
+                    if(clusterData[item].kind == "Site"){
+                        totalSites++;
+
+                    }
+                    if(clusterData[item].kind == "Port"){
+                        totalPorts++;
+
+                    }
+                    if(clusterData[item].kind == "Adiod"){
+                        totalAdiod++;
+
+                    }
+                    if(clusterData[item].kind == "Flexware"){
+                        totalFlexware++;
+
+                    }
+
+                }
+                console.log("Total Sites" + totalSites);
+                console.log("Total Ports" + totalPorts);
+                console.log("Total Adiod" + totalAdiod);
+                console.log("Total Flexware" + totalFlexware);
+            }
+
+
+        }
+
+
+
+
+
+
+
+
     //handles creating nodes and links based off the items and realations provided 
     function digest(alpha) {
         if(!alpha) {alpha = simulationValues.startAlpha;}
@@ -987,11 +1040,39 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
                 return clickable[d.item.kind];
             })
             .attr("xlink:href", icon);
+
         var clusters = added.filter("g.Cluster");
         clusters.append("text").classed("cluster-text", true).text(function (d) {
             return d.item.numSites;
+           // return d.item.numPorts;
+
         }).attr("y", 5).style("opacity", 1);
+
         //.style opacity may be changed later, but currently is to prevent the fade-out-full class from removeing the number on hover
+
+       // WORKING DISPLAY OF NUM OF PORTS
+        clusters.append("use").attr("xlink:href", "#vertex-Port").attr("y", 14).attr("x",6)
+        clusters.append("text").classed("portcluster-text", true).text(function (d) {
+            // return d.item.numSites;
+            return d.item.numPorts;
+
+        }).attr("y", 24).attr("x",12).style("opacity", 1);
+
+
+         // clusters.append("use").attr("xlink:href", "#vertex-Port").attr("y", 16)
+
+
+       // var clusterPort = clusters.append("rectangle").classed("cluster-port").attr("y",16).style("opacity",1);
+       //
+       //  clusterPort.append("text").classed("cluster-text", true).text(function (d) {
+       //      // return d.item.numSites;
+       //      return d.item.numPorts;
+       //
+       //  }).attr("y", 16).style("opacity", 1);
+
+
+
+
 
         var sites = added.filter("g.Site");
         sites.append("text").classed("SiteName", true).text(function (d) {
@@ -1013,8 +1094,6 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         added.classed("vertices", true);
 
-
-
         if(document.getElementById("PTPToggleView").checked == true){
             togglealertsdefault();
             labelToggle();
@@ -1026,7 +1105,8 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         else{
 
             checkTogglePTP();
-            labelToggle();
+            //labelToggle();
+            checkLabelToggle();
             checkTogglePTPAndLines();
             checkTogglePort();
             //checkToggleMTP();
@@ -1035,15 +1115,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         }
 
-
-
-
-
-
-
-
-
-
+       // applyClusterElements();
     }
     function icon(d) {
         var text;

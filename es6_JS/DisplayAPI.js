@@ -201,7 +201,7 @@ class DisplayAPI {
 
            // var divcCluster = clustCont.append("div").classed("clustCont", true);
 
-
+            //
             // var rectangle = clustCont.append("svg")
             //     .attr("viewbox","0,0,150,420")
             //     .append("rect")
@@ -732,7 +732,7 @@ class DisplayAPI {
                          popup["recommendation"](ev.item);
                         /*displayAPI.showRecommendationPopup(ev.item);*/
                     } else if (!closure.networkDisplayOpen) {
-                        displayAPI.displayNetworkHealth(d3.event.target);
+                        //displayAPI.displayNetworkHealth(d3.event.target);
                     }
                 } else if (ev.item.kind == 'Site') {
                     var neighbors = findNodeGraphics(ev.item, d3.event.target, closure.links);
@@ -758,7 +758,7 @@ class DisplayAPI {
                     }
                 } else if (ev.item.kind == 'Port' || ev.item.kind == 'Multilinkhub') {
                     if(ev.item.recommendMessage) {
-                        popup["recommendation"](ev.item);
+                       // popup["recommendation"](ev.item);
                         /*displayAPI.showRecommendationPopup(ev.item);*/
                     } else {
                          var index = state.nodeLinkingSet.indexOf(ev.item);

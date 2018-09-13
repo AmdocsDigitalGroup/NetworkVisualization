@@ -384,7 +384,16 @@ circle.SiteRing {
 text.cluster-text {
   stroke: #2f4f4f;
   text-anchor: middle;
-  stroke-width: .8px; }
+  stroke-width: .8px;
+}
+
+text.portcluster-text{
+  stroke: #2f4f4f;
+  text-anchor: middle;
+  stroke-width: .6px;
+  size: 10px;
+
+}
 
 /* Port node */
 circle.Port {
@@ -1144,7 +1153,7 @@ div#container {
   /*padding-right: 8px;*/
 /*}*/
 
-/*******New Sidenav********/
+/*******New Left Sidenav********/
 
 body{
   background-color:gray;
@@ -1165,6 +1174,7 @@ body{
   transition: 0.5s;
   padding-top: 14px;
   opacity: 0.8;
+  overflow-y: scroll;
 }
 
 .sidenav a,.sidenavLeft a, .dropdown-btn {
@@ -1252,7 +1262,7 @@ body{
 .slideBtnLeft{
     transition: .5s;
     position: fixed;
-    left: 0;
+    left: 12vw;
     font-size:30px;
     cursor:pointer;
     margin-left:10px;
@@ -1269,7 +1279,7 @@ body{
     overflow-x: hidden;
     transition: 0.5s;
     color: #fefee5;
-    padding-right: 10px;
+    padding-right: 0px;
 }
 .sidenavLeft table{
     font-size: 10px;
@@ -1279,8 +1289,18 @@ body{
     padding-right: 5px;
 }
 
-
-
+.buttonTicket {
+  background-color: #fefee5;
+  border: none;
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
 
 

@@ -167,13 +167,15 @@ function onLoad() {
 
     $('#zoom-slider-bar').change(function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
-        labelToggle();
+
 
         if(document.getElementById("PTPToggleView").checked == true){
 
             togglealertsdefault();
             checkTogglePTPAndLines();
             checkTogglePort();
+            labelToggle();
+           // checkLabelToggle()
             //checkToggleMTP();
         }
         else{
@@ -181,6 +183,8 @@ function onLoad() {
             checkTogglePTP();
             checkTogglePTPAndLines();
             checkTogglePort();
+            //labelToggle();
+            checkLabelToggle();
             //checkToggleMTP();
             //checkalertlines();
 
@@ -196,11 +200,14 @@ function onLoad() {
             // alertlines();
             togglealertsdefault();
             checkTogglePTPAndLines();
+            labelToggle();
         }
         else{
 
             checkTogglePTP();
             checkTogglePTPAndLines();
+            //labelToggle();
+            checkLabelToggle();
             //checkalertlines();
 
         }
@@ -1106,17 +1113,62 @@ function labelToggle() {
     }
 }
 
+function checkLabelToggle(){
+    var portLabel = document.getElementsByClassName("PortName");
+    var evcss = document.getElementsByClassName("PointToPointCenter");
+    var ports = document.querySelectorAll(".Port-node.use-node.clickable");
+
+    if (document.getElementById("PTPToggleView").checked == false) { // All view
+
+        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+
+
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+        }
+
+        else { //Label is turned on
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+
+        }
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
 // Left Side Nav
 function togglesidenavleft(data){
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
-    if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id))){
+    var slideBtn=document.getElementById("slideBtnLeft");
+    if(data=="close"){
         sideNavLeft.style.width = "0";
-        sideNavLeft.style.paddingLeft = "0"
+        sideNavLeft.style.paddingLeft = "0";
         sideNavLeft.style.paddingRight = "0";
-    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id))){
+        slideBtn.style.display="none";
+    }
+    else if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
+        sideNavLeft.style.width = "0";
+        sideNavLeft.style.paddingLeft = "0";
+        sideNavLeft.style.paddingRight = "0";
+        slideBtn.style.display="none";
+    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
+        sideNavLeft.style.paddingRight = "10px";
+        slideBtn.style.display="";
     }else {
 
         while (sideNavLeft.firstChild) {
@@ -1124,6 +1176,14 @@ function togglesidenavleft(data){
         }
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
+        sideNavLeft.style.paddingRight = "10px";
+        slideBtn= document.createElement("div");
+        slideBtn.setAttribute("id","slideBtnLeft");
+        slideBtn.setAttribute("class","slideBtnLeft");
+        slideBtn.setAttribute("onclick","togglesidenavleft('close')");
+        slideBtn.innerHTML="x";
+        slideBtn.style.display="";
+        sideNavLeft.appendChild(slideBtn);
         switch(data.item.kind){
             case "Site":
                 var head = document.createElement("h4");
@@ -1169,50 +1229,11 @@ function togglesidenavleft(data){
                     tableData += "<tr><td style='width: 30%'>"+resultPorts[i].id+"</td>";
                     if(resultPorts[i].item.hasEVC){
                         //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
-                        tableData+="<td>";
-                        var lines = document.getElementsByTagName("line");
-                        var connections = [];
-                        for(var j=0;j<lines.length;j++){
-                            if(lines[j].classList != "icon-line"){
-                                if(lines[j].__data__.source.id ==resultPorts[i].id||lines[j].__data__.target.id ==resultPorts[i].id){
-                                    if(lines[j].__data__.source.id ==resultPorts[i].id){
-                                        if(lines[j].__data__.target.id ==data.id){
-                                            continue;
-                                        }else{
-                                            connections.push(lines[j].__data__.target);
-                                        }
-                                    }else {
-                                        if(lines[j].__data__.source.id ==data.id){
-                                            continue;
-                                        }else{
-                                            connections.push(lines[j].__data__.source);
-                                        }
-                                    }
-                                }
-                            }
+                        tableData=tableData+getTableDataPorts(resultPorts[i])+"</tr>";
 
-                        }
-                        for(var k=0;k<connections.length;k++){
-                            if(connections[k].item.kind == 'PointToPointCenter'){
-
-                                for(var p=0;p<connections[k].item.ports.length;p++){
-                                    if(connections[k].item.ports[p]!=resultPorts[i].id){
-                                        tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
-                                    }
-                                }
-
-                            }else if(connections[k].item.kind == 'Multilinkhub'){
-                                tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
-                                for(var p=0;p<connections[k].item.ports.length;p++){
-                                    if(connections[k].item.ports[p]!=resultPorts[i].id){
-                                        tableData+="<span onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
-                                    }
-                                }
-                            }
-                        }
-                        tableData+="</td></tr>";
                     }else{
-                        tableData+="</tr>"
+                        tableData+="</tr>";
+
                     }
 
                 }
@@ -1227,27 +1248,193 @@ function togglesidenavleft(data){
                 head.innerHTML="<img src='resources/images/icons/newport.svg'></img>"+"Port "+data.item.id;
                 var subHead = document.createElement("h6");
                 subHead.innerHTML=data.item.ownerSite.item.siteName+" | "+data.item.ownerSite.item.siteAlias;
+
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
+                var hr = document.createElement("hr");
+                sideNavLeft.appendChild(hr);
+                if(data.item.recommendMessage){
+                    //port recommendation
+                }
+                var portsConnectedInfo = document.createElement("h5");
+                portsConnectedInfo.innerHTML="Ports Connected";
+                table = document.createElement("table");
+                table.setAttribute("id","tableDisplay");
+                tableData="<tr>";
+                tableData=tableData+getTableDataPorts(data)+"</tr>";
+                table.innerHTML=tableData;
+                var br=document.createElement("br");
+                portsConnectedInfo.appendChild(br);
+                portsConnectedInfo.appendChild(table);
+                sideNavLeft.appendChild(portsConnectedInfo);
+
+                break;
+            case 'PointToPointCenter':
+                var head = document.createElement("h4");
+                head.setAttribute("id", "chosenHead");
+                head.innerHTML="<img src='resources/images/icons/NOD-point-to-point-06.png'></img>PTP Center "+data.item.linkName;
+                sideNavLeft.appendChild(head);
+                if(data.item.recommendMessage){
+                    displayRecommendation(data,sideNavLeft);
+                }else{
+                    displayNetworkHealthInfo(data,sideNavLeft);
+
+                }
+                break;
+            case "Multilinkhub":
+                var head = document.createElement("h4");
+                head.setAttribute("id", "chosenHead");
+                head.innerHTML="<img src='resources/images/icons/NOD-EVC-connection-08.png'></img> Multilinkhub "+data.item.linkName;
+                sideNavLeft.appendChild(head);
+                var br=document.createElement("br");
+                sideNavLeft.appendChild(br);
+                if(data.item.recommendMessage){
+                    displayRecommendation(data,sideNavLeft);
+                }else{
+                    displayNetworkHealthInfo(data,sideNavLeft);
+                }
                 break;
             default:
                 break;
         }
     }
 
+}
+function displayNetworkHealthInfo(data,sideNavLeft){
+    var networkHealthInfo = document.createElement("h5");
+    networkHealthInfo.innerHTML="Network Health Information";
+    table = document.createElement("table");
+    table.setAttribute("id","tableDisplay");
+    tableData="";
+    for(var i=0;i<displayAPI.networkData.length;i++){
+        if(data.item.linkName==displayAPI.networkData[i].id){
+            tableData+="<tr><td>Network Latency</td><td>"+displayAPI.networkData[i].latency+"ms roundtrip</td></tr>";
+            tableData+="<tr><td>Packet Loss</td><td>"+displayAPI.networkData[i].pktloss+"%</td></tr>";
+            tableData+="<tr><td>Throughput</td><td>"+displayAPI.networkData[i].throughput+" Mbps</td></tr>";
+        }
+    }
 
+    table.innerHTML=tableData;
+    var br=document.createElement("br");
 
-    console.log(data);
+    sideNavLeft.appendChild(br);
+    sideNavLeft.appendChild(networkHealthInfo);
+    sideNavLeft.appendChild(br.cloneNode());
+    sideNavLeft.appendChild(table);
+}
+function displayRecommendation(data,sideNavLeft){
+    var divRec = document.createElement("div");
+    var subHead = document.createElement("h5");
+    subHead.innerHTML="<img src='resources/images/icons/advise-icon.svg'></img>Recommendation";
+    var recReason = document.createElement("p");
+    recReason.innerHTML=data.item.recommendReason;
+    recReason.style.color="red";
+    var recMessage = document.createElement("p");
+    recMessage.innerHTML=data.item.recommendMessage;
+    var recAction = document.createElement("button");
+    recAction.innerHTML=data.item.recommendAction;
+    recAction.setAttribute("class","buttonTicket");
+    recAction.setAttribute("onclick","processAction(this)");
+    divRec.appendChild(subHead);
+    divRec.appendChild(recReason);
+    divRec.appendChild(recMessage);
+    divRec.appendChild(recAction);
+    sideNavLeft.appendChild(divRec);
+}
+function processAction(data){
+    var parent = data.parentElement;
+    parent.removeChild(data);
+    var pulsateDiv = document.createElement("div");
+    pulsateDiv.setAttribute("id","pulsateRecommendation");
+    pulsateDiv.setAttribute("style","{display:none;width: 50%;margin-left: 38%;}");
+    pulsateDiv.innerHTML="<img src='resources/images/login/gears.png'><br><span style='margin-left:5%;font-weight:bold;'>Processing...</span>";
+    parent.appendChild(pulsateDiv);
+
+    $("#pulsateRecommendation").css("display", "block").effect('pulsate', { times: 5 }, 1500, checkoutRecommendation);
+    function checkoutRecommendation(){
+        var ticketCreated= document.createElement("p");
+        ticketCreated.innerHTML="Ticket Created!"
+        var ticketDetails =document.createElement("p");
+        ticketDetails.innerHTML="Ticket Number = 0124AS031232";
+        parent.removeChild(pulsateDiv);
+        parent.appendChild(ticketCreated);
+        parent.appendChild(ticketDetails);
+    }
 }
 
+function getTableDataPorts(portData){
+    var tableData="<td>";
+    var lines = document.getElementsByTagName("line");
+    var connections = [];
+    for(var j=0;j<lines.length;j++){
+        if(lines[j].classList != "icon-line"){
+            if(lines[j].__data__.source.id ==portData.id||lines[j].__data__.target.id ==portData.id){
+                if(lines[j].__data__.source.id ==portData.id){
+                    if(lines[j].__data__.target.id ==data.id){
+                        continue;
+                    }else{
+                        connections.push(lines[j].__data__.target);
+                    }
+                }else {
+                    if(lines[j].__data__.source.id ==data.id){
+                        continue;
+                    }else{
+                        connections.push(lines[j].__data__.source);
+                    }
+                }
+            }
+        }
+
+    }
+    for(var k=0;k<connections.length;k++){
+        if(connections[k].item.kind == 'PointToPointCenter'){
+
+            for(var p=0;p<connections[k].item.ports.length;p++){
+                if(connections[k].item.ports[p]!=portData.id){
+                    tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].item.ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].item.ports[p]+"\")' onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+                }
+            }
+
+        }else if(connections[k].item.kind == 'Multilinkhub'){
+            tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
+            for(var p=0;p<connections[k].item.ports.length;p++){
+                if(connections[k].item.ports[p]!=portData.id){
+                    tableData+="<span onmouseout='resetPortInfo(\""+connections[k].item.ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].item.ports[p]+"\")' onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+                }
+            }
+        }
+    }
+    tableData+="</td>";
+    return tableData;
+}
+function resetPortInfo(data){
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    for(var i=0;i<portsInfo.length;i++){
+        if(portsInfo[i].__data__.id==data){
+            displayAPI.releaseNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+            portsInfo[i].style.display="none";
+        }
+    }
+}
+function displayPortInfo(data){
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    for(var i=0;i<portsInfo.length;i++){
+        if(portsInfo[i].__data__.id==data){
+            displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+            portsInfo[i].style.display="";
+        }
+    }
+}
 function sideNavClick(data){
     var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
     for(var i=0;i<portsInfo.length;i++){
         if(portsInfo[i].__data__.id==data){
             togglesidenavleft(portsInfo[i].__data__);
+            displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
         }
     }
 }
+
 
 
 
@@ -1288,6 +1475,7 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
 
     var searchTags=getSearchTags();
     $( "#searchText" ).autocomplete({
+        autoFocus: true,
         minLength:1,
         source: searchTags,
         open: function(event, ui){

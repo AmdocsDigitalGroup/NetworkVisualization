@@ -364,5 +364,27 @@ class QTCluster {
         }
         return this._numSites;
     }
+
+
+    _findNumPorts() {
+
+        var count=0;
+        for(let item in this.items){
+            if(this.items[item].kind === "Cluster"){
+                count += this.items[item].numPorts;
+            }else if(this.items[item].kind === "Port"){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    get numPorts() {
+        if(!this._numPorts){
+            this._numPorts = this._findNumPorts();
+        }
+        return this._numPorts;
+
+    }
 }
 //# sourceMappingURL=Quadtree.js.map

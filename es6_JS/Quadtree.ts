@@ -338,6 +338,7 @@ class QTCluster{
     items: Object;
     _coordinates: Point;
     _numSites: number;
+    _numPorts:number;
 
 
     constructor(id: number, items: Object){
@@ -412,4 +413,36 @@ class QTCluster{
         }
         return this._numSites;
     }
+
+
+    _findNumPorts(): number{
+
+        var count=0;
+        for(let item in this.items){
+            if(this.items[item].kind === "Cluster"){
+                count += this.items[item].numPorts;
+            }else if(this.items[item].kind === "Port"){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    get numPorts(): number{
+        if(!this._numPorts){
+            this._numPorts = this._findNumPorts();
+        }
+        return this._numPorts;
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
