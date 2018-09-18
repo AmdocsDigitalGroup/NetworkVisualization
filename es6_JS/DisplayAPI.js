@@ -159,27 +159,27 @@ class DisplayAPI {
        // var clustCont= d3.select(useTarget.parentElement)
 
 
-        var x = -120;
-        var y = -150;
+        // var x = -120;
+        // var y = -150;
 
 
 
       //  g.append("div").attr("style","overflow-y: scroll").attr("width", 240).attr("height", 130);
        // var container = d3.select("body").append("div").attr("id", "container");
 
-        window.requestAnimationFrame(function () {
-            console.log("Inside reqanimationframe");
-
-            var container = d3.select("body")
-
-            var rectangle = container.append("svg")
-                .attr("viewBox", "0,0,150,420")
-                .append("rect")
-                .attr("width", 150)
-                .attr("height", 420)
-                .attr("fill", "steelblue")
-                .attr("x", 0)
-                .attr("y", 0);
+        // window.requestAnimationFrame(function () {
+        //     console.log("Inside reqanimationframe");
+        //
+        //     var container = d3.select("body")
+        //
+        //     var rectangle = container.append("svg")
+        //         .attr("viewBox", "0,0,150,420")
+        //         .append("rect")
+        //         .attr("width", 150)
+        //         .attr("height", 420)
+        //         .attr("fill", "steelblue")
+        //         .attr("x", 0)
+        //         .attr("y", 0);
 
 
 
@@ -224,38 +224,39 @@ class DisplayAPI {
             for (var i = 0; i < clusterInfo.length; i++) {
                 var clusterData = clusterInfo[i].__data__.item.items;
                 // if(clusterData!=null) {
-                    for (item in clusterData) {
-                        var data = {};
-                        data['type'] = clusterData[item].kind;
-                        switch (clusterData[item].kind) {
-                            case 'Site':
-                                // clustCont.append("text").classed("removable network-metric", true)
-                                //     .attr("x", x + 40).attr("y", y + 38).text(clusterData[item].siteAlias);
-                                break;
+                for (item in clusterData) {
+                    var data = {};
+                    data['type'] = clusterData[item].kind;
+                    switch (clusterData[item].kind) {
+                        case 'Site':
+                            // clustCont.append("text").classed("removable network-metric", true)
+                            //     .attr("x", x + 40).attr("y", y + 38).text(clusterData[item].siteAlias);
+                            break;
 
-                            case 'Port':
-                                // console.log("cluster ports" + clusterData[item].id);
+                        case 'Port':
+                            // console.log("cluster ports" + clusterData[item].id);
 
-                                // container.append("text").classed("removable network-metric", true)
-                                //     .attr("x", x + 40).attr("y", y+48).text(clusterData[item].id);
-                                break;
+                            // container.append("text").classed("removable network-metric", true)
+                            //     .attr("x", x + 40).attr("y", y+48).text(clusterData[item].id);
+                            break;
 
-                            case 'Adiod':
-                                console.log("Adiod" + clusterData[item].id);
-                                break;
+                        case 'Adiod':
+                            console.log("Adiod" + clusterData[item].id);
+                            break;
 
-                            case 'Flexware':
-                                console.log("Flexware" + clusterData[item].id);
+                        case 'Flexware':
+                            console.log("Flexware" + clusterData[item].id);
 
-                                break;
-                            default:
-                                break;
-                        }
-                        y = y + 20;
+                            break;
+                        default:
+                            break;
                     }
+                    // y = y + 20;
                 }
+            }
+               // }
            // }
-        });
+       // });
     }
 
 
@@ -460,6 +461,8 @@ class DisplayAPI {
             var name;
             if ((ev.item.kind == 'Site') || (ev.item.kind == "Site_Prequalified"))
                 name = ev.item.siteAlias; //allows displaying site Alias over unique id
+            else if (ev.item.kind == 'PointToPointCenter')
+                name = ev.item.id;
             else
                 name = ev.item.kind + ": " + ev.id;
             titlePanel.append("text").text(name)
@@ -557,6 +560,53 @@ class DisplayAPI {
                     .attr("y", ((2 * radius * 0.866) + 3 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
                 numAttr = 3;
             }
+
+            /** PTP text */
+            if (ev.item.kind == 'PointToPointCenter') {
+                infoPanel.append("text").text("PTP Information").classed("text-heading", true)
+                    .attr("y", ((2 * radius * 0.866) + 5)).attr("x", (radius + 20)).classed("infoBox", true);
+                infoPanel.append("text").text("Asset id: " + ev.item.assetId)
+                    .attr("y", ((2 * radius * 0.866) + 5 + 1 * spacing)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 1: " + ev.item.ports[0])
+                    .attr("y", ((2 * radius * 0.866) + 2 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 2: " + ev.item.ports[1])
+                    .attr("y", ((2 * radius * 0.866) + 3 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                numAttr = 3;
+
+            }
+
+            /** MTP text */
+            if (ev.item.kind == 'Multilinkhub') {
+                infoPanel.append("text").text("MTP Information").classed("text-heading", true)
+                    .attr("y", ((2 * radius * 0.866) + 5)).attr("x", (radius + 20)).classed("infoBox", true);
+                infoPanel.append("text").text("Asset id: " + ev.item.assetId)
+                    .attr("y", ((2 * radius * 0.866) + 5 + 1 * spacing)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 1: " + ev.item.ports[0])
+                    .attr("y", ((2 * radius * 0.866) + 2 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 2: " + ev.item.ports[1])
+                    .attr("y", ((2 * radius * 0.866) + 3 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 3: " + ev.item.ports[2])
+                    .attr("y", ((2 * radius * 0.866) + 4 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                infoPanel.append("text").text("Port 4: " + ev.item.ports[3])
+                    .attr("y", ((2 * radius * 0.866) + 5 * spacing + 5)).attr("x", (radius + 25)).classed("infoBox", true);
+                numAttr = 5;
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             /** Since All displays currently have the same number of fields, all of them 
              * are created here with only radius and spacing as variable fields.
              * The loop keeps it generic for more or less fields later
@@ -692,7 +742,7 @@ class DisplayAPI {
                     }
                     displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
 
-
+                    displayAPI.displayNodeInfo(d, d3.event.target);
                    // displayAPI.displayNetworkHealth(d3.event.target);
 
 

@@ -339,6 +339,7 @@ class QTCluster{
     _coordinates: Point;
     _numSites: number;
     _numPorts:number;
+    _numAdiod:number;
 
 
     constructor(id: number, items: Object){
@@ -414,7 +415,6 @@ class QTCluster{
         return this._numSites;
     }
 
-
     _findNumPorts(): number{
 
         var count=0;
@@ -436,12 +436,26 @@ class QTCluster{
 
     }
 
+    _findNumAdiod(): number{
 
+        var count=0;
+        for(let item in this.items){
+            if(this.items[item].kind === "Cluster"){
+                count += this.items[item].numAdiod;
+            }else if(this.items[item].kind === "Adiod"){
+                count += 1;
+            }
+        }
+        return count;
+    }
 
+    get numAdiod(): number{
+        if(!this._numAdiod){
+            this._numAdiod = this._findNumAdiod();
+        }
+        return this._numAdiod;
 
-
-
-
+    }
 
 
 

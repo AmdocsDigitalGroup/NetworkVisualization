@@ -1046,32 +1046,39 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             return d.item.numSites;
            // return d.item.numPorts;
 
-        }).attr("y", 5).style("opacity", 1);
+        }).attr("y", -14).attr("x", 2).style("opacity", 1);
 
         //.style opacity may be changed later, but currently is to prevent the fade-out-full class from removeing the number on hover
 
-       // WORKING DISPLAY OF NUM OF PORTS
+
+        //WORKING PORT DISPLAY
+
         clusters.append("use").attr("xlink:href", "#vertex-Port").attr("y", 14).attr("x",6)
+
         clusters.append("text").classed("portcluster-text", true).text(function (d) {
             // return d.item.numSites;
+            // if(d.item.numAdiod > 0){
             return d.item.numPorts;
-
+            // }
         }).attr("y", 24).attr("x",12).style("opacity", 1);
 
 
-         // clusters.append("use").attr("xlink:href", "#vertex-Port").attr("y", 16)
 
+        //WORKING ADIOD DISPLAY
 
-       // var clusterPort = clusters.append("rectangle").classed("cluster-port").attr("y",16).style("opacity",1);
-       //
-       //  clusterPort.append("text").classed("cluster-text", true).text(function (d) {
-       //      // return d.item.numSites;
-       //      return d.item.numPorts;
-       //
-       //  }).attr("y", 16).style("opacity", 1);
+        clusters.append("use").attr("xlink:href", "#vertex-cloud").style("display", function (d){
+            if(d.item.numAdiod > 0){
+                return "";
+            }
+            else{
+                return "none";
+            }}).attr("y", 11).attr("x",-29);
 
-
-
+        clusters.append("text").classed("portcluster-text", true).text(function (d) {
+            if(d.item.numAdiod > 0){
+                return d.item.numAdiod;
+             }
+        }).attr("y", 9).attr("x",-31);
 
 
         var sites = added.filter("g.Site");
@@ -1081,11 +1088,14 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         }).attr("x", 15).attr("y", -10);
         sites.append("path").classed("SiteLabel", true).attr("d", "M -40 -34.6 L -20 -34.6 L -10 -17.3");
 
+
+
+
         var ports = added.filter("g.Port");
         ports.append("text").classed("PortName",true).text(function (d){
            // console.log("printing d.item" + JSON.stringify(d.item.id));
             return d.item.id;
-        }).attr("x", 15).attr("y", -10);
+        }).attr("x", 15).attr("y", -10).style('display', 'none');
 
         //acessiblity title?
         added.append("title").text(function (d) {
@@ -1095,11 +1105,15 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         added.classed("vertices", true);
 
         if(document.getElementById("PTPToggleView").checked == true){
+
             togglealertsdefault();
-            labelToggle();
+            checkLabelToggle();
+            //labelToggle();
             checkTogglePTPAndLines();
             checkTogglePort();
+       // toggleclick();
            // checkToggleMTP();
+
 
         }
         else{
@@ -1109,7 +1123,8 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             checkLabelToggle();
             checkTogglePTPAndLines();
             checkTogglePort();
-            //checkToggleMTP();
+           // toggleclick();
+           // checkToggleMTP();
 
            // checkalertlines();
 

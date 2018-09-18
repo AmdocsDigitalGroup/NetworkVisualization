@@ -87,7 +87,7 @@
                 <text x="40" y="20" fill="white"> Show/Hide Unused Ports </text>
             </g>
             <g class="staticButton" id="recommendations-button">
-                <image xlink:href="resources/images/icons/advise-icon.svg" width="40px" height="40px" x="7"></image>
+                <image xlink:href="resources/images/icons/advise-icon-orange-light.svg" width="40px" height="40px" x="7"></image>
                 <text x="40" y="20" fill="white"> Toggle Recommendations View</text>
             </g>
             <g id="alert-icon">
@@ -161,13 +161,15 @@
                 <g>
                     <circle cx="8" cy="8" r="22" class="Flexware"></circle>
                 </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.svg" width="32" height="32" x="-8" y="-8"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/internet1.svg" width="32" height="32" x="-8" y="-8"></image>
             </g>
 
 
             <g id="vertex-Cluster">
-                <circle r="40" style="stroke:white;stroke-width:1px;fill:rgba(255,255,255, 0.3);"></circle>
-                <circle r="15" style="stroke-width:0;fill:#5599ff"></circle>
+                <!--<circle r="40" style="stroke:white;stroke-width:1px;fill:rgba(255,255,255, 0.3);"></circle>-->
+                <!--<circle r="15" style="stroke-width:0;fill:#5599ff"></circle>-->
+
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/location.svg" width="50" height="50" x="-23" y='-35' fill="#17f3fb" style="-webkit-animation:none;"></image>
             </g>
             <g id="vertex-Site" >
                 <!--<g>-->
@@ -215,7 +217,7 @@
                 <g>
                     <circle  r="20" class="Adiod"></circle>
                 </g>
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/ADIOD.svg"  width="92" height="92" x="-33" y="-12"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/internet1.svg"  width="92" height="92" x="-33" y="-12"></image>
             </g>
 
 
@@ -231,7 +233,7 @@
                 <!--<g>-->
                     <!--<circle  r="20" class="Adiod"></circle>-->
                 <!--</g>-->
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/adiod-seperate1.svg"  width="92" height="92" x="-25" y="-14"></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/internet1.svg"  width="92" height="92" x="-52" y="-10"></image>
             </g>
 
 
@@ -336,10 +338,10 @@
                 <image alt="&#xf1ad;" xlink:href="resources/images/icons/RJ-45(4).png" width="18" height="18" x="-8.5" y="-8"></image>
             </g>
             <g id="recommendation-icon" style="transform: rotateY(180deg)">
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/advise-icon.svg" width="30" height="30" x="-10" y='-10'></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/advise-icon-orange-light.svg" width="20" height="20" x="-15" y='-8'></image>
             </g>
 			<g id="recommendation-icon-large" style="transform: rotateY(180deg)">
-                <image alt="&#xf1ad;" xlink:href="resources/images/icons/advise-iconred.svg" width="30" height="30" x="-10" y='-10'></image>
+                <image alt="&#xf1ad;" xlink:href="resources/images/icons/advise-icon-orange-light.svg" width="30" height="30" x="-10" y='-10'></image>
             </g>
         </defs>
     </svg>
@@ -437,7 +439,9 @@
         <!--<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>-->
         <div id="slidebtn" class="slideBtn" style="opacity: 0" onclick="togglesidenav()">&#9776;</div>
 
-        <a class="rightarrow" onclick="togglesidenav()" href="#" > &gt; &gt; &gt;</a>
+        <div class="modal-close" aria-label="close" tabindex="0" onclick="togglesidenav()" >X</div>
+
+        <!--<a class="rightarrow" onclick="togglesidenav()" href="#" > &gt; &gt; &gt;</a>-->
 
         <a href="#">All</a>
         <label for="PTPToggleView" class="btn-switch-label">

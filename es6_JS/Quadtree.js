@@ -160,6 +160,7 @@ class QTNode {
     }
     _makeCluster() {
         return new QTCluster(this.nodeId, this.list(-1));
+
     }
     resolve(itemId, depth) {
         if (depth === -1) {
@@ -386,5 +387,32 @@ class QTCluster {
         return this._numPorts;
 
     }
+
+
+    _findNumAdiod(){
+
+        var count=0;
+        for(let item in this.items){
+            if(this.items[item].kind === "Cluster"){
+                count += this.items[item].numAdiod;
+            }else if(this.items[item].kind === "Adiod"){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    get numAdiod() {
+        if(!this._numAdiod){
+            this._numAdiod = this._findNumAdiod();
+        }
+        return this._numAdiod;
+
+    }
+
+
+
+
+
 }
 //# sourceMappingURL=Quadtree.js.map
