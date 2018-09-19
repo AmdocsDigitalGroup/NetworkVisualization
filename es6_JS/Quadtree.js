@@ -348,6 +348,7 @@ class QTCluster {
                 count += this.items[item].numSites;
             }
             else if (this.items[item].kind === "Site") {
+                console.log("Site Names" + JSON.stringify(this.items[item]));
                 count += 1;
             }
         }

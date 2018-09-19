@@ -1217,12 +1217,12 @@ function togglesidenavleft(data){
         sideNavLeft.style.paddingLeft = "0";
         sideNavLeft.style.paddingRight = "0";
         slideBtn.style.display="none";
-    }
-    else if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
-        sideNavLeft.style.width = "0";
-        sideNavLeft.style.paddingLeft = "0";
-        sideNavLeft.style.paddingRight = "0";
-        slideBtn.style.display="none";
+   // }
+    // else if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
+    //     sideNavLeft.style.width = "0";
+    //     sideNavLeft.style.paddingLeft = "0";
+    //     sideNavLeft.style.paddingRight = "0";
+    //     slideBtn.style.display="none";
     }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
@@ -1313,6 +1313,8 @@ function togglesidenavleft(data){
                 sideNavLeft.appendChild(hr);
                 if(data.item.recommendMessage){
                     //port recommendation
+                    displayRecommendation(data,sideNavLeft);
+
                 }
                 var portsConnectedInfo = document.createElement("h5");
                 portsConnectedInfo.innerHTML="Ports Connected";
@@ -1322,15 +1324,16 @@ function togglesidenavleft(data){
                 tableData=tableData+getTableDataPorts(data)+"</tr>";
                 table.innerHTML=tableData;
                 var br=document.createElement("br");
-                portsConnectedInfo.appendChild(br);
-                portsConnectedInfo.appendChild(table);
+                //sideNavLeft.appendChild(br);
                 sideNavLeft.appendChild(portsConnectedInfo);
+                sideNavLeft.appendChild(table);
+                
 
                 break;
             case 'PointToPointCenter':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/NOD-point-to-point-06.png'></img>PTP Center "+data.item.linkName;
+                head.innerHTML="<img class='portHead' src='resources/images/icons/PTPImage.png'></img>PTP Center "+data.item.linkName;
                 sideNavLeft.appendChild(head);
                 if(data.item.recommendMessage){
                     displayRecommendation(data,sideNavLeft);
@@ -1338,11 +1341,22 @@ function togglesidenavleft(data){
                     displayNetworkHealthInfo(data,sideNavLeft);
 
                 }
+                var portsConnectedInfo = document.createElement("h5");
+                portsConnectedInfo.innerHTML="Ports Connected";
+                table = document.createElement("table");
+                table.setAttribute("id","tableDisplay");
+                tableData="<tr>";
+                tableData=tableData+getTableDataPorts(data.item)+"</tr>";
+                table.innerHTML=tableData;
+                var br=document.createElement("br");
+                sideNavLeft.appendChild(br);
+                sideNavLeft.appendChild(portsConnectedInfo);
+                sideNavLeft.appendChild(table);
                 break;
             case "Multilinkhub":
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/NOD-EVC-connection-08.png'></img> Multilinkhub "+data.item.linkName;
+                head.innerHTML="<img class='portHead' src='resources/images/icons/evc.png'></img> Multilinkhub "+data.item.linkName;
                 sideNavLeft.appendChild(head);
                 var br=document.createElement("br");
                 sideNavLeft.appendChild(br);
@@ -1351,56 +1365,93 @@ function togglesidenavleft(data){
                 }else{
                     displayNetworkHealthInfo(data,sideNavLeft);
                 }
+                   var portsConnectedInfo = document.createElement("h5");
+                portsConnectedInfo.innerHTML="Ports Connected";
+                table = document.createElement("table");
+                table.setAttribute("id","tableDisplay");
+                tableData="<tr>";
+                tableData=tableData+getTableDataPorts(data.item)+"</tr>";
+                
+                                table.innerHTML=tableData;
+                var br=document.createElement("br");
+                sideNavLeft.appendChild(br);
+                sideNavLeft.appendChild(portsConnectedInfo);
+                sideNavLeft.appendChild(table);
                 break;
             case "Cluster":
-                 var head = document.createElement("h4");
-                //head.setAttribute("id", "chosenHead");
-                //head.innerHTML="<img src='resources/images/icons/location.svg' ></img>";
-                head.innerHTML="Cluster Information";
+
+
                  var subHead = document.createElement("h5");
-                // subHead.innerHTML="Site ID : "+data.item.siteId;
-                // var subContent = document.createElement("div");
-                // subContent.style.backgroundColor = "rgb(38, 38, 38)";
+                 subHead.innerHTML="Cluster ID : " + data.item.id + "<br>";
                  var hr = document.createElement("hr");
-                // var table = document.createElement("table");
-                // var divTable = document.createElement("div");
-                // var tableData = "<tr><td style='width: 30%'>Address</td><td>"+data.item.siteAddress+"</td></tr>";
-                // tableData+="<tr><td style='width: 30%'>Location ID</td><td>"+data.item.locationId+"</td></tr>";
-                // tableData+="<tr><td style='width: 30%'>SDN Capable</td><td>"+data.item.sdnCapable+"</td></tr>";
-                // table.innerHTML = tableData;
-                // sideNavLeft.appendChild(head);
-                // sideNavLeft.appendChild(subHead);
-                // sideNavLeft.appendChild(hr);
-                // divTable.appendChild(table);
-                // sideNavLeft.appendChild(divTable);
+
+                 //Site DropDown
+                  var sitedropdown = document.createElement("button");
+                sitedropdown.className='dropdown-btn-left-cluster';
+                sitedropdown.innerHTML = "Sites";
+                sitedropdown.addEventListener('click', masterEventHandler,false);
+                  var isite = document.createElement("i");
+                isite.className='fa fa-caret-down';
+                  var divsitedropdown = document.createElement("div");
+                divsitedropdown.className='dropdown-container-left';
+                divsitedropdown.style.cssText='display:block';
+
+                //Port Dropdown
+                var portdropdown = document.createElement("button");
+                portdropdown.className='dropdown-btn-left-cluster';
+                portdropdown.innerHTML = "Ports";
+                portdropdown.addEventListener('click', masterEventHandler,false);
+                var iport = document.createElement("i");
+                iport.className='fa fa-caret-down';
+
+                var divportdropdown = document.createElement("div");
+                divportdropdown.className='dropdown-container-left';
+                divportdropdown.style.cssText='display:block';
+
+                //Services Dropdown
+                var srvcdropdown = document.createElement("button");
+                srvcdropdown.className='dropdown-btn-left-cluster';
+                srvcdropdown.innerHTML = "Services";
+                srvcdropdown.addEventListener('click', masterEventHandler,false);
+                var iservice = document.createElement("i");
+               // iservice.className='fa fa-caret-down';
+
+                var divsrvcdropdown = document.createElement("div");
+                divsrvcdropdown.className='dropdown-container-left';
+                divsrvcdropdown.style.cssText='display:block';
 
 
-                var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
-                for (var i = 0; i < clusterInfo.length; i++) {
-                    var clusterData = clusterInfo[i].__data__.item.items;
+
+
+
+                var clusterData = data.item.items;
                     for (item in clusterData) {
                         var data = {};
                         data['type'] = clusterData[item].kind;
                         switch (clusterData[item].kind) {
                             case 'Site':
-                               console.log(clusterData[item].siteAlias);
-                                subHead.innerHTML=subHead.innerHTML + "Site : "+clusterData[item].siteAlias + "<br>";
+
+                               // subHead.innerHTML=subHead.innerHTML + "Site : "+clusterData[item].siteAlias + "<br>";
+                                divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
 
                                 break;
 
                             case 'Port':
-                                subHead.innerHTML= subHead.innerHTML + "Port : "+clusterData[item].id + "<br>";
-                                 console.log("cluster ports" + clusterData[item].id);
+                               // subHead.innerHTML= subHead.innerHTML + "Port : "+clusterData[item].id + "<br>";
+                                divportdropdown.innerHTML+=clusterData[item].id + "<br>";
+
                                 break;
 
                             case 'Adiod':
-                                subHead.innerHTML= subHead.innerHTML + "Adiod : "+clusterData[item].id + "<br>";
-                                console.log("Adiod" + clusterData[item].id);
+                               // subHead.innerHTML= subHead.innerHTML + "Adiod : "+clusterData[item].id + "<br>";
+                                divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
+
                                 break;
 
                             case 'Flexware':
-                                subHead.innerHTML= subHead.innerHTML + "Flexware : "+clusterData[item].id + "<br>";
-                                console.log("Flexware" + clusterData[item].id);
+                               // subHead.innerHTML= subHead.innerHTML + "Flexware : "+clusterData[item].id + "<br>";
+                                divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
+
 
                                 break;
                             default:
@@ -1408,12 +1459,27 @@ function togglesidenavleft(data){
                         }
 
                     }
-                }
-                sideNavLeft.appendChild(head);
+               // }
+
+                if(divsrvcdropdown.innerHTML==""){
+                    srvcdropdown.innerHTML = "";
+                    }
+
+
                 sideNavLeft.appendChild(subHead);
                 sideNavLeft.appendChild(hr.cloneNode());
 
+                sitedropdown.appendChild(isite);
+                 sideNavLeft.appendChild(sitedropdown);
+                sideNavLeft.appendChild(divsitedropdown);
 
+                portdropdown.appendChild(iport);
+                sideNavLeft.appendChild(portdropdown);
+                sideNavLeft.appendChild(divportdropdown);
+
+                portdropdown.appendChild(iservice);
+                sideNavLeft.appendChild(srvcdropdown);
+                sideNavLeft.appendChild(divsrvcdropdown);
 
 
 
@@ -1438,7 +1504,12 @@ function displayNetworkHealthInfo(data,sideNavLeft){
     for(var i=0;i<displayAPI.networkData.length;i++){
         if(data.item.linkName==displayAPI.networkData[i].id){
             tableData+="<tr><td>Network Latency</td><td>"+displayAPI.networkData[i].latency+"ms roundtrip</td></tr>";
-            tableData+="<tr><td>Packet Loss</td><td>"+displayAPI.networkData[i].pktloss+"%</td></tr>";
+            if(displayAPI.networkData[i].pktloss>10){
+                tableData+="<tr><td>Packet Loss</td><td style='color:red;font-weight: bold;'>"+displayAPI.networkData[i].pktloss+"% <img class='alertIconTable' src='resources/images/icons/NOD-Portal-alarm.png'></img></td></tr>";
+            }else{
+                tableData+="<tr><td>Packet Loss</td><td>"+displayAPI.networkData[i].pktloss+"%</td></tr>";
+            }
+            
             tableData+="<tr><td>Throughput</td><td>"+displayAPI.networkData[i].throughput+" Mbps</td></tr>";
         }
     }
@@ -1448,7 +1519,7 @@ function displayNetworkHealthInfo(data,sideNavLeft){
 
     sideNavLeft.appendChild(br);
     sideNavLeft.appendChild(networkHealthInfo);
-    sideNavLeft.appendChild(br.cloneNode());
+    //sideNavLeft.appendChild(br.cloneNode());
     sideNavLeft.appendChild(table);
 }
 function displayRecommendation(data,sideNavLeft){
@@ -1460,17 +1531,63 @@ function displayRecommendation(data,sideNavLeft){
     recReason.style.color="red";
     var recMessage = document.createElement("p");
     recMessage.innerHTML=data.item.recommendMessage;
-    var recAction = document.createElement("button");
-    recAction.innerHTML=data.item.recommendAction;
-    recAction.setAttribute("class","buttonTicket");
-    recAction.setAttribute("onclick","processAction(this)");
     divRec.appendChild(subHead);
     divRec.appendChild(recReason);
     divRec.appendChild(recMessage);
-    divRec.appendChild(recAction);
+    
+    switch(data.item.kind){
+        case 'PointToPointCenter':
+        case 'Multilinkhub':
+            var recAction = document.createElement("button");
+            recAction.innerHTML=data.item.recommendAction;
+            recAction.setAttribute("class","buttonTicket");
+            recAction.setAttribute("onclick","processAction(this)");
+            divRec.appendChild(recAction);
+            break;
+        case 'Port':
+            var recMessage2 = document.createElement("p");
+            recMessage2.setAttribute("id","portBandwidths");
+            recMessage2.setAttribute("onclick","bandwidthClick(this)");
+            recMessage2.innerHTML="<input type='radio' name='bandwidth' id='' value='$1823.86'>3000 Mbps (best)<br><input type='radio' name='bandwidth' id='' value='$1550.00'>2500 Mbps (recommended) <br><input type='radio' name='bandwidth' id=''value='$1273.61'>2000 Mbps (minimum recquired)<br>";
+            divRec.appendChild(recMessage2);
+            divRec.appendChild(document.createElement("br"));
+            break;
+    }
+    
+    
     sideNavLeft.appendChild(divRec);
 }
+
+function bandwidthClick(child){
+    var parent=child.parentElement;
+    var temp=document.getElementById("billContent");
+    if(temp!=null){
+        temp.remove();
+    }
+    var billContent = document.createElement("div");
+    billContent.setAttribute("id","billContent");
+    var payment="<p>One-Time charge : $1000.00</p><p>Recurring Payment charge :"+$('input[name=bandwidth]:checked', '#portBandwidths').val()+"</p>";
+    var terms="<div id='dummyTerms'><div style='position:absolute'><i class='material-icons accept' style='font-size:20px'>done</i></div><span style='margin-left:3em;font-weight: bold;'>Accept Terms & Conditions</span><br><div style='position:absolute'> <i class='material-icons' style='font-size:20px'>done</i></div><span style='margin-left:3em;font-weight: bold;'>Send Notification</span></div>";
+    billContent.innerHTML=payment+terms;
+    var recAction = document.createElement("button");
+    recAction.innerHTML="Review";
+    recAction.setAttribute("class","buttonTicket");
+    recAction.setAttribute("onclick","processAction(this)");
+    billContent.appendChild(recAction);
+    billContent.appendChild(document.createElement("br"));
+    parent.appendChild(billContent);
+
+}
+
 function processAction(data){
+    var id="",details="";
+    if(data.innerHTML=="Review"){
+        id="Order Id = 0124AS031232";
+        details = "Order placed!";
+    }else{
+        id="Ticket Number = 0124AS031232";
+        details = "Ticket Created!";
+    }
     var parent = data.parentElement;
     parent.removeChild(data);
     var pulsateDiv = document.createElement("div");
@@ -1482,9 +1599,10 @@ function processAction(data){
     $("#pulsateRecommendation").css("display", "block").effect('pulsate', { times: 5 }, 1500, checkoutRecommendation);
     function checkoutRecommendation(){
         var ticketCreated= document.createElement("p");
-        ticketCreated.innerHTML="Ticket Created!"
+        ticketCreated.innerHTML=details;
         var ticketDetails =document.createElement("p");
-        ticketDetails.innerHTML="Ticket Number = 0124AS031232";
+        ticketDetails.innerHTML=id;
+        document.getElementById("dummyTerms").remove();
         parent.removeChild(pulsateDiv);
         parent.appendChild(ticketCreated);
         parent.appendChild(ticketDetails);
@@ -1531,6 +1649,8 @@ function getTableDataPorts(portData){
                     tableData+="<span onmouseout='resetPortInfo(\""+connections[k].item.ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].item.ports[p]+"\")' onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
                 }
             }
+        }else if(connections[k].item.kind == 'Port'){
+            tableData+="<span onmouseout='resetPortInfo(\""+connections[k].item.id+"\")' onmouseover='displayPortInfo(\""+connections[k].item.id+"\")' onclick='sideNavClick(\""+connections[k].item.id+"\")'>"+connections[k].item.id+"</span><br>";
         }
     }
     tableData+="</td>";
@@ -1612,15 +1732,19 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
             return false;
         },
         focus: function(event, ui){
+            togglesidenavleft(ui.item.data);
+            displayUIEffect(event, ui);
+            // Code to zoom in to the Site
+            //if(ui.item.latlong!=null)
+            // graph.fitBoundedMap(ui.item.latlong);
+            //return false;
+        },
+        select: function(event, ui){
+            
             displayUIEffect(event, ui);
             // if(ui.item.latlong!=null)
             //     graph.fitBoundedMap(ui.item.latlong);
-            return false;
-        },
-        select: function(event, ui){
-            displayUIEffect(event, ui);
-            if(ui.item.latlong!=null)
-                graph.fitBoundedMap(ui.item.latlong);
+            //return false;
         }
     });
 });
@@ -1660,6 +1784,7 @@ function getSearchTags(){
         data['value']=evcssInfo[i].__data__.item.kind+" ("+evcssInfo[i].__data__.item.linkName+")";
         data['ports']=evcssInfo[i].__data__.item.ports;
         data['itemInfo']=evcssInfo[i].__data__.item;
+        data['data']=evcssInfo[i].__data__;
         data['useTarget']=evcssInfo[i].childNodes[0];
         searchTags.push(data);
     }
@@ -1684,6 +1809,7 @@ function getSearchTags(){
         data['value']=EVCouterInfo[i].__data__.item.kind+" ("+EVCouterInfo[i].__data__.item.id+")";
         data['itemInfo']=EVCouterInfo[i].__data__.item;
         data['useTarget']=EVCouterInfo[i].childNodes[0];
+        data['data']=EVCouterInfo[i].__data__;
         searchTags.push(data);
     }
     /*
@@ -1717,6 +1843,7 @@ function getSearchTags(){
         for(item in clusterData){
             var data={};
             data['type']=clusterData[item].kind;
+            data['data']=clusterData[item];
             switch(clusterData[item].kind){
                 case 'Site':
                     if(clusterData[item].siteId!=null)
@@ -1800,6 +1927,18 @@ for (i = 0; i < dropdown.length; i++) {
             dropdownContent.style.display = "block";
         }
     });
+}
+
+function masterEventHandler(){
+
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+
 }
 
 
