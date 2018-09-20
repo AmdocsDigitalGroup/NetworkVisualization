@@ -1419,6 +1419,58 @@ article{
 
 }
 
+/***** Search Bar-Left Nav*****/
+
+#searchForm-left{
+
+ // position: fixed;
+  //position: relative
+  z-index: 12;
+ // top: -2vw;
+ // left: 28%;
+  //padding-top: 35px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: omnes_att_regular;
+  color: #ffffff;
+  padding-top: 0px;
+  position: absolute;
+  top: 1%;
+  left: 0.5vw;
+
+}
+
+input[type=search-left] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+  color: #fefee5;
+  background: #111 url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px #111;
+  padding: 9px 10px 9px 32px;
+  width: 9vw;
+  opacity: 0.8;
+  /* border: solid 1px #111; */
+  border-bottom: 2px solid #fefee563;
+  border-radius: 2em;
+
+}
+input {
+  outline: none;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+.h5{
+  margin-top: 28px !important;
+
+}
+
+
+
+
 /********Search Bar********/
 
 #searchForm{

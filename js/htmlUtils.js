@@ -1243,21 +1243,26 @@ function togglesidenavleft(data){
         slideBtn.innerHTML="x";
         slideBtn.style.display="";
         sideNavLeft.appendChild(slideBtn);
-        switch(data.item.kind){
+        var tempData;
+        if(data.item!=null)
+            tempData = data.item;
+        else
+            tempData = data;
+        switch(tempData.kind){
             case "Site":
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/location.svg' ></img>"+data.item.siteAlias;
+                head.innerHTML="<img src='resources/images/icons/location.svg' ></img>"+tempData.siteAlias;
                 var subHead = document.createElement("h5");
-                subHead.innerHTML="Site ID : "+data.item.siteId;
+                subHead.innerHTML="Site ID : "+tempData.siteId;
                 var subContent = document.createElement("div");
                 subContent.style.backgroundColor = "rgb(38, 38, 38)";
                 var hr = document.createElement("hr");
                 var table = document.createElement("table");
                 var divTable = document.createElement("div");
-                var tableData = "<tr><td style='width: 30%'>Address</td><td>"+data.item.siteAddress+"</td></tr>";
-                tableData+="<tr><td style='width: 30%'>Location ID</td><td>"+data.item.locationId+"</td></tr>";
-                tableData+="<tr><td style='width: 30%'>SDN Capable</td><td>"+data.item.sdnCapable+"</td></tr>";
+                var tableData = "<tr><td style='width: 30%'>Address</td><td>"+tempData.siteAddress+"</td></tr>";
+                tableData+="<tr><td style='width: 30%'>Location ID</td><td>"+tempData.locationId+"</td></tr>";
+                tableData+="<tr><td style='width: 30%'>SDN Capable</td><td>"+tempData.sdnCapable+"</td></tr>";
                 table.innerHTML = tableData;
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
@@ -1303,15 +1308,15 @@ function togglesidenavleft(data){
             case 'Port':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/newport.svg'></img>"+"Port "+data.item.id;
+                head.innerHTML="<img src='resources/images/icons/newport.svg'></img>"+"Port "+tempData.id;
                 var subHead = document.createElement("h6");
-                subHead.innerHTML=data.item.ownerSite.item.siteName+" | "+data.item.ownerSite.item.siteAlias;
+                subHead.innerHTML=tempData.ownerSite.item.siteName+" | "+tempData.ownerSite.item.siteAlias;
 
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
                 var hr = document.createElement("hr");
                 sideNavLeft.appendChild(hr);
-                if(data.item.recommendMessage){
+                if(tempData.recommendMessage){
                     //port recommendation
                     displayRecommendation(data,sideNavLeft);
 
@@ -1333,9 +1338,9 @@ function togglesidenavleft(data){
             case 'PointToPointCenter':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img class='portHead' src='resources/images/icons/PTPImage.png'></img>PTP Center "+data.item.linkName;
+                head.innerHTML="<img class='portHead' src='resources/images/icons/PTPImage.png'></img>PTP Center "+tempData.linkName;
                 sideNavLeft.appendChild(head);
-                if(data.item.recommendMessage){
+                if(tempData.recommendMessage){
                     displayRecommendation(data,sideNavLeft);
                 }else{
                     displayNetworkHealthInfo(data,sideNavLeft);
@@ -1346,7 +1351,7 @@ function togglesidenavleft(data){
                 table = document.createElement("table");
                 table.setAttribute("id","tableDisplay");
                 tableData="<tr>";
-                tableData=tableData+getTableDataPorts(data.item)+"</tr>";
+                tableData=tableData+getTableDataPorts(tempData)+"</tr>";
                 table.innerHTML=tableData;
                 var br=document.createElement("br");
                 sideNavLeft.appendChild(br);
@@ -1356,11 +1361,11 @@ function togglesidenavleft(data){
             case "Multilinkhub":
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img class='portHead' src='resources/images/icons/evc.png'></img> Multilinkhub "+data.item.linkName;
+                head.innerHTML="<img class='portHead' src='resources/images/icons/evc.png'></img> Multilinkhub "+tempData.linkName;
                 sideNavLeft.appendChild(head);
                 var br=document.createElement("br");
                 sideNavLeft.appendChild(br);
-                if(data.item.recommendMessage){
+                if(tempData.recommendMessage){
                     displayRecommendation(data,sideNavLeft);
                 }else{
                     displayNetworkHealthInfo(data,sideNavLeft);
@@ -1370,7 +1375,7 @@ function togglesidenavleft(data){
                 table = document.createElement("table");
                 table.setAttribute("id","tableDisplay");
                 tableData="<tr>";
-                tableData=tableData+getTableDataPorts(data.item)+"</tr>";
+                tableData=tableData+getTableDataPorts(tempData)+"</tr>";
                 
                                 table.innerHTML=tableData;
                 var br=document.createElement("br");
@@ -1380,9 +1385,16 @@ function togglesidenavleft(data){
                 break;
             case "Cluster":
 
+                var form = document.createElement("form");
+                form.setAttribute("id", "searchForm-left");
+                var input = document.createElement("input");
+                input.setAttribute("type","search-left");
+                input.setAttribute("placeholder","Search");
+                input.setAttribute("id","searchText");
+
 
                  var subHead = document.createElement("h5");
-                 subHead.innerHTML="Cluster ID : " + data.item.id + "<br>";
+                 subHead.innerHTML="<br>" +"Cluster ID : " + tempData.id + "<br>" +"<br>";
                  var hr = document.createElement("hr");
 
                  //Site DropDown
@@ -1424,33 +1436,35 @@ function togglesidenavleft(data){
 
 
 
-                var clusterData = data.item.items;
+                var clusterData = tempData.items;
                     for (item in clusterData) {
                         var data = {};
                         data['type'] = clusterData[item].kind;
                         switch (clusterData[item].kind) {
                             case 'Site':
 
-                               // subHead.innerHTML=subHead.innerHTML + "Site : "+clusterData[item].siteAlias + "<br>";
-                                divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
+                                subHead.innerHTML=subHead.innerHTML + "Site : "+clusterData[item].siteAlias + "<br>";
+                               // divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
+                                //divsitedropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].siteAlias+"')\">"+clusterData[item].siteAlias + "</p>";
 
                                 break;
 
                             case 'Port':
-                               // subHead.innerHTML= subHead.innerHTML + "Port : "+clusterData[item].id + "<br>";
-                                divportdropdown.innerHTML+=clusterData[item].id + "<br>";
+                                subHead.innerHTML= subHead.innerHTML + "Port : "+clusterData[item].id + "<br>";
+                               // divportdropdown.innerHTML+=clusterData[item].id + "<br>";
+                               // divportdropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].id+"')\">"+clusterData[item].id + "</p>";
 
                                 break;
 
                             case 'Adiod':
-                               // subHead.innerHTML= subHead.innerHTML + "Adiod : "+clusterData[item].id + "<br>";
-                                divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
+                                subHead.innerHTML= subHead.innerHTML + "Adiod : "+clusterData[item].id + "<br>";
+                               // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
 
                                 break;
 
                             case 'Flexware':
-                               // subHead.innerHTML= subHead.innerHTML + "Flexware : "+clusterData[item].id + "<br>";
-                                divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
+                                subHead.innerHTML= subHead.innerHTML + "Flexware : "+clusterData[item].id + "<br>";
+                               // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
 
 
                                 break;
@@ -1465,30 +1479,26 @@ function togglesidenavleft(data){
                     srvcdropdown.innerHTML = "";
                     }
 
+                form.appendChild(input);
+                sideNavLeft.appendChild(form);
 
                 sideNavLeft.appendChild(subHead);
                 sideNavLeft.appendChild(hr.cloneNode());
 
-                sitedropdown.appendChild(isite);
-                 sideNavLeft.appendChild(sitedropdown);
-                sideNavLeft.appendChild(divsitedropdown);
-
-                portdropdown.appendChild(iport);
-                sideNavLeft.appendChild(portdropdown);
-                sideNavLeft.appendChild(divportdropdown);
-
-                portdropdown.appendChild(iservice);
-                sideNavLeft.appendChild(srvcdropdown);
-                sideNavLeft.appendChild(divsrvcdropdown);
 
 
-
+                // sitedropdown.appendChild(isite);
+                //  sideNavLeft.appendChild(sitedropdown);
+                // sideNavLeft.appendChild(divsitedropdown);
+                //
+                // portdropdown.appendChild(iport);
+                // sideNavLeft.appendChild(portdropdown);
+                // sideNavLeft.appendChild(divportdropdown);
+                //
+                // portdropdown.appendChild(iservice);
+                // sideNavLeft.appendChild(srvcdropdown);
+                // sideNavLeft.appendChild(divsrvcdropdown);
                 break;
-
-
-
-
-
             default:
                 break;
         }
@@ -1602,6 +1612,7 @@ function processAction(data){
         ticketCreated.innerHTML=details;
         var ticketDetails =document.createElement("p");
         ticketDetails.innerHTML=id;
+        if(document.getElementById("dummyTerms")!= null)
         document.getElementById("dummyTerms").remove();
         parent.removeChild(pulsateDiv);
         parent.appendChild(ticketCreated);
@@ -1676,12 +1687,51 @@ function displayPortInfo(data){
 }
 function sideNavClick(data){
     var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
+
     for(var i=0;i<portsInfo.length;i++){
         if(portsInfo[i].__data__.id==data){
             togglesidenavleft(portsInfo[i].__data__);
             displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
         }
     }
+
+
+    for (var i = 0; i < clusterInfo.length; i++) {
+        var clusterData = clusterInfo[i].__data__.item.items;
+        for (item in clusterData) {
+            var datacl = {};
+            datacl['type'] = clusterData[item].kind;
+            switch (clusterData[item].kind) {
+                case 'Site':
+
+                    if(clusterData[item].siteAlias == data){
+                        console.log("sidenavclick"+ JSON.stringify(data));
+                        console.log("sidenavclick" + clusterData[item].siteAlias);
+                        togglesidenavleft(clusterData[item]);
+                        displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
+                    }
+                    break;
+
+                case 'Port':
+
+
+                    if(clusterData[item].id == data){
+                        console.log("sidenavclick33"+ data);
+                        console.log("sidenavclick33" + clusterData[item].id);
+                        togglesidenavleft(clusterData[item]);
+                        displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
+
+
 }
 
 
