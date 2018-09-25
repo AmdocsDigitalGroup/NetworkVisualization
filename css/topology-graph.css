@@ -1153,6 +1153,222 @@ div#container {
   /*padding-right: 8px;*/
 /*}*/
 
+/*****New Left SideNav Default sideNavLeftDef    ******/
+
+.p{
+  padding-left: 64px;
+  margin-top: 11px;
+}
+
+
+
+body{
+  background-color:gray;
+  margin:0;
+  padding:0;
+}
+
+.sidenav  {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 12;
+  /*top: 0;*/
+  top:40px;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 14px;
+  opacity: 0.8;
+  overflow-y: scroll;
+}
+
+.sidenav a,.sideNavLeftDef a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  /*padding: 8px 8px 8px 32px;*/
+  text-decoration: none;
+  font-size: 18px;
+  font-family: omnes_att_regular;
+  /* font-family: "Omnes-ATT-W02-Medium";
+  font-family: "font-regular", "Omnes-ATT-W02";
+color: #818181; */
+  color: #fefee5;
+  display: block;
+  transition: 0.3s;
+  z-index: 12;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  border: none;
+  background: none;
+  width:100%;
+}
+
+.dropdown-btn-left-cluster{
+  padding: 6px 8px 6px 16px;
+  /*padding: 8px 8px 8px 32px;*/
+  text-decoration: none;
+  font-size: 18px;
+  font-family: omnes_att_regular;
+  /* font-family: "Omnes-ATT-W02-Medium";
+  font-family: "font-regular", "Omnes-ATT-W02";
+color: #818181; */
+  color: #fefee5;
+  display: block;
+  transition: 0.3s;
+  z-index: 12;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  border: none;
+  background: none;
+  width:100%;
+  padding-left: 0px !important;
+
+}
+
+
+
+
+
+.slideBtn {
+  transition: .5s;
+  position: fixed;
+  right: 0;
+  font-size:30px;
+  cursor:pointer;
+  margin-right:10px;
+  /*top:49px;*/
+}
+
+
+
+
+
+.sideNavLeftDef img{
+  width: 3vw !important;
+  height: 5vh;
+
+}
+.sideNavLeftDef .alertIconTable{
+  width: 15px !important;
+  height: 15px !important;
+}
+.sideNavLeftDef .portHead{
+  border-radius: 50%;
+  width:30px !important;
+  height:30px !important;
+  will-change: transform;
+  -webkit-animation: rotateImage 3s steps(90) infinite;
+  animation: rotateImage 3s steps(90) infinite;
+}
+.ptpTableIcon{
+
+  width: 1.5vw !important;
+  height: 3vh;
+  will-change: transform;
+  -webkit-animation: rotateImage 3s steps(90) infinite;
+  animation: rotateImage 3s steps(90) infinite;
+  /* border-radius: 50%;
+  background-color: #3C4957; */
+}
+.ptpTableIcon2{
+
+  width: 2vw !important;
+  height: 2vh;
+  will-change: transform;
+  -webkit-animation: rotateImage 3s steps(90) infinite;
+  animation: rotateImage 3s steps(90) infinite;
+  /* border-radius: 50%;
+  background-color: #3C4957; */
+}
+#tableDisplay{
+  width: 90%;
+
+}
+#tableDisplay table,#tableDisplay td,#tableDisplay th{
+  padding-left :5px;
+  border: 1px solid #3C4957;
+}
+
+.sideNavLeftDef table img{
+  width: 1.5vw !important;
+  height: 3vh;
+}
+
+.sideNavLeftDef hr{
+  width: 13vw !important;
+  border-top: 1px solid #eeeeee38;
+}
+
+.slideBtnLeft{
+  transition: .5s;
+  position: relative;
+  left: 12vw;
+  font-size:24px;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+.sideNavLeftDef  {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 12;
+  top: 40px;
+  left: 0;
+  background-color: rgb(17,17,17,0.8);
+  overflow-x: hidden;
+  transition: 0.5s;
+  color: #fefee5;
+  padding-right: 0px;
+}
+.sideNavLeftDef table{
+  font-size: 10px;
+
+}
+.sideNavLeftDef table tbody tr td{
+  padding-right: 5px;
+}
+
+.buttonTicket {
+  background-color: #fefee5;
+  border: none;
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+
+#main {
+  transition: .5s;
+  background-color:white;
+}
+
+section{
+  padding:20px;
+}
+section+section{
+  padding-top:0;
+}
+
+article{
+  border-top:1px solid green;
+  background-color:gray;
+}
+
+
+
+
+
+
 /*******New Left Sidenav********/
 
 body{
@@ -1196,8 +1412,6 @@ body{
     border: none;
     background: none;
     width:100%;
-
-
 }
 
 .dropdown-btn-left-cluster{
@@ -1307,6 +1521,18 @@ padding-left: 0px !important;
     border: 1px solid #3C4957;
 }
 
+#clustertableDisplay{
+  width: 5vw;
+  position: fixed;
+  top: 9vw;
+}
+
+#clustertableDisplay table, #clustertableDisplay td,#clustertableDisplay th{
+
+  padding-left :5px;
+  border: 1px solid #3C4957;
+}
+
 .sidenavLeft table img{
     width: 1.5vw !important;
     height: 3vh;
@@ -1340,7 +1566,7 @@ padding-left: 0px !important;
     padding-right: 0px;
 }
 .sidenavLeft table{
-    font-size: 10px;
+  font-size: 13px;
 
 }
 .sidenavLeft table tbody tr td{
@@ -1358,6 +1584,29 @@ padding-left: 0px !important;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.btnLegend{
+
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  color: #fefee5;
+  background: #111 no-repeat 9px center;
+  padding: 5px 10px 9px 5px;
+  width: 4vw;
+  opacity: 0.8;
+  border: solid 1px #111;
+  border-radius: 1em;
+  position: fixed;
+  top: 2.3vw;
+  height: 1.7vw;
+}
+
+.clusterHead{
+  top: 8vw;
+  position: fixed;
+
 }
 
 
@@ -1435,7 +1684,7 @@ article{
   color: #ffffff;
   padding-top: 0px;
   position: absolute;
-  top: 1%;
+  top: 5%;
   left: 0.5vw;
 
 }
@@ -1449,7 +1698,7 @@ input[type=search-left] {
   background: #111 url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
   border: solid 1px #111;
   padding: 9px 10px 9px 32px;
-  width: 9vw;
+  width: 12vw;
   opacity: 0.8;
   /* border: solid 1px #111; */
   border-bottom: 2px solid #fefee563;
@@ -1468,6 +1717,28 @@ input::-webkit-search-cancel-button {
 
 }
 
+/****Map Symbol Button***/
+
+.mapSymbol{
+  background-color: #111;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 20;
+  position: fixed;
+  width: 34px;
+  height: 7px;
+  left: 14vw;
+  top: 2.7vw;
+  opacity: 0.8;
+}
 
 
 

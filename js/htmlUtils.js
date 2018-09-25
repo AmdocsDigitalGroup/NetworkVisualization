@@ -13,8 +13,7 @@ function onLoad() {
     //     ptp[i].style.display="none";
     // for(var i=0;i<line.length;i++)
     //     line[i].style.display="none";
-
-
+    togglesidenavleft();
     if (!allowAnimations) {
         $("svg.topology").css("display", "none");
     }
@@ -1200,6 +1199,29 @@ function checkLabelToggle(){
 
 }
 
+function sidenavleftdefault(){
+
+    console.log("inside leg toggle");
+    var sideNavLeftDef = document.getElementById("sidenavleftdefault");
+    sideNavLeftDef.className='sideNavLeftDef';
+
+
+    sideNavLeftDef.style.cssText='width:16vw';
+    sideNavLeftDef.style.cssText='paddingLeft:10px';
+    sideNavLeftDef.style.cssText='paddingRight:10px';
+    sideNavLeftDef.style.cssText='width:16vw';
+
+
+
+    //P Tag
+    var ptag = document.createElement("p");
+    ptag.innerHTML="Hello There";
+    sideNavLeftDef.appendChild(ptag);
+
+
+
+}
+
 
 
 
@@ -1208,27 +1230,105 @@ function checkLabelToggle(){
 
 
 // Left Side Nav
+
+var searchClusterTags=[];
 function togglesidenavleft(data){
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
     var slideBtn=document.getElementById("slideBtnLeft");
-    if(data=="close"){
+    //var legToggleBtn=document.getElementById("legToggleBtnLeft");
+    var legToggleBtn=document.querySelectorAll("btnLegend");
+
+
+if(data == null){
+
+
+    sideNavLeft.style.width = "16vw";
+    sideNavLeft.style.paddingLeft = "10px";
+    sideNavLeft.style.paddingRight = "10px";
+   // slideBtn.style.display = "";
+
+    //Cross button
+   slideBtn = document.createElement("div");
+   slideBtn.setAttribute("id", "slideBtnLeft");
+   slideBtn.setAttribute("class", "slideBtnLeft");
+   slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
+   slideBtn.innerHTML = "x";
+    slideBtn.style.display = "";
+
+
+
+
+    sideNavLeft.innerHTML="";
+
+    console.log("legend on");
+    var ptag = document.createElement("p");
+    ptag.innerHTML="Map Legend";
+    ptag.className='p';
+
+
+    var site = document.createElement("g");
+    site.innerHTML = "<img src='resources/images/icons/location.svg' ></img>" + " Site" + "<br>";
+
+    var port = document.createElement("g");
+    port.innerHTML = "<img src='resources/images/icons/newport.svg'></img>" + " Port " + "<br>";
+
+
+
+    // var usePort = document.createElementNS('http://www.w3.org/2000/svg','use');
+    // usePort.setAttributeNS("http://www.w3.org/1999/xlink","href" ,"#vertex-PortIcon");
+    // usePort.setAttribute("width","2");
+    // usePort.setAttribute("height","2");
+    // usePort.setAttribute("x","200");
+    // usePort.setAttribute("y","-42");
+
+    var ptp = document.createElement("g");
+    ptp.innerHTML = "<img class='portHead' src='resources/images/icons/PTPImage.png'></img>" + " PTP" + "<br>"+ "<br>";
+
+    var mtp = document.createElement("g");
+    mtp.innerHTML = "<img class='portHead' src='resources/images/icons/evc.png'></img>" + " MTP";
+
+   // port.appendChild(usePort);
+
+    sideNavLeft.appendChild(slideBtn);
+    sideNavLeft.appendChild(ptag);
+    sideNavLeft.appendChild(site);
+    sideNavLeft.appendChild(port);
+    sideNavLeft.appendChild(ptp);
+    sideNavLeft.appendChild(mtp);
+
+}
+else {
+    if (data == "close") {
         sideNavLeft.style.width = "0";
         sideNavLeft.style.paddingLeft = "0";
         sideNavLeft.style.paddingRight = "0";
-        slideBtn.style.display="none";
-   // }
-    // else if($('#sidenavLeft').width()!= 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
-    //     sideNavLeft.style.width = "0";
-    //     sideNavLeft.style.paddingLeft = "0";
-    //     sideNavLeft.style.paddingRight = "0";
-    //     slideBtn.style.display="none";
-    }else if($('#sidenavLeft').width()== 0&&checkHead!=null && checkHead.innerHTML!=null && (checkHead.innerHTML.includes(data.item.siteAlias)||checkHead.innerHTML.includes(data.item.id)||checkHead.innerHTML.includes(data.item.linkName))){
+        slideBtn.style.display = "none";
+
+        var clusterTable = document.getElementById("clustertableDisplay");
+        var clusterHead = document.getElementsByClassName("clusterHead");
+        if(clusterTable){
+            clusterTable.style.display="none";
+            clusterHead[0].style.display="none";
+        }
+
+        legToggleBtn = document.createElement("button");
+        legToggleBtn.setAttribute("class", "btnLegend");
+        legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
+        legToggleBtn.innerHTML = "Legend";
+
+
+
+
+
+    } else if ($('#sidenavLeft').width() == 0 && checkHead != null && checkHead.innerHTML != null && (checkHead.innerHTML.includes(data.item.siteAlias) || checkHead.innerHTML.includes(data.item.id) || checkHead.innerHTML.includes(data.item.linkName))) {
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
-        slideBtn.style.display="";
-    }else {
+        slideBtn.style.display = "";
+
+
+    } else {
 
         while (sideNavLeft.firstChild) {
             sideNavLeft.removeChild(sideNavLeft.firstChild);
@@ -1236,33 +1336,57 @@ function togglesidenavleft(data){
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
-        slideBtn= document.createElement("div");
-        slideBtn.setAttribute("id","slideBtnLeft");
-        slideBtn.setAttribute("class","slideBtnLeft");
-        slideBtn.setAttribute("onclick","togglesidenavleft('close')");
-        slideBtn.innerHTML="x";
-        slideBtn.style.display="";
+
+
+        //Cross button
+        slideBtn = document.createElement("div");
+        slideBtn.setAttribute("id", "slideBtnLeft");
+        slideBtn.setAttribute("class", "slideBtnLeft");
+        slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
+        slideBtn.innerHTML = "x";
+        slideBtn.style.display = "";
+
+
+        //Legend Toggle
+        // legToggleBtn = document.createElement("a");
+        // legToggleBtn.setAttribute("id", "legToggleBtnLeft");
+        // legToggleBtn.setAttribute("class", "legToggleBtnLeft");
+        // legToggleBtn.setAttribute("href", "#");
+        // legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
+        // legToggleBtn.innerHTML = "Legend";
+        // legToggleBtn.style.display = "";
+
+        legToggleBtn = document.createElement("button");
+        legToggleBtn.setAttribute("class", "btnLegend");
+        legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
+         legToggleBtn.innerHTML = "Legend";
+
+
         sideNavLeft.appendChild(slideBtn);
+        sideNavLeft.appendChild(legToggleBtn);
+
         var tempData;
-        if(data.item!=null)
+        if (data.item != null)
             tempData = data.item;
         else
             tempData = data;
-        switch(tempData.kind){
+
+
+        switch (tempData.kind) {
             case "Site":
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/location.svg' ></img>"+tempData.siteAlias;
+                head.innerHTML = "<img src='resources/images/icons/location.svg' ></img>" + tempData.siteAlias;
                 var subHead = document.createElement("h5");
-                subHead.innerHTML="Site ID : "+tempData.siteId;
+                subHead.innerHTML = "Site ID : " + tempData.siteId;
                 var subContent = document.createElement("div");
                 subContent.style.backgroundColor = "rgb(38, 38, 38)";
                 var hr = document.createElement("hr");
                 var table = document.createElement("table");
                 var divTable = document.createElement("div");
-                var tableData = "<tr><td style='width: 30%'>Address</td><td>"+tempData.siteAddress+"</td></tr>";
-                tableData+="<tr><td style='width: 30%'>Location ID</td><td>"+tempData.locationId+"</td></tr>";
-                tableData+="<tr><td style='width: 30%'>SDN Capable</td><td>"+tempData.sdnCapable+"</td></tr>";
+                var tableData = "<tr><td style='width: 30%'>Address</td><td>" + tempData.siteAddress + "</td></tr>";
+                tableData += "<tr><td style='width: 30%'>Location ID</td><td>" + tempData.locationId + "</td></tr>";
+                tableData += "<tr><td style='width: 30%'>SDN Capable</td><td>" + tempData.sdnCapable + "</td></tr>";
                 table.innerHTML = tableData;
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
@@ -1273,30 +1397,30 @@ function togglesidenavleft(data){
 
 
                 var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
-                var resultPorts=[];
-                for(var i=0;i<portsInfo.length;i++){
-                    if(portsInfo[i].__data__.item.attachedTo==data.id){
+                var resultPorts = [];
+                for (var i = 0; i < portsInfo.length; i++) {
+                    if (portsInfo[i].__data__.item.attachedTo == data.id) {
                         resultPorts.push(portsInfo[i].__data__);
                     }
                 }
-                for(var i=0; i<resultPorts.length;i++){
+                for (var i = 0; i < resultPorts.length; i++) {
                     console.log(resultPorts[i]);
                 }
 
                 var portDiv = document.createElement("div");
                 var portHead = document.createElement("h5");
-                portHead.innerHTML="Ports";
+                portHead.innerHTML = "Ports";
                 table = document.createElement("table");
-                table.setAttribute("id","tableDisplay");
-                tableData="";
-                for(var i=0; i<resultPorts.length;i++){
-                    tableData += "<tr><td style='width: 30%'>"+resultPorts[i].id+"</td>";
-                    if(resultPorts[i].item.hasEVC){
+                table.setAttribute("id", "tableDisplay");
+                tableData = "";
+                for (var i = 0; i < resultPorts.length; i++) {
+                    tableData += "<tr><td style='width: 30%'>" + resultPorts[i].id + "</td>";
+                    if (resultPorts[i].item.hasEVC) {
                         //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
-                        tableData=tableData+getTableDataPorts(resultPorts[i])+"</tr>";
+                        tableData = tableData + getTableDataPorts(resultPorts[i]) + "</tr>";
 
-                    }else{
-                        tableData+="</tr>";
+                    } else {
+                        tableData += "</tr>";
                     }
 
                 }
@@ -1308,52 +1432,52 @@ function togglesidenavleft(data){
             case 'Port':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img src='resources/images/icons/newport.svg'></img>"+"Port "+tempData.id;
+                head.innerHTML = "<img src='resources/images/icons/newport.svg'></img>" + "Port " + tempData.id;
                 var subHead = document.createElement("h6");
-                subHead.innerHTML=tempData.ownerSite.item.siteName+" | "+tempData.ownerSite.item.siteAlias;
+                subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
 
                 sideNavLeft.appendChild(head);
                 sideNavLeft.appendChild(subHead);
                 var hr = document.createElement("hr");
                 sideNavLeft.appendChild(hr);
-                if(tempData.recommendMessage){
+                if (tempData.recommendMessage) {
                     //port recommendation
-                    displayRecommendation(data,sideNavLeft);
+                    displayRecommendation(data, sideNavLeft);
 
                 }
                 var portsConnectedInfo = document.createElement("h5");
-                portsConnectedInfo.innerHTML="Ports Connected";
+                portsConnectedInfo.innerHTML = "Ports Connected";
                 table = document.createElement("table");
-                table.setAttribute("id","tableDisplay");
-                tableData="<tr>";
-                tableData=tableData+getTableDataPorts(data)+"</tr>";
-                table.innerHTML=tableData;
-                var br=document.createElement("br");
+                table.setAttribute("id", "tableDisplay");
+                tableData = "<tr>";
+                tableData = tableData + getTableDataPorts(data) + "</tr>";
+                table.innerHTML = tableData;
+                var br = document.createElement("br");
                 //sideNavLeft.appendChild(br);
                 sideNavLeft.appendChild(portsConnectedInfo);
                 sideNavLeft.appendChild(table);
-                
+
 
                 break;
             case 'PointToPointCenter':
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img class='portHead' src='resources/images/icons/PTPImage.png'></img>PTP Center "+tempData.linkName;
+                head.innerHTML = "<img class='portHead' src='resources/images/icons/PTPImage.png'></img>PTP Center " + tempData.linkName;
                 sideNavLeft.appendChild(head);
-                if(tempData.recommendMessage){
-                    displayRecommendation(data,sideNavLeft);
-                }else{
-                    displayNetworkHealthInfo(data,sideNavLeft);
+                if (tempData.recommendMessage) {
+                    displayRecommendation(data, sideNavLeft);
+                } else {
+                    displayNetworkHealthInfo(data, sideNavLeft);
 
                 }
                 var portsConnectedInfo = document.createElement("h5");
-                portsConnectedInfo.innerHTML="Ports Connected";
+                portsConnectedInfo.innerHTML = "Ports Connected";
                 table = document.createElement("table");
-                table.setAttribute("id","tableDisplay");
-                tableData="<tr>";
-                tableData=tableData+getTableDataPorts(tempData)+"</tr>";
-                table.innerHTML=tableData;
-                var br=document.createElement("br");
+                table.setAttribute("id", "tableDisplay");
+                tableData = "<tr>";
+                tableData = tableData + getTableDataPorts(tempData) + "</tr>";
+                table.innerHTML = tableData;
+                var br = document.createElement("br");
                 sideNavLeft.appendChild(br);
                 sideNavLeft.appendChild(portsConnectedInfo);
                 sideNavLeft.appendChild(table);
@@ -1361,130 +1485,144 @@ function togglesidenavleft(data){
             case "Multilinkhub":
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
-                head.innerHTML="<img class='portHead' src='resources/images/icons/evc.png'></img> Multilinkhub "+tempData.linkName;
+                head.innerHTML = "<img class='portHead' src='resources/images/icons/evc.png'></img> Multilinkhub " + tempData.linkName;
                 sideNavLeft.appendChild(head);
-                var br=document.createElement("br");
+                var br = document.createElement("br");
                 sideNavLeft.appendChild(br);
-                if(tempData.recommendMessage){
-                    displayRecommendation(data,sideNavLeft);
-                }else{
-                    displayNetworkHealthInfo(data,sideNavLeft);
+                if (tempData.recommendMessage) {
+                    displayRecommendation(data, sideNavLeft);
+                } else {
+                    displayNetworkHealthInfo(data, sideNavLeft);
                 }
-                   var portsConnectedInfo = document.createElement("h5");
-                portsConnectedInfo.innerHTML="Ports Connected";
+                var portsConnectedInfo = document.createElement("h5");
+                portsConnectedInfo.innerHTML = "Ports Connected";
                 table = document.createElement("table");
-                table.setAttribute("id","tableDisplay");
-                tableData="<tr>";
-                tableData=tableData+getTableDataPorts(tempData)+"</tr>";
-                
-                                table.innerHTML=tableData;
-                var br=document.createElement("br");
+                table.setAttribute("id", "tableDisplay");
+                tableData = "<tr>";
+                tableData = tableData + getTableDataPorts(tempData) + "</tr>";
+
+                table.innerHTML = tableData;
+                var br = document.createElement("br");
                 sideNavLeft.appendChild(br);
                 sideNavLeft.appendChild(portsConnectedInfo);
                 sideNavLeft.appendChild(table);
                 break;
             case "Cluster":
 
-                var form = document.createElement("form");
+
+
+                var form = document.createElement("div");
                 form.setAttribute("id", "searchForm-left");
                 var input = document.createElement("input");
-                input.setAttribute("type","search-left");
-                input.setAttribute("placeholder","Search");
-                input.setAttribute("id","searchText");
+                input.setAttribute("type", "search-left");
+                input.setAttribute("placeholder", "Search");
+                input.setAttribute("id", "searchClusterText");
+                input.setAttribute("onkeyup", "searchCluster()");
+                input.setAttribute("focus", "searchCluster()");
+                input.setAttribute("change", "searchCluster()");
 
 
-                 var subHead = document.createElement("h5");
-                 subHead.innerHTML="<br>" +"Cluster ID : " + tempData.id + "<br>" +"<br>";
-                 var hr = document.createElement("hr");
+                var table = document.createElement("table");
+                var divTable = document.createElement("div");
 
-                 //Site DropDown
-                  var sitedropdown = document.createElement("button");
-                sitedropdown.className='dropdown-btn-left-cluster';
-                sitedropdown.innerHTML = "Sites";
-                sitedropdown.addEventListener('click', masterEventHandler,false);
-                  var isite = document.createElement("i");
-                isite.className='fa fa-caret-down';
-                  var divsitedropdown = document.createElement("div");
-                divsitedropdown.className='dropdown-container-left';
-                divsitedropdown.style.cssText='display:block';
+                var portDiv = document.createElement("div");
+                var portHead = document.createElement("p");
+                portHead.className = 'clusterHead';
+                portHead.innerHTML = "Cluster Information";
+                table = document.createElement("table");
+                table.setAttribute("id", "clustertableDisplay");
+                tableData = "";
 
-                //Port Dropdown
-                var portdropdown = document.createElement("button");
-                portdropdown.className='dropdown-btn-left-cluster';
-                portdropdown.innerHTML = "Ports";
-                portdropdown.addEventListener('click', masterEventHandler,false);
-                var iport = document.createElement("i");
-                iport.className='fa fa-caret-down';
-
-                var divportdropdown = document.createElement("div");
-                divportdropdown.className='dropdown-container-left';
-                divportdropdown.style.cssText='display:block';
-
-                //Services Dropdown
-                var srvcdropdown = document.createElement("button");
-                srvcdropdown.className='dropdown-btn-left-cluster';
-                srvcdropdown.innerHTML = "Services";
-                srvcdropdown.addEventListener('click', masterEventHandler,false);
-                var iservice = document.createElement("i");
-               // iservice.className='fa fa-caret-down';
-
-                var divsrvcdropdown = document.createElement("div");
-                divsrvcdropdown.className='dropdown-container-left';
-                divsrvcdropdown.style.cssText='display:block';
-
-
-
-
+                //Site DropDown
+                // var sitedropdown = document.createElement("button");
+                // sitedropdown.className = 'dropdown-btn-left-cluster';
+                // sitedropdown.innerHTML = "Sites";
+                // sitedropdown.addEventListener('click', masterEventHandler, false);
+                // var isite = document.createElement("i");
+                // isite.className = 'fa fa-caret-down';
+                // var divsitedropdown = document.createElement("div");
+                // divsitedropdown.className = 'dropdown-container-left';
+                // divsitedropdown.style.cssText = 'display:block';
 
                 var clusterData = tempData.items;
-                    for (item in clusterData) {
-                        var data = {};
-                        data['type'] = clusterData[item].kind;
-                        switch (clusterData[item].kind) {
-                            case 'Site':
+                for (item in clusterData) {
+                    var data = {};
+                    data['type'] = clusterData[item].kind;
+                    switch (clusterData[item].kind) {
+                        case 'Site':
 
-                                subHead.innerHTML=subHead.innerHTML + "Site : "+clusterData[item].siteAlias + "<br>";
-                               // divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
-                                //divsitedropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].siteAlias+"')\">"+clusterData[item].siteAlias + "</p>";
+                           // subHead.innerHTML = subHead.innerHTML + "Site : " + clusterData[item].siteAlias + "<br>";
+                            // divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
+                            //divsitedropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].siteAlias+"')\">"+clusterData[item].siteAlias + "</p>";
+                           // tableData = tableData + clusterData[item].siteAlias + "</tr>";
+                            //table.innerHTML = tableData;
+                            if(tableData!=null)
+                                tableData += "</td></tr>";
+                            tableData += "<tr><td style='width: 30%'>" + clusterData[item].siteAlias + "</td><td>";
 
-                                break;
-
-                            case 'Port':
-                                subHead.innerHTML= subHead.innerHTML + "Port : "+clusterData[item].id + "<br>";
-                               // divportdropdown.innerHTML+=clusterData[item].id + "<br>";
-                               // divportdropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].id+"')\">"+clusterData[item].id + "</p>";
-
-                                break;
-
-                            case 'Adiod':
-                                subHead.innerHTML= subHead.innerHTML + "Adiod : "+clusterData[item].id + "<br>";
-                               // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
-
-                                break;
-
-                            case 'Flexware':
-                                subHead.innerHTML= subHead.innerHTML + "Flexware : "+clusterData[item].id + "<br>";
-                               // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
+                            data['value'] = clusterData[item].siteAlias;
+                            searchClusterTags.push(data);
 
 
-                                break;
-                            default:
-                                break;
-                        }
 
+                            break;
+
+                        case 'Port':
+                           // subHead.innerHTML = subHead.innerHTML + "Port : " + clusterData[item].id + "<br>";
+                            // divportdropdown.innerHTML+=clusterData[item].id + "<br>";
+                            // divportdropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].id+"')\">"+clusterData[item].id + "</p>";
+                           // tableData = tableData + clusterData[item].id + "</td>";
+                            tableData += clusterData[item].id + "<br>";
+
+                            data['value'] = clusterData[item].id;
+                            searchClusterTags.push(data);
+                            break;
+
+
+                        case 'Adiod':
+                           // subHead.innerHTML = subHead.innerHTML + "Adiod : " + clusterData[item].id + "<br>";
+                            // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
+                            tableData += clusterData[item].id + "<br>";
+
+                            data['value'] = clusterData[item].id;
+                            searchClusterTags.push(data);
+                            break;
+
+                        case 'Flexware':
+                          //  subHead.innerHTML = subHead.innerHTML + "Flexware : " + clusterData[item].id + "<br>";
+                            // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
+                            tableData += clusterData[item].id + "<br>";
+
+                            data['value'] = clusterData[item].id;
+                            searchClusterTags.push(data);
+
+
+                            break;
+                        default:
+                            break;
                     }
-               // }
 
-                if(divsrvcdropdown.innerHTML==""){
-                    srvcdropdown.innerHTML = "";
-                    }
+
+
+                }
+                // }
+
+                // if (divsrvcdropdown.innerHTML == "") {
+                //     srvcdropdown.innerHTML = "";
+                // }
+
+
 
                 form.appendChild(input);
                 sideNavLeft.appendChild(form);
 
-                sideNavLeft.appendChild(subHead);
-                sideNavLeft.appendChild(hr.cloneNode());
+                table.innerHTML = tableData;
+                portDiv.appendChild(portHead);
+                portDiv.appendChild(table);
+                sideNavLeft.appendChild(portDiv);
 
+               // sideNavLeft.appendChild(subHead);
+               // sideNavLeft.appendChild(hr.cloneNode());
 
 
                 // sitedropdown.appendChild(isite);
@@ -1503,8 +1641,11 @@ function togglesidenavleft(data){
                 break;
         }
     }
-
 }
+    console.log("cluster elements in searchtag"+ JSON.stringify(searchClusterTags));
+}
+
+
 function displayNetworkHealthInfo(data,sideNavLeft){
     var networkHealthInfo = document.createElement("h5");
     networkHealthInfo.innerHTML="Network Health Information";
@@ -1584,9 +1725,9 @@ function bandwidthClick(child){
     recAction.setAttribute("class","buttonTicket");
     recAction.setAttribute("onclick","processAction(this)");
     billContent.appendChild(recAction);
-    billContent.appendChild(document.createElement("br"));
+   
     parent.appendChild(billContent);
-
+    parent.appendChild(document.createElement("br"));
 }
 
 function processAction(data){
@@ -1620,24 +1761,77 @@ function processAction(data){
     }
 }
 
+function retrievePortObject(id){
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    for(var i=0;i<portsInfo.length;i++){
+        if(portsInfo[i].__data__.id==id){
+            return portsInfo[i].__data__.item;
+        }
+    }
+    var clusterInfo = document.querySelectorAll(".Cluster.vertices");
+    for(var i=0;i<clusterInfo.length;i++){
+        if(clusterInfo[i].__data__.item.items[id]!=null){
+            return clusterInfo[i].__data__.item.items[id];
+        }
+    }
+}
+
 function getTableDataPorts(portData){
     var tableData="<td>";
     var lines = document.getElementsByTagName("line");
+    var EVCouterInfo = document.querySelectorAll(".Multilinkhub.vertices");
+    var evcssInfo = document.getElementsByClassName("PointToPointCenter");
     var connections = [];
-    for(var j=0;j<lines.length;j++){
-        if(lines[j].classList != "icon-line"){
-            if(lines[j].__data__.source.id ==portData.id||lines[j].__data__.target.id ==portData.id){
-                if(lines[j].__data__.source.id ==portData.id){
-                    if(lines[j].__data__.target.id ==data.id){
-                        continue;
-                    }else{
-                        connections.push(lines[j].__data__.target);
+    for(var j=0;j<evcssInfo.length;j++){
+        if(evcssInfo[j].__data__.id==portData.id){
+            for(port in evcssInfo[j].__data__.item.ports){
+                connections.push(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                console.log(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                console.log(evcssInfo[j].__data__.item.ports[port]);
+            }
+        }
+    }
+
+    for(var j=0;j<EVCouterInfo.length;j++){
+        if(EVCouterInfo[j].__data__.id==portData.id){
+            for(port in EVCouterInfo[j].__data__.item.ports){
+                connections.push(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                console.log(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                console.log(EVCouterInfo[j].__data__.item.ports[port]);
+            }
+        }
+    }
+    if(connections.length==0){
+        // for(var j=0;j<lines.length;j++){
+        //     if(lines[j].classList != "icon-line"){
+        //         if(lines[j].__data__.source.id ==portData.id||lines[j].__data__.target.id ==portData.id){
+        //             if(lines[j].__data__.source.id ==portData.id){
+        //                 connections.push(lines[j].__data__.target.item);
+        //             }else {
+        //                 connections.push(lines[j].__data__.source.item);
+        //             }
+        //         }
+        //     }    
+        // }
+
+        for(var j=0;j<evcssInfo.length;j++){
+            if(evcssInfo[j].__data__.item.ports.includes(portData.id)){
+                for(port in evcssInfo[j].__data__.item.ports){
+                    if(evcssInfo[j].__data__.item.ports[port]!=portData.id){
+                        connections.push(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                        console.log(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                        console.log(evcssInfo[j].__data__.item.ports[port]);
                     }
-                }else {
-                    if(lines[j].__data__.source.id ==data.id){
-                        continue;
-                    }else{
-                        connections.push(lines[j].__data__.source);
+                }
+            }
+        }
+        for(var j=0;j<EVCouterInfo.length;j++){
+            if(EVCouterInfo[j].__data__.item.ports.includes(portData.id)){
+                for(port in EVCouterInfo[j].__data__.item.ports){
+                    if(EVCouterInfo[j].__data__.item.ports[port]!=portData.id){
+                        connections.push(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                        console.log(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                        console.log(EVCouterInfo[j].__data__.item.ports[port]);
                     }
                 }
             }
@@ -1645,23 +1839,23 @@ function getTableDataPorts(portData){
 
     }
     for(var k=0;k<connections.length;k++){
-        if(connections[k].item.kind == 'PointToPointCenter'){
+        if(connections[k].kind == 'PointToPointCenter'){
 
-            for(var p=0;p<connections[k].item.ports.length;p++){
-                if(connections[k].item.ports[p]!=portData.id){
-                    tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].item.ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].item.ports[p]+"\")' onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+            for(var p=0;p<connections[k].ports.length;p++){
+                if(connections[k].ports[p]!=portData.id){
+                    tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><br>";
                 }
             }
 
-        }else if(connections[k].item.kind == 'Multilinkhub'){
+        }else if(connections[k].kind == 'Multilinkhub'){
             tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
-            for(var p=0;p<connections[k].item.ports.length;p++){
-                if(connections[k].item.ports[p]!=portData.id){
-                    tableData+="<span onmouseout='resetPortInfo(\""+connections[k].item.ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].item.ports[p]+"\")' onclick='sideNavClick(\""+connections[k].item.ports[p]+"\")'>"+connections[k].item.ports[p]+"</span><br>";
+            for(var p=0;p<connections[k].ports.length;p++){
+                if(connections[k].ports[p]!=portData.id){
+                    tableData+="<span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><br>";
                 }
             }
-        }else if(connections[k].item.kind == 'Port'){
-            tableData+="<span onmouseout='resetPortInfo(\""+connections[k].item.id+"\")' onmouseover='displayPortInfo(\""+connections[k].item.id+"\")' onclick='sideNavClick(\""+connections[k].item.id+"\")'>"+connections[k].item.id+"</span><br>";
+        }else if(connections[k].kind == 'Port'){
+            tableData+="<span onmouseout='resetPortInfo(\""+connections[k].id+"\")' onmouseover='displayPortInfo(\""+connections[k].id+"\")' onclick='sideNavClick(\""+connections[k].id+"\")'>"+connections[k].id+"</span><br>";
         }
     }
     tableData+="</td>";
@@ -1818,6 +2012,7 @@ function getSearchTags(){
             data['value']=sitesInfo[i].__data__.item.siteAlias+ " ("+sitesInfo[i].__data__.item.siteId+")";
         else
             data['value']=sitesInfo[i].__data__.item.siteAlias;
+
         data['id']=sitesInfo[i].__data__.item.id;
         data['data']=sitesInfo[i].__data__;
         data['useTarget']=sitesInfo[i].childNodes[0];
@@ -1928,6 +2123,30 @@ function getSearchTags(){
     }
     return searchTags;
 }
+
+function searchCluster() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("searchClusterText");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("clustertableDisplay");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td1 = tr[i].getElementsByTagName("td")[0];
+        td2 = tr[i].getElementsByTagName("td")[1];
+        if (td1 || td2) {
+            if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+
+
+}
+
+
 
 
 
