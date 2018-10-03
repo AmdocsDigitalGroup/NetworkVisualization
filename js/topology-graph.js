@@ -642,6 +642,13 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         if(!state.staticView)
             zoom.scaleTo(outer, state.zoomScale);
     }
+    function setNodeLinkingSet(portA,portB){
+        state.nodeLinkingSet=[];
+        state.nodeLinkingSet.push(portA);
+        state.nodeLinkingSet.push(portB);
+        state.mtpMode = false;
+    }
+    
     //function to add a flexware service
     function addFWService(e, order){
         console.log("addFWService called");
@@ -1023,6 +1030,10 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     function render(args) {
         console.log("Testing render");
 
+
+       // togglegraphView();
+       // checkGraphView();
+
         var vertices = args[0];
         var added = args[1];
         added.attr("class", function (d) {
@@ -1072,13 +1083,13 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
             }
             else{
                 return "none";
-            }}).attr("y", 11).attr("x",-29);
+            }}).attr("y", 13).attr("x",-18);
 
         clusters.append("text").classed("portcluster-text", true).text(function (d) {
             if(d.item.numAdiod > 0){
                 return d.item.numAdiod;
              }
-        }).attr("y", 9).attr("x",-31);
+        }).attr("y", 9).attr("x",-35);
 
 
         var sites = added.filter("g.Site");
@@ -1179,6 +1190,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
      */
     return {
         addEVC : addEVC,
+        setNodeLinkingSet: setNodeLinkingSet,
         addFWService : addFWService,
         addAdiodService: addAdiodService,
         stateChange: updateState,

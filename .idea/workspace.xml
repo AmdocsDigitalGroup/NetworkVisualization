@@ -3,9 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b737d7c5-77bb-40b9-b563-b77bd5193f2f" name="Default" comment="Commit Aug 24th, 2018">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/topology-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/topology-graph.scss" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es6_JS/DisplayAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/es6_JS/DisplayAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/htmlUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/htmlUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/topology-graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/topology-graph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/icons/PTPImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/icons/PTPImage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/icons/internet1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/icons/internet1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/icons/location.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/icons/location.svg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,17 +85,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="htmlUtils.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="htmlUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="1250" column="18" lean-forward="true" selection-start-line="1250" selection-start-column="18" selection-end-line="1250" selection-end-column="18" />
+            <state relative-caret-position="366">
+              <caret line="1434" column="57" lean-forward="true" selection-start-line="1434" selection-start-column="57" selection-end-line="1434" selection-end-column="57" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -102,11 +113,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="leaflet.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2584">
+              <caret line="152" column="22" selection-start-line="152" selection-start-column="22" selection-end-line="152" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="512" column="20" lean-forward="true" selection-start-line="512" selection-start-column="20" selection-end-line="512" selection-end-column="20" />
+            <state relative-caret-position="649">
+              <caret line="488" column="40" lean-forward="true" selection-start-line="488" selection-start-column="40" selection-end-line="488" selection-end-column="40" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -116,24 +136,7 @@
                 <element signature="n#style#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#8;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topology-graph.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="1179" column="21" lean-forward="true" selection-start-line="1179" selection-start-column="21" selection-end-line="1179" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -141,49 +144,31 @@
       <file leaf-file-name="DisplayAPI.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/es6_JS/DisplayAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="752" column="71" selection-start-line="752" selection-start-column="71" selection-end-line="752" selection-end-column="71" />
+            <state relative-caret-position="485">
+              <caret line="791" column="61" lean-forward="true" selection-start-line="791" selection-start-column="61" selection-end-line="791" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransformInputJSON.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6_JS/TransformInputJSON.js">
+      <file leaf-file-name="topology-graph.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2380">
-              <caret line="140" column="21" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="1669" column="18" lean-forward="true" selection-start-line="1669" selection-start-column="18" selection-end-line="1669" selection-end-column="18" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NOD-Portal-alarm.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-Portal-alarm.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="topology-graph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="97" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="advise-iconred.svg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/images/icons/advise-iconred.svg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="Quadtree.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6_JS/Quadtree.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5950">
-              <caret line="350" column="76" selection-start-line="350" selection-start-column="76" selection-end-line="350" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Quadtree.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6_JS/Quadtree.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3332">
-              <caret line="196" column="18" selection-start-line="196" selection-start-column="4" selection-end-line="196" selection-end-column="18" />
+            <state relative-caret-position="349">
+              <caret line="1129" column="13" lean-forward="true" selection-start-line="1129" selection-start-column="13" selection-end-line="1129" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -199,36 +184,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data.item</find>
-      <find>displayclus</find>
-      <find>addflex</find>
-      <find>searchForm</find>
-      <find>searchform</find>
-      <find>search bar</find>
-      <find>z-index</find>
-      <find>sidenavclick</find>
+      <find>case</find>
+      <find>vertex-clo</find>
+      <find>onclic</find>
+      <find>onclick</find>
+      <find>New Toggle Switch</find>
+      <find>New ToggleSwitch</find>
+      <find>togglesidenav</find>
+      <find>:host</find>
+      <find>:ho</find>
+      <find>info-btn1</find>
+      <find>cloneNode</find>
+      <find>flexwareImg</find>
+      <find>toggleport</find>
+      <find>.leaflet-left .l</find>
+      <find>vertex-cloud</find>
+      <find>info-btn</find>
+      <find>NOD-Portal-alarm.png</find>
+      <find>btn-switch-label</find>
+      <find>alert-btn</find>
       <find>togglesidena</find>
-      <find>slideBtnLeft</find>
-      <find>sidenavLeft</find>
-      <find>togglesidenavleft</find>
-      <find>render</find>
-      <find>working</find>
-      <find>vertex-site\</find>
-      <find>vertex-site</find>
-      <find>onload</find>
-      <find>sideNavLeft</find>
-      <find>sidenavleft</find>
-      <find>btnlegen</find>
-      <find>table</find>
-      <find>tabledisplay</find>
-      <find>getTableDataPorts</find>
-      <find>search</find>
-      <find>autocompl</find>
-      <find>autocom</find>
-      <find>sidenav</find>
+      <find>toggleclick</find>
+      <find>togglegr</find>
+      <find>background: url</find>
+      <find>background-image: url</find>
+      <find>backgroun</find>
+      <find>togglegra</find>
       <find>mouseover</find>
-      <find>searchText</find>
-      <find>toggleside</find>
+      <find>togglesidenavle</find>
+      <find>render</find>
+      <find>togglesidenavleft</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -251,13 +236,19 @@
         <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/bower_components/leaflet/docs/_layouts/v2.html" />
-        <option value="$PROJECT_DIR$/js/topology-graph.js" />
         <option value="$PROJECT_DIR$/es6_JS/DisplayAPI.js" />
         <option value="$PROJECT_DIR$/es6_JS/Quadtree.ts" />
         <option value="$PROJECT_DIR$/es6_JS/Quadtree.js" />
-        <option value="$PROJECT_DIR$/css/topology-graph.css" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/resources/images/icons/internet1.svg" />
+        <option value="$PROJECT_DIR$/resources/images/icons/location.svg" />
+        <option value="$PROJECT_DIR$/resources/images/icons/locationCluster.svg" />
+        <option value="$PROJECT_DIR$/resources/images/icons/newportCluster.svg" />
+        <option value="$PROJECT_DIR$/css/topology-graph.scss" />
+        <option value="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" />
+        <option value="$PROJECT_DIR$/js/topology-graph.js" />
         <option value="$PROJECT_DIR$/js/htmlUtils.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/topology-graph.css" />
       </list>
     </option>
   </component>
@@ -283,10 +274,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1908" />
-    <option name="y" value="-12" />
-    <option name="width" value="1943" />
-    <option name="height" value="1053" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -311,8 +302,13 @@
             <path>
               <item name="NetworkVisualization" type="b2602c69:ProjectViewProjectNode" />
               <item name="NetworkVisualization" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="leaflet" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NetworkVisualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NetworkVisualization" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="topology-graph.scss" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="NetworkVisualization" type="b2602c69:ProjectViewProjectNode" />
@@ -332,6 +328,11 @@
               <item name="images" type="462c0819:PsiDirectoryNode" />
               <item name="icons" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NetworkVisualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NetworkVisualization" type="462c0819:PsiDirectoryNode" />
+              <item name="scratch" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -341,7 +342,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="popup&#9;FILE&#9;file://C:/Code/NetworkVisualization/popup.html&#10;quadtree&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/Quadtree.js&#10;quadtre&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/Quadtree.ts&#10;display&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/DisplayAPI.js&#10;topolo&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/topology-graph.js&#10;v2&#9;FILE&#9;file://C:/Code/NetworkVisualization/bower_components/leaflet/docs/_layouts/v2.html&#10;topology&#9;FILE&#9;file://C:/Code/NetworkVisualization/css/topology-graph.css&#10;htmluti&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;html&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;favicon&#9;FILE&#9;file://C:/Code/NetworkVisualization/bower_components/leaflet/docs/docs/images/favicon.ico&#10;index&#9;FILE&#9;file://C:/Code/NetworkVisualization/index.html&#10;force&#9;null&#9;null&#10;transform&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/TransformInputJSON.js&#10;htmlu&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;quad&#9;null&#9;null&#10;htmlutils&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;pop&#9;FILE&#9;file://C:/Code/NetworkVisualization/popup.html" />
+    <property name="SearchEverywhereHistoryKey" value="topo&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/topology-graph.js&#10;displa&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/DisplayAPI.js&#10;topolo&#9;FILE&#9;file://C:/Code/NetworkVisualization/css/topology-graph.css&#10;htmlUtils&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;index&#9;FILE&#9;file://C:/Code/NetworkVisualization/index.html&#10;popup&#9;FILE&#9;file://C:/Code/NetworkVisualization/popup.html&#10;quadtree&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/Quadtree.js&#10;quadtre&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/Quadtree.ts&#10;display&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/DisplayAPI.js&#10;v2&#9;FILE&#9;file://C:/Code/NetworkVisualization/bower_components/leaflet/docs/_layouts/v2.html&#10;topology&#9;FILE&#9;file://C:/Code/NetworkVisualization/css/topology-graph.css&#10;htmluti&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;html&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;favicon&#9;FILE&#9;file://C:/Code/NetworkVisualization/bower_components/leaflet/docs/docs/images/favicon.ico&#10;force&#9;null&#9;null&#10;transform&#9;FILE&#9;file://C:/Code/NetworkVisualization/es6_JS/TransformInputJSON.js&#10;htmlu&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;quad&#9;null&#9;null&#10;htmlutils&#9;FILE&#9;file://C:/Code/NetworkVisualization/js/htmlUtils.js&#10;pop&#9;FILE&#9;file://C:/Code/NetworkVisualization/popup.html" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535408444670" />
@@ -439,7 +440,14 @@
       <workItem from="1537541770453" duration="16177000" />
       <workItem from="1537798856409" duration="18873000" />
       <workItem from="1537825283822" duration="2612000" />
-      <workItem from="1537885924256" duration="10430000" />
+      <workItem from="1537885924256" duration="11795000" />
+      <workItem from="1537972137176" duration="17565000" />
+      <workItem from="1538058600883" duration="15527000" />
+      <workItem from="1538145581830" duration="17381000" />
+      <workItem from="1538404536678" duration="129000" />
+      <workItem from="1538404905372" duration="19038000" />
+      <workItem from="1538490460813" duration="16012000" />
+      <workItem from="1538576561622" duration="13544000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/AmdocsDigitalGroup/NetworkVisualization&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1535131205745</created>
@@ -536,13 +544,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316725000" />
+    <option name="totallyTimeSpent" value="417286000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1913" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.119463086" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -655,111 +663,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bower_components/jquery/.github/ISSUE_TEMPLATE.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/jquery/.github/PULL_REQUEST_TEMPLATE.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html.old">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/jquery/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/fetch-jsonp/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/fetch-jsonp/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/fetch-jsonp/build/fetch-jsonp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/es6_JS/Geocoder.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/es6_JS/Geocoder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_data/networkIssues.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_data/1inputTestDataFull.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="950" column="27" selection-start-line="950" selection-start-column="24" selection-end-line="950" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html1">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/d3/build/d3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="16943" selection-start-line="16943" selection-end-line="16943" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="172" column="10" lean-forward="true" selection-start-line="169" selection-start-column="11" selection-end-line="172" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/leaflet/docs/reference-0.7.7.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96203">
-          <caret line="5659" column="53" selection-start-line="5659" selection-start-column="53" selection-end-line="5659" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/leaflet/docs/examples/zoom-levels/index.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4284">
@@ -838,19 +741,6 @@
     <entry file="file://$PROJECT_DIR$/resources/images/icons/RJ-45(4).png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/images/icons/internet1.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/images/icons/location.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/images/icons/advise-icon.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -888,62 +778,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
+    <entry file="file://$PROJECT_DIR$/popup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="97" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+        <state relative-caret-position="332">
+          <caret line="121" column="47" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="47" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/thumb-up-button.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/shopping-cart.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/settings-icon.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/world-icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/FWbox.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-10pt-router-29.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-10pt-wanx-27.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-10pt-firewall-24.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-10pt-flexware-25.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/PTPImage.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/flexwareImg.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/locationCluster.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/internet1.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/location.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/newport-hollow.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/newport.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/newportCluster.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/simple-sidebar.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/topology-graph.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="913" selection-start-line="913" selection-end-line="913" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="15233" column="4" selection-start-line="15233" selection-start-column="4" selection-end-line="15233" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2584">
+          <caret line="152" column="22" selection-start-line="152" selection-start-column="22" selection-end-line="152" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/icons/NOD-Portal-alarm.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/es6_JS/DisplayAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="752" column="71" selection-start-line="752" selection-start-column="71" selection-end-line="752" selection-end-column="71" />
+        <state relative-caret-position="485">
+          <caret line="791" column="61" lean-forward="true" selection-start-line="791" selection-start-column="61" selection-end-line="791" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
+    <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="1179" column="21" lean-forward="true" selection-start-line="1179" selection-start-column="21" selection-end-line="1179" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="512" column="20" lean-forward="true" selection-start-line="512" selection-start-column="20" selection-end-line="512" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#g#11;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#image#0;n#g#17;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#image#0;n#g#18;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#8;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="349">
+          <caret line="1129" column="13" lean-forward="true" selection-start-line="1129" selection-start-column="13" selection-end-line="1129" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="1250" column="18" lean-forward="true" selection-start-line="1250" selection-start-column="18" selection-end-line="1250" selection-end-column="18" />
+        <state relative-caret-position="366">
+          <caret line="1434" column="57" lean-forward="true" selection-start-line="1434" selection-start-column="57" selection-end-line="1434" selection-end-column="57" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -953,6 +900,30 @@
             <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="488" column="40" lean-forward="true" selection-start-line="488" selection-start-column="40" selection-end-line="488" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#g#11;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#image#0;n#g#17;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#image#0;n#g#18;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="1669" column="18" lean-forward="true" selection-start-line="1669" selection-start-column="18" selection-end-line="1669" selection-end-column="18" />
         </state>
       </provider>
     </entry>

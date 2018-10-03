@@ -149,7 +149,8 @@
 	margin-bottom: 10px;
 	}
 .leaflet-left .leaflet-control {
-	margin-left: 14px;
+	/*margin-left: 14px;*/
+	margin-left: 98vw;
 	}
 .leaflet-right .leaflet-control {
 	margin-right: 10px;

@@ -13,7 +13,7 @@ function onLoad() {
     //     ptp[i].style.display="none";
     // for(var i=0;i<line.length;i++)
     //     line[i].style.display="none";
-    togglesidenavleft();
+   // togglesidenavleft();
     if (!allowAnimations) {
         $("svg.topology").css("display", "none");
     }
@@ -166,7 +166,7 @@ function onLoad() {
 
     $('#zoom-slider-bar').change(function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
-
+       // checkGraphView();
 
         if(document.getElementById("PTPToggleView").checked == true){
 
@@ -192,7 +192,7 @@ function onLoad() {
     });
     $('#zoom-slider-bar').on("mousemove", function () {
         console.log("slider changed: "+typeof(parseInt(this.value)));
-
+       // checkGraphView();
 
         if(document.getElementById("PTPToggleView").checked == true){
             // alertlines();
@@ -249,9 +249,116 @@ function toggleLegend() {
 }
 
 
+var counterClick =0;
+
+function togglegraphView() {
+
+    counterClick++;
+    console.log("Number of times alert button is clicked"+ counterClick);
+
+
+    if(counterClick % 2 ==0){ //Even (Alerts View)
+
+        //Alerts View
+
+        togglealertsdefault()
+    }
+    else{ //Odd (All View)
+
+
+        var evcss = document.getElementsByClassName("PointToPointCenter");
+        var line = document.getElementsByTagName("line");
+        var EVCouterCircle = document.querySelectorAll("#vertex-Multilinkhub .EVCouter");
+        var EVCouter = document.querySelectorAll("#vertex-Multilinkhub");
+        var recIcon = document.querySelectorAll("#recommendation-icon");
+        var alertIcon = document.querySelectorAll("#alert-icon");
+        var ports = document.querySelectorAll(".Port-node.use-node.clickable");
+        var sites = document.querySelectorAll(".Site.vertices");
+        var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
+        var flexware = document.querySelectorAll(".Flexware.vertices");
+        var portLabel = document.getElementsByClassName("PortName");
+
+        // document.getElementById("PortToggleView").checked = true;
+        // document.getElementById("PTPOnlyToggleView").checked = true;
+        // document.getElementById("MTPToggleView").checked = true;
+
+        // labelToggle();
+
+        if(document.getElementById("labelToggleView").checked == true){
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+
+        }
+        else{
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+
+        }
+
+        for (var i = 0; i < evcss.length; i++)
+            evcss[i].style.display = "";
+        for (var i = 0; i < line.length; i++)
+            line[i].style.display = "";
+        for (var i = 0; i < EVCouterCircle.length; i++)
+            EVCouterCircle[i].style.display = "";
+        for (var i = 0; i < EVCouter.length; i++)
+            EVCouter[i].style.display = "";
+        for (var i = 0; i < recIcon.length; i++)
+            recIcon[i].style.display = "";
+        for (var i = 0; i < alertIcon.length; i++)
+            alertIcon[i].style.display = "";
+        for (var i = 0; i < ports.length; i++)
+            ports[i].style.display = "";
+        for (var i = 0; i < sites.length; i++)
+            sites[i].style.display = "";
+        for (var i = 0; i < fwfirewall.length; i++)
+            fwfirewall[i].style.display = "";
+        for (var i = 0; i < flexware.length; i++)
+            flexware[i].style.display = "";
+
+
+
+
+        for (var i = 0; i < evcss.length; i++) {
+            if (evcss[i].hasAlert == true) {
+                var ptpWithAlertId = evcss[i].__data__.id;
+                port0=evcss[i].__data__.item.ports[0];
+                port1=evcss[i].__data__.item.ports[1];
+
+                for (var i = 0; i < line.length; i++) { //Appearing the connection lines(ptp to port lines) &&  port to site lines
+
+                    if (line[i].classList != "icon-line") {
+                        if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
+                            var d3line = d3.select(line[i]).classed("alertline", true).attr("dashin", false).attr("standard", false).attr("edges", false).attr("standard", false).attr("line", false);
+                        }
+                        else{
+                            line[i].style.display="";
+                            d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                        }
+                    }
+                    else{
+                        line[i].style.display="";
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+function checkGraphView(){
+    console.log("Number of times alert button is clicked from check function" + counterClick);
+
+}
+
+
+
 
 function toggleclick() {
-
 
     if (document.getElementById("PTPToggleView").checked == true) {
 
@@ -355,6 +462,8 @@ function toggleclick() {
         }
 
     }
+
+
 }
 function checkTogglePTP(){
 
@@ -481,6 +590,7 @@ function toggleport(){
     var ports = document.querySelectorAll(".Port-node.use-node.clickable");
     var portLabel = document.getElementsByClassName("PortName");
     var line = document.getElementsByTagName("line");
+    console.log("inside toggleport function");
 
     if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
         if (document.getElementById("PortToggleView").checked == true) {
@@ -1199,45 +1309,50 @@ function checkLabelToggle(){
 
 }
 
-function sidenavleftdefault(){
+// function sidenavleftdefault(){
+//
+//     console.log("inside leg toggle");
+//     var sideNavLeftDef = document.getElementById("sidenavleftdefault");
+//     sideNavLeftDef.className='sideNavLeftDef';
+//
+//
+//     sideNavLeftDef.style.cssText='width:16vw';
+//     sideNavLeftDef.style.cssText='paddingLeft:10px';
+//     sideNavLeftDef.style.cssText='paddingRight:10px';
+//     sideNavLeftDef.style.cssText='width:16vw';
+//
+//
+//
+//     //P Tag
+//     var ptag = document.createElement("p");
+//     ptag.innerHTML="Hello There";
+//     sideNavLeftDef.appendChild(ptag);
+//
+//
+//
+// }
 
-    console.log("inside leg toggle");
-    var sideNavLeftDef = document.getElementById("sidenavleftdefault");
-    sideNavLeftDef.className='sideNavLeftDef';
-
-
-    sideNavLeftDef.style.cssText='width:16vw';
-    sideNavLeftDef.style.cssText='paddingLeft:10px';
-    sideNavLeftDef.style.cssText='paddingRight:10px';
-    sideNavLeftDef.style.cssText='width:16vw';
 
 
 
-    //P Tag
-    var ptag = document.createElement("p");
-    ptag.innerHTML="Hello There";
-    sideNavLeftDef.appendChild(ptag);
 
 
-
+//clear selection and display legend
+function clearSelectionData(){
+    cleanPortSiteAnimation();
+    togglesidenavleft();
 }
-
-
-
-
-
-
-
 
 // Left Side Nav
 
-var searchClusterTags=[];
+var toggleState =false;
 function togglesidenavleft(data){
+    cleanPortSiteAnimation();
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
     var slideBtn=document.getElementById("slideBtnLeft");
-    //var legToggleBtn=document.getElementById("legToggleBtnLeft");
-    var legToggleBtn=document.querySelectorAll("btnLegend");
+
+
 
 
 if(data == null){
@@ -1246,7 +1361,8 @@ if(data == null){
     sideNavLeft.style.width = "16vw";
     sideNavLeft.style.paddingLeft = "10px";
     sideNavLeft.style.paddingRight = "10px";
-   // slideBtn.style.display = "";
+
+
 
     //Cross button
    slideBtn = document.createElement("div");
@@ -1256,23 +1372,25 @@ if(data == null){
    slideBtn.innerHTML = "x";
     slideBtn.style.display = "";
 
-
-
-
     sideNavLeft.innerHTML="";
 
     console.log("legend on");
-    var ptag = document.createElement("p");
+    var ptag = document.createElement("h4");
     ptag.innerHTML="Map Legend";
     ptag.className='p';
 
 
-    var site = document.createElement("g");
-    site.innerHTML = "<img src='resources/images/icons/location.svg' ></img>" + " Site" + "<br>";
+    var site = document.createElement("div");
+    site.innerHTML = "<img class='flexwareImg' src='resources/images/icons/location.svg' ></img>" + " Site" + "<br>";
 
-    var port = document.createElement("g");
-    port.innerHTML = "<img src='resources/images/icons/newport.svg'></img>" + " Port " + "<br>";
+    var siteCluster = document.createElement("div");
+    siteCluster.innerHTML = "<img class='flexwareImg' src='resources/images/icons/locationCluster.svg' ></img>" + " Four Sites in Cluster" + "<br>";
 
+    var port = document.createElement("div");
+    port.innerHTML = "<img class='flexwareImg' src='resources/images/icons/newport.svg'></img>" + " Port " ;
+
+    var portCluster = document.createElement("div");
+    portCluster.innerHTML = "<img class='flexwareImg' src='resources/images/icons/newportCluster.svg'></img>" + " Nine Ports in Cluster " + "<br>";
 
 
     // var usePort = document.createElementNS('http://www.w3.org/2000/svg','use');
@@ -1282,20 +1400,117 @@ if(data == null){
     // usePort.setAttribute("x","200");
     // usePort.setAttribute("y","-42");
 
-    var ptp = document.createElement("g");
-    ptp.innerHTML = "<img class='portHead' src='resources/images/icons/PTPImage.png'></img>" + " PTP" + "<br>"+ "<br>";
+    var ptp = document.createElement("div");
+    ptp.innerHTML = "<img class='flexwareImg' src='resources/images/icons/PTPImage.png'></img>" + " PTP" ;
 
-    var mtp = document.createElement("g");
-    mtp.innerHTML = "<img class='portHead' src='resources/images/icons/evc.png'></img>" + " MTP";
+    var mtp = document.createElement("div");
+    mtp.innerHTML = "<img class='flexwareImg' src='resources/images/icons/evc.png'></img>" + " MTP" + "<br>";
 
-   // port.appendChild(usePort);
+    var flexware = document.createElement("div");
+    flexware.innerHTML = "<img class='flexwareImg' src='resources/images/icons/flexwareImg2.png'></img>" + " Flexware" +"<br>";
+
+    var firewall = document.createElement("div");
+    firewall.innerHTML = "<img class='flexwareImg' src='resources/images/icons/firewallImg.png'></img>" + " Firewall" +"<br>";
+
+    var router = document.createElement("div");
+    router.innerHTML = "<img class='flexwareImg' src='resources/images/icons/routerImg.png'></img>" + " Router" +"<br>";
+
+    var wanx = document.createElement("div");
+    wanx.innerHTML = "<img class='flexwareImg' src='resources/images/icons/wanxImg.png'></img>" + " WanX" +"<br>";
+
+    var adiod = document.createElement("div");
+    adiod.innerHTML = "<img class='flexwareImg' src='resources/images/icons/internet1.svg'></img>" + " Adiod" +"<br>";
 
     sideNavLeft.appendChild(slideBtn);
     sideNavLeft.appendChild(ptag);
     sideNavLeft.appendChild(site);
+    sideNavLeft.appendChild(siteCluster);
+
+    var portLabel = document.createElement("label");
+    portLabel.setAttribute("class", "input-toggle");
+    portLabel.setAttribute("for", "PortToggleView");
+    var portInput = document.createElement("input");
+    portInput.setAttribute("type", "checkbox");
+    portInput.setAttribute("id", "PortToggleView");
+    // portInput.setAttribute("onclick", "toggleport()");
+    var portSpan = document.createElement("span");
+
+    // if(toggleState==true){
+    //
+    //     console.log("toggleState is true");
+    //
+    //     var portLabel = document.createElement("label");
+    //     portLabel.setAttribute("class", "input-toggle");
+    //     portLabel.setAttribute("for", "PortToggleView");
+    //     var portInput = document.createElement("input");
+    //     portInput.setAttribute("type", "checkbox");
+    //     portInput.setAttribute("id", "PortToggleView");
+    //     portInput.setAttribute("onclick", "toggleport()");
+    //     portInput.setAttribute("checked", "true");
+    //     var portSpan = document.createElement("span");
+    // }
+    // else{
+    //     console.log("toggleState is false");
+    //     var portLabel = document.createElement("label");
+    //     portLabel.setAttribute("class", "input-toggle");
+    //     portLabel.setAttribute("for", "PortToggleView");
+    //     var portInput = document.createElement("input");
+    //     portInput.setAttribute("type", "checkbox");
+    //     portInput.setAttribute("id", "PortToggleView");
+    //     portInput.setAttribute("onclick", "toggleport()");
+    //     var portSpan = document.createElement("span");
+    // }
+
+    portLabel.appendChild(portInput);
+    portLabel.appendChild(portSpan);
+    port.appendChild(portLabel);
+
     sideNavLeft.appendChild(port);
+    sideNavLeft.appendChild(portCluster);
+
+    // var label2 = label.cloneNode(true);
+    // ptp.appendChild(label2);
+    var ptpLabel = document.createElement("label");
+    ptpLabel.setAttribute("class", "input-toggle");
+    ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+    var ptpInput = document.createElement("input");
+    ptpInput.setAttribute("type", "checkbox");
+    ptpInput.setAttribute("id", "PTPOnlyToggleView");
+    // ptpInput.setAttribute("onclick", "togglePTP()");
+    var ptpSpan = document.createElement("span");
+
+    ptpLabel.appendChild(ptpInput);
+    ptpLabel.appendChild(ptpSpan);
+    ptp.appendChild(ptpLabel);
+
     sideNavLeft.appendChild(ptp);
     sideNavLeft.appendChild(mtp);
+    sideNavLeft.appendChild(flexware);
+    sideNavLeft.appendChild(firewall);
+    sideNavLeft.appendChild(router);
+    sideNavLeft.appendChild(wanx);
+    sideNavLeft.appendChild(adiod);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 else {
@@ -1312,10 +1527,20 @@ else {
             clusterHead[0].style.display="none";
         }
 
-        legToggleBtn = document.createElement("button");
-        legToggleBtn.setAttribute("class", "btnLegend");
-        legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
-        legToggleBtn.innerHTML = "Legend";
+        toggleState = document.getElementById("PortToggleView").checked;
+
+       // Hide the toggleswitches on left side nav
+       var toggleSwitch= document.getElementsByClassName("input-toggle");
+       for(var i=0; i<toggleSwitch.length;i++){
+           toggleSwitch[i].style.display="none";
+
+       }
+
+
+
+
+
+
 
 
 
@@ -1327,6 +1552,8 @@ else {
         sideNavLeft.style.paddingRight = "10px";
         slideBtn.style.display = "";
 
+        toggleState = document.getElementById("PortToggleView").checked;
+
 
     } else {
 
@@ -1337,6 +1564,11 @@ else {
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
 
+        var clearSelection = document.createElement("button");
+        clearSelection.setAttribute("class",'info-btn1');
+        clearSelection.setAttribute("onclick","clearSelectionData()");
+        clearSelection.innerHTML="Clear Selection";
+        sideNavLeft.appendChild(clearSelection);
 
         //Cross button
         slideBtn = document.createElement("div");
@@ -1346,24 +1578,8 @@ else {
         slideBtn.innerHTML = "x";
         slideBtn.style.display = "";
 
-
-        //Legend Toggle
-        // legToggleBtn = document.createElement("a");
-        // legToggleBtn.setAttribute("id", "legToggleBtnLeft");
-        // legToggleBtn.setAttribute("class", "legToggleBtnLeft");
-        // legToggleBtn.setAttribute("href", "#");
-        // legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
-        // legToggleBtn.innerHTML = "Legend";
-        // legToggleBtn.style.display = "";
-
-        legToggleBtn = document.createElement("button");
-        legToggleBtn.setAttribute("class", "btnLegend");
-        legToggleBtn.setAttribute("onclick", "togglesidenavleft()");
-         legToggleBtn.innerHTML = "Legend";
-
-
         sideNavLeft.appendChild(slideBtn);
-        sideNavLeft.appendChild(legToggleBtn);
+
 
         var tempData;
         if (data.item != null)
@@ -1374,6 +1590,8 @@ else {
 
         switch (tempData.kind) {
             case "Site":
+                console.log("printing site data" + JSON.stringify(tempData));
+
                 var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
                 head.innerHTML = "<img src='resources/images/icons/location.svg' ></img>" + tempData.siteAlias;
@@ -1394,18 +1612,54 @@ else {
                 divTable.appendChild(table);
                 sideNavLeft.appendChild(divTable);
                 sideNavLeft.appendChild(hr.cloneNode());
+                var serviceTable=document.createElement("table");
+
 
 
                 var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+                var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
+                var flexwareInfo = document.querySelectorAll(".Flexware-node.use-node.clickable");
+
                 var resultPorts = [];
                 for (var i = 0; i < portsInfo.length; i++) {
                     if (portsInfo[i].__data__.item.attachedTo == data.id) {
                         resultPorts.push(portsInfo[i].__data__);
                     }
                 }
+
+                    if(resultPorts.length ==0){
+                        for (var i = 0; i < clusterInfo.length; i++) {
+                            var clusterData = clusterInfo[i].__data__.item.items;
+                            for (item in clusterData) {
+                                var datacl = {};
+                                datacl['type'] = clusterData[item].kind;
+                                switch (clusterData[item].kind) {
+                                    case 'Site':
+
+                                        break;
+
+                                    case 'Port':
+
+                                        if(clusterData[item].attachedTo == tempData.locationId ){
+                                            resultPorts.push(clusterData[item]);
+                                        }
+
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
                 for (var i = 0; i < resultPorts.length; i++) {
-                    console.log(resultPorts[i]);
+
+                    console.log("resultPorts "+ resultPorts[i]);
                 }
+
+
+
+
 
                 var portDiv = document.createElement("div");
                 var portHead = document.createElement("h5");
@@ -1413,27 +1667,124 @@ else {
                 table = document.createElement("table");
                 table.setAttribute("id", "tableDisplay");
                 tableData = "";
-                for (var i = 0; i < resultPorts.length; i++) {
-                    tableData += "<tr><td style='width: 30%'>" + resultPorts[i].id + "</td>";
-                    if (resultPorts[i].item.hasEVC) {
-                        //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
-                        tableData = tableData + getTableDataPorts(resultPorts[i]) + "</tr>";
 
-                    } else {
-                        tableData += "</tr>";
+                var servDiv = document.createElement("div");
+                var servHead = document.createElement("h5");
+                servHead.innerHTML = "Services";
+                serviceTable = document.createElement("table");
+                serviceTable.setAttribute("id", "tableDisplay");
+                var serviceTableData = "";
+
+                for (var i = 0; i < resultPorts.length; i++) {
+
+                    if(resultPorts[i].item==undefined){ //Sites inside a cluster
+
+                        //tableData += "<tr><td style='width: 30%'>" + resultPorts[i].id + "</td>";
+                        tableData+="<tr><td onmouseout='resetPortInfo(\""+resultPorts[i]+"\")' onmouseover='displayPortInfo(\""+resultPorts[i]+"\")' onclick='sideNavClick(\""+resultPorts[i].id+"\")'>"+resultPorts[i].id+"</td>";
+
+
+                        if (resultPorts[i].hasEVC) {
+                            //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
+                            tableData = tableData + getTableDataPorts(resultPorts[i]) + "</tr>";
+
+                        } else {
+                            tableData += "</tr>";
+                        }
                     }
+                    else{ //Sites outside the cluster
+
+                        tableData+="<tr><td onmouseout='resetPortInfo(\""+resultPorts[i].id+"\")' onmouseover='displayPortInfo(\""+resultPorts[i].id+"\")' onclick='sideNavClick(\""+resultPorts[i].id+"\")'>"+resultPorts[i].id+"</td>";
+
+                       // tableData += "<tr><td style='width: 30%'>" + resultPorts[i].id + "</td>";
+                        if (resultPorts[i].item.hasEVC) {
+                            //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
+                            tableData = tableData + getTableDataPorts(resultPorts[i]) + "</tr>";
+
+                        } else {
+                            tableData += "</tr>";
+                        }
+                    }
+                    // tableData += "<tr><td style='width: 30%'>" + resultPorts[i].id + "</td>";
+                    //
+                    // if (resultPorts[i].item.hasEVC) {
+                    //     //tableData+="<td> <svg class='newlegend-icon'><use xlink:href='#vertex-PointToPointCenterIcon' height='2' width='2'></use></svg></td></tr>";
+                    //     tableData = tableData + getTableDataPorts(resultPorts[i]) + "</tr>";
+                    //
+                    // } else {
+                    //     tableData += "</tr>";
+                    // }
 
                 }
                 table.innerHTML = tableData;
                 portDiv.appendChild(portHead);
                 portDiv.appendChild(table);
                 sideNavLeft.appendChild(portDiv);
+
+                if(tempData.flexwareEnabled){
+
+                    var str1 = tempData.id;
+                    var str2 = "flexware";
+                    var str3 = "-FWfirewall";
+                    var str4 = "-FWrouter_1";
+                    var str5 = "-FWwanX_0";
+                    var flexwareId = str1.concat(str2);
+                    var firewallId = str1.concat(str3);
+                    var routerId = flexwareId.concat(str4);
+                    var wanxId = flexwareId.concat(str5);
+
+
+
+                    serviceTableData+="<tr><td onclick='sideNavClick(\"" + flexwareId + "\")'> Flexware  </td><td>";
+
+
+                    if(tempData.services.FWfirewall){
+
+                        serviceTableData += "<span onclick='sideNavClick(\"" + firewallId + "\")'>Firewall</span></br>";
+                    }
+
+                    if(tempData.services.FWrouter){
+                        serviceTableData += "<span onclick='sideNavClick(\"" + routerId + "\")'>Router</span></br>";
+                    }
+
+                    if(tempData.services.FWwanX){
+                        serviceTableData += "<span onclick='sideNavClick(\"" + wanxId + "\")'>WanX</span></br>";
+                    }
+                    serviceTableData += "</tr></td>";
+
+
+                    serviceTable.innerHTML = serviceTableData;
+                    servDiv.appendChild(servHead);
+                    servDiv.appendChild(serviceTable);
+                    sideNavLeft.appendChild(servDiv);
+
+
+                }
+
+                if(tempData.adiodEnabled){
+                    var str1 = tempData.id;
+                    var str2 = "adiod";
+                    var adiodId = str1.concat(str2);
+
+                    serviceTableData+="<tr><td onclick='sideNavClick(\"" + adiodId + "\")'> Adiod  </td></td>";
+
+                    serviceTable.innerHTML = serviceTableData;
+                    servDiv.appendChild(serviceTable);
+                    sideNavLeft.appendChild(servDiv);
+                }
+
+
+
+
+
+
+
+
                 break;
             case 'Port':
-                var head = document.createElement("h4");
+                var head = document.createElement("h3");
                 head.setAttribute("id", "chosenHead");
                 head.innerHTML = "<img src='resources/images/icons/newport.svg'></img>" + "Port " + tempData.id;
-                var subHead = document.createElement("h6");
+                var subHead = document.createElement("h5");
                 subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
 
                 sideNavLeft.appendChild(head);
@@ -1445,7 +1796,7 @@ else {
                     displayRecommendation(data, sideNavLeft);
 
                 }
-                var portsConnectedInfo = document.createElement("h5");
+                var portsConnectedInfo = document.createElement("h4");
                 portsConnectedInfo.innerHTML = "Ports Connected";
                 table = document.createElement("table");
                 table.setAttribute("id", "tableDisplay");
@@ -1456,8 +1807,43 @@ else {
                 //sideNavLeft.appendChild(br);
                 sideNavLeft.appendChild(portsConnectedInfo);
                 sideNavLeft.appendChild(table);
-
-
+                sideNavLeft.appendChild(br);
+                
+                var newPTPOrder = document.createElement("h4");
+                newPTPOrder.innerHTML="Create PTP Connection";
+                sideNavLeft.appendChild(newPTPOrder);
+                var searchPort = document.createElement("div");
+                searchPort.setAttribute("id","portSearchDiv");
+                var searchPortInput = document.createElement("input");
+                searchPortInput.setAttribute("type","search");
+                searchPortInput.setAttribute("placeholder","Search Ports");
+                searchPortInput.setAttribute("id","searchPortText");
+                searchPort.appendChild(searchPortInput);
+                sideNavLeft.appendChild(searchPort);
+                $( "#searchPortText" ).on("focus change paste keyup autocompleteopen",function() {
+                    var searchTags=getPortTags();
+                    $( "#searchPortText" ).autocomplete({
+                        autoFocus: true,
+                        minLength:1,
+                        source: searchTags,
+                        open: function(event, ui){
+                            $(this).autocomplete("widget").css({"width":"10%"});
+                            $(this).autocomplete("widget").css({"left":"12px"});
+                            cleanPortSiteAnimation();
+                            return false;
+                        },
+                        focus: function(event, ui){
+                            //togglesidenavleft(ui.item.data);
+                            
+                            displayUIEffect(event, ui);
+                        },
+                        select: function(event, ui){
+                            displayPTPOrder(data,ui.item.data,sideNavLeft);
+                            displayUIEffect(event, ui);
+                        }
+                    });
+                });
+                
                 break;
             case 'PointToPointCenter':
                 var head = document.createElement("h4");
@@ -1533,16 +1919,7 @@ else {
                 table.setAttribute("id", "clustertableDisplay");
                 tableData = "";
 
-                //Site DropDown
-                // var sitedropdown = document.createElement("button");
-                // sitedropdown.className = 'dropdown-btn-left-cluster';
-                // sitedropdown.innerHTML = "Sites";
-                // sitedropdown.addEventListener('click', masterEventHandler, false);
-                // var isite = document.createElement("i");
-                // isite.className = 'fa fa-caret-down';
-                // var divsitedropdown = document.createElement("div");
-                // divsitedropdown.className = 'dropdown-container-left';
-                // divsitedropdown.style.cssText = 'display:block';
+
 
                 var clusterData = tempData.items;
                 for (item in clusterData) {
@@ -1551,106 +1928,332 @@ else {
                     switch (clusterData[item].kind) {
                         case 'Site':
 
-                           // subHead.innerHTML = subHead.innerHTML + "Site : " + clusterData[item].siteAlias + "<br>";
-                            // divsitedropdown.innerHTML+=clusterData[item].siteAlias + "<br>";
-                            //divsitedropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].siteAlias+"')\">"+clusterData[item].siteAlias + "</p>";
-                           // tableData = tableData + clusterData[item].siteAlias + "</tr>";
-                            //table.innerHTML = tableData;
-                            if(tableData!=null)
+
+                            if (tableData != null)
                                 tableData += "</td></tr>";
-                            tableData += "<tr><td style='width: 30%'>" + clusterData[item].siteAlias + "</td><td>";
-
-                            data['value'] = clusterData[item].siteAlias;
-                            searchClusterTags.push(data);
-
+                            tableData += "<tr><td onmouseout='resetPortInfo(\"" + clusterData[item].siteAlias + "\")' onmouseover='displayPortInfo(\"" + clusterData[item].siteAlias + "\")' onclick='sideNavClick(\"" + clusterData[item].siteAlias + "\")'>" + clusterData[item].siteAlias + "</td><td>";
 
 
                             break;
 
                         case 'Port':
-                           // subHead.innerHTML = subHead.innerHTML + "Port : " + clusterData[item].id + "<br>";
-                            // divportdropdown.innerHTML+=clusterData[item].id + "<br>";
-                            // divportdropdown.innerHTML+="<p onclick=\"sideNavClick('"+clusterData[item].id+"')\">"+clusterData[item].id + "</p>";
-                           // tableData = tableData + clusterData[item].id + "</td>";
-                            tableData += clusterData[item].id + "<br>";
 
-                            data['value'] = clusterData[item].id;
-                            searchClusterTags.push(data);
+                            tableData += "<span onmouseout='resetPortInfo(\"" + clusterData[item].id + "\")' onmouseover='displayPortInfo(\"" + clusterData[item].id + "\")' onclick='sideNavClick(\"" + clusterData[item].id + "\")'>" + clusterData[item].id + "</span><br>"
+
                             break;
 
 
                         case 'Adiod':
-                           // subHead.innerHTML = subHead.innerHTML + "Adiod : " + clusterData[item].id + "<br>";
-                            // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>" ;
-                            tableData += clusterData[item].id + "<br>";
 
-                            data['value'] = clusterData[item].id;
-                            searchClusterTags.push(data);
+                            // tableData += clusterData[item].id + "<br>";
+                            tableData += "<span onmouseout='resetPortInfo(\"" + clusterData[item].id + "\")' onmouseover='displayPortInfo(\"" + clusterData[item].id + "\")' onclick='sideNavClick(\"" + clusterData[item].id + "\")'>" + clusterData[item].id + "</span><br>"
+
+
                             break;
 
                         case 'Flexware':
-                          //  subHead.innerHTML = subHead.innerHTML + "Flexware : " + clusterData[item].id + "<br>";
-                            // divsrvcdropdown.innerHTML+=clusterData[item].id + "<br>";
-                            tableData += clusterData[item].id + "<br>";
 
-                            data['value'] = clusterData[item].id;
-                            searchClusterTags.push(data);
-
-
+                            // tableData += clusterData[item].id + "<br>";
+                            tableData += "<span onmouseout='resetPortInfo(\"" + clusterData[item].id + "\")' onmouseover='displayPortInfo(\"" + clusterData[item].id + "\")' onclick='sideNavClick(\"" + clusterData[item].id + "\")'>" + clusterData[item].id + "</span><br>"
                             break;
-                        default:
-                            break;
+
+
+
+                    }
+
+
+                    form.appendChild(input);
+                    sideNavLeft.appendChild(form);
+
+                    table.innerHTML = tableData;
+                    portDiv.appendChild(portHead);
+                    portDiv.appendChild(table);
+                    sideNavLeft.appendChild(portDiv);
+                }
+                break;
+
+                case"Adiod":
+                    var head = document.createElement("h4");
+                    head.setAttribute("id", "chosenHead");
+                   head.innerHTML = "<img src='resources/images/icons/internet1.svg' style=\"width: 32px; height: 43px;\"></img>" + "Adiod " + tempData.id;
+                    var subHead = document.createElement("h6");
+                   // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
+
+                    sideNavLeft.appendChild(head);
+                    sideNavLeft.appendChild(subHead);
+                    var hr = document.createElement("hr");
+                    sideNavLeft.appendChild(hr);
+                    break;
+
+                case"Flexware":
+                    var head = document.createElement("h4");
+                    head.setAttribute("id", "chosenHead");
+                    head.innerHTML = "<img class='flexwareImg' src='resources/images/icons/flexwareImg2.png'></img>" + " Flexware " + tempData.id;
+                    var subHead = document.createElement("h6");
+                    subHead.innerHTML = data.ownerSite.siteName + " | " + data.ownerSite.siteAlias;
+
+                    sideNavLeft.appendChild(head);
+                    sideNavLeft.appendChild(subHead);
+                    var hr = document.createElement("hr");
+                    sideNavLeft.appendChild(hr);
+                    var flexwareInfo = document.createElement("h5");
+                    flexwareInfo.innerHTML = "Usage Statistics";
+                    table = document.createElement("table");
+                    table.setAttribute("id", "tableDisplay2");
+                    tableData = "<tr><td>CPU</td><td>"+(100*displayAPI.flexData[0].cpu)+"%</td></tr>";
+                    tableData += "<tr><td>Memory</td><td>"+(100*displayAPI.flexData[0].memory.percentage)+"%</td></tr>";
+                    tableData += "<tr><td>Storage</td><td>"+(100*displayAPI.flexData[0].disk.percentage)+"%</td></tr>";
+                    table.innerHTML = tableData;
+
+                    var flexwareSpecs = document.createElement("h5");
+                    flexwareSpecs.innerHTML = "Flexware Specs";
+                    var tableInfo  = document.createElement("table");
+                    tableInfo.setAttribute("id", "tableDisplay2");
+                    tableData = "<tr><td>Part Number</td><td>ATT-U401</td></tr>";
+                    tableData += "<tr><td>Make and Model</td><td>ATT-U401</td></tr>";
+                    tableData += "<tr><td>WAN1</td><td>Electrical</td></tr>";
+                    tableData += "<tr><td>Modem</td><td>LTE</td></tr>";
+                    tableInfo.innerHTML = tableData;
+                    sideNavLeft.appendChild(flexwareSpecs);
+                    sideNavLeft.appendChild(tableInfo);
+                    var br = document.createElement("br");
+                    sideNavLeft.appendChild(br);
+                    sideNavLeft.appendChild(flexwareInfo);
+                    sideNavLeft.appendChild(table)
+                    sideNavLeft.appendChild(br.cloneNode());
+
+                    var configSoftware =  document.createElement("h5");
+                    configSoftware.innerHTML = "Configure Software";
+                    var configAdd  = document.createElement("table");
+                    configAdd.setAttribute("id", "tableDisplay2");
+                    tableData = "<tr><td ><input type='checkbox' name='flexSelect' id='firewallSelect' value='firewall' checked onclick='return false;''><label for='firewallSelect'><img class='flexwareImg label-text' src='resources/images/icons/firewallImg.png'></label></td><td>Add firewall</td></tr>";
+                    tableData += "<tr><td ><input type='checkbox' name='flexSelect' id='wanxSelect' value='WANX' ><label for='wanxSelect'><img class='flexwareImg label-text' src='resources/images/icons/wanxImg.png'></label></td><td>Add WANX</td></tr>";
+                    tableData += "<tr><td ><input type='checkbox' name='flexSelect' id='routerSelect' value='Router'><label for='routerSelect'><img class='flexwareImg label-text' src='resources/images/icons/routerImg.png'></label></td><td class='form-inline'><label for='routerCount'>Add Router</label><input type='text' class='form-control input-sm' id='routerCount' disabled> </td></tr>";
+                    configAdd.innerHTML = tableData;
+                    
+                    var reviewBilling = document.createElement("button");
+                    reviewBilling.innerHTML="Review Order";
+                    reviewBilling.setAttribute("class","buttonTicket");
+                    reviewBilling.setAttribute("onclick","processFlexware(this)");
+
+                    sideNavLeft.appendChild(configSoftware);
+                    sideNavLeft.appendChild(configAdd);
+                    sideNavLeft.appendChild(reviewBilling);
+                    document.getElementById('routerSelect').onchange = function() {
+                        document.getElementById('routerCount').disabled = !this.checked;
+                    };
+
+                    break;
+
+                case "Service":
+
+                    if(tempData.type== "FWfirewall"){
+                    var head = document.createElement("h4");
+                    head.setAttribute("id", "chosenHead");
+                    head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " Firewall " + tempData.id;
+                    var subHead = document.createElement("h6");
+                    // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
+
+                    sideNavLeft.appendChild(head);
+                    sideNavLeft.appendChild(subHead);
+                    var hr = document.createElement("hr");
+                    sideNavLeft.appendChild(hr);
+                    }
+
+                    if(tempData.type== "FWwanX"){
+                        var head = document.createElement("h4");
+                        head.setAttribute("id", "chosenHead");
+                        head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " WanX " + tempData.id;
+                        var subHead = document.createElement("h6");
+                        // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
+
+                        sideNavLeft.appendChild(head);
+                        sideNavLeft.appendChild(subHead);
+                        var hr = document.createElement("hr");
+                        sideNavLeft.appendChild(hr);
+                    }
+
+                    if(tempData.type== "FWrouter"){
+                        var head = document.createElement("h4");
+                        head.setAttribute("id", "chosenHead");
+                        head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " Router " + tempData.id;
+                        var subHead = document.createElement("h6");
+                        // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
+
+                        sideNavLeft.appendChild(head);
+                        sideNavLeft.appendChild(subHead);
+                        var hr = document.createElement("hr");
+                        sideNavLeft.appendChild(hr);
                     }
 
 
 
-                }
-                // }
-
-                // if (divsrvcdropdown.innerHTML == "") {
-                //     srvcdropdown.innerHTML = "";
-                // }
 
 
+                    break;
 
-                form.appendChild(input);
-                sideNavLeft.appendChild(form);
-
-                table.innerHTML = tableData;
-                portDiv.appendChild(portHead);
-                portDiv.appendChild(table);
-                sideNavLeft.appendChild(portDiv);
-
-               // sideNavLeft.appendChild(subHead);
-               // sideNavLeft.appendChild(hr.cloneNode());
-
-
-                // sitedropdown.appendChild(isite);
-                //  sideNavLeft.appendChild(sitedropdown);
-                // sideNavLeft.appendChild(divsitedropdown);
-                //
-                // portdropdown.appendChild(iport);
-                // sideNavLeft.appendChild(portdropdown);
-                // sideNavLeft.appendChild(divportdropdown);
-                //
-                // portdropdown.appendChild(iservice);
-                // sideNavLeft.appendChild(srvcdropdown);
-                // sideNavLeft.appendChild(divsrvcdropdown);
                 break;
             default:
                 break;
         }
     }
 }
-    console.log("cluster elements in searchtag"+ JSON.stringify(searchClusterTags));
+
 }
 
+function processFlexware(flex){
+    var parent = flex.parentElement;
+    flex.innerHTML="Update Order";
+    var wanxPriceRec = (document.getElementById("wanxSelect").checked)? 1: 0;
+    var routerPrice = (document.getElementById("routerSelect").checked)? (document.getElementById("routerCount").value):0; 
+    var monthly=0,single=0;
+    if(wanxPriceRec!=0||routerPrice!=0){
+        single=1000;
+        monthly=50;
+        if(wanxPriceRec){
+            monthly+=60;
+            single+=350;
+        }
+        if(routerPrice){
+            single+=75*routerPrice;
+            monthly+=100*routerPrice;
+        }
+    }
+    if($("#tempFlexTable").length){
+        $("#tempFlexTable").remove();
+        $("#confirmFlexBut").remove();
+    }
+    var charges = document.createElement("div");
+    charges.setAttribute("class","serviceSelection");
+    charges.setAttribute("id","tempFlexTable");
+    charges.innerHTML= "<table ><tr><td>One-time fee</td><td> $"+single+"</td></tr><tr><td>Monthly Charges</td><td>$"+(monthly)+"</td></tr><tr><td>Total Charges</td><td>$"+(single+monthly)+"</td></tr></table>";
+    parent.appendChild(charges);
 
+    var confirmOrder = document.createElement("button");
+    confirmOrder.innerHTML="Confirm Order";
+    confirmOrder.setAttribute("id","confirmFlexBut");
+    confirmOrder.setAttribute("class","buttonTicket");
+    confirmOrder.setAttribute("onclick","confirmFlex(this)");
+    parent.appendChild(confirmOrder);
+
+}
+
+function confirmFlex(flex){
+    var parent = flex.parentElement;
+    $("#tempFlexTable").remove();
+    $("#confirmFlexBut").remove();
+    var divEle = document.createElement("div");
+    divEle.innerHTML="Order confirmed!";
+    parent.appendChild(divEle);
+}
+function displayPTPOrder(portA,portB,sideNavLeft){
+    console.log(portA);
+    console.log(portB);
+    if($("#ptpDivTable").length){
+        $("#ptpDivTable").remove();
+    }
+    var ptpDiv = document.createElement("div");
+    ptpDiv.setAttribute("id","ptpDivTable");
+    var ptpTable = document.createElement("table");
+    ptpTable.setAttribute("id","tableDisplay3");
+    tableData = "<br><tr>";
+    tableData+="<td><b>From "+portA.id+"</b><br>"+portA.item.ownerSite.item.siteName+"<br>"+portA.item.ownerSite.item.siteAddress+"</td>";
+    tableData+="<td><b>To "+portB.id+"</b><br>"+portB.item.ownerSite.item.siteName+"<br>"+portB.item.ownerSite.item.siteAddress+"</td>";
+    tableData += "</tr>";
+
+    ptpTable.innerHTML=tableData;
+
+    var createPTP = document.createElement("button");
+    createPTP.innerHTML="Create PTP";
+    createPTP.setAttribute("class","buttonTicket");
+    createPTP.setAttribute("onclick","processPTP(this)");
+    
+    ptpDiv.appendChild(ptpTable);
+    ptpDiv.appendChild(createPTP);
+    sideNavLeft.appendChild(ptpDiv);
+    graph.setNodeLinkingSet(portA.item,portB.item);
+}
+function processPTP(createPTP){
+    var ptpDiv = createPTP.parentElement;
+    createPTP.remove();
+    var bandwidthSelect = document.createElement("div");
+    bandwidthSelect.setAttribute("id","bandwidthSel");
+    bandwidthSelect.setAttribute("class","serviceSelection");
+    bandwidthSelect.innerHTML="<span>The bandwidth/CIR limit of the port determines your available bandwidth/CIR. To increase the bandwidth of one or more endpoints above the current port limit, submit the multi-gigabit EVC design change request.</span>";
+    bandwidthSelect.innerHTML+="<input id='bandValue' class='bandwidthSelector' value='1' type='range' min='1' max='50' step='1'><span id='bandValDisplay'></span>";
+    
+
+    var serviceSelection = document.createElement("div");
+    serviceSelection.setAttribute("id","serviceSel");
+    serviceSelection.setAttribute("class","serviceSelection");
+    serviceSelection.innerHTML="<h4>Class of Service</h4><input type='radio' id='bMedium' value='1' name='servClass' aria-required='true' checked><span style='margin-left:2em;font-weight: bold;'>business critical medium</span><br><input type='radio' id='bHigh' value='2' name='servClass'><span style='margin-left:2em;font-weight: bold;'>business critical high</span><br><input type='radio' id='bUrgent' value='3' name='servClass'><span style='margin-left:2em;font-weight: bold;'>business critical urgent</span>";
+    
+
+    var macIcon = document.createElement("div");
+    macIcon.setAttribute("class","serviceSelection");
+    macIcon.innerHTML="<h4>Number OF MAC ADDRESSES</h4><div class='macIcon'><input type='radio' value='1' name='macServ' aria-required='true'><div class='moreMac'>Yes<span class='macSelect' style='padding-left:1.6em'>Increase to 500 MAC address for each multipoint EVC on the port</span></div><br><input id='defaultMac' type='radio' value='2' name='macServ' checked><div class='moreMac'>No<span class='macSelect' style='padding-left:2em'>Each multipoint EVC on the port has a default limit of 250 MAC addresses</span></div></div>";
+    
+    var reviewOrder = document.createElement("button");
+    reviewOrder.innerHTML="Review Order";
+    reviewOrder.setAttribute("class","buttonTicket");
+    reviewOrder.setAttribute("onclick","reviewPTP(this)");
+
+    ptpDiv.appendChild(bandwidthSelect);
+    ptpDiv.appendChild(serviceSelection);
+    ptpDiv.appendChild(macIcon);
+    ptpDiv.appendChild(reviewOrder);
+    $("#bandValue").change(function () {
+        var bandwidthVal = $("#bandValue").val();
+        $("#bandValDisplay").html(bandwidthVal+" Mbps");
+    });
+    $("#bandValue").on("mousemove",function () {
+        var bandwidthVal = $("#bandValue").val();
+       $("#bandValDisplay").html(bandwidthVal+" Mbps");
+    });
+    //For touchscreen devices
+    $("#bandValue").on("touchmove",function () {
+        varbandwidthVal = $("#bandValue").val();
+        $("#bandValDisplay").html(bandwidthVal+" Mbps");
+    });
+}
+function reviewPTP(reviewOrder){
+    if($("#tempPTPTable").length){
+        $("#tempPTPTable").remove();
+        $("#confirmPTPBut").remove();
+    }
+    var ptpDiv = reviewOrder.parentElement;
+    reviewOrder.innerHTML="Update Order";
+    var charges = document.createElement("div");
+    charges.setAttribute("class","serviceSelection");
+    charges.setAttribute("id","tempPTPTable");
+    var band = parseInt(document.getElementById("bandValue").value);
+    var service = parseInt($('input[name=servClass]:checked').val());
+    var mac = parseInt($('input[name=macServ]:checked').val());
+    charges.innerHTML= "<table ><tr><td>One-time fee</td><td> $1000.00</td></tr><tr><td>Monthly Charges</td><td>$"+((band+service+mac)*10.22)+"</td></tr><tr><td>Total Charges</td><td>$"+(1000+((band+service+mac)*10.22))+"</td></tr></table>";
+    ptpDiv.appendChild(charges);
+
+    var confirmOrder = document.createElement("button");
+    confirmOrder.innerHTML="Confirm Order";
+    confirmOrder.setAttribute("id","confirmPTPBut");
+    confirmOrder.setAttribute("class","buttonTicket");
+    confirmOrder.setAttribute("onclick","confirmPTP()");
+    ptpDiv.appendChild(confirmOrder);
+}
+function confirmPTP(confirm){
+    $("#ptpDivTable").children().not("#tableDisplay3").remove();
+    var ordered = document.createElement("div");
+    ordered.innerHTML="<p>Order Confirmed</p><p>Order Number 1234567835</p>";
+    $("#ptpDivTable").append(ordered);
+    var id = generateOrder("evc", true);
+    console.log(id);
+    graph.addEVC(id);
+    cleanPortSiteAnimation();
+}
 function displayNetworkHealthInfo(data,sideNavLeft){
     var networkHealthInfo = document.createElement("h5");
     networkHealthInfo.innerHTML="Network Health Information";
     table = document.createElement("table");
-    table.setAttribute("id","tableDisplay");
+    table.setAttribute("id","tableDisplay2");
     tableData="";
     for(var i=0;i<displayAPI.networkData.length;i++){
         if(data.item.linkName==displayAPI.networkData[i].id){
@@ -1777,6 +2380,7 @@ function retrievePortObject(id){
 }
 
 function getTableDataPorts(portData){
+    console.log("portData"+ JSON.stringify(portData));
     var tableData="<td>";
     var lines = document.getElementsByTagName("line");
     var EVCouterInfo = document.querySelectorAll(".Multilinkhub.vertices");
@@ -1816,24 +2420,28 @@ function getTableDataPorts(portData){
 
         for(var j=0;j<evcssInfo.length;j++){
             if(evcssInfo[j].__data__.item.ports.includes(portData.id)){
-                for(port in evcssInfo[j].__data__.item.ports){
-                    if(evcssInfo[j].__data__.item.ports[port]!=portData.id){
-                        connections.push(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
-                        console.log(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
-                        console.log(evcssInfo[j].__data__.item.ports[port]);
-                    }
-                }
+                connections.push(evcssInfo[j].__data__.item);
+                // for(port in evcssInfo[j].__data__.item.ports){
+                //     if(evcssInfo[j].__data__.item.ports[port]!=portData.id){
+                //         //connections.push(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                        
+                //         console.log(retrievePortObject(evcssInfo[j].__data__.item.ports[port]));
+                //         console.log(evcssInfo[j].__data__.item.ports[port]);
+                //     }
+                // }
             }
         }
         for(var j=0;j<EVCouterInfo.length;j++){
             if(EVCouterInfo[j].__data__.item.ports.includes(portData.id)){
-                for(port in EVCouterInfo[j].__data__.item.ports){
-                    if(EVCouterInfo[j].__data__.item.ports[port]!=portData.id){
-                        connections.push(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
-                        console.log(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
-                        console.log(EVCouterInfo[j].__data__.item.ports[port]);
-                    }
-                }
+                connections.push(EVCouterInfo[j].__data__.item);
+                // for(port in EVCouterInfo[j].__data__.item.ports){
+                //     if(EVCouterInfo[j].__data__.item.ports[port]!=portData.id){
+                //         //connections.push(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                        
+                //         console.log(retrievePortObject(EVCouterInfo[j].__data__.item.ports[port]));
+                //         console.log(EVCouterInfo[j].__data__.item.ports[port]);
+                //     }
+                // }
             }
         }
 
@@ -1843,12 +2451,17 @@ function getTableDataPorts(portData){
 
             for(var p=0;p<connections[k].ports.length;p++){
                 if(connections[k].ports[p]!=portData.id){
-                    tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><br>";
+                    //tableData+="<img class='ptpTableIcon' src='resources/images/icons/NOD-point-to-point-06.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><br>";
+                    if(k+1==connections.length)
+                        tableData+="<img class='portHead' src='resources/images/icons/PTPImage.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span>";    
+                    else
+                        tableData+="<img class='portHead' src='resources/images/icons/PTPImage.png'></img><br><span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><hr>";
                 }
             }
 
         }else if(connections[k].kind == 'Multilinkhub'){
-            tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
+            //tableData+="<img class='ptpTableIcon2' src='resources/images/icons/NOD-EVC-connection-08.png'></img><br>";
+            tableData+="<img class='portHead' src='resources/images/icons/evc.png'></img><br>";
             for(var p=0;p<connections[k].ports.length;p++){
                 if(connections[k].ports[p]!=portData.id){
                     tableData+="<span onmouseout='resetPortInfo(\""+connections[k].ports[p]+"\")' onmouseover='displayPortInfo(\""+connections[k].ports[p]+"\")' onclick='sideNavClick(\""+connections[k].ports[p]+"\")'>"+connections[k].ports[p]+"</span><br>";
@@ -1882,6 +2495,14 @@ function displayPortInfo(data){
 function sideNavClick(data){
     var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
     var clusterInfo = document.querySelectorAll(".Cluster-node.use-node");
+    var flexwareInfo = document.querySelectorAll(".Flexware-node.use-node.clickable");
+    var firewallInfo = document.querySelectorAll(".FWfirewall.use-node");
+    var wanxInfo = document.querySelectorAll(".FWwanX.use-node");
+    var routerInfo = document.querySelectorAll(".FWrouter.use-node");
+    var adiodInfo=document.querySelectorAll(".Adiod-node.use-node");
+
+    console.log("inside sidenav click data"+ data);
+
 
     for(var i=0;i<portsInfo.length;i++){
         if(portsInfo[i].__data__.id==data){
@@ -1889,6 +2510,43 @@ function sideNavClick(data){
             displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
         }
     }
+
+    for(var i=0;i<flexwareInfo.length;i++){
+        if(flexwareInfo[i].__data__.id==data){
+            togglesidenavleft(flexwareInfo[i].__data__);
+           // displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+        }
+    }
+
+    for(var i=0;i<firewallInfo.length;i++){
+        if(firewallInfo[i].__data__.id==data){
+            console.log("going to togglesidenavleft");
+            togglesidenavleft(firewallInfo[i].__data__);
+            // displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+        }
+    }
+
+    for(var i=0;i<wanxInfo.length;i++){
+        if(wanxInfo[i].__data__.id==data){
+            togglesidenavleft(wanxInfo[i].__data__);
+            // displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+        }
+    }
+    for(var i=0;i<routerInfo.length;i++){
+        if(routerInfo[i].__data__.id==data){
+            togglesidenavleft(routerInfo[i].__data__);
+            // displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+        }
+    }
+    for(var i=0;i<adiodInfo.length;i++){
+        if(adiodInfo[i].__data__.id==data){
+            togglesidenavleft(adiodInfo[i].__data__);
+            // displayAPI.displayNodeInfo(portsInfo[i].__data__, portsInfo[i]);
+        }
+    }
+
+
+
 
 
     for (var i = 0; i < clusterInfo.length; i++) {
@@ -1900,10 +2558,9 @@ function sideNavClick(data){
                 case 'Site':
 
                     if(clusterData[item].siteAlias == data){
-                        console.log("sidenavclick"+ JSON.stringify(data));
-                        console.log("sidenavclick" + clusterData[item].siteAlias);
+
                         togglesidenavleft(clusterData[item]);
-                        displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
+                       // displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
                     }
                     break;
 
@@ -1911,12 +2568,27 @@ function sideNavClick(data){
 
 
                     if(clusterData[item].id == data){
-                        console.log("sidenavclick33"+ data);
-                        console.log("sidenavclick33" + clusterData[item].id);
+
                         togglesidenavleft(clusterData[item]);
-                        displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
+                       // displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
                     }
                     break;
+
+                case 'Adiod':
+                    if(clusterData[item].id == data){
+
+                        togglesidenavleft(clusterData[item]);
+                        // displayAPI.displayNodeInfo(clusterData[item], clusterData[item].id);
+                    }
+                    break;
+
+                case 'Flexware':
+                    if(clusterData[item].id == data){
+
+                        togglesidenavleft(clusterData[item]);
+                    }
+
+
                 default:
                     break;
             }
@@ -1962,6 +2634,15 @@ function cleanPortSiteAnimation(){
     for(var i=0;i<sitesInfo.length;i++){
         displayAPI.releaseNodeInfo(sitesInfo[i].__data__, sitesInfo[i].childNodes[0]);
     }
+    var EVCouterInfo = document.querySelectorAll(".Multilinkhub.vertices");
+    for(var i=0;i<EVCouterInfo.length;i++){
+        displayAPI.releaseNodeInfo(EVCouterInfo[i].__data__, EVCouterInfo[i].childNodes[0]);
+    }
+    var evcssInfo = document.getElementsByClassName("PointToPointCenter");
+    for(var i=0;i<evcssInfo.length;i++){
+        displayAPI.releaseNodeInfo(evcssInfo[i].__data__, evcssInfo[i].childNodes[0]);
+    }
+
 }
 
 $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
@@ -1972,6 +2653,8 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
         minLength:1,
         source: searchTags,
         open: function(event, ui){
+            $(this).autocomplete("widget").css({"width":"58vw"});
+            $(this).autocomplete("widget").css({"left":"20vw"});
             cleanPortSiteAnimation();
             return false;
         },
@@ -1993,6 +2676,33 @@ $( "#searchText" ).on("focus change paste keyup autocompleteopen",function() {
     });
 });
 
+function getPortTags(){
+    var searchTags=[];
+    var portsInfo = document.querySelectorAll(".Port-node.use-node.clickable");
+    var clusterInfo = document.querySelectorAll(".Cluster.vertices");
+    for(var i=0;i<portsInfo.length;i++){
+        var data={}
+        data['type']=portsInfo[i].__data__.item.kind;
+        data['value']=portsInfo[i].__data__.item.kind+" ("+portsInfo[i].__data__.item.id+")";
+        data['data']=portsInfo[i].__data__;
+        data['useTarget']=portsInfo[i];
+        searchTags.push(data);
+    }
+    for(var i=0;i<clusterInfo.length;i++){
+        var clusterData = clusterInfo[i].__data__.item.items;
+        for(item in clusterData){
+            if(clusterData[item].kind=='Port'){
+                var data={};
+                data['type']=clusterData[item].kind;
+                data['data']=clusterData[item];
+                data['value']=clusterData[item].id;
+                data['ownerSite']=clusterData[item].ownerSite;
+                searchTags.push(data);
+            }
+        }
+    }
+        return searchTags;
+}
 function getSearchTags(){
     var searchTags=[];
     var sitesInfo = document.querySelectorAll(".Site.vertices");

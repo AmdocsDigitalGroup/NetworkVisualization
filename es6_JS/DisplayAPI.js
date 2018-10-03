@@ -724,67 +724,78 @@ class DisplayAPI {
             .on("mouseover", function (d) {
                 console.log(d.item.kind);
                 /** handles extra events for a cluster */
-                if(d.item.kind=='Cluster'){
-                    displayAPI.displayClusterInfo(d3.event.target);
+                // if(d.item.kind=='Cluster'){
+                //     displayAPI.displayClusterInfo(d3.event.target);
+
+                // }
+
+                // /** handles extra events for an EVC */
+                // else if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
+                //     /** adds highlight to ports connected to a EVC */
+
+                //     var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
+
+                //     for (var i = 1; i < neighbors.length; i++) {
+                //         d3.select(neighbors[i]).classed("portOnEVC", true);
+                //         console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
+                //     }
+                //     displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
+
+                //    // displayAPI.displayNetworkHealth(d3.event.target);
 
 
-                }
-
-                /** handles extra events for an EVC */
-                else if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
-                    /** adds highlight to ports connected to a EVC */
-
-                    var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
-
-                    for (var i = 1; i < neighbors.length; i++) {
-                        d3.select(neighbors[i]).classed("portOnEVC", true);
-                        console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
-                    }
-                    displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
-
-                    displayAPI.displayNodeInfo(d, d3.event.target);
-                   // displayAPI.displayNetworkHealth(d3.event.target);
-
-
-
-
-                } else { /** EVC no longer display info, only highlight ports connected*/
-                    if (d3.event.target.localName != "text")
-                        displayAPI.displayNodeInfo(d, d3.event.target);
-                    if (d.item.kind == "Flexware")
-                        displayAPI.displayFlexwareHealth(d3.event.target);
-                }
+                // } else { /** EVC no longer display info, only highlight ports connected*/
+                //     if (d3.event.target.localName != "text")
+                //         displayAPI.displayNodeInfo(d, d3.event.target);
+                //     if (d.item.kind == "Flexware")
+                //         displayAPI.displayFlexwareHealth(d3.event.target);
+                // }
             })
             /** removes hover affects*/
             .on("mouseout", function (d) {
-                /** removes neghboring highlight rings, if any */
-                if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
-                    var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
-                    for (var i = 0; i < neighbors.length; i++) {
-                        d3.select(neighbors[i]).classed("portOnEVC portOnEVCAlert", false);
-                    }
-                }
-                /**removes the infomation lines and frees node for movement*/
-                displayAPI.releaseNodeInfo(d, d3.event.target);
+                // /** removes neghboring highlight rings, if any */
+                // if ((d.item.kind == 'Multilinkhub') || (d.item.kind == 'PointToPointCenter')) {
+                //     var neighbors = findNodeGraphics(d.item, d3.event.target, closure.links);
+                //     for (var i = 0; i < neighbors.length; i++) {
+                //         d3.select(neighbors[i]).classed("portOnEVC portOnEVCAlert", false);
+                //     }
+                // }
+                // /**removes the infomation lines and frees node for movement*/
+                // displayAPI.releaseNodeInfo(d, d3.event.target);
             })
             /** place holder for focus events.  Also haveing them here stops focus from being default prevented
              ** so that the reader can traverse them.*/
             .on("focusin focusout", function () {})
 
             .on("click", function (ev) { // case for new selection
-                    togglesidenavleft(ev);
-                if (ev.item.kind == 'Flexware') {
-                    state.fwView = true;
-                    state.selectedBox = ev.item;
-                    popup["flexware"](state.selectedBox, getAttachedSite(ev.item, items, relations));
-                } else if (ev.item.kind == 'PointToPointCenter') {
-                    if(ev.item.recommendMessage) {
-                         popup["recommendation"](ev.item);
-                        /*displayAPI.showRecommendationPopup(ev.item);*/
-                    } else if (!closure.networkDisplayOpen) {
-                        //displayAPI.displayNetworkHealth(d3.event.target);
+                if(ev.item.kind=="Flexware"){
+                    ev.ownerSite=getAttachedSite(ev.item, items, relations);
+                }
+                togglesidenavleft(ev);
+                if ((ev.item.kind == 'Multilinkhub') || (ev.item.kind == 'PointToPointCenter')) {
+                    var neighbors = findNodeGraphics(ev.item, d3.event.target, closure.links);
+                    for (var i = 1; i < neighbors.length; i++) {
+                        d3.select(neighbors[i]).classed("portOnEVC", true);
+                        console.log("portonEVC on mouseover in displayAPI" + d3.select(neighbors[i]).classed("portOnEVC", true));
                     }
+                    displayAPI.drawEVCLines(d3.event.target, "connection-line", false);
+                }
+                if (ev.item.kind == 'Flexware') {
+                    // displayAPI.displayNodeInfo(ev, d3.event.target);
+                    // state.fwView = true;
+                    // state.selectedBox = ev.item;
+                    // popup["flexware"](state.selectedBox, getAttachedSite(ev.item, items, relations));
+                    // displayAPI.displayFlexwareHealth(d3.event.target);
+                } else if (ev.item.kind == 'PointToPointCenter') {
+                    displayAPI.displayNodeInfo(ev, d3.event.target);
+                    // if(ev.item.recommendMessage) {
+                    //      popup["recommendation"](ev.item);
+                    //     /*displayAPI.showRecommendationPopup(ev.item);*/
+                    // } else if (!closure.networkDisplayOpen) {
+                    //     //displayAPI.displayNetworkHealth(d3.event.target);
+                    // }
                 } else if (ev.item.kind == 'Site') {
+                    displayAPI.displayNodeInfo(ev, d3.event.target);
                     var neighbors = findNodeGraphics(ev.item, d3.event.target, closure.links);
                     for (var i = 1; i < neighbors.length; i++) {
                         if (neighbors[i].__data__.item.kind == 'Flexware') {
@@ -807,6 +818,7 @@ class DisplayAPI {
                         sim.restart(.1);
                     }
                 } else if (ev.item.kind == 'Port' || ev.item.kind == 'Multilinkhub') {
+                    displayAPI.displayNodeInfo(ev, d3.event.target);
                     if(ev.item.recommendMessage) {
                        // popup["recommendation"](ev.item);
                         /*displayAPI.showRecommendationPopup(ev.item);*/
@@ -832,7 +844,7 @@ class DisplayAPI {
                                             site: getAttachedSite(state.nodeLinkingSet[i], items, relations)
                                         });
                                     }
-                                    popup["connection"](portSiteLinkingSet);
+                                    //popup["connection"](portSiteLinkingSet);
                                     state.mtpMode = false; //mtpMode controls whether an mtp will be created instead of a ptp.
                                 }
                             };
