@@ -8,6 +8,8 @@
 * @author/editor Yasheshkumar Mistry
 */
 /* A cache to prevent jumping when rapidly toggling views */
+var counterClick =0;
+var counterClickLabel =0;
 var cache = {};
 /**
  * This function handles creation of nodes and links, and brings together the map, simulation and other functionality form various files
@@ -177,6 +179,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
     /* drag is applied to the vertices themselves, so only they can be manipulated by user
     ** This is done in the update function when the vertices are bound to the data and 
     ** intialized*/
+
     var drag = d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
@@ -1032,7 +1035,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
 
        // togglegraphView();
-       // checkGraphView();
+
 
         var vertices = args[0];
         var added = args[1];
@@ -1096,7 +1099,7 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
         sites.append("text").classed("SiteName", true).text(function (d) {
             console.log("printing d.item1" + d.item);
             return d.item.siteAlias;
-        }).attr("x", 15).attr("y", -10);
+        }).attr("x", 15).attr("y", -10).style("opacity", 1);
         sites.append("path").classed("SiteLabel", true).attr("d", "M -40 -34.6 L -20 -34.6 L -10 -17.3");
 
 
@@ -1115,33 +1118,40 @@ function topology_graph(selector, notify, options, passedKinds, passedClickable,
 
         added.classed("vertices", true);
 
-        if(document.getElementById("PTPToggleView").checked == true){
-
+        cleanPortSiteAnimation();
+      // if(document.getElementById("PTPToggleView").checked == true){ //Alerts View
+        if(counterClick % 2 ==0 || counterClick==0){ //Even (Alerts View)
             togglealertsdefault();
             checkLabelToggle();
-            //labelToggle();
             checkTogglePTPAndLines();
             checkTogglePort();
-       // toggleclick();
-           // checkToggleMTP();
+
 
 
         }
-        else{
+        else{ // All View
 
-            checkTogglePTP();
-            //labelToggle();
+          //  togglePortState = document.getElementById("PortToggleView").checked;
+            console.log("toggleportstate on zoom"+ togglePortState);
+
+          //  togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
+             console.log("togglePTPState on zoom"+ togglePTPState);
+
+
+            checkGraphView();
+            checkToggleAll();
             checkLabelToggle();
             checkTogglePTPAndLines();
             checkTogglePort();
-           // toggleclick();
-           // checkToggleMTP();
 
-           // checkalertlines();
+
 
         }
 
-       // applyClusterElements();
+
+
+
+
     }
     function icon(d) {
         var text;

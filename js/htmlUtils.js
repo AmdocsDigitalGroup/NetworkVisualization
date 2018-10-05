@@ -4,6 +4,10 @@ var linkingSet;
 var currentScale = -1;
 var allowAnimations = true;
 
+var togglePortState =false;
+var togglePTPState =false;
+
+
 function onLoad() {
     //note: if animations are disallowed the svg with the templates should be hidden to remove the animation clocks
     // var ptp=document.querySelectorAll(".PointToPointCenter-node");
@@ -168,7 +172,10 @@ function onLoad() {
         console.log("slider changed: "+typeof(parseInt(this.value)));
        // checkGraphView();
 
-        if(document.getElementById("PTPToggleView").checked == true){
+       // if(document.getElementById("PTPToggleView").checked == true){
+        cleanPortSiteAnimation();
+
+        if(counterClick % 2 ==0){ //Alerts View
 
             togglealertsdefault();
             checkTogglePTPAndLines();
@@ -176,15 +183,15 @@ function onLoad() {
            checkLabelToggle();
             //checkToggleMTP();
         }
-        else{
-            toggleclick()
-            checkTogglePTP();
+        else{  // All View
+            // checkGraphView();
+           // toggleclick();
+            checkToggleAll();
             checkTogglePTPAndLines();
             checkTogglePort();
-            //labelToggle();
+            checkGraphView();
             checkLabelToggle();
-            //checkToggleMTP();
-            //checkalertlines();
+
 
         }
 
@@ -194,7 +201,9 @@ function onLoad() {
         console.log("slider changed: "+typeof(parseInt(this.value)));
        // checkGraphView();
 
-        if(document.getElementById("PTPToggleView").checked == true){
+        // if(document.getElementById("PTPToggleView").checked == true){
+        cleanPortSiteAnimation();
+            if(counterClick % 2 ==0){ //Alerts View
             // alertlines();
             togglealertsdefault();
             checkTogglePTPAndLines();
@@ -204,9 +213,12 @@ function onLoad() {
         }
         else{
 
-            checkTogglePTP();
+
+              //  toggleclick();
+            checkToggleAll();
             checkTogglePTPAndLines();
             checkTogglePort();
+                checkGraphView();
             checkLabelToggle();
             //checkalertlines();
 
@@ -249,9 +261,10 @@ function toggleLegend() {
 }
 
 
-var counterClick =0;
 
 function togglegraphView() {
+
+    togglesidenavleft();
 
     counterClick++;
     console.log("Number of times alert button is clicked"+ counterClick);
@@ -261,11 +274,17 @@ function togglegraphView() {
 
         //Alerts View
 
-        togglealertsdefault()
+        document.getElementById("PortToggleView").checked = false;
+        document.getElementById("PTPOnlyToggleView").checked = false;
+        togglealertsdefault();
+        document.getElementById("alert-btn").style.background="#111 url('../resources/images/icons/round-warning-24px-blue.png') no-repeat";
+        document.getElementById("alert-btn").style.backgroundSize="100%";
+        document.getElementById("label-btn").disabled=false;
     }
     else{ //Odd (All View)
 
-
+        document.getElementById("alert-btn").style.background="#111 url('../resources/images/icons/round-warning-white.png') no-repeat";
+        document.getElementById("alert-btn").style.backgroundSize="100%";
         var evcss = document.getElementsByClassName("PointToPointCenter");
         var line = document.getElementsByTagName("line");
         var EVCouterCircle = document.querySelectorAll("#vertex-Multilinkhub .EVCouter");
@@ -278,13 +297,138 @@ function togglegraphView() {
         var flexware = document.querySelectorAll(".Flexware.vertices");
         var portLabel = document.getElementsByClassName("PortName");
 
-        // document.getElementById("PortToggleView").checked = true;
-        // document.getElementById("PTPOnlyToggleView").checked = true;
+         togglePortState=true;
+        document.getElementById("PortToggleView").checked = true;
+        togglePTPState=true;
+         document.getElementById("PTPOnlyToggleView").checked = true;
         // document.getElementById("MTPToggleView").checked = true;
 
         // labelToggle();
 
-        if(document.getElementById("labelToggleView").checked == true){
+       // if(document.getElementById("labelToggleView").checked == true){
+        if(counterClickLabel %2 == 0) {//Even(Label is on)
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "";
+            }
+
+        }
+        else{
+            for (var i = 0; i < portLabel.length; i++) {
+                portLabel[i].style.display = "none";
+            }
+
+        }
+
+        document.getElementById("label-btn").disabled=false;
+
+        for (var i = 0; i < evcss.length; i++)
+            evcss[i].style.display = "";
+        for (var i = 0; i < line.length; i++)
+            line[i].style.display = "";
+        for (var i = 0; i < EVCouterCircle.length; i++)
+            EVCouterCircle[i].style.display = "";
+        for (var i = 0; i < EVCouter.length; i++)
+            EVCouter[i].style.display = "";
+        for (var i = 0; i < recIcon.length; i++)
+            recIcon[i].style.display = "";
+        for (var i = 0; i < alertIcon.length; i++)
+            alertIcon[i].style.display = "";
+        for (var i = 0; i < ports.length; i++)
+            ports[i].style.display = "";
+        for (var i = 0; i < sites.length; i++)
+            sites[i].style.display = "";
+        for (var i = 0; i < fwfirewall.length; i++)
+            fwfirewall[i].style.display = "";
+        for (var i = 0; i < flexware.length; i++)
+            flexware[i].style.display = "";
+
+
+
+
+        for (var i = 0; i < evcss.length; i++) {
+            if (evcss[i].hasAlert == true) {
+                var ptpWithAlertId = evcss[i].__data__.id;
+                port0=evcss[i].__data__.item.ports[0];
+                port1=evcss[i].__data__.item.ports[1];
+
+                for (var i = 0; i < line.length; i++) { //Appearing the connection lines(ptp to port lines) &&  port to site lines
+
+                    if (line[i].classList != "icon-line") {
+                        if (line[i].__data__.target.id == ptpWithAlertId || port0 == line[i].__data__.source.id || port1 == line[i].__data__.source.id) {
+                            var d3line = d3.select(line[i]).classed("alertline", true).attr("dashin", false).attr("standard", false).attr("edges", false).attr("standard", false).attr("line", false);
+                        }
+                        else{
+                            line[i].style.display="";
+                            d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                        }
+                    }
+                    else{
+                        line[i].style.display="";
+                        d3.select(line[i]).classed("alertline", false).attr("dashin", true).attr("standard", true).attr("edges", true).attr("standard", true).attr("line", true);
+                    }
+                }
+            }
+        }
+
+    }
+     // togglePortState =true;
+     // togglePTPState =true;
+
+
+}
+
+
+
+
+
+function checkGraphView(){
+    console.log("Number of times alert button is clicked from check function" + counterClick);
+
+    // if(counterClick==0){
+    //     togglealertsdefault();
+    //     // checkTogglePTPAndLines();
+    //     // checkTogglePort();
+    //     // checkLabelToggle();
+    //
+    // }
+
+     if(counterClick % 2 ==0){ //Even (Alerts View)
+
+
+        // document.getElementById("PortToggleView").checked = false;
+        // document.getElementById("PTPOnlyToggleView").checked = false;
+        togglealertsdefault();
+        // checkTogglePTPAndLines();
+        // checkTogglePort();
+        // checkLabelToggle();
+
+    }
+    else{ //Odd (All View)
+
+        // checkTogglePTP();
+        // checkTogglePTPAndLines();
+        // checkTogglePort();
+        // checkLabelToggle();
+        var evcss = document.getElementsByClassName("PointToPointCenter");
+        var line = document.getElementsByTagName("line");
+        var EVCouterCircle = document.querySelectorAll("#vertex-Multilinkhub .EVCouter");
+        var EVCouter = document.querySelectorAll("#vertex-Multilinkhub");
+        var recIcon = document.querySelectorAll("#recommendation-icon");
+        var alertIcon = document.querySelectorAll("#alert-icon");
+        var ports = document.querySelectorAll(".Port-node.use-node.clickable");
+        var sites = document.querySelectorAll(".Site.vertices");
+        var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
+        var flexware = document.querySelectorAll(".Flexware.vertices");
+        var portLabel = document.getElementsByClassName("PortName");
+
+         // document.getElementById("PortToggleView").checked = true;
+         // document.getElementById("PTPOnlyToggleView").checked = true;
+        // document.getElementById("MTPToggleView").checked = true;
+
+        // labelToggle();
+
+       // if(document.getElementById("labelToggleView").checked == true){
+         if(counterClickLabel %2 == 0) {//Even(Label is on)
             for (var i = 0; i < portLabel.length; i++) {
                 portLabel[i].style.display = "";
             }
@@ -350,15 +494,11 @@ function togglegraphView() {
 
 }
 
-function checkGraphView(){
-    console.log("Number of times alert button is clicked from check function" + counterClick);
-
-}
-
 
 
 
 function toggleclick() {
+
 
     if (document.getElementById("PTPToggleView").checked == true) {
 
@@ -465,13 +605,14 @@ function toggleclick() {
 
 
 }
-function checkTogglePTP(){
+function checkToggleAll(){
 
-    if(document.getElementById("PTPToggleView").checked == false){
+  //  if(document.getElementById("PTPToggleView").checked == false){
+    if(counterClick % 2 !=0){ //Odd (All View)
         toggleON();
 
     }else{
-        consoel.log("hi there!")
+        console.log("hi there!");
     }
 }
 
@@ -592,12 +733,18 @@ function toggleport(){
     var line = document.getElementsByTagName("line");
     console.log("inside toggleport function");
 
-    if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
+    togglePortState =document.getElementById("PortToggleView").checked;
+
+    if(counterClick % 2 ==0){ //Even (Alerts View)
+
+   // if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
         if (document.getElementById("PortToggleView").checked == true) {
             for (var i = 0; i < ports.length; i++)
                 ports[i].style.display = "";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="";
+            //checkLabelToggle();
+            document.getElementById("label-btn").disabled =false;
             for(var i=0;i<line.length;i++) {
                 if (line[i].classList != "icon-line") {
                     if (line[i].__data__.kinds == "PortSite") {
@@ -609,18 +756,22 @@ function toggleport(){
 
         }
         else {
-
+            document.getElementById("label-btn").disabled =true;
             togglealertsdefault();
             checkTogglePTPAndLines();
             //checkToggleMTP();
         }
     }
     else{ //All View
+
+
         if (document.getElementById("PortToggleView").checked == true) {
             for (var i = 0; i < ports.length; i++)
                 ports[i].style.display = "";
-            for(var i=0;i<portLabel.length;i++)
-                portLabel[i].style.display="";
+            // for(var i=0;i<portLabel.length;i++)
+            //     portLabel[i].style.display="";
+            document.getElementById("label-btn").disabled =false;
+            checkLabelToggle();
             for(var i=0;i<line.length;i++) {
                 if (line[i].classList != "icon-line") {
                     if (line[i].__data__.kinds == "PortSite") {
@@ -634,6 +785,8 @@ function toggleport(){
                 ports[i].style.display="none";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="none";
+
+            document.getElementById("label-btn").disabled =true;
             // for(var i=0;i<line.length;i++){
             //     if(line[i].__data__.kinds == "PortSite"){
             //         line[i].style.display="none";
@@ -649,9 +802,10 @@ function checkTogglePort(){
     var portLabel = document.getElementsByClassName("PortName");
     var line = document.getElementsByTagName("line");
 
-    if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
+    // if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
+        if(counterClick % 2 ==0){     //Alerts View
 
-        if (document.getElementById("PortToggleView").checked == true) {
+        if (document.getElementById("PortToggleView")!=null&&document.getElementById("PortToggleView").checked == true) {
 
             for (var i = 0; i < ports.length; i++)
                 ports[i].style.display = "";
@@ -680,11 +834,12 @@ function checkTogglePort(){
 
     else { //All View
 
-        if (document.getElementById("PortToggleView").checked == true) {
+        if (document.getElementById("PortToggleView")!=null&&document.getElementById("PortToggleView").checked == true) {
             for (var i = 0; i < ports.length; i++)
                 ports[i].style.display = "";
-            for(var i=0;i<portLabel.length;i++)
-                portLabel[i].style.display="";
+            // for(var i=0;i<portLabel.length;i++)
+            //     portLabel[i].style.display="";
+            checkLabelToggle();
             for(var i=0;i<line.length;i++) {
                 if (line[i].classList != "icon-line") {
                     if (line[i].__data__.kinds == "PortSite") {
@@ -700,6 +855,9 @@ function checkTogglePort(){
                 ports[i].style.display="none";
             for(var i=0;i<portLabel.length;i++)
                 portLabel[i].style.display="none";
+
+
+           // checkLabelToggle();
             // for(var i=0;i<line.length;i++){
             //     if(line[i].__data__.kinds == "PortSite"){
             //         line[i].style.display="none";
@@ -718,9 +876,10 @@ function togglePTP() {
     var line = document.getElementsByTagName("line");
 
 
-    if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
-
-        if (document.getElementById("PTPOnlyToggleView").checked == true) {
+   // if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
+    togglePTPState =document.getElementById("PTPOnlyToggleView").checked;
+    if(counterClick % 2 ==0){ //Even (Alerts View)
+        if (document.getElementById("PTPOnlyToggleView")!=null&&document.getElementById("PTPOnlyToggleView").checked == true) {
 
             for (var i = 0; i < evcss.length; i++)
                 evcss[i].style.display = "";
@@ -762,7 +921,7 @@ function togglePTP() {
     }
     else { // All View
 
-        if (document.getElementById("PTPOnlyToggleView").checked == true) {
+        if (document.getElementById("PTPOnlyToggleView")!=null&&document.getElementById("PTPOnlyToggleView").checked == true) {
 
             for (var i = 0; i < evcss.length; i++)
                 evcss[i].style.display = "";
@@ -789,9 +948,11 @@ function checkTogglePTPAndLines() {
     var evcss = document.getElementsByClassName("PointToPointCenter");
     var line = document.getElementsByTagName("line");
 
-    if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
+    // if (document.getElementById("PTPToggleView").checked == true) { //Alerts View
 
-        if (document.getElementById("PTPOnlyToggleView").checked == true) {
+    if(counterClick % 2 ==0){ //Alerts View
+
+        if (togglePTPState==true) {
             for (var i = 0; i < evcss.length; i++)
                 evcss[i].style.display = "";
 
@@ -831,7 +992,7 @@ function checkTogglePTPAndLines() {
 
 
     else {  //All View
-        if (document.getElementById("PTPOnlyToggleView").checked == true) {
+        if (togglePTPState==true) {
 
             for(var i=0;i<evcss.length;i++)
                 evcss[i].style.display="";
@@ -1154,20 +1315,31 @@ function togglealertsdefault(){
     }
 }
 
-
+//counterClickLabel
 function labelToggle() {
+
+    counterClickLabel++;
+
     var portLabel = document.getElementsByClassName("PortName");
     var evcss = document.getElementsByClassName("PointToPointCenter");
     var ports = document.querySelectorAll(".Port-node.use-node.clickable");
 
-    if (document.getElementById("PTPToggleView").checked == false) { // All view
+    console.log("Number of times label toggle isclicked" + counterClickLabel);
 
-        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
 
+
+   // if (document.getElementById("PTPToggleView").checked == false) { // All view
+
+    //    if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+    if(counterClick % 2 !==0){ //Odd (All View)
+
+        if(counterClickLabel %2 !== 0){ // Label is turned off
 
             for (var i = 0; i < portLabel.length; i++) {
                 portLabel[i].style.display = "none";
             }
+            document.getElementById("label-btn").style.background="#111 url('../resources/images/icons/round-label-off-blue.png') no-repeat";
+            document.getElementById("label-btn").style.backgroundSize="100%";
         }
 
         else { //Label is turned on
@@ -1176,55 +1348,72 @@ function labelToggle() {
                 console.log("inside checklabeltoggle all view - toggle is  on 1067");
                 portLabel[i].style.display = "";
             }
-
+            document.getElementById("label-btn").style.background="#111 url('../resources/images/icons/round-label-blue.png') no-repeat";
+            document.getElementById("label-btn").style.backgroundSize="100%";
         }
     }
 
     else {  // Alerts view
-        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+      //  if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+
+        if(counterClickLabel %2 !== 0){ // Label is turned off
+
             for (var i = 0; i < portLabel.length; i++) {
                 portLabel[i].style.display = "none";
             }
-
+            document.getElementById("label-btn").style.background="#111 url('../resources/images/icons/round-label-off-blue.png') no-repeat";
+            document.getElementById("label-btn").style.backgroundSize="100%";
         }
         else { //Label is turned on
+            document.getElementById("label-btn").style.background="#111 url('../resources/images/icons/round-label-blue.png') no-repeat";
+            document.getElementById("label-btn").style.backgroundSize="100%";
+            if (document.getElementById("PortToggleView")!=null&&document.getElementById("PortToggleView").checked == true) {
+                for (var i = 0; i < portLabel.length; i++) {
+                    portLabel[i].style.display = "";
+                }
 
-            for(var i=0;i<evcss.length;i++) {
-                if (evcss[i].hasAlert == true) {
+            }
+            else {
 
-                    var ptpWithAlertId = evcss[i].__data__.id;
-                    port0 = evcss[i].__data__.item.ports[0];
-                    port1 = evcss[i].__data__.item.ports[1];
 
-                    for (var j = 0; j < ports.length; j++) { //Appearing the ports
-                        if (evcss[i].__data__.item.ports[0] == ports[j].__data__.id) {
+                for (var i = 0; i < evcss.length; i++) {
+                    if (evcss[i].hasAlert == true) {
 
-                            for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
-                                if (portLabel[k].__data__.id == ports[j].__data__.id) {
+                        var ptpWithAlertId = evcss[i].__data__.id;
+                        port0 = evcss[i].__data__.item.ports[0];
+                        port1 = evcss[i].__data__.item.ports[1];
 
-                                    console.log("inside checklabeltoggle all view - toggle is  on line 1096");
-                                    portLabel[k].style.display = "";
-                                }
-                                else{
-                                    portLabel[k].style.display = "none";
+                        for (var j = 0; j < ports.length; j++) { //Appearing the ports
+                            if (evcss[i].__data__.item.ports[0] == ports[j].__data__.id) {
+
+                                for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
+                                    if (portLabel[k].__data__.id == ports[j].__data__.id) {
+
+                                        console.log("inside checklabeltoggle all view - toggle is  on line 1096");
+                                        portLabel[k].style.display = "";
+                                    }
+                                    else {
+                                        portLabel[k].style.display = "none";
+                                    }
                                 }
                             }
-                        }
-                        if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
+                            if (evcss[i].__data__.item.ports[1] == ports[j].__data__.id) {
 
-                            for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
-                                if (portLabel[k].__data__.id == ports[j].__data__.id) {
-                                    portLabel[k].style.display = "";
+                                for (var k = 0; k < portLabel.length; k++) { //Appearing of the Port Labels
+                                    if (portLabel[k].__data__.id == ports[j].__data__.id) {
+                                        portLabel[k].style.display = "";
 
-                                    console.log("inside checklabeltoggle all view - toggle is  on line 1110");
-                                }
-                                else{
-                                    portLabel[k].style.display = "none";
+                                        console.log("inside checklabeltoggle all view - toggle is  on line 1110");
+                                    }
+                                    else {
+                                        portLabel[k].style.display = "none";
+                                    }
                                 }
                             }
                         }
                     }
-                }}
+                }
+            }
 
         }
     }
@@ -1236,9 +1425,14 @@ function checkLabelToggle(){
     var evcss = document.getElementsByClassName("PointToPointCenter");
     var ports = document.querySelectorAll(".Port-node.use-node.clickable");
 
-    if (document.getElementById("PTPToggleView").checked == false) { // All view
+   // if (document.getElementById("PTPToggleView").checked == false) { // All view
 
-        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+    //    if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+
+    console.log("Number of times label is clicked from check label funciton"+ counterClickLabel);
+    if(counterClick % 2 !==0){ //Odd (All View)
+
+        if(counterClickLabel %2 !== 0){ // Label is turned off
 
             console.log("inside checklabeltoggle all view - toggle is  off");
             for (var i = 0; i < portLabel.length; i++) {
@@ -1258,7 +1452,10 @@ function checkLabelToggle(){
     }
 
     else{ //Alerts View
-        if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+       // if (document.getElementById("labelToggleView").checked == false) { //Label is turned off
+
+        if(counterClickLabel %2 !== 0){ // Label is turned off
+
             for (var i = 0; i < portLabel.length; i++) {
                 portLabel[i].style.display = "none";
             }
@@ -1345,7 +1542,7 @@ function clearSelectionData(){
 
 // Left Side Nav
 
-var toggleState =false;
+
 function togglesidenavleft(data){
     cleanPortSiteAnimation();
     var checkHead = document.getElementById("chosenHead");
@@ -1355,23 +1552,21 @@ function togglesidenavleft(data){
 
 
 
+
 if(data == null){
+
 
 
     sideNavLeft.style.width = "16vw";
     sideNavLeft.style.paddingLeft = "10px";
     sideNavLeft.style.paddingRight = "10px";
 
-
-
-    //Cross button
    slideBtn = document.createElement("div");
    slideBtn.setAttribute("id", "slideBtnLeft");
    slideBtn.setAttribute("class", "slideBtnLeft");
    slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
    slideBtn.innerHTML = "x";
     slideBtn.style.display = "";
-
     sideNavLeft.innerHTML="";
 
     console.log("legend on");
@@ -1391,14 +1586,6 @@ if(data == null){
 
     var portCluster = document.createElement("div");
     portCluster.innerHTML = "<img class='flexwareImg' src='resources/images/icons/newportCluster.svg'></img>" + " Nine Ports in Cluster " + "<br>";
-
-
-    // var usePort = document.createElementNS('http://www.w3.org/2000/svg','use');
-    // usePort.setAttributeNS("http://www.w3.org/1999/xlink","href" ,"#vertex-PortIcon");
-    // usePort.setAttribute("width","2");
-    // usePort.setAttribute("height","2");
-    // usePort.setAttribute("x","200");
-    // usePort.setAttribute("y","-42");
 
     var ptp = document.createElement("div");
     ptp.innerHTML = "<img class='flexwareImg' src='resources/images/icons/PTPImage.png'></img>" + " PTP" ;
@@ -1425,59 +1612,88 @@ if(data == null){
     sideNavLeft.appendChild(ptag);
     sideNavLeft.appendChild(site);
     sideNavLeft.appendChild(siteCluster);
-
-    var portLabel = document.createElement("label");
-    portLabel.setAttribute("class", "input-toggle");
-    portLabel.setAttribute("for", "PortToggleView");
-    var portInput = document.createElement("input");
-    portInput.setAttribute("type", "checkbox");
-    portInput.setAttribute("id", "PortToggleView");
-    // portInput.setAttribute("onclick", "toggleport()");
-    var portSpan = document.createElement("span");
-
-    // if(toggleState==true){
     //
-    //     console.log("toggleState is true");
-    //
-    //     var portLabel = document.createElement("label");
-    //     portLabel.setAttribute("class", "input-toggle");
-    //     portLabel.setAttribute("for", "PortToggleView");
-    //     var portInput = document.createElement("input");
-    //     portInput.setAttribute("type", "checkbox");
-    //     portInput.setAttribute("id", "PortToggleView");
-    //     portInput.setAttribute("onclick", "toggleport()");
-    //     portInput.setAttribute("checked", "true");
-    //     var portSpan = document.createElement("span");
-    // }
-    // else{
-    //     console.log("toggleState is false");
-    //     var portLabel = document.createElement("label");
-    //     portLabel.setAttribute("class", "input-toggle");
-    //     portLabel.setAttribute("for", "PortToggleView");
-    //     var portInput = document.createElement("input");
-    //     portInput.setAttribute("type", "checkbox");
-    //     portInput.setAttribute("id", "PortToggleView");
-    //     portInput.setAttribute("onclick", "toggleport()");
-    //     var portSpan = document.createElement("span");
-    // }
+    // var portLabel = document.createElement("label");
+    // portLabel.setAttribute("class", "input-toggle");
+    // portLabel.setAttribute("for", "PortToggleView");
+    // var portInput = document.createElement("input");
+    // portInput.setAttribute("type", "checkbox");
+    // portInput.setAttribute("id", "PortToggleView");
+    // // portInput.setAttribute("onclick", "toggleport()");
+    // var portSpan = document.createElement("span");
+    // togglePortState = document.getElementById("PortToggleView").checked;
+    // togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
 
-    portLabel.appendChild(portInput);
-    portLabel.appendChild(portSpan);
-    port.appendChild(portLabel);
+    if(togglePortState==true){
+
+        console.log("toggleState is true");
+
+        var portLabelTag = document.createElement("label");
+        portLabelTag.setAttribute("class", "input-toggle");
+        portLabelTag.setAttribute("for", "PortToggleView");
+        var portInput = document.createElement("input");
+        portInput.setAttribute("type", "checkbox");
+        portInput.setAttribute("id", "PortToggleView");
+        portInput.setAttribute("onclick", "toggleport()");
+        portInput.setAttribute("checked", "true");
+        var portSpan = document.createElement("span");
+    }
+    else{
+        console.log("toggleState is false");
+        var portLabelTag = document.createElement("label");
+        portLabelTag.setAttribute("class", "input-toggle");
+        portLabelTag.setAttribute("for", "PortToggleView");
+        var portInput = document.createElement("input");
+        portInput.setAttribute("type", "checkbox");
+        portInput.setAttribute("id", "PortToggleView");
+        portInput.setAttribute("onclick", "toggleport()");
+        var portSpan = document.createElement("span");
+    }
+
+    portLabelTag.appendChild(portInput);
+    portLabelTag.appendChild(portSpan);
+    port.appendChild(portLabelTag);
 
     sideNavLeft.appendChild(port);
     sideNavLeft.appendChild(portCluster);
 
     // var label2 = label.cloneNode(true);
     // ptp.appendChild(label2);
-    var ptpLabel = document.createElement("label");
-    ptpLabel.setAttribute("class", "input-toggle");
-    ptpLabel.setAttribute("for", "PTPOnlyToggleView");
-    var ptpInput = document.createElement("input");
-    ptpInput.setAttribute("type", "checkbox");
-    ptpInput.setAttribute("id", "PTPOnlyToggleView");
-    // ptpInput.setAttribute("onclick", "togglePTP()");
-    var ptpSpan = document.createElement("span");
+    // var ptpLabel = document.createElement("label");
+    // ptpLabel.setAttribute("class", "input-toggle");
+    // ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+    // var ptpInput = document.createElement("input");
+    // ptpInput.setAttribute("type", "checkbox");
+    // ptpInput.setAttribute("id", "PTPOnlyToggleView");
+    // // ptpInput.setAttribute("onclick", "togglePTP()");
+    // var ptpSpan = document.createElement("span");
+
+
+    if(togglePTPState==true){
+
+        console.log("toggleState is true");
+        var ptpLabel = document.createElement("label");
+        ptpLabel.setAttribute("class", "input-toggle");
+        ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+        var ptpInput = document.createElement("input");
+        ptpInput.setAttribute("type", "checkbox");
+        ptpInput.setAttribute("id", "PTPOnlyToggleView");
+         ptpInput.setAttribute("onclick", "togglePTP()");
+        ptpInput.setAttribute("checked", "true");
+        var ptpSpan = document.createElement("span");
+    }
+    else{
+        var ptpLabel = document.createElement("label");
+        ptpLabel.setAttribute("class", "input-toggle");
+        ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+        var ptpInput = document.createElement("input");
+        ptpInput.setAttribute("type", "checkbox");
+        ptpInput.setAttribute("id", "PTPOnlyToggleView");
+         ptpInput.setAttribute("onclick", "togglePTP()");
+        var ptpSpan = document.createElement("span");
+    }
+
+
 
     ptpLabel.appendChild(ptpInput);
     ptpLabel.appendChild(ptpSpan);
@@ -1492,26 +1708,6 @@ if(data == null){
     sideNavLeft.appendChild(adiod);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 else {
     if (data == "close") {
@@ -1519,15 +1715,13 @@ else {
         sideNavLeft.style.paddingLeft = "0";
         sideNavLeft.style.paddingRight = "0";
         slideBtn.style.display = "none";
-
-        var clusterTable = document.getElementById("clustertableDisplay");
-        var clusterHead = document.getElementsByClassName("clusterHead");
-        if(clusterTable){
-            clusterTable.style.display="none";
-            clusterHead[0].style.display="none";
-        }
-
-        toggleState = document.getElementById("PortToggleView").checked;
+        
+        // var clusterTable = document.getElementById("clustertableDisplay");
+        // var clusterHead = document.getElementsByClassName("clusterHead");
+        // if(clusterTable){
+        //     clusterTable.style.display="none";
+        //     clusterHead[0].style.display="none";
+        // }
 
        // Hide the toggleswitches on left side nav
        var toggleSwitch= document.getElementsByClassName("input-toggle");
@@ -1536,15 +1730,10 @@ else {
 
        }
 
-
-
-
-
-
-
-
-
-
+       if(document.getElementById("PortToggleView")!=null&&document.getElementById("PTPOnlyToggleView")!=null){
+        togglePortState = document.getElementById("PortToggleView").checked;
+        togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
+    }
 
     } else if ($('#sidenavLeft').width() == 0 && checkHead != null && checkHead.innerHTML != null && (checkHead.innerHTML.includes(data.item.siteAlias) || checkHead.innerHTML.includes(data.item.id) || checkHead.innerHTML.includes(data.item.linkName))) {
         sideNavLeft.style.width = "16vw";
@@ -1552,7 +1741,8 @@ else {
         sideNavLeft.style.paddingRight = "10px";
         slideBtn.style.display = "";
 
-        toggleState = document.getElementById("PortToggleView").checked;
+        togglePortState = document.getElementById("PortToggleView").checked;
+        togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
 
 
     } else {
@@ -1560,6 +1750,9 @@ else {
         while (sideNavLeft.firstChild) {
             sideNavLeft.removeChild(sideNavLeft.firstChild);
         }
+
+
+
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
@@ -1579,6 +1772,101 @@ else {
         slideBtn.style.display = "";
 
         sideNavLeft.appendChild(slideBtn);
+
+
+
+
+
+        var port = document.createElement("div");
+        port.innerHTML = "<img class='flexwareImg' src='resources/images/icons/newport.svg'></img>" + " Port " ;
+        port.style.display="none";
+
+        var ptp = document.createElement("div");
+        ptp.innerHTML = "<img class='flexwareImg' src='resources/images/icons/PTPImage.png'></img>" + " PTP" ;
+        ptp.style.display="none";
+
+
+
+        if(togglePortState==true){
+
+            console.log("toggleState in else is true");
+
+            var portLabelTag = document.createElement("label");
+            portLabelTag.setAttribute("class", "input-toggle");
+            portLabelTag.setAttribute("for", "PortToggleView");
+            var portInput = document.createElement("input");
+            portInput.setAttribute("type", "checkbox");
+            portInput.setAttribute("id", "PortToggleView");
+            portInput.setAttribute("onclick", "toggleport()");
+            portInput.setAttribute("checked", "true");
+            var portSpan = document.createElement("span");
+        }
+        else{
+            console.log("toggleState in else is false");
+            var portLabelTag = document.createElement("label");
+            portLabelTag.setAttribute("class", "input-toggle");
+            portLabelTag.setAttribute("for", "PortToggleView");
+            var portInput = document.createElement("input");
+            portInput.setAttribute("type", "checkbox");
+            portInput.setAttribute("id", "PortToggleView");
+            portInput.setAttribute("onclick", "toggleport()");
+            var portSpan = document.createElement("span");
+        }
+
+        portLabelTag.appendChild(portInput);
+        portLabelTag.appendChild(portSpan);
+        port.appendChild(portLabelTag);
+
+        sideNavLeft.appendChild(port);
+
+        if(togglePTPState==true){
+
+            console.log("toggleState in else is true");
+            var ptpLabel = document.createElement("label");
+            ptpLabel.setAttribute("class", "input-toggle");
+            ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+            var ptpInput = document.createElement("input");
+            ptpInput.setAttribute("type", "checkbox");
+            ptpInput.setAttribute("id", "PTPOnlyToggleView");
+            ptpInput.setAttribute("onclick", "togglePTP()");
+            ptpInput.setAttribute("checked", "true");
+            var ptpSpan = document.createElement("span");
+        }
+        else{
+            console.log("toggleState in else is false");
+            var ptpLabel = document.createElement("label");
+            ptpLabel.setAttribute("class", "input-toggle");
+            ptpLabel.setAttribute("for", "PTPOnlyToggleView");
+            var ptpInput = document.createElement("input");
+            ptpInput.setAttribute("type", "checkbox");
+            ptpInput.setAttribute("id", "PTPOnlyToggleView");
+            ptpInput.setAttribute("onclick", "togglePTP()");
+            var ptpSpan = document.createElement("span");
+        }
+
+
+
+        ptpLabel.appendChild(ptpInput);
+        ptpLabel.appendChild(ptpSpan);
+        ptp.appendChild(ptpLabel);
+
+        // Hide the toggleswitches on left side nav
+        var toggleSwitch= document.getElementsByClassName("input-toggle");
+        for(var i=0; i<toggleSwitch.length;i++){
+            toggleSwitch[i].style.display="none";
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
         var tempData;
@@ -2026,6 +2314,7 @@ else {
                     configSoftware.innerHTML = "Configure Software";
                     var configAdd  = document.createElement("table");
                     configAdd.setAttribute("id", "tableDisplay2");
+                    configAdd.setAttribute("class","removableTable");
                     tableData = "<tr><td ><input type='checkbox' name='flexSelect' id='firewallSelect' value='firewall' checked onclick='return false;''><label for='firewallSelect'><img class='flexwareImg label-text' src='resources/images/icons/firewallImg.png'></label></td><td>Add firewall</td></tr>";
                     tableData += "<tr><td ><input type='checkbox' name='flexSelect' id='wanxSelect' value='WANX' ><label for='wanxSelect'><img class='flexwareImg label-text' src='resources/images/icons/wanxImg.png'></label></td><td>Add WANX</td></tr>";
                     tableData += "<tr><td ><input type='checkbox' name='flexSelect' id='routerSelect' value='Router'><label for='routerSelect'><img class='flexwareImg label-text' src='resources/images/icons/routerImg.png'></label></td><td class='form-inline'><label for='routerCount'>Add Router</label><input type='text' class='form-control input-sm' id='routerCount' disabled> </td></tr>";
@@ -2033,14 +2322,24 @@ else {
                     
                     var reviewBilling = document.createElement("button");
                     reviewBilling.innerHTML="Review Order";
+                    reviewBilling.setAttribute("id","flexButtonRemovable");
                     reviewBilling.setAttribute("class","buttonTicket");
                     reviewBilling.setAttribute("onclick","processFlexware(this)");
+                    reviewBilling.disabled = true;
 
                     sideNavLeft.appendChild(configSoftware);
                     sideNavLeft.appendChild(configAdd);
                     sideNavLeft.appendChild(reviewBilling);
                     document.getElementById('routerSelect').onchange = function() {
                         document.getElementById('routerCount').disabled = !this.checked;
+                        reviewBilling.disabled = (!this.checked&&!document.getElementById('wanxSelect').checked);
+                        if(document.getElementById("confirmFlexBut"))
+                            document.getElementById("confirmFlexBut").disabled=(!this.checked&&!document.getElementById('wanxSelect').checked);
+                    };
+                    document.getElementById('wanxSelect').onchange = function() {
+                        reviewBilling.disabled = (!this.checked&&!document.getElementById('routerCount').checked);
+                        if(document.getElementById("confirmFlexBut"))
+                            document.getElementById("confirmFlexBut").disabled=(!this.checked&&!document.getElementById('routerCount').checked);
                     };
 
                     break;
@@ -2095,8 +2394,16 @@ else {
                 break;
             default:
                 break;
+
         }
+        
+        if(document.getElementById("PortToggleView")!=null&&document.getElementById("PTPOnlyToggleView")!=null){
+            togglePortState = document.getElementById("PortToggleView").checked;
+            togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
+        }
+        
     }
+
 }
 
 }
@@ -2123,6 +2430,7 @@ function processFlexware(flex){
         $("#tempFlexTable").remove();
         $("#confirmFlexBut").remove();
     }
+    $("#confFlex").remove();
     var charges = document.createElement("div");
     charges.setAttribute("class","serviceSelection");
     charges.setAttribute("id","tempFlexTable");
@@ -2143,8 +2451,34 @@ function confirmFlex(flex){
     $("#tempFlexTable").remove();
     $("#confirmFlexBut").remove();
     var divEle = document.createElement("div");
+    divEle.setAttribute("id","confFlex");
     divEle.innerHTML="Order confirmed!";
     parent.appendChild(divEle);
+
+    var order = {};
+        order.services = {};
+        order.services.FWfirewall = false;
+        
+       if (document.getElementById("wanxSelect").checked) {
+            order.services.FWwanX = true;
+        } else {
+            order.services.FWwanX = false;
+        }
+        if(document.getElementById("routerSelect").checked){
+            order.services.FWrouter = document.getElementById("routerCount").value;
+        }else{
+            order.services.FWrouter=0;
+        }
+        
+        console.log(order);
+        order.id = generateOrder("fw", true);
+        console.log(order.id);
+
+        graph.addFWService(null, order);
+        
+        $(".removableTable").remove();
+        $("#flexButtonRemovable").remove();
+        cleanPortSiteAnimation();
 }
 function displayPTPOrder(portA,portB,sideNavLeft){
     console.log(portA);

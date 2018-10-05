@@ -423,7 +423,7 @@ class DisplayAPI {
             /**Fade out everyting not in focus */
             svg.selectAll("use").classed("fade-out", true);
             svg.selectAll("line").classed("fade-out", true);
-            svg.selectAll("text").classed("fade-out-full", true);
+            svg.selectAll("text").classed("fade-out", true);
             d3.select(useTarget).classed("fade-out", false);
 
             /** Bring target to the top of the draw stack, so it can be easilly read */
@@ -640,7 +640,7 @@ class DisplayAPI {
 
             //restore standard opacity
             svg.selectAll("use").classed("fade-out", false).classed("fade-in", true);
-            svg.selectAll("text").classed("fade-out-full", false).classed("fade-in", true);
+            svg.selectAll("text").classed("fade-out", false).classed("fade-in", true);
             svg.selectAll("line")
                 .classed("fade-out alert-line stop-animation", false) //restore animation on all lines at once to keep in sync
                 .classed("fade-in", true);
@@ -770,6 +770,8 @@ class DisplayAPI {
             .on("click", function (ev) { // case for new selection
                 if(ev.item.kind=="Flexware"){
                     ev.ownerSite=getAttachedSite(ev.item, items, relations);
+                    state.fwView = true;
+                    state.selectedBox = ev.item;
                 }
                 togglesidenavleft(ev);
                 if ((ev.item.kind == 'Multilinkhub') || (ev.item.kind == 'PointToPointCenter')) {

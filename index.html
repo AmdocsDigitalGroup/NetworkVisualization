@@ -427,94 +427,94 @@
 
 
 <!--WORKING NAV AND SEARCH BAR-->
-    <div id="sidenav" class="sidenav" style="width: 250px">
+    <!--<div id="sidenav" class="sidenav" style="width: 250px">-->
 
-        <!--<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>-->
-        <div id="slidebtn" class="slideBtn" style="opacity: 0" onclick="togglesidenav()">&#9776;</div>
+        <!--&lt;!&ndash;<button vet="16735" jsaction="pane.close;mouseover:pane.showToggleTooltip; mouseout:pane.hideToggleTooltip;focus:pane.showToggleTooltip;blur:pane.hideToggleTooltip" aria-label="Collapse side panel" guidedhelpid="side-pan" jstcache="223" class="widget-pane-toggle-button noprint"></button>&ndash;&gt;-->
+        <!--<div id="slidebtn" class="slideBtn" style="opacity: 0" onclick="togglesidenav()">&#9776;</div>-->
 
-        <div class="modal-close" aria-label="close" tabindex="0" onclick="togglesidenav()" >X</div>
+        <!--<div class="modal-close" aria-label="close" tabindex="0" onclick="togglesidenav()" >X</div>-->
 
         <!--<a class="rightarrow" onclick="togglesidenav()" href="#" > &gt; &gt; &gt;</a>-->
 
-        <a href="#">All</a>
-        <label for="PTPToggleView" class="btn-switch-label">
-            <!--<span aria-hidden="true">Voicemail is</span>-->
-            <div class="btn-switch">
-                <input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
-                <div class="switch-overlay" aria-hidden="true">
-                    <span class="btn-slider-on"></span>
-                    <span class="switch-handle"></span>
-                    <span class="btn-slider-off"></span>
-                </div>
-            </div>
-        </label>
-        <a class="alerts" href="#">Alerts</a>
+        <!--<a href="#">All</a>-->
+        <!--<label for="PTPToggleView" class="btn-switch-label">-->
+            <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+            <!--<div class="btn-switch">-->
+                <!--<input id="PTPToggleView" type="checkbox" onclick="toggleclick()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                <!--<div class="switch-overlay" aria-hidden="true">-->
+                    <!--<span class="btn-slider-on"></span>-->
+                    <!--<span class="switch-handle"></span>-->
+                    <!--<span class="btn-slider-off"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</label>-->
+        <!--<a class="alerts" href="#">Alerts</a>-->
 
 
-        <a href="#">Legend</a>
-        <label for="labelToggleView" class="btn-switch-label">
-            <!--<span aria-hidden="true">Voicemail is</span>-->
-            <div class="btn-switch">
-                <input id="labelToggleView" type="checkbox" onclick="labelToggle()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
-                <div class="switch-overlay" aria-hidden="true">
-                    <span class="btn-slider-on"></span>
-                    <span class="switch-handle"></span>
-                    <span class="btn-slider-off"></span>
-                </div>
-            </div>
-        </label>
+        <!--<a href="#">Legend</a>-->
+        <!--<label for="labelToggleView" class="btn-switch-label">-->
+            <!--&lt;!&ndash;<span aria-hidden="true">Voicemail is</span>&ndash;&gt;-->
+            <!--<div class="btn-switch">-->
+                <!--<input id="labelToggleView" type="checkbox" onclick="labelToggle()" checked="true" role="switch"  aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                <!--<div class="switch-overlay" aria-hidden="true">-->
+                    <!--<span class="btn-slider-on"></span>-->
+                    <!--<span class="switch-handle"></span>-->
+                    <!--<span class="btn-slider-off"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</label>-->
 
-        <button class="dropdown-btn">ASEoD
-        <i class="fa fa-caret-down"></i>
-        </button>
+        <!--<button class="dropdown-btn">ASEoD-->
+        <!--<i class="fa fa-caret-down"></i>-->
+        <!--</button>-->
 
-        <div class="dropdown-container" style="display: block">
-        <a href="#">Port</a>
-            <label for="PortToggleView" class="btn-switch-label">
-                <div class="btn-switch">
-                    <input id="PortToggleView" type="checkbox" onclick="toggleport()" role="switch" aria-checked="true" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
-                    <div class="switch-overlay" aria-hidden="true">
-                        <span class="btn-slider-on">On</span>
-                        <span class="switch-handle"></span>
-                        <span class="btn-slider-off">Off</span>
-                    </div>
-                </div>
-            </label>
-            <svg class="newlegend-icon">
-            <use xlink:href="#vertex-PortIcon" x="200" y="-42" width="2" height="2"></use>
-            </svg>
+        <!--<div class="dropdown-container" style="display: block">-->
+        <!--<a href="#">Port</a>-->
+            <!--<label for="PortToggleView" class="btn-switch-label">-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="PortToggleView" type="checkbox" onclick="toggleport()" role="switch" aria-checked="true" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+            <!--<svg class="newlegend-icon">-->
+            <!--<use xlink:href="#vertex-PortIcon" x="200" y="-42" width="2" height="2"></use>-->
+            <!--</svg>-->
 
-        <a href="#">PTP</a>
-            <label for="PTPOnlyToggleView" class="btn-switch-label">
-                <div class="btn-switch">
-                    <input id="PTPOnlyToggleView" type="checkbox" onclick="togglePTP()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">
-                    <div class="switch-overlay" aria-hidden="true">
-                        <span class="btn-slider-on">On</span>
-                        <span class="switch-handle"></span>
-                        <span class="btn-slider-off">Off</span>
-                    </div>
-                </div>
-            </label>
-            <svg class="newlegend-icon">
-                <use xlink:href="#vertex-PointToPointCenterIcon" x="200" y="-42" width="2" height="2"></use>
-            </svg>
+        <!--<a href="#">PTP</a>-->
+            <!--<label for="PTPOnlyToggleView" class="btn-switch-label">-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="PTPOnlyToggleView" type="checkbox" onclick="togglePTP()" role="switch" aria-checked="false" aria-live="polite" data-dom="ready" aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+            <!--<svg class="newlegend-icon">-->
+                <!--<use xlink:href="#vertex-PointToPointCenterIcon" x="200" y="-42" width="2" height="2"></use>-->
+            <!--</svg>-->
 
             <!--<input id="MTPToggleView" onclick="toggleMTP()" type="checkbox">-->
-        <a href="#">MTP</a>
-            <label for="MTPToggleView" class="btn-switch-label">
-                <div class="btn-switch">
-                    <input id="MTPToggleView" type="checkbox" onclick="toggleMTP()"   aria-label="Voicemail is On. Activate to toggle">
-                    <div class="switch-overlay" aria-hidden="true">
-                        <span class="btn-slider-on">On</span>
-                        <span class="switch-handle"></span>
-                        <span class="btn-slider-off">Off</span>
-                    </div>
-                </div>
-            </label>
-            <svg class="newlegend-icon">
-                <use xlink:href="#vertex-MultilinkhubIcon" x="200" y="-42" width="20" height="20"></use>
-            </svg>
-        </div>
+        <!--<a href="#">MTP</a>-->
+            <!--<label for="MTPToggleView" class="btn-switch-label">-->
+                <!--<div class="btn-switch">-->
+                    <!--<input id="MTPToggleView" type="checkbox" onclick="toggleMTP()"   aria-label="Voicemail is On. Activate to toggle">-->
+                    <!--<div class="switch-overlay" aria-hidden="true">-->
+                        <!--<span class="btn-slider-on">On</span>-->
+                        <!--<span class="switch-handle"></span>-->
+                        <!--<span class="btn-slider-off">Off</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</label>-->
+            <!--<svg class="newlegend-icon">-->
+                <!--<use xlink:href="#vertex-MultilinkhubIcon" x="200" y="-42" width="20" height="20"></use>-->
+            <!--</svg>-->
+        <!--</div>-->
 
         <!--<button class="dropdown-btn">Flexware-->
             <!--<i class="fa fa-caret-down"></i>-->
@@ -569,7 +569,7 @@
             <!--<a href="#">Firewall1</a>-->
         <!--</div>-->
 
-    </div>
+    <!--</div>-->
 
 
     <div id="searchForm">
@@ -578,10 +578,12 @@
 
    <div id="sidenavLeft" class="sidenavLeft" ></div>
 
-    <button class="info-btn" onclick="togglesidenavleft()">i</button>
+    <button class="info-btn" onclick="togglesidenavleft()"></button>
 
 
-    <!--<button class="alert-btn" >All</button>-->
+    <button class="alert-btn" id="alert-btn" onclick="togglegraphView()"></button>
+
+    <button class="label-btn" id="label-btn" onclick="labelToggle()"></button>
 
 
 

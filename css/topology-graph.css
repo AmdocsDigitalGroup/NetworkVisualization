@@ -1297,13 +1297,29 @@ color: #818181; */
 }
 
 .slideBtnLeft{
+
   transition: .5s;
-  position: relative;
-  left: 12vw;
-  font-size:24px;
-  cursor:pointer;
-  margin-left:10px;
+  /*position: relative;*/
+  left: 12.9vw !important;
+  font-size: 19px !important;
+  cursor: pointer;
+  margin-left: 10px;
+  border-color: #959595;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  height: 27px;
+  position: absolute;
+  width: 27px;
+  right: 15.4px;
+  top: 10px;
+  z-index: 12;
+  padding-left: 0.40vw !important;
+  padding-bottom: 28px;
+
 }
+
+
 
 .sideNavLeftDef  {
   height: 100%;
@@ -1327,9 +1343,11 @@ color: #818181; */
 }
 
 .buttonTicket {
-  background-color: #fefee5;
+  /*background-color: #fefee5;*/
+  background-color: #337ab7;
   border: none;
-  color: black;
+  color: #fefee5;
+  border-radius: 2em;
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
@@ -1339,7 +1357,10 @@ color: #818181; */
   cursor: pointer;
 }
 
-
+button[disabled]{
+  cursor: not-allowed;
+  background-color: darkgrey;
+}
 
 #main {
   transition: .5s;
@@ -1603,18 +1624,6 @@ padding-left: 0px !important;
     padding-right: 5px;
 }
 
-.buttonTicket {
-  background-color: #fefee5;
-  border: none;
-  color: black;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
 .btnLegend{
 
@@ -1638,14 +1647,18 @@ padding-left: 0px !important;
   font-family: inherit;
   font-size: 150%;
   color: #fefee5;
-  background: #111 no-repeat 9px center;
+  background:#111 url("../resources/images/icons/round-info-blue.png") no-repeat;
+  background-size: 100%;
   padding: 0px 4px 9px 3px;
   width: 1.7vw;
   opacity: 0.8;
   border: solid 1px #111;
-  border-radius: 38em;
+  /* border:none; */
+  /* border-radius: 38em; */
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 0.1em;
   position: fixed;
-  top: 37.7vw;
+  top: 38.8vw;
   height: 1.8vw;
   z-index: 12;
   left: 97.9vw;
@@ -1657,21 +1670,51 @@ padding-left: 0px !important;
   font-family: inherit;
   font-size: 150%;
   color: #fefee5;
-  background: #111 no-repeat 9px center;
-  /*background: #111 url(http://www.famfamfam.com/lab/icons/silk/icons/disk.png) 10px 10px no-repeat;*/
-  /*background: url(/resources/images/icons/NOD-Portal-alarm.png);*/
-  /*background: url(../resources/images/icons/NOD-Portal-alarm.png) 10px 10px no-repeat;*/
+  /* background: #111 no-repeat 9px center; */
+  background: #111 url("../resources/images/icons/round-warning-24px-blue.png") no-repeat;
+  background-size: 100%;
   padding: 0px 4px 9px 3px;
   width: 1.7vw;
   opacity: 0.8;
   border: solid 1px #111;
-  border-radius: 38em;
+  /* border:none; */
+  /* border-radius: 38em; */
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 0.1em;
   position: fixed;
   /*top: 39.7vw;*/
   top: 42.9vw;
   height: 1.8vw;
   z-index: 12;
   left: 97.9vw;
+
+}
+
+.label-btn{
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 77%;
+  color: #fefee5;
+  /* background: #111 no-repeat 9px center; */
+  /* background: #111 url(http://www.famfamfam.com/lab/icons/silk/icons/disk.png) 10px 10px no-repeat; */
+  background: #111 url("/resources/images/icons/round-label-blue.png") no-repeat;
+  background-size: 100%;
+  /* background: url(../resources/images/icons/NOD-Portal-alarm.png) 10px 10px no-repeat; */
+  padding: 5px 4px 9px 2px;
+  width: 1.7vw;
+  opacity: 0.8;
+  border: solid 1px #111;
+  /* border:none; */
+  /* border-radius: 38em; */
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 0.1em;
+  position: fixed;
+  /* top: 39.7vw; */
+  top: 40.9vw;
+  height: 1.8vw;
+  z-index: 12;
+  left: 97.9vw;
+
 
 }
 
