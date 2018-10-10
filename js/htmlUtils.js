@@ -967,7 +967,8 @@ function checkTogglePTPAndLines() {
 
     if(counterClick % 2 ==0){ //Alerts View
 
-        if (togglePTPState==true) {
+       // if (togglePTPState==true) {
+        if(document.getElementById("PTPOnlyToggleView")!=null&&document.getElementById("PTPOnlyToggleView").checked == true){
             for (var i = 0; i < evcss.length; i++)
                 evcss[i].style.display = "";
 
