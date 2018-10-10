@@ -1640,7 +1640,9 @@ if(data == null){
 
    // sideNavLeft.appendChild(slideBtn);
    // sideNavLeft.appendChild(newSlideBtnDiv);
+    sideNavLeft.appendChild(close);
     sideNavLeft.appendChild(ptag);
+
     sideNavLeft.appendChild(site);
     sideNavLeft.appendChild(siteCluster);
     //
@@ -1738,7 +1740,7 @@ if(data == null){
     sideNavLeft.appendChild(router);
     sideNavLeft.appendChild(wanx);
     sideNavLeft.appendChild(adiod);
-    sideNavLeft.appendChild(close);
+
 
 
 
@@ -1799,7 +1801,7 @@ else {
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
-        
+
 
         // var close3 = document.createElement("div");
         // close3.innerHTML = "<img class='closeImgInfo' src='resources/images/icons/close.svg'></img>";
