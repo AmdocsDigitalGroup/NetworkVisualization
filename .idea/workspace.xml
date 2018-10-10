@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b737d7c5-77bb-40b9-b563-b77bd5193f2f" name="Default" comment="Commit Aug 24th, 2018">
       <change beforePath="$PROJECT_DIR$/css/topology-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/htmlUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/htmlUtils.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -108,8 +107,8 @@
       <file leaf-file-name="topology-graph.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="1160" column="1" lean-forward="true" selection-start-line="1160" selection-start-column="1" selection-end-line="1160" selection-end-column="1" />
+            <state relative-caret-position="504">
+              <caret line="2028" column="18" lean-forward="true" selection-start-line="2028" selection-start-column="18" selection-end-line="2028" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -454,7 +453,7 @@
       <workItem from="1539095943646" duration="21804000" />
       <workItem from="1539184676505" duration="79000" />
       <workItem from="1539184947010" duration="234000" />
-      <workItem from="1539185374279" duration="4372000" />
+      <workItem from="1539185374279" duration="4816000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/AmdocsDigitalGroup/NetworkVisualization&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1535131205745</created>
@@ -551,7 +550,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483551000" />
+    <option name="totallyTimeSpent" value="483995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="1" width="1918" height="1038" extended-state="0" />
@@ -927,8 +926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="1160" column="1" lean-forward="true" selection-start-line="1160" selection-start-column="1" selection-end-line="1160" selection-end-column="1" />
+        <state relative-caret-position="504">
+          <caret line="2028" column="18" lean-forward="true" selection-start-line="2028" selection-start-column="18" selection-end-line="2028" selection-end-column="18" />
         </state>
       </provider>
     </entry>

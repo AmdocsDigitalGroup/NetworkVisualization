@@ -2026,6 +2026,7 @@ input[type=search-left] {
   /* border: solid 1px #111; */
   border-bottom: 2px solid #fefee563;
   border-radius: 2em;
+  margin-top: 1vh;
 
 }
 input {
