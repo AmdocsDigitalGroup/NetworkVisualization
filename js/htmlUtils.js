@@ -1547,27 +1547,50 @@ function togglesidenavleft(data){
     cleanPortSiteAnimation();
     var checkHead = document.getElementById("chosenHead");
     var sideNavLeft = document.getElementById("sidenavLeft");
-    var slideBtn=document.getElementById("slideBtnLeft");
-
+   // var slideBtn=document.getElementById("slideBtnLeft");
+    var newSlideBtnDiv =document.getElementById("corner-button");
+    var newSlideBtn=document.getElementById("close");
+  // var close=document.getElementById("close-btn");
 
 
 
 
 if(data == null){
 
-
-
     sideNavLeft.style.width = "16vw";
     sideNavLeft.style.paddingLeft = "10px";
     sideNavLeft.style.paddingRight = "10px";
 
-   slideBtn = document.createElement("div");
-   slideBtn.setAttribute("id", "slideBtnLeft");
-   slideBtn.setAttribute("class", "slideBtnLeft");
-   slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
-   slideBtn.innerHTML = "x";
-    slideBtn.style.display = "";
+    //*******Working close button*****//
+   // slideBtn = document.createElement("div");
+   // slideBtn.setAttribute("id", "slideBtnLeft");
+   // slideBtn.setAttribute("class", "slideBtnLeft");
+   // slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
+   // slideBtn.innerHTML = "x";
+   //  slideBtn.style.display = "";
+   //  sideNavLeft.innerHTML="";
+
+    newSlideBtnDiv = document.createElement("div");
+    newSlideBtnDiv.setAttribute("class", "corner-button");
+    newSlideBtnDiv.setAttribute("id", "corner-button");
+
+    newSlideBtn = document.createElement("button");
+    newSlideBtn.setAttribute("type", "button");
+    newSlideBtn.setAttribute("id", "close");
+    newSlideBtn.setAttribute("class", "close");
+    newSlideBtn.setAttribute("data-dismiss", "modal");
+    newSlideBtn.setAttribute("onclick", "togglesidenavleft('close')");
+    newSlideBtn.setAttribute("aria-label", "Close");
+
+    newSlideBtnDiv.appendChild(newSlideBtn);
+    newSlideBtnDiv.style.display="";
+
+
+
     sideNavLeft.innerHTML="";
+
+
+
 
     console.log("legend on");
     var ptag = document.createElement("h4");
@@ -1608,7 +1631,15 @@ if(data == null){
     var adiod = document.createElement("div");
     adiod.innerHTML = "<img class='flexwareImg' src='resources/images/icons/internet1.svg'></img>" + " Adiod" +"<br>";
 
-    sideNavLeft.appendChild(slideBtn);
+    var close = document.createElement("div");
+    //close.setAttribute("id", "close-btn");
+    // close.setAttribute("class", "close-btn");
+    close.setAttribute("onclick", "togglesidenavleft('close')");
+    close.innerHTML = "<img class='closeImg' src='resources/images/icons/close.svg'></img>";
+
+
+   // sideNavLeft.appendChild(slideBtn);
+   // sideNavLeft.appendChild(newSlideBtnDiv);
     sideNavLeft.appendChild(ptag);
     sideNavLeft.appendChild(site);
     sideNavLeft.appendChild(siteCluster);
@@ -1656,6 +1687,7 @@ if(data == null){
 
     sideNavLeft.appendChild(port);
     sideNavLeft.appendChild(portCluster);
+
 
     // var label2 = label.cloneNode(true);
     // ptp.appendChild(label2);
@@ -1706,6 +1738,8 @@ if(data == null){
     sideNavLeft.appendChild(router);
     sideNavLeft.appendChild(wanx);
     sideNavLeft.appendChild(adiod);
+    sideNavLeft.appendChild(close);
+
 
 
 }
@@ -1714,21 +1748,33 @@ else {
         sideNavLeft.style.width = "0";
         sideNavLeft.style.paddingLeft = "0";
         sideNavLeft.style.paddingRight = "0";
-        slideBtn.style.display = "none";
+       // slideBtn.style.display = "none";
+       // newSlideBtnDiv.style.display="none"
+
+        var close1 = document.createElement("div");
+        close1.setAttribute("onclick", "togglesidenavleft('close')");
+        close1.setAttribute("id", "close-btn");
+        close1.innerHTML = "<img class='closeImg' src='resources/images/icons/close.svg'></img>";
+        close1.style.display="none";
         
-        // var clusterTable = document.getElementById("clustertableDisplay");
-        // var clusterHead = document.getElementsByClassName("clusterHead");
-        // if(clusterTable){
-        //     clusterTable.style.display="none";
-        //     clusterHead[0].style.display="none";
-        // }
+        var clusterTable = document.getElementById("clustertableDisplay");
+        var clusterHead = document.getElementsByClassName("clusterHead");
+        if(clusterTable){
+            clusterTable.style.display="none";
+            clusterHead[0].style.display="none";
+        }
 
        // Hide the toggleswitches on left side nav
        var toggleSwitch= document.getElementsByClassName("input-toggle");
        for(var i=0; i<toggleSwitch.length;i++){
            toggleSwitch[i].style.display="none";
-
        }
+
+        //Hide the Clear Selection Button on left side nav
+        var clearSelection= document.getElementsByClassName("info-btn1");
+        for(var i=0; i<clearSelection.length;i++){
+            clearSelection[i].style.display="none";
+        }
 
        if(document.getElementById("PortToggleView")!=null&&document.getElementById("PTPOnlyToggleView")!=null){
         togglePortState = document.getElementById("PortToggleView").checked;
@@ -1736,13 +1782,36 @@ else {
     }
 
     } else if ($('#sidenavLeft').width() == 0 && checkHead != null && checkHead.innerHTML != null && (checkHead.innerHTML.includes(data.item.siteAlias) || checkHead.innerHTML.includes(data.item.id) || checkHead.innerHTML.includes(data.item.linkName))) {
+
+
+        var clearSelection;
+        if(document.getElementsByClassName("info-btn1")!=null){
+            document.getElementsByClassName("info-btn1")[0].style.display="";
+        }else{
+            clearSelection = document.createElement("button");
+            clearSelection.setAttribute("class",'info-btn1');
+            clearSelection.setAttribute("onclick","clearSelectionData()");
+            clearSelection.innerHTML="Clear Selection";
+            clearSelection.style.display="";
+        }
+
+
         sideNavLeft.style.width = "16vw";
         sideNavLeft.style.paddingLeft = "10px";
         sideNavLeft.style.paddingRight = "10px";
-        slideBtn.style.display = "";
+        
 
-        togglePortState = document.getElementById("PortToggleView").checked;
-        togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
+        // var close3 = document.createElement("div");
+        // close3.innerHTML = "<img class='closeImgInfo' src='resources/images/icons/close.svg'></img>";
+        // close3.style.display="";
+
+        sideNavLeft.appendChild(clearSelection);
+        // sideNavLeft.appendChild(close3);
+
+
+
+        // togglePortState = document.getElementById("PortToggleView").checked;
+        // togglePTPState = document.getElementById("PTPOnlyToggleView").checked;
 
 
     } else {
@@ -1763,15 +1832,25 @@ else {
         clearSelection.innerHTML="Clear Selection";
         sideNavLeft.appendChild(clearSelection);
 
-        //Cross button
-        slideBtn = document.createElement("div");
-        slideBtn.setAttribute("id", "slideBtnLeft");
-        slideBtn.setAttribute("class", "slideBtnLeft");
-        slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
-        slideBtn.innerHTML = "x";
-        slideBtn.style.display = "";
+        var close2 = document.createElement("div");
+        close2.setAttribute("onclick", "togglesidenavleft('close')");
+        close2.innerHTML = "<img class='closeImgInfo' src='resources/images/icons/close.svg'></img>";
+        close2.style.display="";
 
-        sideNavLeft.appendChild(slideBtn);
+
+        //Working Cross button
+        // slideBtn = document.createElement("div");
+        // slideBtn.setAttribute("id", "slideBtnLeft");
+        // slideBtn.setAttribute("class", "slideBtnLeft");
+        // slideBtn.setAttribute("onclick", "togglesidenavleft('close')");
+        // slideBtn.innerHTML = "x";
+        // slideBtn.style.display = "";
+        //
+        // sideNavLeft.appendChild(slideBtn);
+
+
+
+
 
 
 
@@ -1852,22 +1931,11 @@ else {
 
         // Hide the toggleswitches on left side nav
         var toggleSwitch= document.getElementsByClassName("input-toggle");
-        for(var i=0; i<toggleSwitch.length;i++){
-            toggleSwitch[i].style.display="none";
+        for(var i=0; i<toggleSwitch.length;i++) {
+            toggleSwitch[i].style.display = "none";
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
+        sideNavLeft.appendChild(close2);
 
         var tempData;
         if (data.item != null)
@@ -2069,7 +2137,7 @@ else {
 
                 break;
             case 'Port':
-                var head = document.createElement("h3");
+                var head = document.createElement("h4");
                 head.setAttribute("id", "chosenHead");
                 head.innerHTML = "<img src='resources/images/icons/newport.svg'></img>" + "Port " + tempData.id;
                 var subHead = document.createElement("h5");
@@ -2349,20 +2417,36 @@ else {
                     if(tempData.type== "FWfirewall"){
                     var head = document.createElement("h4");
                     head.setAttribute("id", "chosenHead");
-                    head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " Firewall " + tempData.id;
-                    var subHead = document.createElement("h6");
-                    // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
+                    head.innerHTML="<img class='flexwareImg' src='resources/images/icons/firewallImg.png'></img>"+ " Firewall " +"<br>"+ tempData.id;
 
                     sideNavLeft.appendChild(head);
-                    sideNavLeft.appendChild(subHead);
                     var hr = document.createElement("hr");
                     sideNavLeft.appendChild(hr);
+
+                        var firewallSpecs = document.createElement("h5");
+                        firewallSpecs.innerHTML = "Firewall Specs";
+                        var tableInfo  = document.createElement("table");
+                        tableInfo.setAttribute("id", "tableDisplay2");
+                        tableData = "<tr><td>Part Number</td><td>FortiGate- VM00</td></tr>";
+                        tableData += "<tr><td>Software</td><td>Fortinet FortiGate – VM00</td></tr>";
+                        tableData += "<tr><td>Software Version</td><td>15.1X49-D40.6</td></tr>";
+                        tableInfo.innerHTML = tableData;
+                        sideNavLeft.appendChild(firewallSpecs);
+                        sideNavLeft.appendChild(tableInfo);
+                        var br = document.createElement("br");
+                        sideNavLeft.appendChild(br);
+                       // sideNavLeft.appendChild(flexwareInfo);
+                        //sideNavLeft.appendChild(table)
+                        sideNavLeft.appendChild(br.cloneNode());
+
+
                     }
 
                     if(tempData.type== "FWwanX"){
                         var head = document.createElement("h4");
                         head.setAttribute("id", "chosenHead");
-                        head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " WanX " + tempData.id;
+                       // head.innerHTML = "<img src='resources/images/icons/wanxImg.png' style=\"width: 32px; height: 43px;\"></img>" + " WanX " + tempData.id;
+                        head.innerHTML = "<img class='flexwareImg' src='resources/images/icons/wanxImg.png' style=\"margin-right: 0px; margin-left: 0px;\"></img>"+ " WanX " + tempData.id;
                         var subHead = document.createElement("h6");
                         // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
 
@@ -2375,7 +2459,8 @@ else {
                     if(tempData.type== "FWrouter"){
                         var head = document.createElement("h4");
                         head.setAttribute("id", "chosenHead");
-                        head.innerHTML = "<img src='resources/images/icons/FWbox.png' style=\"width: 32px; height: 43px;\"></img>" + " Router " + tempData.id;
+                      //  head.innerHTML = "<img src='resources/images/icons/routerImg.png' style=\"width: 32px; height: 43px;\"></img>" + " Router " + tempData.id;
+                        head.innerHTML = "<img class='flexwareImg' src='resources/images/icons/routerImg.png'></img>"+ " Router " + tempData.id;
                         var subHead = document.createElement("h6");
                         // subHead.innerHTML = tempData.ownerSite.item.siteName + " | " + tempData.ownerSite.item.siteAlias;
 

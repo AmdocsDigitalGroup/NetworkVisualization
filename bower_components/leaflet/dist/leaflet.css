@@ -142,7 +142,8 @@
 }
 .leaflet-top .leaflet-control {
     /* //margin-top: 10px; */
-    margin-top: 87.2vh;
+    /*margin-top: 87.2vh;*/
+    margin-top: 85.2vh;
 
 }
 .leaflet-bottom .leaflet-control {
