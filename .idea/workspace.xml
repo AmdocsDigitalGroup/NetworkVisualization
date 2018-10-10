@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b737d7c5-77bb-40b9-b563-b77bd5193f2f" name="Default" comment="Commit Aug 24th, 2018">
-      <change beforePath="$PROJECT_DIR$/css/topology-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/topology-graph.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/htmlUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/htmlUtils.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,11 +75,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="htmlUtils.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="htmlUtils.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="1637" column="43" selection-start-line="1637" selection-start-column="43" selection-end-line="1637" selection-end-column="43" />
+            <state relative-caret-position="496">
+              <caret line="468" column="41" lean-forward="true" selection-start-line="468" selection-start-column="41" selection-end-line="468" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
@@ -104,7 +104,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topology-graph.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="topology-graph.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="632">
+              <caret line="1140" column="17" selection-start-line="1140" selection-start-column="17" selection-end-line="1140" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topology-graph.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
@@ -122,20 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topology-graph.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19006">
-              <caret line="1118" column="40" selection-start-line="1118" selection-start-column="40" selection-end-line="1118" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9911">
-              <caret line="583" column="54" selection-start-line="583" selection-start-column="54" selection-end-line="583" selection-end-column="54" />
+            <state relative-caret-position="374">
+              <caret line="583" column="71" lean-forward="true" selection-start-line="583" selection-start-column="54" selection-end-line="583" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -181,8 +181,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checktoggleport</find>
-      <find>draggable</find>
       <find>dr</find>
       <find>drag</find>
       <find>fade-out</find>
@@ -190,15 +188,12 @@
       <find>displaynodeinfo</find>
       <find>siteName</find>
       <find>toggl</find>
-      <find>togglegraphview</find>
       <find>togglePTP</find>
       <find>togglePort(</find>
       <find>togglePTP(\</find>
       <find>togglePTP(</find>
       <find>checktogglePTP</find>
-      <find>render</find>
       <find>slidebtnleft</find>
-      <find>togglesidenavleft</find>
       <find>slideBtn</find>
       <find>new</find>
       <find>flexwareImg</find>
@@ -211,6 +206,11 @@
       <find>info-btn</find>
       <find>.leaflet-top</find>
       <find>closeImgInfo</find>
+      <find>search</find>
+      <find>togglesidenavleft</find>
+      <find>togglegraphview</find>
+      <find>render</find>
+      <find>toggleOn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -244,8 +244,8 @@
         <option value="$PROJECT_DIR$/es6_JS/DisplayAPI.js" />
         <option value="$PROJECT_DIR$/js/topology-graph.js" />
         <option value="$PROJECT_DIR$/bower_components/leaflet/dist/leaflet.css" />
-        <option value="$PROJECT_DIR$/js/htmlUtils.js" />
         <option value="$PROJECT_DIR$/css/topology-graph.css" />
+        <option value="$PROJECT_DIR$/js/htmlUtils.js" />
       </list>
     </option>
   </component>
@@ -270,7 +270,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-1920" />
     <option name="y" value="1" />
     <option name="width" value="1918" />
@@ -453,7 +453,7 @@
       <workItem from="1539095943646" duration="21804000" />
       <workItem from="1539184676505" duration="79000" />
       <workItem from="1539184947010" duration="234000" />
-      <workItem from="1539185374279" duration="4816000" />
+      <workItem from="1539185374279" duration="7233000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/AmdocsDigitalGroup/NetworkVisualization&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1535131205745</created>
@@ -550,7 +550,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483995000" />
+    <option name="totallyTimeSpent" value="486412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="1" width="1918" height="1038" extended-state="0" />
@@ -665,7 +665,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -862,27 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9911">
-          <caret line="583" column="54" selection-start-line="583" selection-start-column="54" selection-end-line="583" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#g#11;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#image#0;n#g#17;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#image#0;n#g#18;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19006">
-          <caret line="1118" column="40" selection-start-line="1118" selection-start-column="40" selection-end-line="1118" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/es6_JS/DisplayAPI.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13158">
@@ -897,10 +876,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="2028" column="18" lean-forward="true" selection-start-line="2028" selection-start-column="18" selection-end-line="2028" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="583" column="71" lean-forward="true" selection-start-line="583" selection-start-column="54" selection-end-line="583" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#g#11;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#image#0;n#g#17;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#image#0;n#g#18;n#defs#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/topology-graph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="1140" column="17" selection-start-line="1140" selection-start-column="17" selection-end-line="1140" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/htmlUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="1637" column="43" selection-start-line="1637" selection-start-column="43" selection-end-line="1637" selection-end-column="43" />
+        <state relative-caret-position="496">
+          <caret line="468" column="41" lean-forward="true" selection-start-line="468" selection-start-column="41" selection-end-line="468" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
@@ -921,13 +928,6 @@
             <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/topology-graph.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="2028" column="18" lean-forward="true" selection-start-line="2028" selection-start-column="18" selection-end-line="2028" selection-end-column="18" />
         </state>
       </provider>
     </entry>

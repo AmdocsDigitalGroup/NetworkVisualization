@@ -296,6 +296,7 @@ function togglegraphView() {
         var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
         var flexware = document.querySelectorAll(".Flexware.vertices");
         var portLabel = document.getElementsByClassName("PortName");
+        var adiod= document.querySelectorAll(".Adiod-node.use-node");
 
          togglePortState=true;
         document.getElementById("PortToggleView").checked = true;
@@ -341,6 +342,8 @@ function togglegraphView() {
             fwfirewall[i].style.display = "";
         for (var i = 0; i < flexware.length; i++)
             flexware[i].style.display = "";
+        for (var i = 0; i < adiod.length; i++)
+            adiod[i].style.display = "";
 
 
 
@@ -420,6 +423,7 @@ function checkGraphView(){
         var fwfirewall = document.querySelectorAll(".FWfirewall.vertices");
         var flexware = document.querySelectorAll(".Flexware.vertices");
         var portLabel = document.getElementsByClassName("PortName");
+         var adiod= document.querySelectorAll(".Adiod-node.use-node");
 
          // document.getElementById("PortToggleView").checked = true;
          // document.getElementById("PTPOnlyToggleView").checked = true;
@@ -461,6 +465,8 @@ function checkGraphView(){
             fwfirewall[i].style.display = "";
         for (var i = 0; i < flexware.length; i++)
             flexware[i].style.display = "";
+         for (var i = 0; i < adiod.length; i++)
+             adiod[i].style.display = "";
 
 
 
@@ -624,6 +630,7 @@ function toggleOFF(){
     var recIcon =  document.querySelectorAll("#recommendation-icon");
     var alertIcon =  document.querySelectorAll("#alert-icon");
     var ports = document.querySelectorAll(".Port-node.use-node.clickable");
+    var adiod= document.querySelectorAll(".Adiod-node.use-node");
 
     for(var i=0;i<ptp.length;i++)
         ptp[i].style.display="none";
@@ -639,6 +646,9 @@ function toggleOFF(){
         alertIcon[i].style.display="none";
     for(var i=0;i<ports.length;i++)
         ports[i].style.display="none";
+    for(var i=0;i<adiod.length;i++)
+        adiod[i].style.display="none";
+
 
 }
 
@@ -656,6 +666,8 @@ function toggleON(){
     var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
     var flexware = document.querySelectorAll(".Flexware.vertices");
     var evcss = document.getElementsByClassName("PointToPointCenter");
+    var adiod= document.querySelectorAll(".Adiod-node.use-node");
+
 
     for(var i=0;i<ptp.length;i++)
         ptp[i].style.display="";
@@ -678,6 +690,9 @@ function toggleON(){
 
     for(var i=0;i<flexware.length;i++)
         flexware[i].style.display="";
+    for(var i=0;i<adiod.length;i++)
+        adiod[i].style.display="";
+
 
 
 
@@ -1190,6 +1205,7 @@ function togglealertsdefault(){
     var fwfirewall =  document.querySelectorAll(".FWfirewall.vertices");
     var flexware = document.querySelectorAll(".Flexware.vertices");
     var portLabel = document.getElementsByClassName("PortName");
+    var adiod= document.querySelectorAll(".Adiod-node.use-node");
 
     for(var i=0;i<evcss.length;i++) {
         evcss[i].style.display="none";
@@ -1220,6 +1236,9 @@ function togglealertsdefault(){
     }
     for(var i=0;i<portLabel.length;i++) {
         portLabel[i].style.display="none";
+    }
+    for(var i=0;i<adiod.length;i++) {
+        adiod[i].style.display="none";
     }
 
 
@@ -1795,6 +1814,7 @@ else {
             clearSelection.setAttribute("onclick","clearSelectionData()");
             clearSelection.innerHTML="Clear Selection";
             clearSelection.style.display="";
+            sideNavLeft.appendChild(clearSelection);
         }
 
 
@@ -1807,7 +1827,7 @@ else {
         // close3.innerHTML = "<img class='closeImgInfo' src='resources/images/icons/close.svg'></img>";
         // close3.style.display="";
 
-        sideNavLeft.appendChild(clearSelection);
+
         // sideNavLeft.appendChild(close3);
 
 
